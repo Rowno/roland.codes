@@ -1,8 +1,14 @@
-# https://gist.github.com/1389675
+# https://gist.github.com/642739
 module Jekyll
 
-# Expects a lessc: key in your _config.yml file with the path to a local less.js/bin/lessc
-# Less.js will require node.js to be installed
+    class LessCssFile < StaticFile
+        def write(dest)
+          # do nothing
+        end
+    end
+
+    # Expects a lessc: key in your _config.yml file with the path to a local less.js/bin/lessc
+    # Less.js will require node.js to be installed
     class LessJsGenerator < Generator
         safe true
         priority :low
@@ -20,8 +26,11 @@ module Jekyll
 
                 less_path = sf.path
                 css_path = less_path.gsub(less_ext, '.css').gsub(src_root, dest_root)
+                css_dir = File.dirname(css_path)
+                css_dir_relative = css_dir.gsub(dest_root, '')
+                css_name = File.basename(css_path)
 
-                FileUtils.mkdir_p(File.dirname(css_path))
+                FileUtils.mkdir_p(css_dir)
 
                 begin
                     command = [site.config['lessc'],
@@ -35,6 +44,9 @@ module Jekyll
 
                     raise "LESS compilation error" if $?.to_i != 0
                 end
+
+                # Add this output file so it won't be cleaned
+                site.static_files << LessCssFile.new(site, site.source, css_dir_relative, css_name)
             end
         end
     end
