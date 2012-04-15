@@ -1,0 +1,14 @@
+/* the humans responsible & colophon */
+/* humanstxt.org */
+
+
+/* TEAM */
+    Web Developer: Roland Warmerdam
+    Site: http://rolandwarmerdam.co.nz/
+    Location: New Zealand
+
+/* SITE */
+    Standards: HTML5, CSS3
+    Components: HTML5 Boilerplate, Twitter Bootstrap
+    Source: https://github.com/Rowno/rolandwarmerdam.co.nz
+    Software: Sublime Text 2
