@@ -47,6 +47,9 @@ module Jekyll
 
                 # Add this output file so it won't be cleaned
                 site.static_files << LessCssFile.new(site, site.source, css_dir_relative, css_name)
+
+                # Remove the LESS file so it gets cleaned
+                site.static_files.delete(sf)
             end
         end
     end

@@ -2,4 +2,4 @@ pygments: true
 permalink: /:title
 title: Roland Warmerdam
 lessc: lessc --yui-compress
-exclude: ["bootstrap"]
+exclude: ['Makefile', 'README.md']
