@@ -11,4 +11,4 @@
     Standards: HTML5, CSS3
     Components: HTML5 Boilerplate, Twitter Bootstrap
     Source: https://github.com/Rowno/rolandwarmerdam.co.nz
-    Software: Sublime Text 2
+    Software: Jekyll, Sublime Text 2
