@@ -1,7 +1,7 @@
-BASEURL = /rolandwarmerdam.co.nz/_site
+BASEURL = http://localhost/rolandwarmerdam.co.nz/_site
 
 production:
-	jekyll
+	jekyll --base-url http://rolandwarmerdam.co.nz
 
 build:
 	jekyll --base-url $(BASEURL)
