@@ -2,21 +2,20 @@
 @import "pygments/github.less";
 
 * {
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
+    .box-sizing(border-box);
 }
 
 @baseFontSize: 15px;
 @baseLineHeight: 1.625em;
 
 body {
+    .clearfix();
     max-width: 600px;
     margin: 0px auto;
     padding: 20px;
 }
 
-h1 {
+h1, h2 {
     line-height: normal;
 }
 
