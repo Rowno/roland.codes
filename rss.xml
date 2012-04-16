@@ -1,0 +1,25 @@
+---
+---
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>{{ site.rss-title | xml_escape }}</title>
+        <link>{{ site.baseurl | xml_escape }}</link>
+        <description>{{ site.rss-title | xml_escape }}</description>
+        <language>en</language>
+        <lastBuildDate>{{ site.time | date:'%a, %d %b %Y %H:%M:%S %Z' }}</lastBuildDate>
+        <generator>Jekyll</generator>
+        <copyright>{{ site.copyright | xml_escape }}</copyright>
+        <atom:link href="{{ site.baseurl | xml_escape }}/rss.xml" rel="self" type="application/rss+xml" />
+
+        {% for post in site.posts limit:10 %}
+            <item>
+                <guid>{{ site.baseurl | xml_escape }}{{ post.url | xml_escape }}</guid>
+                <link>{{ site.baseurl | xml_escape }}{{ post.url | xml_escape }}</link>
+                <title>{{ post.title | xml_escape }}</title>
+                <pubDate>{{ post.date | date:'%a, %d %b %Y %H:%M:%S %Z' }}</pubDate>
+                <description>{{ post.content | xml_escape }}</description>
+            </item>
+        {% endfor %}
+    </channel>
+</rss>
