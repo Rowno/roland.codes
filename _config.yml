@@ -1,9 +1,11 @@
+title: Roland Warmerdam
+rss-title: "Roland Warmerdam's Blog"
+name: Roland Warmerdam
+copyright: "Copyright 2012, Roland Warmerdam."
+
 pygments: true
 permalink: /:title
-title: Roland Warmerdam
-author:
-    name: Roland Warmerdam
 paginate: 5
-lessc: lessc --yui-compress
 markdown: rdiscount
 exclude: ['Makefile', 'README.md']
+lessc: lessc --yui-compress
