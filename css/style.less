@@ -7,10 +7,26 @@
             box-sizing: border-box;
 }
 
+@baseFontSize: 15px;
+@baseLineHeight: 1.625em;
+
 body {
     max-width: 600px;
     margin: 0px auto;
     padding: 20px;
+}
+
+h1 {
+    line-height: normal;
+}
+
+.highlight {
+    pre {
+        width: 100%;
+        overflow: auto;
+        white-space: pre;
+        word-wrap: normal;
+    }
 }
 
 .previous {
