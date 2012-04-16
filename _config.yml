@@ -1,5 +1,9 @@
 pygments: true
 permalink: /:title
 title: Roland Warmerdam
+author:
+    name: Roland Warmerdam
+paginate: 5
 lessc: lessc --yui-compress
+markdown: rdiscount
 exclude: ['Makefile', 'README.md']

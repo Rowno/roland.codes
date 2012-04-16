@@ -2,8 +2,21 @@
 layout: main
 ---
 
-{% for post in site.posts %}
+{% for post in paginator.posts %}
     <article>
         <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
     </article>
 {% endfor %}
+
+
+{% if paginator.previous_page %}
+    {% if paginator.previous_page == 1 %}
+        <a href="{{ site.baseurl }}/" class="previous">← Newer posts</a>
+    {% else %}
+        <a href="{{ site.baseurl }}/page{{ paginator.previous_page }}/" class="previous">← Newer posts</a>
+    {% endif %}
+{% endif %}
+
+{% if paginator.next_page %}
+    <a href="{{ site.baseurl }}/page{{ paginator.next_page }}/" class="next">Older posts →</a>
+{% endif %}
