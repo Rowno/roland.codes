@@ -9,7 +9,7 @@
     </time>
 
     by
-    <a href="{{ site.baseurl }}" rel="author" itemprop="author">
+    <a href="{{ site.baseurl }}" rel="author">
         {{ site.author.name }}
     </a>
 </header>
@@ -22,7 +22,7 @@
     Tagged:
     <span itemprop="keywords">
     {% for tag in page.tags %}
-        {{ tag }}{% unless page.tags.last == tag %}, {% endunless %}
+        <a href="{{ site.baseurl }}/tags.html#{{ tag }}" rel="tag">{{ tag }}</a>{% unless page.tags.last == tag %}, {% endunless %}
     {% endfor %}
     </span>
 </footer>

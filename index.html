@@ -2,6 +2,8 @@
 layout: main
 ---
 
+{% include paginator.html %}
+
 {% for page in paginator.posts %}
     <article itemscope itemtype="http://schema.org/BlogPosting">
         {% capture content %}{{ page.content }}{% endcapture %}
@@ -9,15 +11,4 @@ layout: main
     </article>
 {% endfor %}
 
-
-{% if paginator.previous_page %}
-    {% if paginator.previous_page == 1 %}
-        <a href="{{ site.baseurl }}/" class="previous">← Newer posts</a>
-    {% else %}
-        <a href="{{ site.baseurl }}/page{{ paginator.previous_page }}/" class="previous">← Newer posts</a>
-    {% endif %}
-{% endif %}
-
-{% if paginator.next_page %}
-    <a href="{{ site.baseurl }}/page{{ paginator.next_page }}/" class="next">Older posts →</a>
-{% endif %}
+{% include paginator.html %}
