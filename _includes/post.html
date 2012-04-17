@@ -1,0 +1,28 @@
+<header>
+    <h1>
+        <a href="{{ site.baseurl }}{{ page.url }}" rel="bookmark" itemprop="headline url">{{ page.title }}</a>
+    </h1>
+
+    Posted on
+    <time pubdate datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {{ page.date | date_to_long_string }}
+    </time>
+
+    by
+    <a href="{{ site.baseurl }}" rel="author" itemprop="author">
+        {{ site.author.name }}
+    </a>
+</header>
+
+<div class="content" itemprop="articleBody">
+    {{ content }}
+</div>
+
+<footer>
+    Tagged:
+    <span itemprop="keywords">
+    {% for tag in page.tags %}
+        {{ tag }}{% unless page.tags.last == tag %}, {% endunless %}
+    {% endfor %}
+    </span>
+</footer>

@@ -1,22 +1,49 @@
 @import "_bootstrap/bootstrap.less";
 @import "_pygments/github.less";
 
+@baseFontSize: 15px;
+@baseLineHeight: 1.618em;
+@headingsFontFamily: 'TelegramaRender', Menlo, Monaco, 'Courier New', monospace;
+
+
 * {
     .box-sizing(border-box);
 }
 
-@baseFontSize: 15px;
-@baseLineHeight: 1.625em;
+@font-face {
+  font-family: 'TelegramaRender';
+  src: url('font/telegrama_render.eot?#') format('eot'),  /* IE6–8 */
+       url('font/telegrama_render.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+ */
+       url('font/telegrama_render.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+}
+
+@font-face {
+  font-family: 'TelegramaRaw';
+  src: url('font/telegrama_raw.eot?#') format('eot'),  /* IE6–8 */
+       url('font/telegrama_raw.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+ */
+       url('font/telegrama_raw.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+}
 
 body {
     .clearfix();
-    max-width: 600px;
+    max-width: 704px;
     margin: 0px auto;
     padding: 20px;
 }
 
-h1, h2 {
-    line-height: normal;
+h1, h2, h3, h4, h5, h6 {
+    line-height: @baseLineHeight;
+    font-weight: normal;
+}
+
+#header {
+    margin-bottom: 20px;
+}
+
+#header, #header h1 {
+    font-size: 44px;
+    line-height: @baseLineHeight;
+    font-family: 'TelegramaRaw';
 }
 
 .highlight {

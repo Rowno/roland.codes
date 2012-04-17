@@ -1,6 +1,7 @@
 title: Roland Warmerdam
 rss-title: "Roland Warmerdam's Blog"
-name: Roland Warmerdam
+author:
+    name: Roland Warmerdam
 copyright: "Copyright 2012, Roland Warmerdam."
 
 pygments: true

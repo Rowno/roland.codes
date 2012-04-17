@@ -15,12 +15,14 @@
     <link rel="alternate" type="application/rss+xml" href="rss.xml" title="{{ site.rss-title }}">
 </head>
 <body>
-    <!--[if lt IE 9]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-    <header>
-        <a href="{{ site.baseurl }}/">{{ site.title }}</a>
+    <header id="header">
+        {% unless page.title %}<h1>{% endunless %}
+            <a href="{{ site.baseurl }}/" rel="home">{{ site.title }}</a>
+        {% unless page.title %}</h1>{% endunless %}
     </header>
 
     <div role="main">
+        <!--[if lt IE 9]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
         {{ content }}
     </div>
 
