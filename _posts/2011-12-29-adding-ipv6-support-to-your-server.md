@@ -10,7 +10,7 @@ The first step, of course, is to request an IPv6 address for your server. On [Li
 
 The second step is to allow the IPv6 ports through the firewall. If you're using UFW, you'll need to do the following:
 
- * Edit /etc/default/ufw and change IPV6=no to IPV6=yes (I think that IPV6=yes is now the default value starting Ubuntu 11.10).
+ * Edit `/etc/default/ufw` and change `IPV6=no` to `IPV6=yes` (I think that `IPV6=yes` is now the default value starting Ubuntu 11.10).
  * Disable and enable the firewall for the changes to take affect. A server restart may also be required.
  * Re-add all your existing firewall rules so that the IPv6 rules get added.
 
