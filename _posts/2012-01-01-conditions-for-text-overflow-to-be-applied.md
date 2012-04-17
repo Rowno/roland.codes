@@ -21,7 +21,7 @@ The first is when the text is prevented from wrapping by using the white-space p
 
 **Live example:**
 
-<div class="well" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+<div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" class="well">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis augue metus, pellentesque sed molestie non, porta eget odio. Pellentesque vitae neque euismod purus dignissim aliquet. Nullam sit amet elit neque, et auctor nisi. Quisque suscipit elit eu nulla interdum tempus ac at nisl. Vivamus feugiat vestibulum sollicitudin. Aliquam erat volutpat.
 </div>
 
@@ -38,7 +38,7 @@ The second is when the text contains a *very* long word that can't wrap automati
 
 **Live example:**
 
-<div class="well" style="overflow: hidden; text-overflow: ellipsis;">
+<div style="overflow: hidden; text-overflow: ellipsis;" class="well">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis augue metus, pellentesque sed molestie non, porta eget odio. Pellentesquevitaenequeeuismodpurusdignissimaliquet.Nullamsitametelitneque,etauctornisi.Quisquesuscipiteliteunullainterdumtempusacatnisl. Vivamus feugiat vestibulum sollicitudin. Aliquam erat volutpat.
 </div>
 
@@ -55,11 +55,13 @@ Unfortunately, constraining the height of an element and expecting text-overflow
 
 **Live example:**
 
-<div class="well" style="overflow: hidden; text-overflow: ellipsis; height: 4em;">
+<div style="overflow: hidden; text-overflow: ellipsis; height: 4em;" class="well">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis augue metus, pellentesque sed molestie non, porta eget odio. Pellentesque vitae neque euismod purus dignissim aliquet. Nullam sit amet elit neque, et auctor nisi. Quisque suscipit elit eu nulla interdum tempus ac at nisl. Vivamus feugiat vestibulum sollicitudin. Aliquam erat volutpat.
 </div>
 
 
 This means that text-overflow can only really be used for a single word/line of text or for preventing your page layouts from breaking due to extremely long words.
 
-More information about the text-overflow property can be found on the <a href="https://developer.mozilla.org/en/CSS/text-overflow">MDN text-overflow</a> page.
+More information about the text-overflow property can be found on the [MDN text-overflow][] page.
+
+[MDN text-overflow]: https://developer.mozilla.org/en/CSS/text-overflow
