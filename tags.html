@@ -1,0 +1,29 @@
+---
+layout: main
+title: Posts By Tag
+---
+
+<h1>Posts By Tag</h1>
+
+<ul>
+    {% for tag in site.tags %}
+        <li>
+            <a href="{{ site.baseurl }}/tags.html#{{ tag[0] | cgi_escape }}">{{ tag[0] }} <sup>{{ tag[1].size }}</sup></a>
+        </li>
+    {% endfor %}
+</ul>
+
+{% for tag in site.tags %}
+    <h2 id="{{ tag[0] | cgi_escape }}">{{ tag[0] }}</h2>
+    <ul>
+        {% for node in tag[1] %}
+            {% if node.title != null %}
+                <li>
+                    <a href="{{ site.baseurl }}/{{ node.url }}">{{ node.title }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endfor %}
+
+
