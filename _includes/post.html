@@ -23,7 +23,7 @@
     Tagged:
     <span itemprop="keywords">
     {% for tag in page.tags %}
-        <a href="{{ site.baseurl }}/tags.html#{{ tag | cgi_escape }}" rel="tag">{{ tag }}</a>
+        <a href="{{ site.baseurl }}/tags.html#{{ tag | cgi_escape }}-tag" rel="tag">{{ tag }}</a>
         {% unless page.tags.last == tag %}, {% endunless %}
     {% endfor %}
     </span>

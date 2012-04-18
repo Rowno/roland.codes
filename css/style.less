@@ -11,23 +11,17 @@
 }
 
 @font-face {
-  font-family: 'TelegramaRender';
-  src: url('font/telegrama_render.eot?#') format('eot'),  /* IE6–8 */
-       url('font/telegrama_render.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+ */
-       url('font/telegrama_render.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+    font-family: 'TelegramaRender';
+    src: url('font/telegrama_render.eot?#') format('eot'),  /* IE6–8 */
+         url('font/telegrama_render.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+ */
+         url('font/telegrama_render.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
 }
 
 @font-face {
-  font-family: 'TelegramaRaw';
-  src: url('font/telegrama_raw.eot?#') format('eot'),  /* IE6–8 */
-       url('font/telegrama_raw.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+ */
-       url('font/telegrama_raw.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
-}
-
-body {
-    max-width: 704px;
-    margin: 0px auto;
-    padding: 20px;
+    font-family: 'TelegramaRaw';
+    src: url('font/telegrama_raw.eot?#') format('eot'),  /* IE6–8 */
+         url('font/telegrama_raw.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+ */
+         url('font/telegrama_raw.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -39,15 +33,30 @@ address {
     display: inline;
 }
 
+#wrapper {
+    max-width: 704px;
+    margin: 0px auto;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.9);
+}
+
 #header {
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     text-align: center;
 }
 
 #header, #header h1 {
     font-size: 44px;
     line-height: 1em;
-    font-family: 'TelegramaRaw';
+    font-family: 'TelegramaRaw', Menlo, Monaco, 'Courier New', monospace;
+}
+
+.post {
+    margin-bottom: 24px;
+
+    footer {
+        font-size: 12px;
+    }
 }
 
 .highlight {
