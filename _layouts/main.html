@@ -22,13 +22,33 @@
             {% unless page.title %}</h1>{% endunless %}
         </header>
 
-        <div id="main" role="main">
-            <!--[if lt IE 8]>
-                <p class="chromeframe alert alert-warn">
-                    Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.
-                </p>
-            <![endif]-->
-            {{ content }}
+        <div id="content-wrapper">
+            <div id="main" role="main">
+                <!--[if lt IE 8]>
+                    <p class="chromeframe alert alert-warn">
+                        Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.
+                    </p>
+                <![endif]-->
+
+                {{ content }}
+            </div>
+
+            <div id="sidebar">
+                <nav id="menu">
+                    <ul>
+                        <li><a href="{{ site.baseurl }}/" rel="home">Home</a></li>
+                        <li><a href="{{ site.baseurl }}/about.html">About</a></li>
+                        <li><a href="{{ site.baseurl }}/contact.html">Contact</a></li>
+                        <li><a href="{{ site.baseurl }}/projects.html">Projects</a></li>
+                    </ul>
+                </nav>
+
+                <ul>
+                    <li><a rel="me" href="https://github.com/Rowno">GitHub</a></li>
+                    <li><a rel="me" href="https://plus.google.com/108621262237470431255/?rel=author">Google+</a></li>
+                    <li><a rel="me" href="http://www.linkedin.com/in/rolandwarmerdam">LinkedIn</a></li>
+                </ul>
+            </div>
         </div>
 
         <footer id="footer"></footer>
