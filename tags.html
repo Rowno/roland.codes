@@ -6,7 +6,7 @@ pageid: tags
 
 <h1>Posts By Tag</h1>
 
-<ul>
+<ul id="tags-list">
     {% for tag in site.tags %}
         <li>
             <a href="{{ site.baseurl }}/tags.html#{{ tag[0] | cgi_escape }}-tag">{{ tag[0] }} <sup>{{ tag[1].size }}</sup></a>
@@ -15,16 +15,18 @@ pageid: tags
 </ul>
 
 {% for tag in site.tags %}
-    <h2 id="{{ tag[0] | cgi_escape }}-tag">{{ tag[0] }}</h2>
-    <ul>
-        {% for node in tag[1] %}
-            {% if node.title != null %}
-                <li>
-                    <a href="{{ site.baseurl }}/{{ node.url }}">{{ node.title }}</a>
-                </li>
-            {% endif %}
-        {% endfor %}
-    </ul>
+    <section id="{{ tag[0] | cgi_escape }}-tag">
+        <h2>{{ tag[0] }}</h2>
+        <ul>
+            {% for node in tag[1] %}
+                {% if node.title != null %}
+                    <li>
+                        <a href="{{ site.baseurl }}/{{ node.url }}">{{ node.title }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </section>
 {% endfor %}
 
 

@@ -12,16 +12,16 @@
 
 @font-face {
     font-family: 'TelegramaRender';
-    src: url('font/telegrama_render.eot?#') format('eot'),  /* IE6–8 */
-         url('font/telegrama_render.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+ */
-         url('font/telegrama_render.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+    src: url('font/telegrama_render.eot?#') format('eot'),
+         url('font/telegrama_render.woff') format('woff'),
+         url('font/telegrama_render.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'TelegramaRaw';
-    src: url('font/telegrama_raw.eot?#') format('eot'),  /* IE6–8 */
-         url('font/telegrama_raw.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+ */
-         url('font/telegrama_raw.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+    src: url('font/telegrama_raw.eot?#') format('eot'),
+         url('font/telegrama_raw.woff') format('woff'),
+         url('font/telegrama_raw.ttf') format('truetype');
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -33,15 +33,18 @@ address {
     display: inline;
 }
 
+a {
+    .transition(all 0.3s linear);
+}
+
 #wrapper {
-    max-width: 704px;
+    max-width: 700px;
     margin: 0px auto;
-    padding: 24px;
-    background: rgba(255, 255, 255, 0.9);
+    padding: @gridGutterWidth;
 }
 
 #header {
-    margin-bottom: 24px;
+    margin-bottom: @gridGutterWidth;
     text-align: center;
 }
 
@@ -52,7 +55,7 @@ address {
 }
 
 .post {
-    margin-bottom: 24px;
+    margin-bottom: @gridGutterWidth;
 
     footer {
         font-size: 12px;
@@ -80,3 +83,30 @@ address {
     }
 }
 
+#tags section {
+    margin-top: @gridGutterWidth;
+    padding: 5px;
+    .border-radius(3px);
+    .transition(all 2s linear);
+}
+
+#tags section:target {
+    background: @infoBackground;
+}
+
+#tags-list {
+    .clearfix;
+    list-style: none;
+    margin: 0;
+
+    li {
+        float: left;
+        margin-left: 3px;
+
+        a {
+            padding: 2px;
+            .border-radius(3px);
+            background: @infoBackground;
+        }
+    }
+}
