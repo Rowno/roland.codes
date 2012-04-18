@@ -6,6 +6,9 @@
 @headingsFontFamily: 'TelegramaRender', Menlo, Monaco, 'Courier New', monospace;
 
 
+// GLOBAL STYLES
+// -------------
+
 * {
     .box-sizing(border-box);
 }
@@ -37,6 +40,32 @@ a {
     .transition(all 0.3s linear);
 }
 
+.tag {
+    padding: 2px;
+    .border-radius(3px);
+    background: @infoBackground;
+    white-space: nowrap;
+
+    &:hover, &:focus {
+        text-decoration: none;
+        background: darken(@infoBackground, 10%);
+    }
+}
+
+// Pygments code block
+.highlight {
+    pre {
+        width: 100%;
+        overflow: auto;
+        white-space: pre;
+        word-wrap: normal;
+    }
+}
+
+
+// BASE STRUCTURE
+// --------------
+
 #wrapper {
     max-width: 700px;
     margin: 0px auto;
@@ -54,20 +83,15 @@ a {
     font-family: 'TelegramaRaw', Menlo, Monaco, 'Courier New', monospace;
 }
 
+
+// INDEX PAGE
+// ----------
+
 .post {
     margin-bottom: @gridGutterWidth;
 
     footer {
         font-size: 12px;
-    }
-}
-
-.highlight {
-    pre {
-        width: 100%;
-        overflow: auto;
-        white-space: pre;
-        word-wrap: normal;
     }
 }
 
@@ -83,30 +107,34 @@ a {
     }
 }
 
-#tags section {
-    margin-top: @gridGutterWidth;
-    padding: 5px;
-    .border-radius(3px);
-    .transition(all 2s linear);
-}
 
-#tags section:target {
-    background: @infoBackground;
-}
+// TAGS PAGE
+// ---------
 
 #tags-list {
     .clearfix;
     list-style: none;
     margin: 0;
+    margin-bottom: @gridGutterWidth;
 
     li {
         float: left;
         margin-left: 3px;
 
-        a {
-            padding: 2px;
-            .border-radius(3px);
-            background: @infoBackground;
+        .size {
+            font-size: 0.7em;
+            font-weight: bold;
+            vertical-align: super;
         }
+    }
+}
+
+#tags section {
+    padding: 5px;
+    .border-radius(3px);
+    .transition(all 2s linear);
+
+    &:target {
+        background: @infoBackground;
     }
 }

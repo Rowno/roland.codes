@@ -9,7 +9,7 @@ pageid: tags
 <ul id="tags-list">
     {% for tag in site.tags %}
         <li>
-            <a href="{{ site.baseurl }}/tags.html#{{ tag[0] | cgi_escape }}-tag">{{ tag[0] }} <sup>{{ tag[1].size }}</sup></a>
+            <a class="tag" href="{{ site.baseurl }}/tags.html#{{ tag[0] | cgi_escape }}-tag">{{ tag[0] }} <span class="size">{{ tag[1].size }}</span></a>
         </li>
     {% endfor %}
 </ul>
