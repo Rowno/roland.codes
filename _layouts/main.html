@@ -18,7 +18,7 @@
     <div id="wrapper">
         <header id="header">
             {% unless page.title %}<h1>{% endunless %}
-                <a href="{{ site.baseurl }}/" rel="home">{{ site.title }}</a>
+                <a rel="home" href="{{ site.baseurl }}/">{{ site.title }}</a>
             {% unless page.title %}</h1>{% endunless %}
         </header>
 
@@ -36,7 +36,7 @@
             <div id="sidebar">
                 <nav id="menu">
                     <ul>
-                        <li><a href="{{ site.baseurl }}/" rel="home">Home</a></li>
+                        <li><a rel="home" href="{{ site.baseurl }}/">Home</a></li>
                         <li><a href="{{ site.baseurl }}/about.html">About</a></li>
                         <li><a href="{{ site.baseurl }}/contact.html">Contact</a></li>
                         <li><a href="{{ site.baseurl }}/projects.html">Projects</a></li>
@@ -48,6 +48,10 @@
                     <li><a rel="me" href="https://plus.google.com/108621262237470431255/?rel=author">Google+</a></li>
                     <li><a rel="me" href="http://www.linkedin.com/in/rolandwarmerdam">LinkedIn</a></li>
                 </ul>
+
+                <a href="http://www.linode.com/?r=65f866a7004f627ae37fa3283f8a89b4fa9cecbe">
+                    <img alt="hosting provided by linode.com" src="{{ site.baseurl }}/img/hosted_by_linode.png">
+                </a>
             </div>
         </div>
 
