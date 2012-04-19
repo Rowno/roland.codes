@@ -69,7 +69,7 @@ a {
 // BASE STRUCTURE
 // --------------
 
-@sidebarWidth: 220px;
+@sidebarWidth: 190px + @gridGutterWidth;
 
 body {
     max-width: 700px + @sidebarWidth;
@@ -93,6 +93,10 @@ body {
     font-family: 'TelegramaRaw', Menlo, Monaco, 'Courier New', monospace;
 }
 
+#main {
+    margin-bottom: @gridGutterWidth;
+}
+
 #sidebar {
     position: absolute;
     top: 100px;
@@ -105,11 +109,11 @@ body {
     font-family: @headingsFontFamily;
 
     nav {
-        margin-bottom: .809em;
+        margin-bottom: @baseLineHeight / 2;
     }
 
     ul {
-        margin-left: 0;
+        margin: 0;
         list-style: none;
     }
 }
@@ -125,13 +129,25 @@ body {
         padding: 0;
         border: none;
         text-align: left;
+        .clearfix;
+
+        nav {
+            float: left;
+            margin: 0;
+        }
 
         ul {
             float: left;
             padding: 0 @gridGutterWidth;
+            margin: 0;
             border-left: 3px dashed @mainColor;
         }
     }
+}
+
+#footer {
+    margin-top: @gridGutterWidth;
+    text-align: center;
 }
 
 
@@ -163,10 +179,10 @@ body {
 // ---------
 
 #tags-list {
-    .clearfix;
     list-style: none;
     margin: 0;
     margin-bottom: @gridGutterWidth;
+    .clearfix;
 
     li {
         float: left;
