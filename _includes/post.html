@@ -13,11 +13,11 @@
     <time pubdate datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
         {{ page.date | date_to_long_string }}
     </time>
-
     by
     <address>
         <a href="{{ site.baseurl }}" rel="author" itemprop="author">{{ site.author.name }}</a>
     </address>
+
     <br>
 
     Tagged:
@@ -27,4 +27,9 @@
         {% unless page.tags.last == tag %}, {% endunless %}
     {% endfor %}
     </span>
+
+    <br>
+
+    Want to edit this post?
+    <a href="{{ site.githuburl }}/{{ page.date | date:'%Y-%m-%d' }}-{{ page.url | remove_first: '/' }}.md">Send a pull request!</a>
 </footer>

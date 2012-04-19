@@ -1,12 +1,21 @@
+# VARIABLES
+# ---------
 title: Roland Warmerdam
 rss-title: "Roland Warmerdam's Blog"
 author:
     name: Roland Warmerdam
 copyright: "Copyright 2012, Roland Warmerdam."
+githuburl: "https://github.com/Rowno/rolandwarmerdam.co.nz/blob/_posts"
 
+
+# JEKYLL
+# ------
 pygments: true
 permalink: /:title
 paginate: 5
-markdown: rdiscount
 exclude: ['Makefile', 'README.md']
+
+
+# PLUGINS
+# -------
 lessc: lessc --yui-compress
