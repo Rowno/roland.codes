@@ -12,4 +12,4 @@ A single commit in Git is just an object which contains a reference to it's pare
 
 This may be a bit of a simplification of how Git works in reality, but it helped me to picture in my mind how a Git repository fits together, and made it a lot easier for me to understand advanced Git concepts and techniques.
 
-[example]: {{ site.baseurl }}/img/git-linked-list-example.png
+[example]: {{ site.baseurl }}/img/content/git-linked-list-example.png
