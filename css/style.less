@@ -78,11 +78,23 @@ a {
 
 // Pygments code block
 .highlight {
+    position: relative;
+
     pre {
         width: 100%;
         overflow: auto;
         white-space: pre;
         word-wrap: normal;
+
+        // Add the syntax name above the code block
+        code:after {
+            content: attr(class);
+            position: absolute;
+            top: -1em - (@baseLineHeight - 1) / 2;
+            right: (@baseLineHeight - 1) / 2;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
     }
 }
 
