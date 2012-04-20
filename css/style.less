@@ -4,6 +4,7 @@
 // BASE STRUCTURE
 // INDEX PAGE
 // TAGS PAGE
+// ARCHIVES PAGE
 
 @import "_bootstrap/bootstrap.less";
 @import "_pygments/github.less";
@@ -44,6 +45,10 @@ h1, h2, h3, h4, h5, h6 {
 
 address {
     display: inline;
+}
+
+ul {
+    list-style-type: square;
 }
 
 a {
@@ -241,5 +246,34 @@ body {
 
     &:target {
         background: @backgroundColor;
+    }
+}
+
+
+// ARCHIVES PAGE
+// -------------
+
+#archives {
+    section {
+        margin-bottom: @gridGutterWidth;
+    }
+
+    article {
+        .clearfix;
+    }
+
+    time {
+        float: left;
+        display: block;
+        margin-right: @gridGutterWidth;
+        width: 6em;
+    }
+
+    h3 {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-family: @baseFontFamily;
+        font-size: @baseFontSize;
     }
 }
