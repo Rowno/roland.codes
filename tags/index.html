@@ -9,7 +9,7 @@ pageid: tags
 <ul id="tags-list">
     {% for tag in site.tags %}
         <li>
-            <a class="tag" href="{{ site.baseurl }}/tags.html#{{ tag[0] | cgi_escape }}-tag">{{ tag[0] }} <span class="size">{{ tag[1].size }}</span></a>
+            <a class="tag" href="#{{ tag[0] | cgi_escape }}-tag">{{ tag[0] }} <span class="size">{{ tag[1].size }}</span></a>
         </li>
     {% endfor %}
 </ul>
@@ -18,10 +18,10 @@ pageid: tags
     <section id="{{ tag[0] | cgi_escape }}-tag">
         <h2>{{ tag[0] }}</h2>
         <ul>
-            {% for node in tag[1] %}
-                {% if node.title != null %}
+            {% for post in tag[1] %}
+                {% if post.title != null %}
                     <li>
-                        <a href="{{ site.baseurl }}/{{ node.url }}">{{ node.title }}</a>
+                        <a href="{{ site.baseurl }}/{{ post.url }}">{{ post.title }}</a>
                     </li>
                 {% endif %}
             {% endfor %}
