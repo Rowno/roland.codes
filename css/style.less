@@ -40,7 +40,17 @@ address {
 }
 
 a {
-    .transition(all 0.3s linear);
+    .transition(all 0.1s linear);
+
+    &:hover, &:focus {
+        color: @linkColorHover;
+        text-decoration: none;
+    }
+
+    &:active {
+        position: relative;
+        top: 1px;
+    }
 }
 
 .tag {
@@ -50,7 +60,6 @@ a {
     white-space: nowrap;
 
     &:hover, &:focus {
-        text-decoration: none;
         background: darken(@backgroundColor, 10%);
     }
 }
@@ -203,7 +212,7 @@ body {
 #tags section {
     padding: 5px;
     .border-radius(3px);
-    .transition(all 2s linear);
+    .transition(all 1s linear);
 
     &:target {
         background: @backgroundColor;
