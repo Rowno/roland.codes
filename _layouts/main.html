@@ -23,6 +23,10 @@
             {% unless page.title %}</h1>{% endunless %}
         </header>
 
+        <div id="skip-main-menu">
+            <a href="#main-menu">Skip to main menu</a>
+        </div>
+
         <div id="main" role="main">
             <!--[if lt IE 8]>
                 <p class="chromeframe alert alert-error">
@@ -34,7 +38,7 @@
         </div>
 
         <div id="sidebar">
-            <nav id="menu">
+            <nav id="main-menu">
                 <ul>
                     <li><a rel="home" href="{{ site.baseurl }}/">Home</a></li>
                     <li><a href="{{ site.baseurl }}/about/">About</a></li>

@@ -138,6 +138,11 @@ body {
     }
 }
 
+#skip-main-menu {
+    display: none;
+    text-align: center;
+}
+
 @media (max-width: 480px) {
     #wrapper {
         margin-left: 0;
@@ -167,6 +172,10 @@ body {
             }
         }
     }
+
+    #skip-main-menu {
+        display: block;
+    }
 }
 
 #footer {
@@ -174,7 +183,9 @@ body {
     text-align: center;
 
     a {
+        display: inline-block;
         margin-left: @gridGutterWidth;
+        margin-bottom: @gridGutterWidth;
     }
 }
 
