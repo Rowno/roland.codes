@@ -233,31 +233,35 @@ body {
 
 // TAGS PAGE
 // ---------
+#tags {
+    ul {
+        margin: 0;
+        list-style: none;
+    }
+
+    section {
+        padding: 5px;
+        .border-radius(3px);
+
+        &:target {
+            background: @backgroundColor;
+        }
+    }
+}
 
 #tags-list {
-    list-style: none;
-    margin: 0;
     margin-bottom: @gridGutterWidth;
     .clearfix;
 
     li {
         float: left;
-        margin-left: 3px;
+        margin-left: 0.5em;
 
         .size {
             font-size: 0.7em;
             font-weight: bold;
             vertical-align: super;
         }
-    }
-}
-
-#tags section {
-    padding: 5px;
-    .border-radius(3px);
-
-    &:target {
-        background: @backgroundColor;
     }
 }
 
