@@ -12,6 +12,8 @@
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="{{ site.baseurl }}/css/style.css">
     <link rel="alternate" type="application/rss+xml" href="{{ site.baseurl }}/rss.xml" title="{{ site.rss-title }}">
+
+    <script src="{{ site.baseurl }}/js/modernizr.min.js"></script>
 </head>
 <body id="{{ page.pageid }}">
     <div id="wrapper">
@@ -23,7 +25,7 @@
 
         <div id="main" role="main">
             <!--[if lt IE 8]>
-                <p class="chromeframe alert alert-warn">
+                <p class="chromeframe alert alert-error">
                     Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.
                 </p>
             <![endif]-->
