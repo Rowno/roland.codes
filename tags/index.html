@@ -7,7 +7,7 @@ pageid: tags
 <ul id="tags-list">
     {% for tag in site.tags %}
         <li>
-            <a class="tag" href="#{{ tag[0] | cgi_escape }}-tag">{{ tag[0] }} <span class="size">{{ tag[1].size }}</span></a>
+            <a class="tag" href="#{{ tag[0] | cgi_escape }}-tag">{{ tag[0] }} <span class="size" title="number of posts">{{ tag[1].size }}</span></a>
         </li>
     {% endfor %}
 </ul>

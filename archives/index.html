@@ -14,13 +14,16 @@ pageid: archives
         {% endunless %}
 
         <section>
-        <h2 id="{{ year }}">{{ year }}</h2>
+            <h2 id="{{ year }}">{{ year }}</h2>
     {% endunless %}
 
     <article>
         <time pubdate datetime="{{ post.date | date_to_xmlschema }}">
             {{ post.date | date_to_string }}
         </time>
-        <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+
+        <h3>
+            <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+        </h3>
     </article>
 {% endfor %}

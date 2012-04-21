@@ -11,7 +11,7 @@
 
 /* SITE */
     Last update: {{ site.time | date_to_long_string }}
-    Standards: HTML5, CSS3, RSS, Media Queries, Microdata
+    Standards: HTML5, CSS3, RSS, Media Queries, Microdata, WAI-ARIA
     Components: HTML5 Boilerplate, Twitter Bootstrap, Modernizr
     Software: Sublime Text 2, Jekyll, LESS
     Source: {{ site.githuburl }}
