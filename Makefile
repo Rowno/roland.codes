@@ -1,13 +1,14 @@
 BASEURL = /rolandwarmerdam.co.nz/_site
+URL = http://localhost/rolandwarmerdam.co.nz/_site
 
 build:
-	jekyll --base-url $(BASEURL)
+	jekyll --base-url $(BASEURL) --url $(URL)
 
 auto:
-	jekyll --auto --base-url $(BASEURL)
+	jekyll --auto --base-url $(BASEURL) --url $(URL)
 
 production:
-	jekyll --base-url http://rolandwarmerdam.co.nz
+	jekyll --base-url //rolandwarmerdam.co.nz --url http://rolandwarmerdam.co.nz
 
 deploy: production
 	rsync -avz --delete _site/ vps:/var/www/rolandwarmerdam/htdocs/
