@@ -25,7 +25,7 @@
 </head>
 <body id="{{ page.pageid }}">
     <div id="wrapper">
-        <header id="header">
+        <header id="header" role="banner">
             {% unless page.title %}<h1>{% endunless %}
                 <a rel="home" href="{{ site.baseurl }}/">{{ site.title }}</a>
             {% unless page.title %}</h1>{% endunless %}
@@ -46,7 +46,7 @@
         </div>
 
         <div id="sidebar">
-            <nav id="main-menu">
+            <nav id="main-menu" role="navigation">
                 <ul>
                     <li><a rel="home" href="{{ site.baseurl }}/">Home</a></li>
                     <li><a href="{{ site.baseurl }}/about/">About</a></li>
@@ -61,7 +61,7 @@
             </ul>
         </div>
 
-        <footer id="footer">
+        <footer id="footer" role="contentinfo">
             <a href="http://www.w3.org/html/logo/"><img src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-semantics.png" width="165" height="64" alt="HTML5 Powered with CSS3 / Styling, and Semantics" title="HTML5 Powered with CSS3 / Styling, and Semantics"></a>
 
             <a href="http://www.linode.com/?r=65f866a7004f627ae37fa3283f8a89b4fa9cecbe"><img alt="hosting provided by linode.com" src="{{ site.baseurl }}/img/hosted_by_linode.png"></a>
