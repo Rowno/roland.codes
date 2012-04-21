@@ -10,15 +10,7 @@
 
 <footer>
     Posted on
-    <time pubdate datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {{ page.date | date_to_long_string }}
-    </time>
-    by
-    <address>
-        <a rel="author" href="{{ site.baseurl }}" itemprop="author">{{ site.author.name }}</a>
-    </address>
-
-    <br>
+    <time pubdate datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date_to_long_string }}</time>.
 
     Tagged:
     <span itemprop="keywords">
