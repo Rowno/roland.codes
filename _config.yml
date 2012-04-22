@@ -11,7 +11,7 @@ githuburl: "https://github.com/Rowno/rolandwarmerdam.co.nz"
 pygments: true
 permalink: /:title/
 paginate: 5
-exclude: ['Makefile', 'README.md']
+exclude: ['Makefile', 'README.md', 'psd']
 
 
 # PLUGINS
