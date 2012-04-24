@@ -17,6 +17,13 @@
 @mainColor: @linkColor;
 @backgroundColor: @infoBackground;
 
+.font-face(@family, @path) {
+    font-family: @family;
+    src: url('@{path}.eot?#') format('eot'),
+         url('@{path}.woff') format('woff'),
+         url('@{path}.ttf') format('truetype');
+}
+
 
 // GLOBAL STYLES
 // -------------
@@ -25,19 +32,8 @@
     .box-sizing(border-box);
 }
 
-@font-face {
-    font-family: 'TelegramaRender';
-    src: url('font/telegrama-render.eot?#') format('eot'),
-         url('font/telegrama-render.woff') format('woff'),
-         url('font/telegrama-render.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'TelegramaRaw';
-    src: url('font/telegrama-raw.eot?#') format('eot'),
-         url('font/telegrama-raw.woff') format('woff'),
-         url('font/telegrama-raw.ttf') format('truetype');
-}
+@font-face { .font-face('TelegramaRender', 'font/telegrama-render'); }
+@font-face { .font-face('TelegramaRaw', 'font/telegrama-raw'); }
 
 h1, h2, h3, h4, h5, h6 {
     line-height: @baseLineHeight;
@@ -102,7 +98,7 @@ a {
 
 // SPRITE
 // ------
-#sprite {
+#sprite() {
     .background(@x, @y) {
         background: url(../img/sprite.png) no-repeat @x @y;
     }
