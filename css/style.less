@@ -276,7 +276,6 @@ body {
 // ---------
 #tags {
     ul {
-        margin: 0;
         list-style: none;
     }
 
@@ -287,11 +286,15 @@ body {
         &:target {
             background: @backgroundColor;
         }
+
+        ul {
+            margin: 0;
+        }
     }
 }
 
 #tags-list {
-    margin-bottom: @gridGutterWidth;
+    margin: 0 0 @gridGutterWidth 0;
     .clearfix;
 
     li {
