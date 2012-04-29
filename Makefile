@@ -8,7 +8,7 @@ auto:
 	jekyll --auto --base-url $(BASEURL) --url $(URL)
 
 production:
-	jekyll --base-url //rolandwarmerdam.co.nz --url http://rolandwarmerdam.co.nz
+	jekyll --url http://rolandwarmerdam.co.nz
 
 deploy: production
 	rsync -avz --delete _site/ vps:/var/www/rolandwarmerdam/htdocs/
