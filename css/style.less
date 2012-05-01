@@ -3,7 +3,7 @@
 // GLOBAL STYLES
 // SPRITE
 // BASE STRUCTURE
-// INDEX PAGE
+// POSTS
 // TAGS PAGE
 // ARCHIVES PAGE
 
@@ -98,28 +98,26 @@ a {
 
 // SPRITE
 // ------
-#sprite() {
-    .background(@x, @y) {
-        background: url(../img/sprite.png) no-repeat @x @y;
-    }
+.sprite(@x, @y) {
+    background: url(../img/sprite.png) no-repeat @x @y;
+}
 
-    .linode {
-        width: 190px;
-        height: 64px;
-        #sprite > .background(0px, 0px);
-    }
+.sprite-linode {
+    width: 190px;
+    height: 50px;
+    .sprite(0px, 0px);
+}
 
-    .html5 {
-        width: 145px;
-        height: 64px;
-        #sprite > .background(0px, -64px);
-    }
+.sprite-html5 {
+    width: 145px;
+    height: 64px;
+    .sprite(0px, -64px);
+}
 
-    .creative-commons {
-        width: 88px;
-        height: 64px;
-        #sprite > .background(0px, -128px);
-    }
+.sprite-creative-commons {
+    width: 88px;
+    height: 31px;
+    .sprite(0px, -128px);
 }
 
 
@@ -223,33 +221,17 @@ body {
     margin-top: @gridGutterWidth;
     text-align: center;
 
-    div {
+    a {
         display: inline-block;
+        margin-bottom: @gridGutterWidth;
         margin-left: @gridGutterWidth;
-
-        a {
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
-    }
-
-    .html5 {
-        #sprite > .html5;
-    }
-
-    .linode {
-        #sprite > .linode;
-    }
-
-    .creative-commons {
-        #sprite > .creative-commons;
+        vertical-align: middle;
     }
 }
 
 
-// INDEX PAGE
-// ----------
+// POSTS
+// -----
 
 .post {
     margin-bottom: @gridGutterWidth;
