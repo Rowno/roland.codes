@@ -19,7 +19,8 @@
 
 .font-face(@family, @path) {
     font-family: @family;
-    src: url('@{path}.eot?#') format('eot'),
+    src: url('@{path}.eot');
+    src: url('@{path}.eot?#iefix') format('embedded-opentype'),
          url('@{path}.woff') format('woff'),
          url('@{path}.ttf') format('truetype');
 }
