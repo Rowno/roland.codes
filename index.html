@@ -3,8 +3,6 @@ layout: base
 pageid: index
 ---
 
-{% include paginator.html %}
-
 {% for page in paginator.posts %}
     <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
         {% capture content %}{{ page.content }}{% endcapture %}
@@ -12,4 +10,24 @@ pageid: index
     </article>
 {% endfor %}
 
-{% include paginator.html %}
+<nav>
+    <ul class="pager">
+    {% if paginator.previous_page %}
+        {% if paginator.previous_page == 1 %}
+            {% capture previousUrl %}{{ site.baseurl }}{% endcapture %}
+        {% else %}
+            {% capture previousUrl %}{{ site.baseurl }}/page{{ paginator.previous_page }}{% endcapture %}
+        {% endif %}
+
+        <li class="previous">
+            <a rel="prev" href="{{ previousUrl }}/">← Newer posts</a>
+        </li>
+    {% endif %}
+
+    {% if paginator.next_page %}
+        <li class="next">
+            <a rel="next" href="{{ site.baseurl }}/page{{ paginator.next_page }}/">Older posts →</a>
+        </li>
+    {% endif %}
+    </ul>
+</nav>
