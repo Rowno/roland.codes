@@ -6,6 +6,7 @@
 // POSTS
 // TAGS PAGE
 // ARCHIVES PAGE
+// 404 PAGE
 
 @import "_bootstrap/bootstrap.less";
 @import "_pygments/github.less";
@@ -201,7 +202,7 @@ body {
         margin: @gridGutterWidth 0;
         border: none;
         text-align: left;
-        .clearfix;
+        .clearfix();
 
         nav {
             float: left;
@@ -279,7 +280,7 @@ body {
 
 #tags-list {
     margin: 0 0 @gridGutterWidth 0;
-    .clearfix;
+    .clearfix();
 
     li {
         float: left;
@@ -303,7 +304,7 @@ body {
     }
 
     article {
-        .clearfix;
+        .clearfix();
     }
 
     time {
@@ -320,4 +321,26 @@ body {
         font-family: @baseFontFamily;
         font-size: @baseFontSize;
     }
+}
+
+
+// 404 PAGE
+// --------
+
+#not-found {
+    h1 span {
+        display: inline-block;
+        -webkit-transform: rotate(90deg);
+           -moz-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+             -o-transform: rotate(90deg);
+                transform: rotate(90deg);
+                   /* IE6–IE9 */
+                   filter: ~"progid:DXImageTransform.Microsoft.Matrix(M11=6.123031769111886e-17, M12=-1, M21=1, M22=6.123031769111886e-17, sizingMethod='auto expand')";
+                   zoom: 1;
+    }
+}
+
+#goog-wm-qt {
+    margin: 0 0.5em 0 0;
 }
