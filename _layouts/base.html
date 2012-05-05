@@ -83,6 +83,16 @@
         </footer>
     </div>
 
+
+    {% if page.jquery %}
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="{{ site.baseurl }}/js/jquery.min.js"><\/script>')</script>
+    {% endif %}
+
+    {% for path in page.scripts %}
+        <script src="{{ site.baseurl }}{{ path }}"></script>
+    {% endfor %}
+
     <script>
         var _gaq=[['_setAccount','UA-21361814-1'],['_trackPageview']];
         (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=true;
