@@ -84,6 +84,21 @@
     </div>
 
 
+    <script>
+        var Site = (function () {
+            'use strict';
+
+            return {
+                variables: {
+                    githubUrl: '{{ site.githuburl }}'
+                    {% if page.commentsIssueId %}
+                    ,commentsIssueId: {{ page.commentsIssueId }}
+                    {% endif %}
+                }
+            };
+        }());
+    </script>
+
     {% if page.jquery %}
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="{{ site.baseurl }}/js/jquery.min.js"><\/script>')</script>

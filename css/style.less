@@ -31,9 +31,7 @@
 // GLOBAL STYLES
 // -------------
 
-* {
-    .box-sizing(border-box);
-}
+* { .box-sizing(border-box); }
 
 @font-face { .font-face('TelegramaRender', 'font/telegrama-render'); }
 @font-face { .font-face('TelegramaRaw', 'font/telegrama-raw'); }
@@ -43,13 +41,11 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
 }
 
-address {
-    display: inline;
-}
+address { display: inline; }
 
-ul {
-    list-style-type: square;
-}
+ul { list-style-type: square; }
+
+[aria-hidden="true"] { display: none; }
 
 a {
     .transition(all 0.1s linear);
@@ -343,4 +339,13 @@ body {
 
 #goog-wm-qt {
     margin: 0 0.5em 0 0;
+}
+
+
+#comments {
+    margin-top: @gridGutterWidth;
+
+    .user-mention {
+        font-weight: bold;
+    }
 }

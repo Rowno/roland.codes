@@ -1,8 +1,53 @@
 ---
 layout: base
 pageid: post
+jquery: true
+scripts: [
+    '/js/hogan.min.js',
+    '/js/jquery.timeago.min.js',
+    '/js/comments.js'
+]
 ---
 
 <div class="post" itemscope itemtype="http://schema.org/BlogPosting">
     {% include post.html %}
+
+    <aside id="comments" aria-hidden="true">
+        <h2>Comments</h2>
+        <p>
+            Want to post comment? Simply comment on
+            <a href="{{ site.githuburl }}/issues/{{ page.commentsIssueId }}" itemprop="discussionUrl">
+                GitHub Issue #{{ page.commentsIssueId }}
+            </a>
+            and it'll appear here.
+        </p>
+    </aside>
 </div>
+
+<script id="comments-template" type="text/x-mustache">
+{% raw %}
+{{#comments}}
+    <div class="comment" itemprop="comment" itemscope itemtype="http://schema.org/UserComments">
+        <div class="header">
+            <span class="user" itemprop="creator" itemscope itemtype="http://schema.org/Person">
+                <a href="https://github.com/{{ user.login }}" itemprop="url">
+                    <img src="//gravatar.com/avatar/{{ user.gravatar_id }}?s=30&d=identicon&r=g" alt="Avatar" width="30" height="30" itemprop="image">
+                    <span class="name" itemprop="name">
+                        {{ user.login }}
+                    </span>
+                </a>
+            </span>
+            <a class="time" href="{{ site.githubUrl }}/issues/{{ site.commentsIssueId }}/#issuecomment-{{ id }}">
+                <time datetime="{{ created_at }}" itemprop="commentTime">
+                    {{ created_at }}
+                </time>
+            </a>
+        </div>
+
+        <div class="content" itemprop="commentText">
+            {{{ body_html }}}
+        </div>
+    </div>
+{{/comments}}
+{% endraw %}
+</script>
