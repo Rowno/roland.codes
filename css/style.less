@@ -345,6 +345,47 @@ body {
 #comments {
     margin-top: @gridGutterWidth;
 
+    .comment {
+        margin-top: @gridGutterWidth;
+        .border-radius(3px);
+        border: 1px dashed darken(@backgroundColor, 10%);
+
+        .header {
+            padding: 3px;
+            line-height: 1em;
+            .border-radius(3px);
+            background: @backgroundColor;
+            .clearfix();
+
+            img {
+                float: left;
+                .border-radius(3px);
+            }
+
+            .name, .time {
+                line-height: 25px;
+            }
+
+            .name {
+                float: left;
+                margin-left: 3px;
+                font-weight: bold;
+            }
+
+            .time {
+                float: right;
+            }
+        }
+
+        .content {
+            padding: 5px;
+
+            :last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
     .user-mention {
         font-weight: bold;
     }

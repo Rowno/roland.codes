@@ -1,3 +1,6 @@
+/*jslint browser: true */
+/*globals Site: false, jQuery: false, Hogan: false */
+
 (function (Site, $, Hogan) {
     'use strict';
 
@@ -12,12 +15,16 @@
         headers: {
             accept: 'application/vnd.github.beta.html+json'
         },
-        success: function (result){
-            var $html = $(commentsTemplate.render({
-                site: Site.variables,
-                comments: result
-            }));
+        success: function (result) {
+            var $html = $('<div />'),
+                renderedComments = commentsTemplate.render({
+                    site: Site.variables,
+                    comments: result
+                });
+
+            $html.html(renderedComments);
             $html.find('time').timeago();
+
             $comments.append($html);
             $comments.attr('aria-hidden', false);
         }
