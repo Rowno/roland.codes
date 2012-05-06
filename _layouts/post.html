@@ -13,7 +13,7 @@ scripts: [
     {% include post.html %}
 
     {% if page.commentsIssueId %}
-    <aside id="comments">
+    <aside id="comments" aria-busy="true">
         <h2>Comments</h2>
         <p>
             Want to post comment? Simply comment on
@@ -64,6 +64,7 @@ scripts: [
 </script>
 {% endraw %}
 
+
 <script id="comments-unsupported" type="text/plain">
     <div class="unsupported">
         Sorry, your browser doesn't support the
@@ -79,6 +80,14 @@ scripts: [
             <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a>
         <![endif]-->
         to read them here!
+    </div>
+</script>
+
+
+<script id="comments-error" type="text/plain">
+    <div class="error">
+        Oops, something broke while loading the comments. Please try again later or
+        <a href="{{ site.githuburl }}/issues/">report the problem</a>.
     </div>
 </script>
 {% endif %}

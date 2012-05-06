@@ -12,6 +12,7 @@
         commentsTemplate = Hogan.compile($('#comments-template').html());
 
     function output(html) {
+        $comments.attr('aria-busy', false);
         $comments.find('.loader').remove();
         $comments.append(html);
     }
@@ -42,6 +43,9 @@
             $html.find('a').attr('rel', 'nofollow');
 
             output($html);
+        },
+        error: function () {
+            output($('#comments-error').html());
         }
     });
 }(Site, jQuery, Hogan, Modernizr));
