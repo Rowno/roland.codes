@@ -17,9 +17,7 @@ scripts: [
         <h2>Comments</h2>
         <p>
             Want to post comment? Simply comment on
-            <a href="{{ site.githuburl }}/issues/{{ page.commentsIssueId }}" itemprop="discussionUrl">
-                GitHub Issue #{{ page.commentsIssueId }}
-            </a>
+            <a href="{{ site.githuburl }}/issues/{{ page.commentsIssueId }}" itemprop="discussionUrl">GitHub Issue #{{ page.commentsIssueId }}</a>
             and it'll appear here.
         </p>
         <div class="loader">
@@ -44,16 +42,12 @@ scripts: [
                          height="25"
                          itemprop="image">
 
-                    <span class="name" itemprop="name">
-                        {{ user.login }}
-                    </span>
+                    <span class="name" itemprop="name">{{ user.login }}</span>
                 </a>
             </span>
 
             <a class="time" href="{{ site.githubUrl }}/issues/{{ site.commentsIssueId }}/#issuecomment-{{ id }}">
-                <time datetime="{{ created_at }}" itemprop="commentTime">
-                    {{ created_at }}
-                </time>
+                <time datetime="{{ created_at }}" itemprop="commentTime">{{ created_at }}</time>
             </a>
         </div>
 
