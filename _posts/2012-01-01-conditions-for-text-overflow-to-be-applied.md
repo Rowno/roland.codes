@@ -2,6 +2,7 @@
 layout: post
 title: Conditions for text-overflow to be applied
 tags: [css3, text-overflow]
+commentsIssueId: 7
 ---
 
 I've been experimenting with the CSS3 text-overflow property a bit lately, and I've discovered that trying to figure out the conditions in which it's applied can be a bit frustrating, since they're not very well documented. In this post I'll outline the conditions that are required for text-overflow to be applied to text.

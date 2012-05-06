@@ -2,7 +2,7 @@
 layout: post
 title: Node Boilerplate
 tags: [node.js]
-commentsIssueId: 1
+commentsIssueId: 10
 ---
 
 I've been doing a fair bit of Node.js development lately, and I found that I was repeating the same steps at the start of every new project. So I created a boilerplate. And that boilerplate is <https://github.com/Rowno/node-boilerplate>.

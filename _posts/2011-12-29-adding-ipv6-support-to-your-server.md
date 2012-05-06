@@ -2,6 +2,7 @@
 layout: post
 title: Adding IPv6 support to your server
 tags: [apache, ipv6, linode, ubuntu]
+commentsIssueId: 6
 ---
 
 With the exhaustion of IPv4 addresses [coming closer to reality][ipv4depletion], I decided it was about time that I added IPv6 support to my server. This turned out to be quite an easy process (at least it was on [Linode][] + Ubuntu 10.04). In this post I'll show you how to add IPv6 support to your own server in 4 easy steps.

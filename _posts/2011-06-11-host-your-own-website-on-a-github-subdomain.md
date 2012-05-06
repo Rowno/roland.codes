@@ -2,6 +2,7 @@
 layout: post
 title: Host your own website on a GitHub subdomain
 tags: [github, github pages]
+commentsIssueId: 2
 ---
 
 I've recently started learning Git, and part of that is of course learning the ropes at GitHub. One hidden little feature I found (at least I didn't find it advertised anywhere) is [GitHub Pages][]. GitHub Pages lets you host a static website under a subdomain of <http://github.com>.

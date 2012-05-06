@@ -2,6 +2,7 @@
 layout: post
 title: Introducing JSLinter!
 tags: [addon sdk, firefox addon, jslint, jslinter]
+commentsIssueId: 8
 ---
 
 I was looking for a Firefox addon that would easily allow me to run all Javascript on a web page through JSLint, since copying and pasting code into the JSLint website gets very tedious. But to my surprise, the only JSLint addon I could find was the JSLint feature in YSlow! But I find YSlow to be very unreliable and it's JSLint feature leaves a lot to be desired. So I decided to fix this problem. Introducing [JSLinter][]!

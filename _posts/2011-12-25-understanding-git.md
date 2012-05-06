@@ -2,6 +2,7 @@
 layout: post
 title: Understanding Git
 tags: [git]
+commentsIssueId: 5
 ---
 
 When I started using Git, I came from using Subversion which is on the other end for the VCS spectrum (centralised vs distributed). It took me a while to properly understand Git due to how different it's from Subversion. However, I found an easy way to understand how Git worked was to look at it from the perspective of how objects and references (or pointers) work in your favourite programming language.

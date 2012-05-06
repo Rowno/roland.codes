@@ -2,6 +2,7 @@
 layout: post
 title: VMWare to VirtualBox
 tags: [virtual machine, virtualbox, vmware]
+commentsIssueId: 9
 ---
 
 Recently I had to run a VMWare VM in VirtualBox (because open source rocks ;)). Turns out you don't even need to convert the VM to the VirtualBox format because VirtualBox can directly run VMWare VM's. All you need to do is create a new VM in VirtualBox, choose the `Use existing hard disk` option on the Virtual Hard Disk step and select the `.vmdk` file from the VMWare VM's files. You should also try to match the VirtualBox VM's settings as closely as possible to those of the VMWare VM.

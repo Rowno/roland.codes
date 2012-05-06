@@ -2,6 +2,7 @@
 layout: post
 title: Disable the Addon Bar context menu on Addon SDK widgets
 tags: [addon sdk]
+commentsIssueId: 4
 ---
 
 <p>

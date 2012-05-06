@@ -2,7 +2,7 @@
 layout: post
 title: Architect, a Javascript template editor
 tags: [javascript, template, web app]
-commentsIssueId: 2
+commentsIssueId: 11
 ---
 
 [Architect][] is a web app for editing Javascript templates in various engines. It started life as a simple page for testing Mustache templates. But when I started to get annoyed with the limitations of writing code in `<textarea>`'s and replaced them with [Ace][] editors, it quickly grew into a fully featured web app with support for multiple templating engines.
