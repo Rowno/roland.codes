@@ -13,7 +13,7 @@ scripts: [
     {% include post.html %}
 
     {% if page.commentsIssueId %}
-    <aside id="comments" aria-hidden="true">
+    <aside id="comments">
         <h2>Comments</h2>
         <p>
             Want to post comment? Simply comment on
@@ -22,9 +22,13 @@ scripts: [
             </a>
             and it'll appear here.
         </p>
+        <div class="loader">
+            <img src="{{ site.baseurl }}/img/ajax-loader.gif" alt="Loading..." title="Loading...">
+        </div>
     </aside>
     {% endif %}
 </div>
+
 
 {% if page.commentsIssueId %}
 {% raw %}
@@ -65,4 +69,22 @@ scripts: [
 {{/comments}}
 </script>
 {% endraw %}
+
+<script id="comments-unsupported" type="text/plain">
+    <div class="unsupported">
+        Sorry, your browser doesn't support the
+        <span title="Cross-Origin Resource Sharing">features</span>
+        required to load the comments, but feel free to read them at
+        <a href="{{ site.githuburl }}/issues/{{ page.commentsIssueId }}">GitHub</a>
+        anyway.
+
+        Or even better,
+        <a href="http://browsehappy.com/">upgrade to a different browser</a>
+        <!--[if IE]>
+            or
+            <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a>
+        <![endif]-->
+        to read them here!
+    </div>
+</script>
 {% endif %}

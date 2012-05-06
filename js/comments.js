@@ -1,7 +1,7 @@
 /*jslint browser: true */
-/*globals Site: false, jQuery: false, Hogan: false */
+/*globals Site: false, jQuery: false, Hogan: false, Modernizr:false */
 
-(function (Site, $, Hogan) {
+(function (Site, $, Hogan, Modernizr) {
     'use strict';
 
     if (!Site.variables.commentsIssueId) {
@@ -10,6 +10,17 @@
 
     var $comments = $('#comments'),
         commentsTemplate = Hogan.compile($('#comments-template').html());
+
+    function output(html) {
+        $comments.find('.loader').remove();
+        $comments.append(html);
+    }
+
+
+    if (!Modernizr.cors) {
+        output($('#comments-unsupported').html());
+        return;
+    }
 
 
     $.ajax('https://api.github.com/repos/Rowno/rolandwarmerdam.co.nz/issues/' + Site.variables.commentsIssueId + '/comments', {
@@ -29,8 +40,7 @@
             $html.html(renderedComments);
             $html.find('time').timeago();
 
-            $comments.append($html);
-            $comments.attr('aria-hidden', false);
+            output($html);
         }
     });
-}(Site, jQuery, Hogan));
+}(Site, jQuery, Hogan, Modernizr));

@@ -50,8 +50,9 @@ ul {
     list-style-type: square;
 }
 
-[aria-hidden="true"] {
-    display: none;
+span[title] {
+    cursor: help;
+    border-bottom: 1px dotted #DDD;
 }
 
 a {
@@ -359,6 +360,10 @@ body {
 #comments {
     margin-top: @gridGutterWidth;
 
+    .loader {
+        text-align: center;
+    }
+
     .comment {
         margin-top: @gridGutterWidth;
         .border-radius(3px);
@@ -403,7 +408,7 @@ body {
         }
     }
 
-    .no-comments {
+    .no-comments, .unsupported {
         font-style: italic;
     }
 }
