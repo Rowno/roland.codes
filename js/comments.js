@@ -4,6 +4,10 @@
 (function (Site, $, Hogan) {
     'use strict';
 
+    if (!Site.variables.commentsIssueId) {
+        return;
+    }
+
     var $comments = $('#comments'),
         commentsTemplate = Hogan.compile($('#comments-template').html());
 

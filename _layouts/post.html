@@ -12,6 +12,7 @@ scripts: [
 <div class="post" itemscope itemtype="http://schema.org/BlogPosting">
     {% include post.html %}
 
+    {% if page.commentsIssueId %}
     <aside id="comments" aria-hidden="true">
         <h2>Comments</h2>
         <p>
@@ -22,10 +23,12 @@ scripts: [
             and it'll appear here.
         </p>
     </aside>
+    {% endif %}
 </div>
 
-<script id="comments-template" type="text/x-mustache">
+{% if page.commentsIssueId %}
 {% raw %}
+<script id="comments-template" type="text/x-mustache">
 {{#comments}}
     <div class="comment" itemprop="comment" itemscope itemtype="http://schema.org/UserComments">
         <div class="header">
@@ -55,5 +58,11 @@ scripts: [
         </div>
     </div>
 {{/comments}}
-{% endraw %}
+{{^comments}}
+    <div class="no-comments">
+        No comments yet. :(
+    </div>
+{{/comments}}
 </script>
+{% endraw %}
+{% endif %}

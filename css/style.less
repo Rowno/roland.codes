@@ -7,6 +7,7 @@
 // TAGS PAGE
 // ARCHIVES PAGE
 // 404 PAGE
+// COMMENTS
 
 @import "_bootstrap/bootstrap.less";
 @import "_pygments/github.less";
@@ -41,11 +42,17 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
 }
 
-address { display: inline; }
+address {
+    display: inline;
+}
 
-ul { list-style-type: square; }
+ul {
+    list-style-type: square;
+}
 
-[aria-hidden="true"] { display: none; }
+[aria-hidden="true"] {
+    display: none;
+}
 
 a {
     .transition(all 0.1s linear);
@@ -241,6 +248,10 @@ body {
 .post {
     margin-bottom: @gridGutterWidth;
 
+    img {
+        .border-radius(3px);
+    }
+
     footer {
         font-size: 12px;
     }
@@ -342,6 +353,9 @@ body {
 }
 
 
+// COMMENTS
+// --------
+
 #comments {
     margin-top: @gridGutterWidth;
 
@@ -359,7 +373,6 @@ body {
 
             img {
                 float: left;
-                .border-radius(3px);
             }
 
             .name, .time {
@@ -384,9 +397,13 @@ body {
                 margin-bottom: 0;
             }
         }
+
+        .user-mention {
+            font-weight: bold;
+        }
     }
 
-    .user-mention {
-        font-weight: bold;
+    .no-comments {
+        font-style: italic;
     }
 }
