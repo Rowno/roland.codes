@@ -10,7 +10,7 @@ To build the website, install the following:
 
  * [Jekyll and Pygments][jekyll-install]
  * [Node.js][nodejs-install]
- * Command-line LESS, which be installed from NPM using: `npm install -g less`
+ * Command-line LESS, which can be installed from NPM using: `npm install -g less`
 
 And then run Jekyll.
 
