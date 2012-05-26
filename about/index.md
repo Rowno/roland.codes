@@ -10,7 +10,7 @@ I'm Roland Warmerdam and I’m a programmer in New Zealand. I develop in a numbe
 
 Website
 -------
-This is a static website generated using [Jekyll][] and is hosted on my [Linode][] VPS. The website's entire source code is available at [GitHub][] (pull requests are welcome). For more information about what powers this website, have a look at the [humans.txt]({{ site.baseurl }}/humans.txt).
+This is a static website generated using [Jekyll][] and is hosted on my [Linode][] VPS. All of the website's source code and content is available at [GitHub][], including the comments which are hosted using [repurposed GitHub issues][issues] (pull requests are welcome). For more information about what powers this website, have a look at the [humans.txt][].
 
 Contact
 -------
@@ -19,4 +19,6 @@ Feel free to message me on [Google+][] or email me at <a href="&#109;&#97;&#x69;
 [Jekyll]: https://github.com/mojombo/jekyll
 [Linode]: http://www.linode.com/?r=65f866a7004f627ae37fa3283f8a89b4fa9cecbe
 [GitHub]: {{ site.githuburl }}
+[issues]: {{ site.githuburl }}/issues?labels=blog+post+comments
 [Google+]: https://plus.google.com/108621262237470431255/
+[humans.txt]: {{ site.baseurl }}/humans.txt
