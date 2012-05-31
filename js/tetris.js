@@ -1,10 +1,10 @@
-/*jslint browser: true */
+/*jslint browser:true */
 /*globals jQuery:false */
 
 (function ($) {
     'use strict';
 
-    var CANVAS_WIDTH = 250,
+    var CANVAS_WIDTH = 140,
         CANVAS_HEIGHT = 400,
         $canvas = $('<canvas />'),
         canvas = $canvas.get(0).getContext('2d');
