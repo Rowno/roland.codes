@@ -1,6 +1,6 @@
 ---
 layout: base
-pageid: post
+pageId: post
 jquery: true
 scripts: [
     '/js/hogan.min.js',
@@ -17,7 +17,7 @@ scripts: [
         <h2>Comments</h2>
         <p>
             Want to post comment? Simply comment on
-            <a href="{{ site.githuburl }}/issues/{{ page.commentsIssueId }}" itemprop="discussionUrl">GitHub Issue #{{ page.commentsIssueId }}</a>
+            <a href="{{ site.githubUrl }}/issues/{{ page.commentsIssueId }}" itemprop="discussionUrl">GitHub Issue #{{ page.commentsIssueId }}</a>
             and it'll appear here.
         </p>
         <div class="loader">
@@ -70,7 +70,7 @@ scripts: [
         Sorry, your browser doesn't support the
         <span title="Cross-Origin Resource Sharing">features</span>
         required to load the comments, but feel free to read them at
-        <a href="{{ site.githuburl }}/issues/{{ page.commentsIssueId }}">GitHub</a>
+        <a href="{{ site.githubUrl }}/issues/{{ page.commentsIssueId }}">GitHub</a>
         anyway.
 
         Or even better,
@@ -87,7 +87,7 @@ scripts: [
 <script id="comments-error" type="text/plain">
     <div class="error">
         Oops, something broke while loading the comments. Please try again later or
-        <a href="{{ site.githuburl }}/issues/">report the problem</a>.
+        <a href="{{ site.githubUrl }}/issues/">report the problem</a>.
     </div>
 </script>
 {% endif %}

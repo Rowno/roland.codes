@@ -1,9 +1,9 @@
 # VARIABLES
 # ---------
 title: Roland Warmerdam
-rss-title: "Roland Warmerdam's Blog"
+titleRss: "Roland Warmerdam's Blog"
 copyright: "Copyright 2012, Roland Warmerdam."
-githuburl: "https://github.com/Rowno/rolandwarmerdam.co.nz"
+githubUrl: "https://github.com/Rowno/rolandwarmerdam.co.nz"
 
 
 # JEKYLL

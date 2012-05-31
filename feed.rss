@@ -3,9 +3,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>{{ site.rss-title | xml_escape }}</title>
+        <title>{{ site.titleRss | xml_escape }}</title>
         <link>{{ site.url | xml_escape }}</link>
-        <description>{{ site.rss-title | xml_escape }}</description>
+        <description>{{ site.titleRss | xml_escape }}</description>
         <language>en</language>
         <lastBuildDate>{{ site.time | date:'%a, %d %b %Y %H:%M:%S %Z' }}</lastBuildDate>
         <generator>Jekyll</generator>

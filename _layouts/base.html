@@ -22,11 +22,11 @@
 
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="{{ site.baseurl }}/css/style.css">
-    <link rel="alternate" type="application/rss+xml" href="{{ site.baseurl }}/feed.rss" title="{{ site.rss-title }}">
+    <link rel="alternate" type="application/rss+xml" href="{{ site.baseurl }}/feed.rss" title="{{ site.titleRss }}">
 
     <script src="{{ site.baseurl }}/js/modernizr.min.js"></script>
 </head>
-<body id="{{ page.pageid }}">
+<body{% if page.pageId %} id="{{ page.pageId }}"{% endif %}>
     <div id="wrapper">
         <header id="header" role="banner">
             {% unless page.title %}<h1>{% endunless %}
@@ -95,7 +95,7 @@
 
             return {
                 variables: {
-                    githubUrl: '{{ site.githuburl }}'
+                    githubUrl: '{{ site.githubUrl }}'
                     {% if page.commentsIssueId %}
                     ,commentsIssueId: {{ page.commentsIssueId }}
                     {% endif %}
