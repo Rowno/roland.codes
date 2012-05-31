@@ -153,7 +153,13 @@ body {
 #tetris {
     position: absolute;
     top: 2px;
-    left: @sidebarWidth - 118px;
+    left: @sidebarWidth - 118px - 3px - 2px;
+    .transition(all 0.2s linear);
+    .opacity(50);
+
+    &:hover {
+        .opacity(100);
+    }
 }
 
 #header, #header h1 {

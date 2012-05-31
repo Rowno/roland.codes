@@ -106,9 +106,7 @@
                 }
             };
         }());
-    </script>
 
-    <script>
         yepnope({
             load: '//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js',
             complete: function () {
@@ -117,18 +115,16 @@
                 }
             }
         });
-    </script>
 
-    {% if page.scripts %}
-    <script>
-        yepnope([
-            {% for path in page.scripts %}
-                '{{ site.baseurl }}{{ path }}'
-                {% unless page.scripts.last == path %},{% endunless %}
-            {% endfor %}
-        ]);
+        {% if page.scripts %}
+            yepnope([
+                {% for path in page.scripts %}
+                    '{{ site.baseurl }}/{{ path }}'
+                    {% unless page.scripts.last == path %},{% endunless %}
+                {% endfor %}
+            ]);
+        {% endif %}
     </script>
-    {% endif %}
 
     <script>
         var _gaq=[['_setAccount','UA-21361814-1'],['_trackPageview']];
