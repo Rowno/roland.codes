@@ -13,7 +13,12 @@
     ############################################################################
     -->
 
-    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    {% if page.title %}
+        {% capture title %}{{ page.title }} | {% endcapture %}
+    {% elsif paginator.page > 1 %}
+        {% capture title %}Page {{ paginator.page }} | {% endcapture %}
+    {% endif %}
+    <title>{{ title }}{{ site.title }}</title>
 
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="{{ site.baseurl }}/css/style.css">
