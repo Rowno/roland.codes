@@ -8,18 +8,20 @@
         CANVAS_HEIGHT = 236,
 
         $tetris = $('#tetris'),
-        $canvas = $('<canvas width="' + CANVAS_WIDTH + '" height="' + CANVAS_HEIGHT + '">'),
+        $score = $tetris.find('.score'),
 
-        context = $canvas.get(0).getContext('2d'),
-        running = true;
+        context = $tetris.find('canvas').get(0).getContext('2d'),
+        running = true,
+        score = 0;
 
 
     context.fillStyle = '#000';
     context.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-    $tetris.append($canvas);
 
 
     function start() {
+        score = 0;
+        $score.text(score);
         $tetris.addClass('running');
     }
 

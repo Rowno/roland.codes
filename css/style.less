@@ -133,6 +133,8 @@ a {
 // --------------
 
 @sidebarWidth: 100px + @gridGutterWidth * 2;
+@tetrisWidth: 118px;
+@tetrisHeight: 70px;
 
 body {
     max-width: 700px + @sidebarWidth;
@@ -148,14 +150,32 @@ body {
 #header {
     margin-bottom: @gridGutterWidth;
     text-align: center;
+
+    h1 {
+        font-size: 44px;
+        line-height: 1em;
+        font-family: 'TelegramaRaw', Menlo, Monaco, 'Courier New', monospace;
+    }
+}
+
+#main {
+    margin-bottom: @gridGutterWidth;
+}
+
+#sidebar {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: @sidebarWidth;
 }
 
 #tetris {
-    position: absolute;
-    top: 2px;
-    left: @sidebarWidth - 118px - 3px - 2px;
-    .transition(opacity 0.2s linear);
+    overflow: hidden;
+    max-height: @tetrisHeight;
+    margin-bottom: @gridGutterWidth;
+    .transition(all 0.2s linear);
     .opacity(50);
+    text-align: right;
 
     &:hover {
         .opacity(100);
@@ -167,19 +187,20 @@ body {
         padding-bottom: 20px;
     }
 
-    canvas {
+    .game {
         display: none;
     }
 
     &.running {
+        max-height: 300px;
         .opacity(100);
 
         img {
             display: none;
         }
 
-        canvas {
-            display: inline-block;
+        .game {
+            display: block;
         }
     }
 }
@@ -188,38 +209,24 @@ body {
     cursor: pointer;
 }
 
-#header, #header h1 {
-    font-size: 44px;
-    line-height: 1em;
-    font-family: 'TelegramaRaw', Menlo, Monaco, 'Courier New', monospace;
-}
-
-#main {
-    margin-bottom: @gridGutterWidth;
-}
-
-#sidebar {
-    position: absolute;
-    top: 100px;
-    left: 0;
-    width: @sidebarWidth;
+#main-menu {
     padding-right: @gridGutterWidth;
     border-right: 3px dashed @mainColor;
     text-align: right;
     font-size: 18px;
     font-family: @headingsFontFamily;
 
-    nav {
-        margin-bottom: @baseLineHeight / 2;
-    }
-
     ul {
-        margin: 0;
+        margin: 0 0 @baseLineHeight / 2 0;
         list-style: none;
 
         a:hover, a:focus {
             padding-right: 5px;
         }
+    }
+
+    ul:last-of-type {
+        margin-bottom: 0;
     }
 }
 

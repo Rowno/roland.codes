@@ -32,10 +32,6 @@
             {% unless page.title %}<h1>{% endunless %}
                 <a rel="home" href="{{ site.baseurl }}/">{{ site.title }}</a>
             {% unless page.title %}</h1>{% endunless %}
-
-            <div id="tetris">
-                <img src="{{ site.baseurl }}/img/tetris.png" width="118" height="70">
-            </div>
         </header>
 
         <div id="skip-main-menu">
@@ -53,19 +49,27 @@
         </div>
 
         <div id="sidebar">
+            <div id="tetris">
+                <img src="{{ site.baseurl }}/img/tetris.png" width="118" height="70">
+                <div class="game">
+                    <canvas width="118" height="236"></canvas>
+                    Score: <span class="score"></span>
+                </div>
+            </div>
+
             <nav id="main-menu" role="navigation">
                 <ul>
                     <li><a rel="home" href="{{ site.baseurl }}/">Home</a></li>
                     <li><a rel="author" href="{{ site.baseurl }}/about/">About</a></li>
                     <li><a href="{{ site.baseurl }}/archives/">Archives</a></li>
                 </ul>
-            </nav>
 
-            <ul>
-                <li><a rel="me" href="https://github.com/Rowno">GitHub</a></li>
-                <li><a rel="me" href="https://plus.google.com/108621262237470431255/">Google+</a></li>
-                <li><a rel="me" href="http://www.linkedin.com/in/rolandwarmerdam">LinkedIn</a></li>
-            </ul>
+                <ul>
+                    <li><a rel="me" href="https://github.com/Rowno">GitHub</a></li>
+                    <li><a rel="me" href="https://plus.google.com/108621262237470431255/">Google+</a></li>
+                    <li><a rel="me" href="http://www.linkedin.com/in/rolandwarmerdam">LinkedIn</a></li>
+                </ul>
+            </nav>
         </div>
 
         <div id="skip-top">
