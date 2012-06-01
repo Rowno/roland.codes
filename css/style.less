@@ -166,6 +166,22 @@ body {
         background: url(../img/ajax-loader.gif) no-repeat bottom center;
         padding-bottom: 20px;
     }
+
+    canvas {
+        display: none;
+    }
+
+    &.running {
+        .opacity(100);
+
+        img {
+            display: none;
+        }
+
+        canvas {
+            display: inline-block;
+        }
+    }
 }
 
 .canvas #tetris {

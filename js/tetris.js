@@ -4,19 +4,42 @@
 (function ($) {
     'use strict';
 
-    var CANVAS_WIDTH = 140,
-        CANVAS_HEIGHT = 400,
+    var CANVAS_WIDTH = 118,
+        CANVAS_HEIGHT = 236,
+
         $tetris = $('#tetris'),
-        $canvas = $('<canvas />'),
-        canvas = $canvas.get(0).getContext('2d');
+        $canvas = $('<canvas width="' + CANVAS_WIDTH + '" height="' + CANVAS_HEIGHT + '">'),
 
-    $canvas.width(CANVAS_WIDTH);
-    $canvas.height(CANVAS_HEIGHT);
-    //$canvas.prependTo('body');
+        context = $canvas.get(0).getContext('2d'),
+        running = true;
 
-    canvas.fillStyle = '#000';
-    canvas.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+    context.fillStyle = '#000';
+    context.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    $tetris.append($canvas);
+
+
+    function start() {
+        $tetris.addClass('running');
+    }
+
+    function stop() {
+        $tetris.removeClass('running');
+    }
+
 
     $tetris.off('click');
+    $tetris.on('click', function () {
+        if (running) {
+            stop();
+        } else {
+            start();
+        }
+
+        running = !running;
+    });
+
+
+    start();
     $tetris.removeClass('loading');
 }(jQuery));
