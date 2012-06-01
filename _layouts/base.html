@@ -112,32 +112,20 @@
             'use strict';
 
             $LAB
-                .script('//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
+                .script('{{ site.baseurl }}/js/jquery.min.js')
                 .wait(function () {
-                    if (window.jQuery) {
-                        loadScripts();
-                    } else {
-                        $LAB
-                            .script('{{ site.baseurl }}/js/jquery.min.js')
-                            .wait(loadScripts);
+                    if (Modernizr.canvas) {
+                        $('#tetris').on('click', function () {
+                            $(this).addClass('loading');
+                            $LAB.script('{{ site.baseurl }}/js/tetris.js');
+                        });
                     }
-                });
-
-            function loadScripts() {
-                $LAB
-                    {% if page.scripts %}
-                        {% for path in page.scripts %}
-                            .script('{{ site.baseurl }}/{{ path }}')
-                        {% endfor %}
-                    {% endif %};
-
-                if (Modernizr.canvas) {
-                    $('#tetris').on('click', function () {
-                        $(this).addClass('loading');
-                        $LAB.script('{{ site.baseurl }}/js/tetris.js');
-                    });
-                }
-            }
+                })
+                {% if page.scripts %}
+                    {% for path in page.scripts %}
+                        .script('{{ site.baseurl }}/{{ path }}').wait()
+                    {% endfor %}
+                {% endif %};
         }());
     </script>
 
