@@ -93,6 +93,7 @@
     </div>
 
 
+    <script src="{{ site.baseurl }}/js/lab.min.js"></script>
     <script>
         var Site = (function () {
             'use strict';
@@ -107,23 +108,37 @@
             };
         }());
 
-        yepnope({
-            load: '//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js',
-            complete: function () {
-                if (!window.jQuery) {
-                    yepnope('{{ site.baseurl }}/js/jquery.min.js');
+        (function () {
+            'use strict';
+
+            $LAB
+                .script('//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
+                .wait(function () {
+                    if (window.jQuery) {
+                        loadScripts();
+                    } else {
+                        $LAB
+                            .script('{{ site.baseurl }}/js/jquery.min.js')
+                            .wait(loadScripts);
+                    }
+                });
+
+            function loadScripts() {
+                $LAB
+                    {% if page.scripts %}
+                        {% for path in page.scripts %}
+                            .script('{{ site.baseurl }}/{{ path }}')
+                        {% endfor %}
+                    {% endif %};
+
+                if (Modernizr.canvas) {
+                    $('#tetris').on('click', function () {
+                        $(this).addClass('loading');
+                        $LAB.script('{{ site.baseurl }}/js/tetris.js');
+                    });
                 }
             }
-        });
-
-        {% if page.scripts %}
-            yepnope([
-                {% for path in page.scripts %}
-                    '{{ site.baseurl }}/{{ path }}'
-                    {% unless page.scripts.last == path %},{% endunless %}
-                {% endfor %}
-            ]);
-        {% endif %}
+        }());
     </script>
 
     <script>

@@ -154,12 +154,22 @@ body {
     position: absolute;
     top: 2px;
     left: @sidebarWidth - 118px - 3px - 2px;
-    .transition(all 0.2s linear);
+    .transition(opacity 0.2s linear);
     .opacity(50);
 
     &:hover {
         .opacity(100);
     }
+
+    &.loading {
+        .opacity(100);
+        background: url(../img/ajax-loader.gif) no-repeat bottom center;
+        padding-bottom: 20px;
+    }
+}
+
+.canvas #tetris {
+    cursor: pointer;
 }
 
 #header, #header h1 {

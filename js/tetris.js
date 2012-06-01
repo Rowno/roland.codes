@@ -6,6 +6,7 @@
 
     var CANVAS_WIDTH = 140,
         CANVAS_HEIGHT = 400,
+        $tetris = $('#tetris'),
         $canvas = $('<canvas />'),
         canvas = $canvas.get(0).getContext('2d');
 
@@ -15,4 +16,7 @@
 
     canvas.fillStyle = '#000';
     canvas.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+    $tetris.off('click');
+    $tetris.removeClass('loading');
 }(jQuery));
