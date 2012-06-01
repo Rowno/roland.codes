@@ -111,19 +111,23 @@
         (function () {
             'use strict';
 
+            $LAB.setGlobalDefaults({
+                BasePath: '{{ site.baseurl }}/'
+            })
+
             $LAB
-                .script('{{ site.baseurl }}/js/jquery.min.js')
+                .script('js/jquery.min.js')
                 .wait(function () {
                     if (Modernizr.canvas) {
                         $('#tetris').on('click', function () {
                             $(this).addClass('loading');
-                            $LAB.script('{{ site.baseurl }}/js/tetris.js');
+                            $LAB.script('js/tetris.js');
                         });
                     }
                 })
                 {% if page.scripts %}
                     {% for path in page.scripts %}
-                        .script('{{ site.baseurl }}/{{ path }}').wait()
+                        .script('{{ path }}').wait()
                     {% endfor %}
                 {% endif %};
         }());
