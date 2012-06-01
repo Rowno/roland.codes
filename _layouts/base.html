@@ -124,7 +124,6 @@
                 .wait(function () {
                     if (Modernizr.canvas) {
                         $('#tetris').on('click', function () {
-                            $(this).addClass('loading');
                             $LAB.script('js/tetris.js');
                         });
                     }
