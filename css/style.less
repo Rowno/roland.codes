@@ -133,8 +133,8 @@ a {
 // --------------
 
 @sidebarWidth: 100px + @gridGutterWidth * 2;
-@tetrisWidth: 118px;
-@tetrisHeight: 70px;
+@tetrisWidth: 120px;
+@tetrisHeight: 72px;
 
 body {
     max-width: 700px + @sidebarWidth;
@@ -164,7 +164,7 @@ body {
 
 #sidebar {
     position: absolute;
-    top: 2px;
+    top: 0;
     left: 0;
     width: @sidebarWidth;
 }
@@ -172,7 +172,7 @@ body {
 #tetris {
     overflow: hidden;
     max-height: @tetrisHeight;
-    margin-bottom: @gridGutterWidth;
+    margin: 1px 0 @gridGutterWidth 0;
     .transition(all 0.2s linear);
     .opacity(50);
     text-align: right;
