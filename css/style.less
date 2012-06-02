@@ -14,7 +14,7 @@
 
 @baseFontSize: 15px;
 @baseLineHeight: 1.618em;
-@headingsFontFamily: 'TelegramaRender', Menlo, Monaco, 'Courier New', monospace;
+@headingsFontFamily: 'TelegramaRender', "Courier New", monospace;
 
 @mainColor: @linkColor;
 @backgroundColor: @infoBackground;
@@ -155,7 +155,7 @@ body {
 #header, #header h1 {
     font-size: 44px;
     line-height: 1em;
-    font-family: 'TelegramaRaw', Menlo, Monaco, 'Courier New', monospace;
+    font-family: 'TelegramaRaw', "Courier New", monospace;
 }
 
 #main {
@@ -176,6 +176,7 @@ body {
     .transition(all 0.2s linear);
     .opacity(50);
     text-align: right;
+    font: bold 12px @monoFontFamily;
 
     &:hover {
         .opacity(100);
