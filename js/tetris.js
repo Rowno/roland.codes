@@ -1,6 +1,24 @@
 /*jslint browser:true */
 /*globals jQuery:false */
 
+/*
+ CONTENTS
+ ========
+ Grid
+ Block
+ Shape
+ ShapeI
+ ShapeJ
+ ShapeL
+ ShapeO
+ ShapeS
+ ShapeT
+ ShapeZ
+ Score
+ Render
+ Control
+*/
+
 (function ($) {
     'use strict';
 
@@ -10,8 +28,8 @@
         $tetris = $('#tetris'),
         Grid,
         Score,
-        Control,
-        Render;
+        Render,
+        Control;
 
 
     Grid = (function () {
@@ -319,64 +337,6 @@
     }());
 
 
-    Control = (function () {
-        var exports = {},
-            running = true,
-            timer;
-
-
-        function start() {
-            var shapes = [
-                    new ShapeZ(1, 0),
-                    new ShapeT(4, 0),
-                    new ShapeI(6, 1, 1),
-                    new ShapeO(7, 0),
-                    new ShapeJ(9, 1, 1),
-                    new ShapeJ(1, 2, 2),
-                    new ShapeS(3, 2, 1),
-                    new ShapeL(5, 3, 3),
-                    new ShapeZ(8, 3),
-                    new ShapeI(1, 3),
-                    new ShapeT(1, 5, 2),
-                    new ShapeJ(3, 4)
-                ],
-                shapeZ = new ShapeZ(2, 17);
-
-            timer = setInterval(function () {
-                shapeZ.rotate();
-                Render.requestDraw();
-            }, 500);
-
-            Score.reset();
-            Render.requestDraw();
-            $tetris.addClass('running');
-        }
-        exports.start = start;
-
-
-        function stop() {
-            clearInterval(timer);
-            Block.blocks = [];
-            $tetris.removeClass('running');
-        }
-        exports.stop = stop;
-
-
-        $tetris.off('click');
-        $tetris.on('click', function () {
-            if (running) {
-                stop();
-            } else {
-                start();
-            }
-
-            running = !running;
-        });
-
-        return exports;
-    }());
-
-
     Render = (function () {
         var exports = {},
             context = $tetris.find('canvas').get(0).getContext('2d'),
@@ -447,6 +407,64 @@
             }
         }
         exports.requestDraw = requestDraw;
+
+        return exports;
+    }());
+
+
+    Control = (function () {
+        var exports = {},
+            running = true,
+            timer;
+
+
+        function start() {
+            var shapes = [
+                    new ShapeZ(1, 0),
+                    new ShapeT(4, 0),
+                    new ShapeI(6, 1, 1),
+                    new ShapeO(7, 0),
+                    new ShapeJ(9, 1, 1),
+                    new ShapeJ(1, 2, 2),
+                    new ShapeS(3, 2, 1),
+                    new ShapeL(5, 3, 3),
+                    new ShapeZ(8, 3),
+                    new ShapeI(1, 3),
+                    new ShapeT(1, 5, 2),
+                    new ShapeJ(3, 4)
+                ],
+                shapeZ = new ShapeZ(5, 18);
+
+            timer = setInterval(function () {
+                shapeZ.rotate();
+                Render.requestDraw();
+            }, 500);
+
+            Score.reset();
+            Render.requestDraw();
+            $tetris.addClass('running');
+        }
+        exports.start = start;
+
+
+        function stop() {
+            clearInterval(timer);
+            Block.blocks = [];
+            $tetris.removeClass('running');
+        }
+        exports.stop = stop;
+
+
+        $tetris.off('click');
+        $tetris.on('click', function () {
+            if (running) {
+                stop();
+            } else {
+                start();
+            }
+
+            running = !running;
+        });
 
         return exports;
     }());
