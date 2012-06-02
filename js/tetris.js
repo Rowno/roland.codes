@@ -4,8 +4,8 @@
 (function ($) {
     'use strict';
 
-    var CANVAS_WIDTH = 118,
-        CANVAS_HEIGHT = 236,
+    var CANVAS_WIDTH = 120,
+        CANVAS_HEIGHT = 240,
         PADDING = 1,
         $tetris = $('#tetris'),
         Grid,
@@ -61,124 +61,246 @@
 
     function Shape() {}
 
+    Shape.prototype.init = function () {
+        var that = this;
 
-    function ShapeI(x, y) {
+        this.blocks = [];
+
+        this.ORIENTATIONS[this.orientation].forEach(function (position) {
+            that.blocks.push(new Block(
+                that.COLOR,
+                that.x + position.x,
+                that.y + position.y
+            ));
+        });
+    };
+
+    Shape.prototype.rotate = function () {
+        var that = this;
+
+        this.orientation += 1;
+
+        if (this.orientation === this.ORIENTATIONS.length) {
+            this.orientation = 0;
+        }
+
+        this.ORIENTATIONS[this.orientation].forEach(function (position, index) {
+            that.blocks[index].x = that.x + position.x;
+            that.blocks[index].y = that.y + position.y;
+        });
+    };
+
+
+    function ShapeI(x, y, orientation) {
         this.x = x;
         this.y = y;
-        this.rotation = 0;
+        this.orientation = orientation || 0;
 
-        this.blocks = [
-            new Block(this.COLOR, this.x, this.y),
-            new Block(this.COLOR, this.x + 1, this.y),
-            new Block(this.COLOR, this.x + 2, this.y),
-            new Block(this.COLOR, this.x + 3, this.y)
-        ];
+        this.init();
     }
     ShapeI.prototype = new Shape();
 
     ShapeI.prototype.COLOR = '#00FFFF';
+    ShapeI.prototype.ORIENTATIONS = [
+        [
+            {x: -1, y: 0},
+            {x: 0, y: 0},
+            {x: 1, y: 0},
+            {x: 2, y: 0}
+        ],
+        [
+            {x: 0, y: -1},
+            {x: 0, y: 0},
+            {x: 0, y: 1},
+            {x: 0, y: 2}
+        ]
+    ];
 
 
-    function ShapeJ(x, y) {
+    function ShapeJ(x, y, orientation) {
         this.x = x;
         this.y = y;
-        this.rotation = 0;
+        this.orientation = orientation || 0;
 
-        this.blocks = [
-            new Block(this.COLOR, this.x, this.y),
-            new Block(this.COLOR, this.x + 1, this.y),
-            new Block(this.COLOR, this.x + 2, this.y),
-            new Block(this.COLOR, this.x + 2, this.y + 1)
-        ];
+        this.init();
     }
     ShapeJ.prototype = new Shape();
 
     ShapeJ.prototype.COLOR = '#0000FF';
+    ShapeJ.prototype.ORIENTATIONS = [
+        [
+            {x: 1, y: 0},
+            {x: 0, y: 0},
+            {x: -1, y: 0},
+            {x: 1, y: 1}
+        ],
+        [
+            {x: 0, y: -1},
+            {x: 0, y: 0},
+            {x: 0, y: 1},
+            {x: -1, y: 1}
+        ],
+        [
+            {x: 1, y: 0},
+            {x: 0, y: 0},
+            {x: -1, y: 0},
+            {x: -1, y: -1}
+        ],
+        [
+            {x: 1, y: -1},
+            {x: 0, y: -1},
+            {x: 0, y: 0},
+            {x: 0, y: 1}
+        ]
+    ];
 
 
-    function ShapeL(x, y) {
+    function ShapeL(x, y, orientation) {
         this.x = x;
         this.y = y;
-        this.rotation = 0;
+        this.orientation = orientation || 0;
 
-        this.blocks = [
-            new Block(this.COLOR, this.x, this.y),
-            new Block(this.COLOR, this.x + 1, this.y),
-            new Block(this.COLOR, this.x + 2, this.y),
-            new Block(this.COLOR, this.x, this.y + 1)
-        ];
+        this.init();
     }
     ShapeL.prototype = new Shape();
 
     ShapeL.prototype.COLOR = '#FFA500';
+    ShapeL.prototype.ORIENTATIONS = [
+        [
+            {x: 1, y: 0},
+            {x: 0, y: 0},
+            {x: -1, y: 0},
+            {x: -1, y: 1}
+        ],
+        [
+            {x: -1, y: -1},
+            {x: 0, y: -1},
+            {x: 0, y: 0},
+            {x: 0, y: 1}
+        ],
+        [
+            {x: 1, y: -1},
+            {x: 1, y: 0},
+            {x: 0, y: 0},
+            {x: -1, y: 0}
+        ],
+        [
+            {x: 0, y: -1},
+            {x: 0, y: 0},
+            {x: 0, y: 1},
+            {x: 1, y: 1}
+        ]
+    ];
 
 
-    function ShapeO(x, y) {
+    function ShapeO(x, y, orientation) {
         this.x = x;
         this.y = y;
-        this.rotation = 0;
+        this.orientation = orientation || 0;
 
-        this.blocks = [
-            new Block(this.COLOR, this.x, this.y),
-            new Block(this.COLOR, this.x + 1, this.y),
-            new Block(this.COLOR, this.x, this.y + 1),
-            new Block(this.COLOR, this.x + 1, this.y + 1)
-        ];
+        this.init();
     }
     ShapeO.prototype = new Shape();
 
     ShapeO.prototype.COLOR = '#FFFF00';
+    ShapeO.prototype.ORIENTATIONS = [
+        [
+            {x: 0, y: 0},
+            {x: 1, y: 0},
+            {x: 0, y: 1},
+            {x: 1, y: 1}
+        ]
+    ];
 
 
-    function ShapeS(x, y) {
+    function ShapeS(x, y, orientation) {
         this.x = x;
         this.y = y;
-        this.rotation = 0;
+        this.orientation = orientation || 0;
 
-        this.blocks = [
-            new Block(this.COLOR, this.x + 1, this.y),
-            new Block(this.COLOR, this.x + 2, this.y),
-            new Block(this.COLOR, this.x, this.y + 1),
-            new Block(this.COLOR, this.x + 1, this.y + 1)
-        ];
+        this.init();
     }
     ShapeS.prototype = new Shape();
 
     ShapeS.prototype.COLOR = '#00FF00';
+    ShapeS.prototype.ORIENTATIONS = [
+        [
+            {x: 1, y: 0},
+            {x: 0, y: 0},
+            {x: 0, y: 1},
+            {x: -1, y: 1}
+        ],
+        [
+            {x: 0, y: -1},
+            {x: 0, y: 0},
+            {x: 1, y: 0},
+            {x: 1, y: 1}
+        ]
+    ];
 
 
-    function ShapeT(x, y) {
+    function ShapeT(x, y, orientation) {
         this.x = x;
         this.y = y;
-        this.rotation = 0;
+        this.orientation = orientation || 0;
 
-        this.blocks = [
-            new Block(this.COLOR, this.x, this.y),
-            new Block(this.COLOR, this.x + 1, this.y),
-            new Block(this.COLOR, this.x + 2, this.y),
-            new Block(this.COLOR, this.x + 1, this.y + 1)
-        ];
+        this.init();
     }
     ShapeT.prototype = new Shape();
 
     ShapeT.prototype.COLOR = '#AA00FF';
+    ShapeT.prototype.ORIENTATIONS = [
+        [
+            {x: -1, y: 0},
+            {x: 0, y: 0},
+            {x: 1, y: 0},
+            {x: 0, y: 1}
+        ],
+        [
+            {x: 0, y: -1},
+            {x: 0, y: 0},
+            {x: -1, y: 0},
+            {x: 0, y: 1}
+        ],
+        [
+            {x: -1, y: 0},
+            {x: 0, y: 0},
+            {x: 1, y: 0},
+            {x: 0, y: -1}
+        ],
+        [
+            {x: 0, y: -1},
+            {x: 0, y: 0},
+            {x: 1, y: 0},
+            {x: 0, y: 1}
+        ]
+    ];
 
 
-    function ShapeZ(x, y) {
-        var COLOR = '#FF0000';
-
+    function ShapeZ(x, y, orientation) {
         this.x = x;
         this.y = y;
-        this.rotation = 0;
+        this.orientation = orientation || 0;
 
-        this.blocks = [
-            new Block(COLOR, this.x, this.y),
-            new Block(COLOR, this.x + 1, this.y),
-            new Block(COLOR, this.x + 1, this.y + 1),
-            new Block(COLOR, this.x + 2, this.y + 1)
-        ];
+        this.init();
     }
     ShapeZ.prototype = new Shape();
+
+    ShapeZ.prototype.COLOR = '#FF0000';
+    ShapeZ.prototype.ORIENTATIONS = [
+        [
+            {x: -1, y: 0},
+            {x: 0, y: 0},
+            {x: 0, y: 1},
+            {x: 1, y: 1}
+        ],
+        [
+            {x: 0, y: -1},
+            {x: 0, y: 0},
+            {x: -1, y: 0},
+            {x: -1, y: 1}
+        ]
+    ];
 
 
     Score = (function () {
@@ -199,10 +321,32 @@
 
     Control = (function () {
         var exports = {},
-            running = true;
+            running = true,
+            timer;
 
 
         function start() {
+            var shapes = [
+                    new ShapeZ(1, 0),
+                    new ShapeT(4, 0),
+                    new ShapeI(6, 1, 1),
+                    new ShapeO(7, 0),
+                    new ShapeJ(9, 1, 1),
+                    new ShapeJ(1, 2, 2),
+                    new ShapeS(3, 2, 1),
+                    new ShapeL(5, 3, 3),
+                    new ShapeZ(8, 3),
+                    new ShapeI(1, 3),
+                    new ShapeT(1, 5, 2),
+                    new ShapeJ(3, 4)
+                ],
+                shapeZ = new ShapeZ(2, 17);
+
+            timer = setInterval(function () {
+                shapeZ.rotate();
+                Render.requestDraw();
+            }, 500);
+
             Score.reset();
             Render.requestDraw();
             $tetris.addClass('running');
@@ -211,6 +355,8 @@
 
 
         function stop() {
+            clearInterval(timer);
+            Block.blocks = [];
             $tetris.removeClass('running');
         }
         exports.stop = stop;
@@ -277,6 +423,8 @@
             drawing = true;
 
             window.requestAnimationFrame(function () {
+                context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
                 Block.blocks.forEach(function (block) {
                     block.draw(context);
                 });
@@ -303,16 +451,6 @@
         return exports;
     }());
 
-
-    (function () {
-        var shapeI = new ShapeI(0, 0),
-            shapeJ = new ShapeJ(0, 2),
-            shapeL = new ShapeL(0, 5),
-            shapeO = new ShapeO(0, 8),
-            shapeS = new ShapeS(0, 11),
-            shapeT = new ShapeT(0, 14),
-            shapeZ = new ShapeZ(0, 17);
-    }());
 
     Control.start();
 }(jQuery));
