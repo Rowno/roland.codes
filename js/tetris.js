@@ -79,8 +79,9 @@
         var exports = {};
 
 
-        function BoundaryCollision() {
+        function BoundaryCollision(boundary) {
             this.name = 'BoundaryCollision';
+            this.boundary = boundary;
         }
 
         function BlockCollision() {
@@ -89,11 +90,20 @@
 
 
         function checkBlock(block) {
-            if (!(block.x >= 0 &&
-                block.y >= 0 &&
-                block.x < Grid.COLUMNS &&
-                block.y < Grid.ROWS)) {
-                throw new BoundaryCollision();
+            if (block.x < 0) {
+                throw new BoundaryCollision(4);
+            }
+
+            if (block.y < 0) {
+                throw new BoundaryCollision(1);
+            }
+
+            if (block.x >= Grid.COLUMNS) {
+                throw new BoundaryCollision(2);
+            }
+
+            if (block.y >= Grid.ROWS) {
+                throw new BoundaryCollision(3);
             }
 
             Block.blocks.forEach(function (otherBlock) {
