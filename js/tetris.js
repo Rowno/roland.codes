@@ -549,6 +549,7 @@
 
     Keyboard = (function () {
         var exports = {},
+            REPEAT_DEFAULT = 100,
             keys = {},
             pressedKeys = {};
 
@@ -563,16 +564,20 @@
             }
 
             if (keys[event.which]) {
-                if (keys[event.which].repeat) {
+                if (typeof keys[event.which].press === 'function') {
                     pressedKeys[event.which] = setInterval(
-                        keys[event.which].action,
-                        keys[event.which].repeat
+                        keys[event.which].press,
+                        keys[event.which].repeat || REPEAT_DEFAULT
                     );
+
+                    keys[event.which].press();
                 } else {
                     pressedKeys[event.which] = true;
                 }
 
-                keys[event.which].action();
+                if (typeof keys[event.which].down === 'function') {
+                    keys[event.which].down();
+                }
 
                 return false;
             }
@@ -581,8 +586,12 @@
 
         function keyup(event) {
             if (keys[event.which]) {
-                if (keys[event.which].repeat) {
+                if (keys[event.which].press) {
                     clearInterval(pressedKeys[event.which]);
+                }
+
+                if (typeof keys[event.which].up === 'function') {
+                    keys[event.which].up();
                 }
 
                 delete pressedKeys[event.which];
@@ -590,11 +599,8 @@
         }
 
 
-        function register(key, action, repeat) {
-            keys[key] = {
-                action: action,
-                repeat: repeat || false
-            };
+        function register(options) {
+            keys[options.key] = options;
         }
         exports.register = register;
 
@@ -618,6 +624,8 @@
 
     Player = (function () {
         var exports = {},
+            SPEED_NORMAL = 500,
+            SPEED_FAST = 75,
             shape,
             availableShapes = [
                 ShapeI,
@@ -632,55 +640,68 @@
 
 
         // up arrow
-        Keyboard.register(
-            38,
-            function () {
-                return;
+        Keyboard.register({
+            key: 38,
+            down: function () {
+                clearInterval(timer);
             },
-            100
-        );
+            press: function () {
+                moveForward();
+            },
+            up: function () {
+                timer = setInterval(moveForward, SPEED_NORMAL);
+            },
+            repeat: SPEED_FAST
+        });
 
         // right arrow
-        Keyboard.register(
-            39,
-            function () {
+        Keyboard.register({
+            key: 39,
+            press: function () {
                 try {
                     shape.move(1, 0);
-                } catch (exception) {
-
-                }
-            },
-            100
-        );
+                } catch (exception) {}
+            }
+        });
 
         // down arrow
-        Keyboard.register(
-            40,
-            function () {
+        Keyboard.register({
+            key: 40,
+            down: function () {
                 try {
                     shape.rotate();
                 } catch (exception) {}
             }
-        );
+        });
 
         // left arrow
-        Keyboard.register(
-            37,
-            function () {
+        Keyboard.register({
+            key: 37,
+            press: function () {
                 try {
                     shape.move(-1, 0);
                 } catch (exception) {}
-            },
-            100
-        );
+            }
+        });
 
         // escape
-        Keyboard.register(
-            27,
-            function () {
+        Keyboard.register({
+            key: 27,
+            down: function () {
                 Control.stop();
             }
-        );
+        });
+
+
+        function moveForward() {
+            try {
+                shape.move(0, -1);
+            } catch (exception) {
+                if (exception.name === 'BlockCollision') {
+                    spawn();
+                }
+            }
+        }
 
 
         function spawn() {
@@ -697,19 +718,12 @@
 
         function destroy() {
             shape = null;
+            clearInterval(timer);
         }
         exports.destroy = destroy;
 
 
-        timer = setInterval(function () {
-            try {
-                shape.move(0, -1);
-            } catch (exception) {
-                if (exception.name === 'BlockCollision') {
-                    spawn();
-                }
-            }
-        }, 500);
+        timer = setInterval(moveForward, SPEED_NORMAL);
 
         return exports;
     }());
