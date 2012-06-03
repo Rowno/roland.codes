@@ -599,10 +599,24 @@
         }
 
 
-        function register(options) {
+        function on(options) {
             keys[options.key] = options;
         }
-        exports.register = register;
+        exports.on = on;
+
+
+        function off(key) {
+            if (pressedKeys[key]) {
+                if (typeof keys[key].press === 'function') {
+                    clearInterval(pressedKeys[key]);
+                }
+
+                delete pressedKeys[key];
+            }
+
+            delete keys[key];
+        }
+        exports.off = off;
 
 
         function start() {
@@ -613,6 +627,15 @@
 
 
         function stop() {
+            for (var key in pressedKeys) {
+                if (pressedKeys.hasOwnProperty(key)) {
+                    if (typeof keys[key].press === 'function') {
+                        clearInterval(pressedKeys[key]);
+                    }
+                }
+            }
+            pressedKeys = {};
+
             $body.off('keydown', keydown);
             $body.off('keyup', keyup);
         }
@@ -627,6 +650,7 @@
             SPEED_NORMAL = 500,
             SPEED_FAST = 75,
             shape,
+            shapeMoves = 0,
             availableShapes = [
                 ShapeI,
                 ShapeJ,
@@ -636,26 +660,25 @@
                 ShapeT,
                 ShapeZ
             ],
-            timer;
+            forwardTimer,
+            keys = [];
 
 
-        // up arrow
-        Keyboard.register({
+        keys.push({ // up arrow
             key: 38,
             down: function () {
-                clearInterval(timer);
+                clearInterval(forwardTimer);
             },
             press: function () {
                 moveForward();
             },
             up: function () {
-                timer = setInterval(moveForward, SPEED_NORMAL);
+                forwardTimer = setInterval(moveForward, SPEED_NORMAL);
             },
             repeat: SPEED_FAST
         });
 
-        // right arrow
-        Keyboard.register({
+        keys.push({ // right arrow
             key: 39,
             press: function () {
                 try {
@@ -664,8 +687,7 @@
             }
         });
 
-        // down arrow
-        Keyboard.register({
+        keys.push({ // down arrow
             key: 40,
             down: function () {
                 try {
@@ -674,8 +696,7 @@
             }
         });
 
-        // left arrow
-        Keyboard.register({
+        keys.push({ // left arrow
             key: 37,
             press: function () {
                 try {
@@ -684,21 +705,18 @@
             }
         });
 
-        // escape
-        Keyboard.register({
-            key: 27,
-            down: function () {
-                Control.stop();
-            }
-        });
-
 
         function moveForward() {
             try {
                 shape.move(0, -1);
+                shapeMoves += 1;
             } catch (exception) {
                 if (exception.name === 'BlockCollision') {
-                    spawn();
+                    if (shapeMoves === 0) {
+                        stop();
+                    } else {
+                        spawn();
+                    }
                 }
             }
         }
@@ -706,24 +724,32 @@
 
         function spawn() {
             var shapeNumber = Math.floor(Math.random() * availableShapes.length);
+            shapeMoves = 0;
             shape = new availableShapes[shapeNumber]();
         }
 
 
-        function init() {
+        function start() {
             spawn();
+
+            keys.forEach(function (keyOptions) {
+                Keyboard.on(keyOptions);
+            });
+
+            forwardTimer = setInterval(moveForward, SPEED_NORMAL);
         }
-        exports.init = init;
+        exports.start = start;
 
 
-        function destroy() {
+        function stop() {
+            keys.forEach(function (keyOptions) {
+                Keyboard.off(keyOptions.key);
+            });
+
             shape = null;
-            clearInterval(timer);
+            clearInterval(forwardTimer);
         }
-        exports.destroy = destroy;
-
-
-        timer = setInterval(moveForward, SPEED_NORMAL);
+        exports.stop = stop;
 
         return exports;
     }());
@@ -751,7 +777,7 @@
                 ];
 
             Keyboard.start();
-            Player.init();
+            Player.start();
             Score.reset();
 
             running = true;
@@ -763,12 +789,21 @@
         function stop() {
             Block.blocks = [];
             Keyboard.stop();
-            Player.destroy();
+            Player.stop();
 
             running = false;
             $tetris.removeClass('running');
         }
         exports.stop = stop;
+
+
+        // escape
+        Keyboard.on({
+            key: 27,
+            down: function () {
+                Control.stop();
+            }
+        });
 
 
         $tetris.off('click');
