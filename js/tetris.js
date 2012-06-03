@@ -68,6 +68,11 @@
 
     Block.blocks = [];
 
+    Block.prototype.destroy = function () {
+        var index = Block.blocks.indexOf(this);
+        Block.blocks.splice(index, 1);
+    };
+
     Block.prototype.draw = function (context) {
         context.fillStyle = this.color;
         context.fillRect(
@@ -92,6 +97,14 @@
                 that.x + position.x,
                 that.y + position.y
             ));
+        });
+
+        Render.requestDraw();
+    };
+
+    Shape.prototype.destroy = function () {
+        this.blocks.forEach(function (block) {
+            block.destroy();
         });
     };
 
@@ -429,10 +442,22 @@
 
 
         function spawn() {
-            var shapeNumber = Math.floor(Math.random() * 10);
-            shape = new availableShapes[shapeNumber]();
+            var shapeNumber = Math.floor(Math.random() * availableShapes.length);
+            shape = new availableShapes[shapeNumber](5, 10);
         }
-        exports.spawn = spawn;
+
+
+        function init() {
+            spawn();
+        }
+        exports.init = init;
+
+
+        function destroy() {
+            shape.destroy();
+            shape = null;
+        }
+        exports.destroy = destroy;
 
         return exports;
     }());
@@ -440,7 +465,8 @@
 
     Control = (function () {
         var exports = {},
-            running = true;
+            running = true,
+            timer;
 
 
         function start() {
@@ -459,14 +485,20 @@
                     new ShapeJ(3, 4)
                 ];
 
+            Player.init();
+            timer = setInterval(function () {
+                Player.destroy();
+                Player.init();
+            }, 500);
+
             Score.reset();
-            Render.requestDraw();
             $tetris.addClass('running');
         }
         exports.start = start;
 
 
         function stop() {
+            clearInterval(timer);
             Block.blocks = [];
             $tetris.removeClass('running');
         }
