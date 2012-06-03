@@ -138,6 +138,7 @@
     Block.prototype.destroy = function () {
         var index = Block.blocks.indexOf(this);
         Block.blocks.splice(index, 1);
+        Render.requestDraw();
     };
 
     Block.prototype.draw = function (context) {
@@ -458,8 +459,44 @@
 
     Score = (function () {
         var exports = {},
+            ROW_COMPLETE = 100,
             score = 0,
             $score = $tetris.find('.score');
+
+
+        function check() {
+            var rowCounts = {},
+                completeRows = [],
+                i,
+                j;
+
+            Block.blocks.forEach(function (block) {
+                if (rowCounts[block.y]) {
+                    rowCounts[block.y] += 1;
+                } else {
+                    rowCounts[block.y] = 1;
+                }
+            });
+
+            for (i in rowCounts) {
+                if (rowCounts[i] === Grid.COLUMNS) {
+                    completeRows.push(i);
+                    score += ROW_COMPLETE;
+                }
+            }
+
+            for (i = Block.blocks.length - 1; i >= 0; i -= 1) {
+                for (j = completeRows.length - 1; j >= 0; j -= 1) {
+                    if (Block.blocks[i].y === parseInt(completeRows[j], 10)) {
+                        Block.blocks[i].destroy();
+                        i += 1;
+                    }
+                }
+            }
+
+            $score.text(score);
+        }
+        exports.check = check;
 
 
         function reset() {
@@ -715,6 +752,7 @@
                     if (shapeMoves === 0) {
                         stop();
                     } else {
+                        Score.check();
                         spawn();
                     }
                 }
