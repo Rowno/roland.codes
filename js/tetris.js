@@ -16,6 +16,7 @@
  ShapeZ
  Score
  Render
+ Player
  Control
 */
 
@@ -29,6 +30,7 @@
         Grid,
         Score,
         Render,
+        Player,
         Control;
 
 
@@ -412,10 +414,33 @@
     }());
 
 
+    Player = (function () {
+        var exports = {},
+            shape,
+            availableShapes = [
+                ShapeI,
+                ShapeJ,
+                ShapeL,
+                ShapeO,
+                ShapeS,
+                ShapeT,
+                ShapeZ
+            ];
+
+
+        function spawn() {
+            var shapeNumber = Math.floor(Math.random() * 10);
+            shape = new availableShapes[shapeNumber]();
+        }
+        exports.spawn = spawn;
+
+        return exports;
+    }());
+
+
     Control = (function () {
         var exports = {},
-            running = true,
-            timer;
+            running = true;
 
 
         function start() {
@@ -432,13 +457,7 @@
                     new ShapeI(1, 3),
                     new ShapeT(1, 5, 2),
                     new ShapeJ(3, 4)
-                ],
-                shapeZ = new ShapeZ(5, 18);
-
-            timer = setInterval(function () {
-                shapeZ.rotate();
-                Render.requestDraw();
-            }, 500);
+                ];
 
             Score.reset();
             Render.requestDraw();
@@ -448,7 +467,6 @@
 
 
         function stop() {
-            clearInterval(timer);
             Block.blocks = [];
             $tetris.removeClass('running');
         }
