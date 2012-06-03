@@ -86,9 +86,15 @@
 
     function Shape() {}
 
-    Shape.prototype.init = function () {
+    Shape.prototype.init = function (x, y, orientation) {
         var that = this;
 
+        if (x !== undefined) {
+            this.x = x;
+            this.y = y;
+        }
+
+        this.orientation = orientation || 0;
         this.blocks = [];
 
         this.ORIENTATIONS[this.orientation].forEach(function (position) {
@@ -125,11 +131,10 @@
 
 
     function ShapeI(x, y, orientation) {
-        this.x = x;
-        this.y = y;
-        this.orientation = orientation || 0;
+        this.x = 4;
+        this.y = 19;
 
-        this.init();
+        this.init.apply(this, arguments);
     }
     ShapeI.prototype = new Shape();
 
@@ -151,11 +156,10 @@
 
 
     function ShapeJ(x, y, orientation) {
-        this.x = x;
-        this.y = y;
-        this.orientation = orientation || 0;
+        this.x = 4;
+        this.y = 18;
 
-        this.init();
+        this.init.apply(this, arguments);
     }
     ShapeJ.prototype = new Shape();
 
@@ -189,11 +193,10 @@
 
 
     function ShapeL(x, y, orientation) {
-        this.x = x;
-        this.y = y;
-        this.orientation = orientation || 0;
+        this.x = 4;
+        this.y = 18;
 
-        this.init();
+        this.init.apply(this, arguments);
     }
     ShapeL.prototype = new Shape();
 
@@ -227,11 +230,10 @@
 
 
     function ShapeO(x, y, orientation) {
-        this.x = x;
-        this.y = y;
-        this.orientation = orientation || 0;
+        this.x = 4;
+        this.y = 18;
 
-        this.init();
+        this.init.apply(this, arguments);
     }
     ShapeO.prototype = new Shape();
 
@@ -247,11 +249,10 @@
 
 
     function ShapeS(x, y, orientation) {
-        this.x = x;
-        this.y = y;
-        this.orientation = orientation || 0;
+        this.x = 4;
+        this.y = 18;
 
-        this.init();
+        this.init.apply(this, arguments);
     }
     ShapeS.prototype = new Shape();
 
@@ -273,11 +274,10 @@
 
 
     function ShapeT(x, y, orientation) {
-        this.x = x;
-        this.y = y;
-        this.orientation = orientation || 0;
+        this.x = 4;
+        this.y = 18;
 
-        this.init();
+        this.init.apply(this, arguments);
     }
     ShapeT.prototype = new Shape();
 
@@ -311,11 +311,10 @@
 
 
     function ShapeZ(x, y, orientation) {
-        this.x = x;
-        this.y = y;
-        this.orientation = orientation || 0;
+        this.x = 4;
+        this.y = 18;
 
-        this.init();
+        this.init.apply(this, arguments);
     }
     ShapeZ.prototype = new Shape();
 
@@ -443,7 +442,7 @@
 
         function spawn() {
             var shapeNumber = Math.floor(Math.random() * availableShapes.length);
-            shape = new availableShapes[shapeNumber](5, 10);
+            shape = new availableShapes[shapeNumber]();
         }
 
 
