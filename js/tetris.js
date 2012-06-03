@@ -16,6 +16,7 @@
  ShapeZ
  Score
  Render
+ Keyboard
  Player
  Control
 */
@@ -26,10 +27,12 @@
     var CANVAS_WIDTH = 120,
         CANVAS_HEIGHT = 240,
         PADDING = 1,
+        $body = $('body'),
         $tetris = $('#tetris'),
         Grid,
         Score,
         Render,
+        Keyboard,
         Player,
         Control;
 
@@ -127,6 +130,22 @@
             that.blocks[index].x = that.x + position.x;
             that.blocks[index].y = that.y + position.y;
         });
+
+        Render.requestDraw();
+    };
+
+    Shape.prototype.move = function (x, y) {
+        var that = this;
+
+        this.x += x;
+        this.y += y;
+
+        this.blocks.forEach(function (block) {
+            block.x += x;
+            block.y += y;
+        });
+
+        Render.requestDraw();
     };
 
 
@@ -426,6 +445,75 @@
     }());
 
 
+    Keyboard = (function () {
+        var exports = {},
+            keys = {},
+            pressedKeys = {};
+
+
+        function keydown(event) {
+            if ($(event.target).is(':input')) {
+                return;
+            }
+
+            if (pressedKeys[event.which]) {
+                return false;
+            }
+
+            if (keys[event.which]) {
+                if (keys[event.which].repeat) {
+                    pressedKeys[event.which] = setInterval(
+                        keys[event.which].action,
+                        keys[event.which].repeat
+                    );
+                } else {
+                    pressedKeys[event.which] = true;
+                }
+
+                keys[event.which].action();
+
+                return false;
+            }
+        }
+
+
+        function keyup(event) {
+            if (keys[event.which]) {
+                if (keys[event.which].repeat) {
+                    clearInterval(pressedKeys[event.which]);
+                }
+
+                delete pressedKeys[event.which];
+            }
+        }
+
+
+        function register(key, action, repeat) {
+            keys[key] = {
+                action: action,
+                repeat: repeat || false
+            };
+        }
+        exports.register = register;
+
+
+        function start() {
+            $body.on('keydown', keydown);
+            $body.on('keyup', keyup);
+        }
+        exports.start = start;
+
+
+        function stop() {
+            $body.off('keydown', keydown);
+            $body.off('keyup', keyup);
+        }
+        exports.stop = stop;
+
+        return exports;
+    }());
+
+
     Player = (function () {
         var exports = {},
             shape,
@@ -438,6 +526,50 @@
                 ShapeT,
                 ShapeZ
             ];
+
+
+        // up arrow
+        Keyboard.register(
+            38,
+            function () {
+                return;
+            },
+            100
+        );
+
+        // right arrow
+        Keyboard.register(
+            39,
+            function () {
+                shape.move(1, 0);
+            },
+            100
+        );
+
+        // down arrow
+        Keyboard.register(
+            40,
+            function () {
+                shape.rotate();
+            }
+        );
+
+        // left arrow
+        Keyboard.register(
+            37,
+            function () {
+                shape.move(-1, 0);
+            },
+            100
+        );
+
+        // escape
+        Keyboard.register(
+            27,
+            function () {
+                Control.stop();
+            }
+        );
 
 
         function spawn() {
@@ -453,7 +585,6 @@
 
 
         function destroy() {
-            shape.destroy();
             shape = null;
         }
         exports.destroy = destroy;
@@ -464,8 +595,7 @@
 
     Control = (function () {
         var exports = {},
-            running = true,
-            timer;
+            running = true;
 
 
         function start() {
@@ -484,21 +614,22 @@
                     new ShapeJ(3, 4)
                 ];
 
+            Keyboard.start();
             Player.init();
-            timer = setInterval(function () {
-                Player.destroy();
-                Player.init();
-            }, 500);
-
             Score.reset();
+
+            running = true;
             $tetris.addClass('running');
         }
         exports.start = start;
 
 
         function stop() {
-            clearInterval(timer);
             Block.blocks = [];
+            Keyboard.stop();
+            Player.destroy();
+
+            running = false;
             $tetris.removeClass('running');
         }
         exports.stop = stop;
@@ -511,8 +642,6 @@
             } else {
                 start();
             }
-
-            running = !running;
         });
 
         return exports;
