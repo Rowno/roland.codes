@@ -5,6 +5,7 @@
  CONTENTS
  ========
  Grid
+ Collision
  Block
  Shape
  ShapeI
@@ -30,6 +31,7 @@
         $body = $('body'),
         $tetris = $('#tetris'),
         Grid,
+        Collision,
         Score,
         Render,
         Keyboard,
@@ -37,13 +39,25 @@
         Control;
 
 
+    // Array.isArray polyfill
+    if (!Array.isArray) {
+        Array.isArray = function (vArg) {
+            return vArg.constructor === Array;
+        };
+    }
+
+
     Grid = (function () {
         var exports = {},
             WIDTH = 12,
-            HEIGHT = 12;
+            HEIGHT = 12,
+            COLUMNS = 10,
+            ROWS = 20;
 
         exports.WIDTH = WIDTH;
         exports.HEIGHT = HEIGHT;
+        exports.COLUMNS = COLUMNS;
+        exports.ROWS = ROWS;
 
 
         function pixelX(x) {
@@ -56,6 +70,56 @@
             return y * HEIGHT;
         }
         exports.pixelY = pixelY;
+
+        return exports;
+    }());
+
+
+    Collision = (function () {
+        var exports = {};
+
+
+        function BoundaryCollision() {
+            this.name = 'BoundaryCollision';
+        }
+
+        function BlockCollision() {
+            this.name = 'BlockCollision';
+        }
+
+
+        function checkBlock(block) {
+            if (!(block.x >= 0 &&
+                block.y >= 0 &&
+                block.x < Grid.COLUMNS &&
+                block.y < Grid.ROWS)) {
+                throw new BoundaryCollision();
+            }
+
+            Block.blocks.forEach(function (otherBlock) {
+                if (block === otherBlock) {
+                    return;
+                }
+
+                if (block.x === otherBlock.x && block.y === otherBlock.y) {
+                    throw new BlockCollision();
+                }
+            });
+        }
+
+
+        function check(blocks) {
+            if (Array.isArray(blocks)) {
+                blocks.forEach(function (block) {
+                    checkBlock(block);
+                });
+            } else {
+                checkBlock(blocks);
+            }
+
+            return false;
+        }
+        exports.check = check;
 
         return exports;
     }());
@@ -118,7 +182,9 @@
     };
 
     Shape.prototype.rotate = function () {
-        var that = this;
+        var that = this,
+            prevOrientation = this.orientation,
+            prevBlockPositions = [];
 
         this.orientation += 1;
 
@@ -127,23 +193,59 @@
         }
 
         this.ORIENTATIONS[this.orientation].forEach(function (position, index) {
+            prevBlockPositions.push({
+                x: that.blocks[index].x,
+                y: that.blocks[index].y
+            });
+
             that.blocks[index].x = that.x + position.x;
             that.blocks[index].y = that.y + position.y;
         });
+
+        try {
+            Collision.check(this.blocks);
+        } catch (exception) {
+            prevBlockPositions.forEach(function (position, index) {
+                that.blocks[index].x = position.x;
+                that.blocks[index].y = position.y;
+            });
+
+            this.orientation = prevOrientation;
+
+            throw exception;
+        }
 
         Render.requestDraw();
     };
 
     Shape.prototype.move = function (x, y) {
-        var that = this;
+        var that = this,
+            prevBlocksPosition = [];
 
-        this.x += x;
-        this.y += y;
 
         this.blocks.forEach(function (block) {
+            prevBlocksPosition.push({
+                x: block.x,
+                y: block.y
+            });
+
             block.x += x;
             block.y += y;
         });
+
+        try {
+            Collision.check(this.blocks);
+        } catch (exception) {
+            prevBlocksPosition.forEach(function (position, index) {
+                that.blocks[index].x = position.x;
+                that.blocks[index].y = position.y;
+            });
+
+            throw exception;
+        }
+
+        this.x += x;
+        this.y += y;
 
         Render.requestDraw();
     };
@@ -525,7 +627,8 @@
                 ShapeS,
                 ShapeT,
                 ShapeZ
-            ];
+            ],
+            timer;
 
 
         // up arrow
@@ -541,7 +644,11 @@
         Keyboard.register(
             39,
             function () {
-                shape.move(1, 0);
+                try {
+                    shape.move(1, 0);
+                } catch (exception) {
+
+                }
             },
             100
         );
@@ -550,7 +657,9 @@
         Keyboard.register(
             40,
             function () {
-                shape.rotate();
+                try {
+                    shape.rotate();
+                } catch (exception) {}
             }
         );
 
@@ -558,7 +667,9 @@
         Keyboard.register(
             37,
             function () {
-                shape.move(-1, 0);
+                try {
+                    shape.move(-1, 0);
+                } catch (exception) {}
             },
             100
         );
@@ -588,6 +699,17 @@
             shape = null;
         }
         exports.destroy = destroy;
+
+
+        timer = setInterval(function () {
+            try {
+                shape.move(0, -1);
+            } catch (exception) {
+                if (exception.name === 'BlockCollision') {
+                    spawn();
+                }
+            }
+        }, 500);
 
         return exports;
     }());
