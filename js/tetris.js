@@ -495,11 +495,11 @@
                 }
             }
 
-            for (i = Block.blocks.length - 1; i >= 0; i -= 1) {
-                for (j = completeRows.length - 1; j >= 0; j -= 1) {
+            for (i = 0; i < Block.blocks.length; i += 1) {
+                for (j = 0; j < completeRows.length; j += 1) {
                     if (Block.blocks[i].y === parseInt(completeRows[j], 10)) {
                         Block.blocks[i].destroy();
-                        i += 1;
+                        i -= 1;
                     }
                 }
             }
@@ -762,8 +762,8 @@
                     if (shapeMoves === 0) {
                         stop();
                     } else {
-                        Score.check();
                         spawn();
+                        Score.check();
                     }
                 }
             }
