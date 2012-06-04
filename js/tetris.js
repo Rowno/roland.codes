@@ -1,5 +1,5 @@
 /*jslint browser:true */
-/*globals jQuery:false */
+/*globals jQuery:false, Modernizr:false */
 
 /*
  CONTENTS
@@ -22,7 +22,7 @@
  Control
 */
 
-(function ($) {
+(function ($, Modernizr) {
     'use strict';
 
     var CANVAS_WIDTH = 120,
@@ -471,7 +471,28 @@
         var exports = {},
             ROW_COMPLETE = 100,
             score = 0,
-            $score = $tetris.find('.score');
+            highscore,
+            $score = $tetris.find('.score .count'),
+            $highscore = $tetris.find('.highscore .count');
+
+
+        $score.text(score);
+
+        if (Modernizr.localstorage) {
+            highscore = localStorage.highscore || 0;
+            $highscore.text(highscore);
+        }
+
+
+        function update() {
+            $score.text(score);
+
+            if (Modernizr.localstorage && score > highscore) {
+                highscore = score;
+                localStorage.highscore = highscore;
+                $highscore.text(highscore);
+            }
+        }
 
 
         function check() {
@@ -504,14 +525,14 @@
                 }
             }
 
-            $score.text(score);
+            update();
         }
         exports.check = check;
 
 
         function reset() {
             score = 0;
-            $score.text(score);
+            update();
         }
         exports.reset = reset;
 
@@ -826,7 +847,6 @@
 
             Keyboard.start();
             Player.start();
-            Score.reset();
 
             running = true;
             $tetris.addClass('running');
@@ -838,6 +858,7 @@
             Block.blocks = [];
             Keyboard.stop();
             Player.stop();
+            Score.reset();
 
             running = false;
             $tetris.removeClass('running');
@@ -868,4 +889,4 @@
 
 
     Control.start();
-}(jQuery));
+}(jQuery, Modernizr));
