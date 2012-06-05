@@ -260,11 +260,8 @@
     };
 
 
-    function Shape() {}
-
-    Shape.prototype.init = function (x, y, orientation) {
-        var that = this,
-            positions,
+    function Shape(x, y, orientation) {
+        var positions,
             i;
 
         if (x !== undefined) {
@@ -278,16 +275,16 @@
         positions = this.ORIENTATIONS[this.orientation];
 
         for (i = 0; i < positions.length; i += 1) {
-            that.blocks.push(new Block(
-                that.COLOR,
-                that.x + positions[i].x,
-                that.y + positions[i].y
+            this.blocks.push(new Block(
+                this.COLOR,
+                this.x + positions[i].x,
+                this.y + positions[i].y
             ));
 
         }
 
         Render.requestDraw();
-    };
+    }
 
     Shape.prototype.destroy = function () {
         for (var i = 0; i < this.blocks.length; i += 1) {
@@ -296,8 +293,7 @@
     };
 
     Shape.prototype.rotate = function () {
-        var that = this,
-            positions,
+        var positions,
             prevOrientation = this.orientation,
             prevBlockPositions = [],
             i;
@@ -312,20 +308,20 @@
 
         for (i = 0; i < positions.length; i += 1) {
             prevBlockPositions.push({
-                x: that.blocks[i].x,
-                y: that.blocks[i].y
+                x: this.blocks[i].x,
+                y: this.blocks[i].y
             });
 
-            that.blocks[i].x = that.x + positions[i].x;
-            that.blocks[i].y = that.y + positions[i].y;
+            this.blocks[i].x = this.x + positions[i].x;
+            this.blocks[i].y = this.y + positions[i].y;
         }
 
         try {
             Collision.check(this.blocks);
         } catch (exception) {
             for (i = 0; i < prevBlockPositions.length; i += 1) {
-                that.blocks[i].x = prevBlockPositions[i].x;
-                that.blocks[i].y = prevBlockPositions[i].y;
+                this.blocks[i].x = prevBlockPositions[i].x;
+                this.blocks[i].y = prevBlockPositions[i].y;
             }
 
             this.orientation = prevOrientation;
@@ -337,8 +333,7 @@
     };
 
     Shape.prototype.move = function (x, y) {
-        var that = this,
-            prevBlocksPosition = [],
+        var prevBlocksPosition = [],
             i;
 
 
@@ -356,8 +351,8 @@
             Collision.check(this.blocks);
         } catch (exception) {
             for (i = 0; i < prevBlocksPosition.length; i += 1) {
-                that.blocks[i].x = prevBlocksPosition[i].x;
-                that.blocks[i].y = prevBlocksPosition[i].y;
+                this.blocks[i].x = prevBlocksPosition[i].x;
+                this.blocks[i].y = prevBlocksPosition[i].y;
             }
 
             throw exception;
@@ -374,9 +369,9 @@
         this.x = 4;
         this.y = 19;
 
-        this.init.apply(this, arguments);
+        Shape.apply(this, arguments);
     }
-    ShapeI.prototype = new Shape();
+    ShapeI.prototype = Object.create(Shape.prototype);
 
     ShapeI.prototype.COLOR = '#00FFFF';
     ShapeI.prototype.ORIENTATIONS = [
@@ -399,9 +394,9 @@
         this.x = 4;
         this.y = 18;
 
-        this.init.apply(this, arguments);
+        Shape.apply(this, arguments);
     }
-    ShapeJ.prototype = new Shape();
+    ShapeJ.prototype = Object.create(Shape.prototype);
 
     ShapeJ.prototype.COLOR = '#0000FF';
     ShapeJ.prototype.ORIENTATIONS = [
@@ -436,9 +431,9 @@
         this.x = 4;
         this.y = 18;
 
-        this.init.apply(this, arguments);
+        Shape.apply(this, arguments);
     }
-    ShapeL.prototype = new Shape();
+    ShapeL.prototype = Object.create(Shape.prototype);
 
     ShapeL.prototype.COLOR = '#FFA500';
     ShapeL.prototype.ORIENTATIONS = [
@@ -473,9 +468,9 @@
         this.x = 4;
         this.y = 18;
 
-        this.init.apply(this, arguments);
+        Shape.apply(this, arguments);
     }
-    ShapeO.prototype = new Shape();
+    ShapeO.prototype = Object.create(Shape.prototype);
 
     ShapeO.prototype.COLOR = '#FFFF00';
     ShapeO.prototype.ORIENTATIONS = [
@@ -492,9 +487,9 @@
         this.x = 4;
         this.y = 18;
 
-        this.init.apply(this, arguments);
+        Shape.apply(this, arguments);
     }
-    ShapeS.prototype = new Shape();
+    ShapeS.prototype = Object.create(Shape.prototype);
 
     ShapeS.prototype.COLOR = '#00FF00';
     ShapeS.prototype.ORIENTATIONS = [
@@ -517,9 +512,9 @@
         this.x = 4;
         this.y = 18;
 
-        this.init.apply(this, arguments);
+        Shape.apply(this, arguments);
     }
-    ShapeT.prototype = new Shape();
+    ShapeT.prototype = Object.create(Shape.prototype);
 
     ShapeT.prototype.COLOR = '#AA00FF';
     ShapeT.prototype.ORIENTATIONS = [
@@ -554,9 +549,9 @@
         this.x = 4;
         this.y = 18;
 
-        this.init.apply(this, arguments);
+        Shape.apply(this, arguments);
     }
-    ShapeZ.prototype = new Shape();
+    ShapeZ.prototype = Object.create(Shape.prototype);
 
     ShapeZ.prototype.COLOR = '#FF0000';
     ShapeZ.prototype.ORIENTATIONS = [
