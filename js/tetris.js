@@ -4,6 +4,7 @@
 /*
  CONTENTS
  ========
+ EventEmitter
  Grid
  Collision
  Block
@@ -82,6 +83,66 @@
             };
         }
     }());
+
+
+    /**
+     * Object.create polyfill
+     */
+    if (typeof Object.create !== 'function') {
+        Object.create = function (o) {
+            function F() {}
+            F.prototype = o;
+            return new F();
+        };
+    }
+
+
+    function EventEmitter() {
+        this.listeners = {};
+    }
+
+    EventEmitter.prototype.on = function (event, listener) {
+        if (typeof listener !== 'function') {
+            return false;
+        }
+
+        if (!this.listeners[event]) {
+            this.listeners[event] = [];
+        }
+
+        this.listeners[event].push(listener);
+    };
+
+    EventEmitter.prototype.emit = function (event) {
+        var data,
+            i;
+
+        if (!this.listeners[event]) {
+            return false;
+        }
+
+        data = Array.prototype.slice.call(arguments).shift();
+
+        for (i = 0; i < this.listeners[event].length; i += 1) {
+            this.listeners[event][i].apply(null, data);
+        }
+    };
+
+    EventEmitter.prototype.off = function (event, listener) {
+        if (!this.listeners[event]) {
+            return false;
+        }
+
+        if (typeof listener === 'function') {
+            for (var i = 0; i < this.listeners[event].length; i += 1) {
+                if (this.listeners[event][i] === listener) {
+                    this.listeners[event].splice(i, 1);
+                }
+            }
+        } else {
+            delete this.listeners[event];
+        }
+    };
 
 
     Grid = (function () {
