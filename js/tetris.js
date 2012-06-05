@@ -106,23 +106,23 @@
                 throw new BoundaryCollision(3);
             }
 
-            Block.blocks.forEach(function (otherBlock) {
-                if (block === otherBlock) {
+            for (var i = 0; i < Block.blocks.length; i += 1) {
+                if (block === Block.blocks[i]) {
                     return;
                 }
 
-                if (block.x === otherBlock.x && block.y === otherBlock.y) {
+                if (block.x === Block.blocks[i].x && block.y === Block.blocks[i].y) {
                     throw new BlockCollision();
                 }
-            });
+            }
         }
 
 
         function check(blocks) {
             if (Array.isArray(blocks)) {
-                blocks.forEach(function (block) {
-                    checkBlock(block);
-                });
+                for (var i = 0; i < blocks.length; i += 1) {
+                    checkBlock(blocks[i]);
+                }
             } else {
                 checkBlock(blocks);
             }
@@ -165,7 +165,9 @@
     function Shape() {}
 
     Shape.prototype.init = function (x, y, orientation) {
-        var that = this;
+        var that = this,
+            positions,
+            i;
 
         if (x !== undefined) {
             this.x = x;
@@ -175,27 +177,32 @@
         this.orientation = orientation || 0;
         this.blocks = [];
 
-        this.ORIENTATIONS[this.orientation].forEach(function (position) {
+        positions = this.ORIENTATIONS[this.orientation];
+
+        for (i = 0; i < positions.length; i += 1) {
             that.blocks.push(new Block(
                 that.COLOR,
-                that.x + position.x,
-                that.y + position.y
+                that.x + positions[i].x,
+                that.y + positions[i].y
             ));
-        });
+
+        }
 
         Render.requestDraw();
     };
 
     Shape.prototype.destroy = function () {
-        this.blocks.forEach(function (block) {
-            block.destroy();
-        });
+        for (var i = 0; i < this.blocks.length; i += 1) {
+            this.blocks[i].destroy();
+        }
     };
 
     Shape.prototype.rotate = function () {
         var that = this,
+            positions,
             prevOrientation = this.orientation,
-            prevBlockPositions = [];
+            prevBlockPositions = [],
+            i;
 
         this.orientation += 1;
 
@@ -203,23 +210,25 @@
             this.orientation = 0;
         }
 
-        this.ORIENTATIONS[this.orientation].forEach(function (position, index) {
+        positions = this.ORIENTATIONS[this.orientation];
+
+        for (i = 0; i < positions.length; i += 1) {
             prevBlockPositions.push({
-                x: that.blocks[index].x,
-                y: that.blocks[index].y
+                x: that.blocks[i].x,
+                y: that.blocks[i].y
             });
 
-            that.blocks[index].x = that.x + position.x;
-            that.blocks[index].y = that.y + position.y;
-        });
+            that.blocks[i].x = that.x + positions[i].x;
+            that.blocks[i].y = that.y + positions[i].y;
+        }
 
         try {
             Collision.check(this.blocks);
         } catch (exception) {
-            prevBlockPositions.forEach(function (position, index) {
-                that.blocks[index].x = position.x;
-                that.blocks[index].y = position.y;
-            });
+            for (i = 0; i < prevBlockPositions.length; i += 1) {
+                that.blocks[i].x = prevBlockPositions[i].x;
+                that.blocks[i].y = prevBlockPositions[i].y;
+            }
 
             this.orientation = prevOrientation;
 
@@ -231,26 +240,27 @@
 
     Shape.prototype.move = function (x, y) {
         var that = this,
-            prevBlocksPosition = [];
+            prevBlocksPosition = [],
+            i;
 
 
-        this.blocks.forEach(function (block) {
+        for (i = 0; i < this.blocks.length; i += 1) {
             prevBlocksPosition.push({
-                x: block.x,
-                y: block.y
+                x: this.blocks[i].x,
+                y: this.blocks[i].y
             });
 
-            block.x += x;
-            block.y += y;
-        });
+            this.blocks[i].x += x;
+            this.blocks[i].y += y;
+        }
 
         try {
             Collision.check(this.blocks);
         } catch (exception) {
-            prevBlocksPosition.forEach(function (position, index) {
-                that.blocks[index].x = position.x;
-                that.blocks[index].y = position.y;
-            });
+            for (i = 0; i < prevBlocksPosition.length; i += 1) {
+                that.blocks[i].x = prevBlocksPosition[i].x;
+                that.blocks[i].y = prevBlocksPosition[i].y;
+            }
 
             throw exception;
         }
@@ -501,13 +511,15 @@
                 i,
                 j;
 
-            Block.blocks.forEach(function (block) {
-                if (rowCounts[block.y]) {
-                    rowCounts[block.y] += 1;
+
+            for (i = 0; i < Block.blocks.length; i += 1) {
+
+                if (rowCounts[Block.blocks[i].y]) {
+                    rowCounts[Block.blocks[i].y] += 1;
                 } else {
-                    rowCounts[block.y] = 1;
+                    rowCounts[Block.blocks[i].y] = 1;
                 }
-            });
+            }
 
             for (i in rowCounts) {
                 if (rowCounts[i] === Grid.COLUMNS) {
@@ -588,9 +600,9 @@
             window.requestAnimationFrame(function () {
                 context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
-                Block.blocks.forEach(function (block) {
-                    block.draw(context);
-                });
+                for (var i = 0; i < Block.blocks.length; i += 1) {
+                    Block.blocks[i].draw(context);
+                }
 
                 if (queued) {
                     queued = false;
@@ -801,9 +813,9 @@
         function start() {
             spawn();
 
-            keys.forEach(function (keyOptions) {
-                Keyboard.on(keyOptions);
-            });
+            for (var i = 0; i < keys.length; i += 1) {
+                Keyboard.on(keys[i]);
+            }
 
             forwardTimer = setInterval(moveForward, SPEED_NORMAL);
         }
@@ -811,9 +823,9 @@
 
 
         function stop() {
-            keys.forEach(function (keyOptions) {
-                Keyboard.off(keyOptions.key);
-            });
+            for (var i = 0; i < keys.length; i += 1) {
+                Keyboard.off(keys[i].key);
+            }
 
             shape = null;
             clearInterval(forwardTimer);
