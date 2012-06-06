@@ -537,7 +537,6 @@
                 j;
 
             for (i = 0; i < Block.blocks.length; i += 1) {
-
                 if (rowCounts[Block.blocks[i].y]) {
                     rowCounts[Block.blocks[i].y] += 1;
                 } else {
@@ -547,23 +546,27 @@
 
             for (i in rowCounts) {
                 if (rowCounts[i] === Grid.COLUMNS) {
-                    completeRows.push(i);
+                    completeRows.push(parseInt(i, 10));
                 }
             }
 
-            for (i = 0; i < Block.blocks.length; i += 1) {
-                for (j = 0; j < completeRows.length; j += 1) {
-                    if (Block.blocks[i].y === parseInt(completeRows[j], 10)) {
-                        Block.blocks[i].destroy();
-                        i -= 1;
+            for (i = 0; i < completeRows.length; i += 1) {
+                for (j = 0; j < Block.blocks.length; j += 1) {
+                    if (Player.getShape().blocks.indexOf(Block.blocks[j]) !== -1) {
+                        continue;
+                    }
+
+                    if (Block.blocks[j].y === completeRows[i] - i) {
+                        Block.blocks[j].destroy();
+                        j -= 1;
+                    } else if (Block.blocks[j].y > completeRows[i] - i) {
+                        Block.blocks[j].y -= 1;
                     }
                 }
             }
 
-            if (completeRows.length >= 1 && completeRows.length <= 3) {
+            if (completeRows.length >= 1 && completeRows.length <= 4) {
                 score += ROW_COMPLETE_SCORES[completeRows.length - 1];
-            } else if (completeRows.length >= 4) {
-                score += ROW_COMPLETE_SCORES[3];
             }
 
             update();
@@ -800,6 +803,12 @@
             shapeMoves = 0;
             shape = new availableShapes[shapeNumber]();
         }
+
+
+        function getShape() {
+            return shape;
+        }
+        exports.getShape = getShape;
 
 
         function start() {
