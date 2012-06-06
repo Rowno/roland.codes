@@ -572,7 +572,7 @@
 
     Score = (function () {
         var exports = {},
-            ROW_COMPLETE = 100,
+            ROW_COMPLETE_SCORES = [40, 100, 300, 1200],
             score = 0,
             highscore,
             $score = $tetris.find('.score .count'),
@@ -617,7 +617,6 @@
             for (i in rowCounts) {
                 if (rowCounts[i] === Grid.COLUMNS) {
                     completeRows.push(i);
-                    score += ROW_COMPLETE;
                 }
             }
 
@@ -628,6 +627,12 @@
                         i -= 1;
                     }
                 }
+            }
+
+            if (completeRows.length >= 1 && completeRows.length <= 3) {
+                score += ROW_COMPLETE_SCORES[completeRows.length - 1];
+            } else if (completeRows.length >= 4) {
+                score += ROW_COMPLETE_SCORES[3];
             }
 
             update();
