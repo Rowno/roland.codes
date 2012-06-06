@@ -176,11 +176,11 @@
     Collision = (function () {
         var exports = {};
 
-
         function BoundaryCollision(boundary) {
             this.name = 'BoundaryCollision';
             this.boundary = boundary;
         }
+
 
         function BlockCollision() {
             this.name = 'BlockCollision';
@@ -264,7 +264,6 @@
         var positions,
             i;
 
-
         if (x === undefined) {
             this.x = 4;
             this.y = 20;
@@ -339,7 +338,6 @@
     Shape.prototype.move = function (x, y) {
         var prevBlocksPosition = [],
             i;
-
 
         for (i = 0; i < this.blocks.length; i += 1) {
             prevBlocksPosition.push({
@@ -561,7 +559,6 @@
             $score = $tetris.find('.score .count'),
             $highscore = $tetris.find('.highscore .count');
 
-
         $score.text(score);
 
         if (Modernizr.localstorage) {
@@ -586,7 +583,6 @@
                 completeRows = [],
                 i,
                 j;
-
 
             for (i = 0; i < Block.blocks.length; i += 1) {
 
@@ -639,7 +635,6 @@
             queued = false,
             drawing = false;
 
-
         function draw() {
             drawing = true;
 
@@ -678,7 +673,6 @@
             REPEAT_DEFAULT = 100,
             keys = {},
             pressedKeys = {};
-
 
         function keydown(event) {
             if ($(event.target).is(':input')) {
@@ -789,7 +783,6 @@
             forwardTimer,
             keys = [];
 
-
         keys.push({ // up arrow
             key: 38,
             down: function () {
@@ -885,7 +878,6 @@
     Control = (function () {
         var exports = {},
             running = true;
-
 
         function start() {
             var shapes = [
