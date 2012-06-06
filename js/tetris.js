@@ -782,7 +782,8 @@
                 shape.move(0, -1);
                 shapeMoves += 1;
             } catch (exception) {
-                if (exception.name === 'BlockCollision') {
+                if (exception.name === 'BlockCollision' ||
+                   (exception.name === 'BoundaryCollision' && exception.boundary === 1)) {
                     if (shapeMoves === 0) {
                         stop();
                     } else {
