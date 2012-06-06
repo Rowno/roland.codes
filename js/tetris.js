@@ -150,7 +150,7 @@
             WIDTH = 12,
             HEIGHT = 12,
             COLUMNS = 10,
-            ROWS = 20;
+            ROWS = 22;
 
         exports.WIDTH = WIDTH;
         exports.HEIGHT = HEIGHT;
@@ -264,7 +264,11 @@
         var positions,
             i;
 
-        if (x !== undefined) {
+
+        if (x === undefined) {
+            this.x = 4;
+            this.y = 20;
+        } else {
             this.x = x;
             this.y = y;
         }
@@ -366,9 +370,6 @@
 
 
     function ShapeI(x, y, orientation) {
-        this.x = 4;
-        this.y = 19;
-
         Shape.apply(this, arguments);
     }
     ShapeI.prototype = Object.create(Shape.prototype);
@@ -391,9 +392,6 @@
 
 
     function ShapeJ(x, y, orientation) {
-        this.x = 4;
-        this.y = 18;
-
         Shape.apply(this, arguments);
     }
     ShapeJ.prototype = Object.create(Shape.prototype);
@@ -428,9 +426,6 @@
 
 
     function ShapeL(x, y, orientation) {
-        this.x = 4;
-        this.y = 18;
-
         Shape.apply(this, arguments);
     }
     ShapeL.prototype = Object.create(Shape.prototype);
@@ -465,9 +460,6 @@
 
 
     function ShapeO(x, y, orientation) {
-        this.x = 4;
-        this.y = 18;
-
         Shape.apply(this, arguments);
     }
     ShapeO.prototype = Object.create(Shape.prototype);
@@ -484,9 +476,6 @@
 
 
     function ShapeS(x, y, orientation) {
-        this.x = 4;
-        this.y = 18;
-
         Shape.apply(this, arguments);
     }
     ShapeS.prototype = Object.create(Shape.prototype);
@@ -509,9 +498,6 @@
 
 
     function ShapeT(x, y, orientation) {
-        this.x = 4;
-        this.y = 18;
-
         Shape.apply(this, arguments);
     }
     ShapeT.prototype = Object.create(Shape.prototype);
@@ -546,9 +532,6 @@
 
 
     function ShapeZ(x, y, orientation) {
-        this.x = 4;
-        this.y = 18;
-
         Shape.apply(this, arguments);
     }
     ShapeZ.prototype = Object.create(Shape.prototype);
