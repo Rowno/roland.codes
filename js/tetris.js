@@ -980,13 +980,13 @@
         });
 
 
-        $tetris.off('click');
-        $tetris.on('click', function () {
-            if (running) {
-                stop();
-            } else {
-                start();
-            }
+        $tetris.find('img').off('click');
+        $tetris.find('img').on('click', function () {
+            start();
+        });
+
+        $tetris.find('.close').on('click', function () {
+            stop();
         });
 
         return exports;

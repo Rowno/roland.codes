@@ -60,6 +60,16 @@
                     <div class="highscore">
                         Highscore: <span class="count"></span>
                     </div>
+
+                    <button class="help btn btn-mini" title="Help">
+                        <i class="icon-question-sign"></i>
+                    </button>
+                    <button class="sound btn btn-mini" title="Turn sound on">
+                        <i class="icon-volume-up"></i>
+                    </button>
+                    <button class="close btn btn-mini" title="Close">
+                        <i class="icon-remove-sign"></i>
+                    </button>
                 </div>
             </div>
 
@@ -129,7 +139,7 @@
                 .script('js/jquery.min.js')
                 .wait(function () {
                     if (Modernizr.canvas) {
-                        $('#tetris').on('click', function () {
+                        $('#tetris img').on('click', function () {
                             $LAB.script('js/tetris.js');
                         });
                     }

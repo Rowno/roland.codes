@@ -185,17 +185,21 @@ body {
         .opacity(100);
     }
 
+    .btn-mini {
+        font-size: 12px;
+    }
+
     .gameover {
         display: none;
         position: absolute;
         top: @tetrisCanvasHeight / 2;
         right: 0;
         width: 100%;
-        text-align: center;
-        font-size: 14px;
         padding: 2px;
         padding-bottom: 0;
-        background: white;
+        text-align: center;
+        color: white;
+        background: rgba(0, 0, 0, 0.75);
     }
 
     &.gameover .gameover {
@@ -228,7 +232,7 @@ body {
     display: none;
 }
 
-.canvas #tetris {
+.canvas #tetris img {
     cursor: pointer;
 }
 
