@@ -576,6 +576,13 @@
         exports.check = check;
 
 
+        function softDrop(dropAmount) {
+            score += dropAmount;
+            update();
+        }
+        exports.softDrop = softDrop;
+
+
         function reset() {
             score = 0;
             update();
@@ -768,7 +775,8 @@
             shape,
             shapeMoves = 0,
             forwardTimer,
-            keys = [];
+            keys = [],
+            softDropCount = 0;
 
         keys.push({ // up arrow
             key: 38,
@@ -777,9 +785,11 @@
             },
             press: function () {
                 moveForward();
+                softDropCount += 1;
             },
             up: function () {
                 forwardTimer = setInterval(moveForward, SPEED_NORMAL);
+                softDropCount = 0;
             },
             repeat: SPEED_SOFT_DROP
         });
@@ -824,6 +834,10 @@
                     } else {
                         spawn();
                         Score.check();
+
+                        if (softDropCount > 0) {
+                            Score.softDrop(softDropCount);
+                        }
                     }
                 }
             }
