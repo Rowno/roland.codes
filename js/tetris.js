@@ -863,6 +863,12 @@
         });
 
 
+        function gameover() {
+            $tetris.addClass('gameover');
+            stop();
+        }
+
+
         function moveForward() {
             try {
                 shape.move(0, -1);
@@ -871,7 +877,7 @@
                 if (exception.name === 'BlockCollision' ||
                    (exception.name === 'BoundaryCollision' && exception.boundary === 1)) {
                     if (shapeMoves === 0) {
-                        stop();
+                        gameover();
                     } else {
                         spawn();
                         Score.check();
@@ -898,6 +904,7 @@
 
 
         function start() {
+            $tetris.removeClass('gameover');
             spawn();
 
             for (var i = 0; i < keys.length; i += 1) {

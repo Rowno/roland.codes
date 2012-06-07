@@ -134,7 +134,8 @@ a {
 
 @sidebarWidth: 100px + @gridGutterWidth * 2;
 @tetrisWidth: 120px;
-@tetrisHeight: 72px;
+@tetrisImgHeight: 72px;
+@tetrisCanvasHeight: 240px;
 
 body {
     max-width: 700px + @sidebarWidth;
@@ -170,9 +171,11 @@ body {
 }
 
 #tetris {
+    position: relative;
+    width: @tetrisWidth;
+    max-height: @tetrisImgHeight;
     overflow: hidden;
-    max-height: @tetrisHeight;
-    margin: 1px 0 @gridGutterWidth 0;
+    margin: 1px 0 @gridGutterWidth auto;
     .transition(all 0.2s linear);
     .opacity(50);
     text-align: right;
@@ -180,6 +183,23 @@ body {
 
     &:hover {
         .opacity(100);
+    }
+
+    .gameover {
+        display: none;
+        position: absolute;
+        top: @tetrisCanvasHeight / 2;
+        right: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 14px;
+        padding: 2px;
+        padding-bottom: 0;
+        background: white;
+    }
+
+    &.gameover .gameover {
+        display: block;
     }
 
     .game {
