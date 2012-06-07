@@ -813,15 +813,16 @@
         var exports = {},
             SPEED_NORMAL = 500,
             SPEED_SOFT_DROP = 50,
+            KEYS = [],
             shape,
             shapeMoves = 0,
             forwardTimer,
-            keys = [],
             softDropCount = 0;
 
-        keys.push({ // up arrow
+        KEYS.push({ // up arrow
             key: 38,
             down: function () {
+                softDropCount = 0;
                 clearInterval(forwardTimer);
             },
             press: function () {
@@ -830,12 +831,11 @@
             },
             up: function () {
                 forwardTimer = setInterval(moveForward, SPEED_NORMAL);
-                softDropCount = 0;
             },
             repeat: SPEED_SOFT_DROP
         });
 
-        keys.push({ // right arrow
+        KEYS.push({ // right arrow
             key: 39,
             press: function () {
                 try {
@@ -844,7 +844,7 @@
             }
         });
 
-        keys.push({ // down arrow
+        KEYS.push({ // down arrow
             key: 40,
             down: function () {
                 try {
@@ -853,7 +853,7 @@
             }
         });
 
-        keys.push({ // left arrow
+        KEYS.push({ // left arrow
             key: 37,
             press: function () {
                 try {
@@ -879,12 +879,12 @@
                     if (shapeMoves === 0) {
                         gameover();
                     } else {
-                        spawn();
-                        Score.check();
-
                         if (softDropCount > 0) {
                             Score.softDrop(softDropCount);
                         }
+
+                        spawn();
+                        Score.check();
                     }
                 }
             }
@@ -893,6 +893,7 @@
 
         function spawn() {
             shapeMoves = 0;
+            softDropCount = 0;
             shape = Generator.generate();
         }
 
@@ -907,8 +908,8 @@
             $tetris.removeClass('gameover');
             spawn();
 
-            for (var i = 0; i < keys.length; i += 1) {
-                Keyboard.on(keys[i]);
+            for (var i = 0; i < KEYS.length; i += 1) {
+                Keyboard.on(KEYS[i]);
             }
 
             forwardTimer = setInterval(moveForward, SPEED_NORMAL);
@@ -917,8 +918,8 @@
 
 
         function stop() {
-            for (var i = 0; i < keys.length; i += 1) {
-                Keyboard.off(keys[i].key);
+            for (var i = 0; i < KEYS.length; i += 1) {
+                Keyboard.off(KEYS[i].key);
             }
 
             shape = null;
@@ -978,7 +979,6 @@
                 Control.stop();
             }
         });
-
 
         $tetris.find('img').off('click');
         $tetris.find('img').on('click', function () {
