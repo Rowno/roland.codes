@@ -4,7 +4,7 @@
 /*
  CONTENTS
  ========
- EventEmitter
+ Storage
  Grid
  Collision
  Block
@@ -32,6 +32,7 @@
         PADDING = 1,
         $body = $('body'),
         $tetris = $('#tetris'),
+        Storage,
         Grid,
         Collision,
         Score,
@@ -97,6 +98,33 @@
             return new F();
         };
     }
+
+
+    Storage = (function () {
+        var exports = {},
+            NAMESPACE = 'tetris.';
+
+        function get(key) {
+            var value;
+
+            if (Modernizr.localstorage) {
+                value = localStorage[NAMESPACE + key];
+            }
+
+            return value || null;
+        }
+        exports.get = get;
+
+
+        function set(key, value) {
+            if (Modernizr.localstorage) {
+                localStorage[NAMESPACE + key] = value;
+            }
+        }
+        exports.set = set;
+
+        return exports;
+    }());
 
 
     Grid = (function () {
@@ -333,12 +361,21 @@
             {x: 0, y: 0},
             {x: 1, y: 0},
             {x: 2, y: 0}
-        ],
-        [
+        ], [
+            {x: 0, y: -2},
             {x: 0, y: -1},
             {x: 0, y: 0},
-            {x: 0, y: 1},
-            {x: 0, y: 2}
+            {x: 0, y: 1}
+        ], [
+            {x: -1, y: -1},
+            {x: 0, y: -1},
+            {x: 1, y: -1},
+            {x: 2, y: -1}
+        ], [
+            {x: 1, y: -2},
+            {x: 1, y: -1},
+            {x: 1, y: 0},
+            {x: 1, y: 1}
         ]
     ];
 
@@ -355,20 +392,17 @@
             {x: 0, y: 0},
             {x: -1, y: 0},
             {x: 1, y: 1}
-        ],
-        [
+        ], [
             {x: 0, y: -1},
             {x: 0, y: 0},
             {x: 0, y: 1},
             {x: -1, y: 1}
-        ],
-        [
-            {x: 1, y: 0},
-            {x: 0, y: 0},
+        ], [
+            {x: -1, y: -1},
             {x: -1, y: 0},
-            {x: -1, y: -1}
-        ],
-        [
+            {x: 0, y: 0},
+            {x: 1, y: 0}
+        ], [
             {x: 1, y: -1},
             {x: 0, y: -1},
             {x: 0, y: 0},
@@ -389,20 +423,17 @@
             {x: 0, y: 0},
             {x: -1, y: 0},
             {x: -1, y: 1}
-        ],
-        [
+        ], [
             {x: -1, y: -1},
             {x: 0, y: -1},
             {x: 0, y: 0},
             {x: 0, y: 1}
-        ],
-        [
+        ], [
             {x: 1, y: -1},
             {x: 1, y: 0},
             {x: 0, y: 0},
             {x: -1, y: 0}
-        ],
-        [
+        ], [
             {x: 0, y: -1},
             {x: 0, y: 0},
             {x: 0, y: 1},
@@ -439,8 +470,17 @@
             {x: 0, y: 0},
             {x: 0, y: 1},
             {x: -1, y: 1}
-        ],
-        [
+        ], [
+            {x: -1, y: -1},
+            {x: -1, y: 0},
+            {x: 0, y: 0},
+            {x: 0, y: 1}
+        ], [
+            {x: 1, y: -1},
+            {x: 0, y: -1},
+            {x: 0, y: 0},
+            {x: -1, y: 0}
+        ], [
             {x: 0, y: -1},
             {x: 0, y: 0},
             {x: 1, y: 0},
@@ -461,20 +501,17 @@
             {x: 0, y: 0},
             {x: 1, y: 0},
             {x: 0, y: 1}
-        ],
-        [
+        ], [
             {x: 0, y: -1},
             {x: 0, y: 0},
             {x: -1, y: 0},
             {x: 0, y: 1}
-        ],
-        [
+        ], [
             {x: -1, y: 0},
             {x: 0, y: 0},
             {x: 1, y: 0},
             {x: 0, y: -1}
-        ],
-        [
+        ], [
             {x: 0, y: -1},
             {x: 0, y: 0},
             {x: 1, y: 0},
@@ -495,12 +532,21 @@
             {x: 0, y: 0},
             {x: 0, y: 1},
             {x: 1, y: 1}
-        ],
-        [
+        ], [
             {x: 0, y: -1},
             {x: 0, y: 0},
             {x: -1, y: 0},
             {x: -1, y: 1}
+        ], [
+            {x: -1, y: -1},
+            {x: 0, y: -1},
+            {x: 0, y: 0},
+            {x: 1, y: 0}
+        ], [
+            {x: 1, y: -1},
+            {x: 1, y: 0},
+            {x: 0, y: 0},
+            {x: 0, y: 1}
         ]
     ];
 
@@ -509,24 +555,19 @@
         var exports = {},
             ROW_COMPLETE_SCORES = [40, 100, 300, 1200],
             score = 0,
-            highscore,
+            highscore = Storage.get('highscore') || 0,
             $score = $tetris.find('.score .count'),
             $highscore = $tetris.find('.highscore .count');
 
         $score.text(score);
-
-        if (Modernizr.localstorage) {
-            highscore = localStorage.highscore || 0;
-            $highscore.text(highscore);
-        }
-
+        $highscore.text(highscore);
 
         function update() {
             $score.text(score);
 
-            if (Modernizr.localstorage && score > highscore) {
+            if (score > highscore) {
                 highscore = score;
-                localStorage.highscore = highscore;
+                Storage.set('highscore', highscore);
                 $highscore.text(highscore);
             }
         }
@@ -890,11 +931,11 @@
             var shapes = [
                     new ShapeZ(1, 0),
                     new ShapeT(4, 0),
-                    new ShapeI(6, 1, 1),
+                    new ShapeI(6, 2, 1),
                     new ShapeO(7, 0),
                     new ShapeJ(9, 1, 1),
                     new ShapeJ(1, 2, 2),
-                    new ShapeS(3, 2, 1),
+                    new ShapeS(4, 2, 1),
                     new ShapeL(5, 3, 3),
                     new ShapeZ(8, 3),
                     new ShapeI(1, 3),
