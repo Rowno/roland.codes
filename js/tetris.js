@@ -19,6 +19,7 @@
  Score
  Render
  Keyboard
+ Generator
  Player
  Control
 */
@@ -36,6 +37,7 @@
         Score,
         Render,
         Keyboard,
+        Generator,
         Player,
         Control;
 
@@ -565,7 +567,7 @@
                 }
             }
 
-            if (completeRows.length >= 1 && completeRows.length <= 4) {
+            if (completeRows.length > 0) {
                 score += ROW_COMPLETE_SCORES[completeRows.length - 1];
             }
 
@@ -720,12 +722,8 @@
     }());
 
 
-    Player = (function () {
+    Generator = (function () {
         var exports = {},
-            SPEED_NORMAL = 500,
-            SPEED_FAST = 75,
-            shape,
-            shapeMoves = 0,
             availableShapes = [
                 ShapeI,
                 ShapeJ,
@@ -735,6 +733,40 @@
                 ShapeT,
                 ShapeZ
             ],
+            shapeQueue = [];
+
+        function fillQueue() {
+            var shapeNumber;
+
+            while (shapeQueue.length < availableShapes.length) {
+                shapeNumber = Math.floor(Math.random() * availableShapes.length);
+
+                if (shapeQueue.indexOf(shapeNumber) === -1) {
+                    shapeQueue.push(shapeNumber);
+                }
+            }
+        }
+
+
+        function generate() {
+            if (shapeQueue.length === 0) {
+                fillQueue();
+            }
+
+            return new availableShapes[shapeQueue.pop()]();
+        }
+        exports.generate = generate;
+
+        return exports;
+    }());
+
+
+    Player = (function () {
+        var exports = {},
+            SPEED_NORMAL = 500,
+            SPEED_SOFT_DROP = 50,
+            shape,
+            shapeMoves = 0,
             forwardTimer,
             keys = [];
 
@@ -749,7 +781,7 @@
             up: function () {
                 forwardTimer = setInterval(moveForward, SPEED_NORMAL);
             },
-            repeat: SPEED_FAST
+            repeat: SPEED_SOFT_DROP
         });
 
         keys.push({ // right arrow
@@ -799,9 +831,8 @@
 
 
         function spawn() {
-            var shapeNumber = Math.floor(Math.random() * availableShapes.length);
             shapeMoves = 0;
-            shape = new availableShapes[shapeNumber]();
+            shape = Generator.generate();
         }
 
 
