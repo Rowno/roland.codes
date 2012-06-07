@@ -533,22 +533,22 @@
 
 
         function check() {
-            var rowCounts = {},
+            var rowCounts = [],
                 completeRows = [],
                 i,
                 j;
 
-            for (i = 0; i < Block.blocks.length; i += 1) {
-                if (rowCounts[Block.blocks[i].y]) {
-                    rowCounts[Block.blocks[i].y] += 1;
-                } else {
-                    rowCounts[Block.blocks[i].y] = 1;
-                }
+            for (i = 0; i < Grid.ROWS; i += 1) {
+                rowCounts.push(0);
             }
 
-            for (i in rowCounts) {
+            for (i = 0; i < Block.blocks.length; i += 1) {
+                rowCounts[Block.blocks[i].y] += 1;
+            }
+
+            for (i = 0; i < rowCounts.length; i += 1) {
                 if (rowCounts[i] === Grid.COLUMNS) {
-                    completeRows.push(parseInt(i, 10));
+                    completeRows.push(i);
                 }
             }
 
