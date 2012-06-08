@@ -684,7 +684,7 @@
             pressedKeys = {};
 
         function keydown(event) {
-            if ($(event.target).is(':input')) {
+            if ($(event.target).is('input, textarea, select')) {
                 return;
             }
 
