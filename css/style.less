@@ -189,21 +189,36 @@ body {
         font-size: 12px;
     }
 
-    .gameover {
+    .overlay {
         display: none;
         position: absolute;
-        top: @tetrisCanvasHeight / 2;
         right: 0;
         width: 100%;
         padding: 2px;
+        color: white;
+        background: black;
+        background: rgba(0, 0, 0, 0.85);
+    }
+
+    .gameover {
+        top: @tetrisCanvasHeight / 2;
         padding-bottom: 0;
         text-align: center;
-        color: white;
-        background: rgba(0, 0, 0, 0.75);
     }
 
     &.gameover .gameover {
         display: block;
+    }
+
+    .help-box {
+        top: 0;
+        text-align: left;
+        font-size: 10px;
+        font-weight: normal;
+
+        strong {
+            font-size: 12px;
+        }
     }
 
     .game {

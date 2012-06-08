@@ -821,7 +821,8 @@
             shape,
             shapeMoves = 0,
             forwardTimer,
-            softDropCount = 0;
+            softDropCount = 0,
+            gameover = false;
 
         KEYS.push({ // up arrow
             key: 38,
@@ -867,7 +868,8 @@
         });
 
 
-        function gameover() {
+        function endGame() {
+            gameover = true;
             $tetris.addClass('gameover');
             stop();
         }
@@ -881,7 +883,7 @@
                 if (exception.name === 'BlockCollision' ||
                    (exception.name === 'BoundaryCollision' && exception.boundary === 1)) {
                     if (shapeMoves === 0) {
-                        gameover();
+                        endGame();
                     } else {
                         if (softDropCount > 0) {
                             Score.softDrop(softDropCount);
@@ -909,7 +911,11 @@
 
 
         function start() {
-            $tetris.removeClass('gameover');
+            if (gameover) {
+                gameover = false;
+                $tetris.removeClass('gameover');
+            }
+
             spawn();
 
             for (var i = 0; i < KEYS.length; i += 1) {
@@ -1007,7 +1013,10 @@
 
     Control = (function () {
         var exports = {},
-            running = true;
+            running = true,
+            helpActive = false,
+            $helpButton = $tetris.find('.help-button'),
+            $helpBox = $tetris.find('.help-box');
 
         function start() {
             var shapes = [
@@ -1044,8 +1053,25 @@
 
             running = false;
             $tetris.removeClass('running');
+
+            if (helpActive) {
+                toggleHelp();
+            }
         }
         exports.stop = stop;
+
+
+        function toggleHelp() {
+            if (helpActive) {
+                helpActive = false;
+                $helpButton.removeClass('active');
+                $helpBox.hide();
+            } else {
+                helpActive = true;
+                $helpButton.addClass('active');
+                $helpBox.show();
+            }
+        }
 
 
         // escape
@@ -1056,6 +1082,15 @@
             }
         });
 
+        // ?
+        Keyboard.on({
+            key: 191,
+            up: function () {
+                toggleHelp();
+            }
+        });
+
+
         $tetris.find('img').off('click');
         $tetris.find('img').on('click', function () {
             start();
@@ -1063,6 +1098,10 @@
 
         $tetris.find('.close').on('click', function () {
             stop();
+        });
+
+        $helpButton.on('click', function () {
+            toggleHelp();
         });
 
         return exports;
