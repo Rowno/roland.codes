@@ -53,6 +53,11 @@
                 <img src="{{ site.baseurl }}/img/tetris.png" width="120" height="72">
                 <div class="game">
                     <canvas width="120" height="240"></canvas>
+                    <audio preload="none" loop>
+                        <source src="{{ site.baseurl }}/audio/korobeiniki.ogg" type="audio/ogg">
+                        <source src="{{ site.baseurl }}/audio/korobeiniki.aac" type="audio/mp4">
+                    </audio>
+
                     <div class="gameover">Game Over</div>
                     <div class="score">
                         Score: <span class="count"></span>
@@ -64,9 +69,9 @@
                     <button class="help btn btn-mini" title="Help">
                         <i class="icon-question-sign"></i>
                     </button>
-                    <button class="sound btn btn-mini" title="Turn sound on">
-                        <i class="icon-volume-up"></i>
-                    </button>
+
+                    <button class="sound btn btn-mini"><i></i></button>
+
                     <button class="close btn btn-mini" title="Close">
                         <i class="icon-remove-sign"></i>
                     </button>

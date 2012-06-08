@@ -21,6 +21,7 @@
  Keyboard
  Generator
  Player
+ Sound
  Control
 */
 
@@ -40,6 +41,7 @@
         Keyboard,
         Generator,
         Player,
+        Sound,
         Control;
 
 
@@ -105,20 +107,22 @@
             NAMESPACE = 'tetris.';
 
         function get(key) {
-            var value;
+            var value = null;
 
             if (Modernizr.localstorage) {
-                value = localStorage[NAMESPACE + key];
+                value = localStorage.getItem(NAMESPACE + key);
+                value = JSON.parse(value);
             }
 
-            return value || null;
+            return value;
         }
         exports.get = get;
 
 
         function set(key, value) {
             if (Modernizr.localstorage) {
-                localStorage[NAMESPACE + key] = value;
+                value = JSON.stringify(value);
+                localStorage.setItem(NAMESPACE + key, value);
             }
         }
         exports.set = set;
@@ -931,6 +935,76 @@
     }());
 
 
+    Sound = (function () {
+        var exports = {},
+            audio = $tetris.find('audio').get(0),
+            sound = Storage.get('sound') || false,
+            $sound = $tetris.find('.sound');
+
+        function renderButton() {
+            if (sound) {
+                $sound.attr('title', 'Disable sound');
+                $sound.find('i')
+                    .removeClass('icon-volume-off')
+                    .addClass('icon-volume-up');
+            } else {
+                $sound.attr('title', 'Enable sound');
+                $tetris.find('.sound i')
+                    .removeClass('icon-volume-up')
+                    .addClass('icon-volume-off');
+            }
+        }
+
+
+        function start() {
+            if (!Modernizr.audio) {
+                return;
+            }
+
+            if (sound) {
+                audio.play();
+            }
+        }
+        exports.start = start;
+
+
+        function stop() {
+            if (!Modernizr.audio) {
+                return;
+            }
+
+            if (sound) {
+                audio.pause();
+            }
+
+            if (audio.currentTime > 0) {
+                audio.currentTime = 0;
+            }
+        }
+        exports.stop = stop;
+
+
+        if (Modernizr.audio) {
+            $sound.on('click', function () {
+                if (sound) {
+                    sound = false;
+                    audio.pause();
+                } else {
+                    sound = true;
+                    audio.play();
+                }
+
+                Storage.set('sound', sound);
+                renderButton();
+            });
+
+            renderButton();
+        }
+
+        return exports;
+    }());
+
+
     Control = (function () {
         var exports = {},
             running = true;
@@ -953,6 +1027,7 @@
 
             Keyboard.start();
             Player.start();
+            Sound.start();
 
             running = true;
             $tetris.addClass('running');
@@ -965,6 +1040,7 @@
             Keyboard.stop();
             Player.stop();
             Score.reset();
+            Sound.stop();
 
             running = false;
             $tetris.removeClass('running');
