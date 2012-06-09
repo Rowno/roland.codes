@@ -168,6 +168,7 @@ body {
     top: 0;
     left: 0;
     width: @sidebarWidth;
+    text-align: right;
 }
 
 #tetris {
@@ -178,7 +179,6 @@ body {
     margin: 1px 0 @gridGutterWidth auto;
     .transition(all 0.2s linear);
     .opacity(50);
-    text-align: right;
     font: bold 12px @monoFontFamily;
 
     &:hover {
@@ -261,7 +261,6 @@ body {
 #main-menu {
     padding-right: @gridGutterWidth;
     border-right: 3px dashed @mainColor;
-    text-align: right;
     font-size: 18px;
     font-family: @headingsFontFamily;
 
@@ -272,10 +271,6 @@ body {
         a:hover, a:focus {
             padding-right: 5px;
         }
-    }
-
-    ul:last-of-type {
-        margin-bottom: 0;
     }
 }
 
@@ -293,24 +288,19 @@ body {
         margin-left: 0;
     }
 
+    #tetris {
+        display: none;
+    }
+
     #sidebar {
         position: static;
         width: auto;
-        padding: 0;
-        margin: @gridGutterWidth 0;
-        border: none;
         text-align: left;
         .clearfix();
-
-        nav {
-            float: left;
-            margin: 0;
-        }
 
         ul {
             float: left;
             padding: 0 @gridGutterWidth;
-            margin: 0;
             border-left: 3px dashed @mainColor;
 
             a:hover, a:focus {
