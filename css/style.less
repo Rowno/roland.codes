@@ -174,9 +174,9 @@ body {
 #tetris {
     position: relative;
     width: @tetrisWidth;
-    max-height: @tetrisImgHeight;
+    max-height: @tetrisImgHeight; // Flexible height transition workaround
     overflow: hidden;
-    margin: 1px 0 @gridGutterWidth auto;
+    margin: 1px 0 @gridGutterWidth auto; // auto moves the div to the right
     .transition(all 0.2s linear);
     .opacity(50);
     font: bold 12px @monoFontFamily;
@@ -196,7 +196,7 @@ body {
         width: 100%;
         padding: 2px;
         color: white;
-        background: black;
+        background: black; // rgba fallback
         background: rgba(0, 0, 0, 0.85);
     }
 
@@ -283,6 +283,7 @@ body {
     text-align: center;
 }
 
+// Move sidebar to the bottom of the page on small screens
 @media (max-width: 480px) {
     #wrapper {
         margin-left: 0;
@@ -422,14 +423,7 @@ body {
 #not-found {
     h1 span {
         display: inline-block;
-        -webkit-transform: rotate(90deg);
-           -moz-transform: rotate(90deg);
-            -ms-transform: rotate(90deg);
-             -o-transform: rotate(90deg);
-                transform: rotate(90deg);
-                   /* IE6–IE9 */
-                   filter: ~"progid:DXImageTransform.Microsoft.Matrix(M11=6.123031769111886e-17, M12=-1, M21=1, M22=6.123031769111886e-17, sizingMethod='auto expand')";
-                   zoom: 1;
+        .rotate(90deg);
     }
 }
 
@@ -465,7 +459,7 @@ body {
             }
 
             .name, .time {
-                line-height: 25px;
+                line-height: 25px; // Gravatar image height
             }
 
             .name {
