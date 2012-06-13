@@ -2,27 +2,27 @@
 /*globals jQuery:false, Modernizr:false */
 
 /*
- CONTENTS
- ========
- Storage
- Grid
- Collision
- Block
- Shape
- ShapeI
- ShapeJ
- ShapeL
- ShapeO
- ShapeS
- ShapeT
- ShapeZ
- Score
- Render
- Keyboard
- Generator
- Player
- Sound
- Control
+CONTENTS
+========
+Polyfills
+Storage
+Grid
+Block
+Shape
+ShapeI
+ShapeJ
+ShapeL
+ShapeO
+ShapeS
+ShapeT
+ShapeZ
+Score
+Render
+Keyboard
+Generator
+Player
+Sound
+Control
 */
 
 (function ($, Modernizr) {
@@ -35,7 +35,6 @@
         $tetris = $('#tetris'),
         Storage,
         Grid,
-        Collision,
         Score,
         Render,
         Keyboard,
@@ -46,18 +45,17 @@
 
 
     /**
-     * Array.isArray polyfill
+     * Polyfills
      */
+
+    // Array.isArray polyfills
     if (!Array.isArray) {
         Array.isArray = function (vArg) {
             return vArg.constructor === Array;
         };
     }
 
-
-    /**
-     * requestAnimationFrame polyfill
-     */
+    // requestAnimationFrame polyfill
     (function () {
         var lastTime = 0,
             vendors = ['ms', 'moz', 'webkit', 'o'],
@@ -89,10 +87,7 @@
         }
     }());
 
-
-    /**
-     * Object.create polyfill
-     */
+    // Object.create polyfill
     if (typeof Object.create !== 'function') {
         Object.create = function (o) {
             function F() {}
@@ -159,66 +154,6 @@
     }());
 
 
-    Collision = (function () {
-        var exports = {};
-
-        function BoundaryCollision(boundary) {
-            this.name = 'BoundaryCollision';
-            this.boundary = boundary;
-        }
-
-
-        function BlockCollision() {
-            this.name = 'BlockCollision';
-        }
-
-
-        function checkBlock(block) {
-            if (block.x < 0) {
-                throw new BoundaryCollision(4);
-            }
-
-            if (block.y < 0) {
-                throw new BoundaryCollision(1);
-            }
-
-            if (block.x >= Grid.COLUMNS) {
-                throw new BoundaryCollision(2);
-            }
-
-            if (block.y >= Grid.ROWS) {
-                throw new BoundaryCollision(3);
-            }
-
-            for (var i = 0; i < Block.blocks.length; i += 1) {
-                if (block === Block.blocks[i]) {
-                    return;
-                }
-
-                if (block.x === Block.blocks[i].x && block.y === Block.blocks[i].y) {
-                    throw new BlockCollision();
-                }
-            }
-        }
-
-
-        function check(blocks) {
-            if (Array.isArray(blocks)) {
-                for (var i = 0; i < blocks.length; i += 1) {
-                    checkBlock(blocks[i]);
-                }
-            } else {
-                checkBlock(blocks);
-            }
-
-            return false;
-        }
-        exports.check = check;
-
-        return exports;
-    }());
-
-
     function Block(color, x, y) {
         this.x = x;
         this.y = y;
@@ -244,6 +179,49 @@
             Grid.HEIGHT - PADDING * 2
         );
     };
+
+    (function () {
+        function BoundaryCollision(boundary) {
+            this.name = 'BoundaryCollision';
+            this.boundary = boundary;
+        }
+
+
+        function BlockCollision() {
+            this.name = 'BlockCollision';
+        }
+
+
+        Block.prototype.checkCollision = function () {
+            if (this.x < 0) {
+                throw new BoundaryCollision(4);
+            }
+
+            if (this.y < 0) {
+                throw new BoundaryCollision(1);
+            }
+
+            if (this.x >= Grid.COLUMNS) {
+                throw new BoundaryCollision(2);
+            }
+
+            if (this.y >= Grid.ROWS) {
+                throw new BoundaryCollision(3);
+            }
+
+            for (var i = 0; i < Block.blocks.length; i += 1) {
+                if (this === Block.blocks[i]) {
+                    return;
+                }
+
+                if (this.x === Block.blocks[i].x && this.y === Block.blocks[i].y) {
+                    throw new BlockCollision();
+                }
+            }
+
+            return false;
+        };
+    }());
 
 
     function Shape(x, y, orientation) {
@@ -306,7 +284,9 @@
         }
 
         try {
-            Collision.check(this.blocks);
+            for (i = 0; i < this.blocks.length; i += 1) {
+                this.blocks[i].checkCollision();
+            }
         } catch (exception) {
             for (i = 0; i < prevBlockPositions.length; i += 1) {
                 this.blocks[i].x = prevBlockPositions[i].x;
@@ -336,7 +316,9 @@
         }
 
         try {
-            Collision.check(this.blocks);
+            for (i = 0; i < this.blocks.length; i += 1) {
+                this.blocks[i].checkCollision();
+            }
         } catch (exception) {
             for (i = 0; i < prevBlocksPosition.length; i += 1) {
                 this.blocks[i].x = prevBlocksPosition[i].x;
