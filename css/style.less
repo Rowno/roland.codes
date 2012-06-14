@@ -32,8 +32,6 @@
 // GLOBAL STYLES
 // -------------
 
-* { .box-sizing(border-box); }
-
 @font-face { .font-face('TelegramaRender', 'font/telegrama-render'); }
 @font-face { .font-face('TelegramaRaw', 'font/telegrama-raw'); }
 
@@ -96,7 +94,7 @@ a {
             content: attr(class);
             position: absolute;
             top: -1em - (@baseLineHeight - 1) / 2;
-            right: (@baseLineHeight - 1) / 2;
+            right: 0;
             font-weight: bold;
             text-transform: uppercase;
         }
@@ -198,6 +196,7 @@ body {
         color: white;
         background: black; // rgba fallback
         background: rgba(0, 0, 0, 0.85);
+        .box-sizing(border-box);
     }
 
     .gameover {
