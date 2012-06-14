@@ -53,11 +53,13 @@
                 <img src="{{ site.baseurl }}/img/tetris.png" width="120" height="72">
                 <div class="game">
                     <canvas width="120" height="240"></canvas>
-                    <audio preload="none" loop>
-                        <source src="{{ site.baseurl }}/audio/korobeiniki.ogg" type="audio/ogg">
-                        <source src="{{ site.baseurl }}/audio/korobeiniki.aac" type="audio/mp4">
-                        <source src="{{ site.baseurl }}/audio/korobeiniki.mp3" type="audio/mpeg">
-                    </audio>
+                    <script class="audio" type="text/html">
+                        <audio loop>
+                            <source src="{{ site.baseurl }}/audio/korobeiniki.ogg" type="audio/ogg">
+                            <source src="{{ site.baseurl }}/audio/korobeiniki.aac" type="audio/mp4">
+                            <source src="{{ site.baseurl }}/audio/korobeiniki.mp3" type="audio/mpeg">
+                        </audio>
+                    </script>
 
                     <div class="overlay gameover">Game Over</div>
 
