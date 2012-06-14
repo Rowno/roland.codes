@@ -97,6 +97,11 @@ Control
     }
 
 
+    /**
+     * Encapsulates localStorage persistent storage.
+     *
+     * Does feature detection, namespacing and JSON encoding.
+     */
     Storage = (function () {
         var exports = {},
             NAMESPACE = 'tetris.';
@@ -113,7 +118,6 @@ Control
         }
         exports.get = get;
 
-
         function set(key, value) {
             if (Modernizr.localstorage) {
                 value = JSON.stringify(value);
@@ -126,6 +130,11 @@ Control
     }());
 
 
+    /**
+     * Abstracts the canvas from pixels to grid coordinates.
+     *
+     * The grid is zero based.
+     */
     Grid = (function () {
         var exports = {},
             WIDTH = 12,
@@ -133,18 +142,28 @@ Control
             COLUMNS = 10,
             ROWS = 22;
 
-        exports.WIDTH = WIDTH;
-        exports.HEIGHT = HEIGHT;
-        exports.COLUMNS = COLUMNS;
-        exports.ROWS = ROWS;
+        exports.WIDTH = WIDTH; // Width of a single grid space.
+        exports.HEIGHT = HEIGHT; // Height of a single grid space.
+        exports.COLUMNS = COLUMNS; // Number of columns in the grid.
+        exports.ROWS = ROWS; // Number of rows in the grid.
 
-
+        /**
+         * Converts the X coordinate to pixels.
+         *
+         * @param {number} x X coordinate.
+         * @returns {number} Number of pixels.
+         */
         function pixelX(x) {
             return x * WIDTH;
         }
         exports.pixelX = pixelX;
 
-
+        /**
+         * Converts the Y coordinate to pixels.
+         *
+         * @param {number} y Y coordinate.
+         * @returns {number} Number of pixels.
+         */
         function pixelY(y) {
             return y * HEIGHT;
         }
@@ -154,6 +173,13 @@ Control
     }());
 
 
+    /**
+     * Represents a single Tetris block.
+     *
+     * @param {string} color Valid CSS color value.
+     * @param {number} x X Grid position.
+     * @param {number} y Y Grid position.
+     */
     function Block(color, x, y) {
         this.x = x;
         this.y = y;
@@ -162,6 +188,9 @@ Control
         Block.blocks.push(this);
     }
 
+    /**
+     * Static array of all the instantiated Block's.
+     */
     Block.blocks = [];
 
     Block.prototype.destroy = function () {
@@ -170,6 +199,11 @@ Control
         Render.requestDraw();
     };
 
+    /**
+     * Draws the Block.
+     *
+     * @param {CanvasRenderingContext2D} context Canvas 2D drawing context.
+     */
     Block.prototype.draw = function (context) {
         context.fillStyle = this.color;
         context.fillRect(
@@ -186,12 +220,19 @@ Control
             this.boundary = boundary;
         }
 
-
-        function BlockCollision() {
+        function BlockCollision(block) {
             this.name = 'BlockCollision';
+            this.block = block;
         }
 
-
+        /**
+         * Checks if the Block has collided with another Block or has crossed
+         * the Grid boundary.
+         *
+         * @returns {boolean} False if the Block hasn't collided with anything.
+         * @throws {BoundaryCollision} If the Block has crossed a Grid boundary.
+         * @throws {BlockCollision} If the Block has collided with another Block.
+         */
         Block.prototype.checkCollision = function () {
             if (this.x < 0) {
                 throw new BoundaryCollision(4);
@@ -210,12 +251,13 @@ Control
             }
 
             for (var i = 0; i < Block.blocks.length; i += 1) {
+                // Block can't collide with itself.
                 if (this === Block.blocks[i]) {
-                    return;
+                    continue;
                 }
 
                 if (this.x === Block.blocks[i].x && this.y === Block.blocks[i].y) {
-                    throw new BlockCollision();
+                    throw new BlockCollision(Block.blocks[i]);
                 }
             }
 
@@ -224,6 +266,19 @@ Control
     }());
 
 
+    /**
+     * An abstract object representing a Tetris shape.
+     *
+     * This object shouldn't be instantiated directly.
+     *
+     * Inheriting Shape objects must implement the ORIENTATIONS and COLOR
+     * properties and must execute `Shape.apply(this, arguments);` in their
+     * constructor.
+     *
+     * @param {number} x [optional] X Grid position.
+     * @param {number} y [optional] Y Grid position.
+     * @param {number} orientation [optional] The initial orientation of the Shape.
+     */
     function Shape(x, y, orientation) {
         var positions,
             i;
@@ -259,10 +314,15 @@ Control
         }
     };
 
+    /**
+     * Rotates the Shape clockwise.
+     *
+     * @throws {BoundaryCollision|BlockCollision} If the Shape collided with
+     *                                            anything while rotating.
+     */
     Shape.prototype.rotate = function () {
         var positions,
             prevOrientation = this.orientation,
-            prevBlockPositions = [],
             i;
 
         this.orientation += 1;
@@ -274,11 +334,6 @@ Control
         positions = this.ORIENTATIONS[this.orientation];
 
         for (i = 0; i < positions.length; i += 1) {
-            prevBlockPositions.push({
-                x: this.blocks[i].x,
-                y: this.blocks[i].y
-            });
-
             this.blocks[i].x = this.x + positions[i].x;
             this.blocks[i].y = this.y + positions[i].y;
         }
@@ -288,12 +343,14 @@ Control
                 this.blocks[i].checkCollision();
             }
         } catch (exception) {
-            for (i = 0; i < prevBlockPositions.length; i += 1) {
-                this.blocks[i].x = prevBlockPositions[i].x;
-                this.blocks[i].y = prevBlockPositions[i].y;
-            }
-
+            // Revert the rotation on collision.
             this.orientation = prevOrientation;
+            positions = this.ORIENTATIONS[this.orientation];
+
+            for (i = 0; i < positions.length; i += 1) {
+                this.blocks[i].x = this.x + positions[i].x;
+                this.blocks[i].y = this.y + positions[i].y;
+            }
 
             throw exception;
         }
@@ -301,16 +358,18 @@ Control
         Render.requestDraw();
     };
 
+    /**
+     * Moves the Shape in the given direction.
+     *
+     * @param {number} x Relative X amount to move by (+/-).
+     * @param {number} y Relative Y amount to move by (+/-).
+     * @throws {BoundaryCollision|BlockCollision} If the Shape collided with
+     *                                            anything while moving.
+     */
     Shape.prototype.move = function (x, y) {
-        var prevBlocksPosition = [],
-            i;
+        var i;
 
         for (i = 0; i < this.blocks.length; i += 1) {
-            prevBlocksPosition.push({
-                x: this.blocks[i].x,
-                y: this.blocks[i].y
-            });
-
             this.blocks[i].x += x;
             this.blocks[i].y += y;
         }
@@ -320,9 +379,10 @@ Control
                 this.blocks[i].checkCollision();
             }
         } catch (exception) {
-            for (i = 0; i < prevBlocksPosition.length; i += 1) {
-                this.blocks[i].x = prevBlocksPosition[i].x;
-                this.blocks[i].y = prevBlocksPosition[i].y;
+            // Revert the move on collision.
+            for (i = 0; i < this.blocks.length; i += 1) {
+                this.blocks[i].x += x * -1;
+                this.blocks[i].y += y * -1;
             }
 
             throw exception;
@@ -335,7 +395,7 @@ Control
     };
 
 
-    function ShapeI(x, y, orientation) {
+    function ShapeI() {
         Shape.apply(this, arguments);
     }
     ShapeI.prototype = Object.create(Shape.prototype);
@@ -366,7 +426,7 @@ Control
     ];
 
 
-    function ShapeJ(x, y, orientation) {
+    function ShapeJ() {
         Shape.apply(this, arguments);
     }
     ShapeJ.prototype = Object.create(Shape.prototype);
@@ -397,7 +457,7 @@ Control
     ];
 
 
-    function ShapeL(x, y, orientation) {
+    function ShapeL() {
         Shape.apply(this, arguments);
     }
     ShapeL.prototype = Object.create(Shape.prototype);
@@ -428,7 +488,7 @@ Control
     ];
 
 
-    function ShapeO(x, y, orientation) {
+    function ShapeO() {
         Shape.apply(this, arguments);
     }
     ShapeO.prototype = Object.create(Shape.prototype);
@@ -444,7 +504,7 @@ Control
     ];
 
 
-    function ShapeS(x, y, orientation) {
+    function ShapeS() {
         Shape.apply(this, arguments);
     }
     ShapeS.prototype = Object.create(Shape.prototype);
@@ -475,7 +535,7 @@ Control
     ];
 
 
-    function ShapeT(x, y, orientation) {
+    function ShapeT() {
         Shape.apply(this, arguments);
     }
     ShapeT.prototype = Object.create(Shape.prototype);
@@ -506,7 +566,7 @@ Control
     ];
 
 
-    function ShapeZ(x, y, orientation) {
+    function ShapeZ() {
         Shape.apply(this, arguments);
     }
     ShapeZ.prototype = Object.create(Shape.prototype);
@@ -537,6 +597,12 @@ Control
     ];
 
 
+    /**
+     * Encapsulates the scoring functionality.
+     *
+     * Keeps track of the active score and the highscore.
+     * Also deletes and moves the Block's when a row is completed.
+     */
     Score = (function () {
         var exports = {},
             ROW_COMPLETE_SCORES = [40, 100, 300, 1200],
@@ -548,6 +614,11 @@ Control
         $score.text(score);
         $highscore.text(highscore);
 
+        /**
+         * Updates the score UI and saves the highscore.
+         *
+         * @private
+         */
         function update() {
             $score.text(score);
 
@@ -558,29 +629,39 @@ Control
             }
         }
 
-
+        /**
+         * Checks for completed rows.
+         *
+         * Also deletes and moves the Block's when completed rows are found.
+         */
         function check() {
             var rowCounts = [],
                 completeRows = [],
                 i,
                 j;
 
+            // Initialise the rowCounts array to the number of rows.
             for (i = 0; i < Grid.ROWS; i += 1) {
                 rowCounts.push(0);
             }
 
+            // Count the number of Block's on each row.
             for (i = 0; i < Block.blocks.length; i += 1) {
                 rowCounts[Block.blocks[i].y] += 1;
             }
 
+            // Check for complete rows.
             for (i = 0; i < rowCounts.length; i += 1) {
                 if (rowCounts[i] === Grid.COLUMNS) {
                     completeRows.push(i);
                 }
             }
 
+            // For each completed row, delete all the Block's on that row and
+            // move up all the Block's under it.
             for (i = 0; i < completeRows.length; i += 1) {
                 for (j = 0; j < Block.blocks.length; j += 1) {
+                    // Don't delete or move the Player's current Shape.
                     if (Player.getShape().blocks.indexOf(Block.blocks[j]) !== -1) {
                         continue;
                     }
@@ -594,6 +675,7 @@ Control
                 }
             }
 
+            // Add the score for the number of rows completed.
             if (completeRows.length > 0) {
                 score += ROW_COMPLETE_SCORES[completeRows.length - 1];
             }
@@ -602,14 +684,20 @@ Control
         }
         exports.check = check;
 
-
+        /**
+         * Adds the score for a soft drop.
+         *
+         * @param {number} dropAmount Number of rows that the shape dropped.
+         */
         function softDrop(dropAmount) {
             score += dropAmount;
             update();
         }
         exports.softDrop = softDrop;
 
-
+        /**
+         * Resets the active score to zero.
+         */
         function reset() {
             score = 0;
             update();
@@ -620,6 +708,11 @@ Control
     }());
 
 
+    /**
+     * Handles rendering of all the game objects.
+     *
+     * Which is really just Block's.
+     */
     Render = (function () {
         var exports = {},
             context = $tetris.find('canvas').get(0).getContext('2d'),
@@ -645,7 +738,13 @@ Control
             });
         }
 
-
+        /**
+         * Requests the game to be drawn.
+         *
+         * This method can be executed as many times as necessary without any
+         * huge performance hit. As only one animation frame will be requested
+         * at a time.
+         */
         function requestDraw() {
             if (drawing) {
                 queued = true;
@@ -659,6 +758,9 @@ Control
     }());
 
 
+    /**
+     * Handles keyboard key events and normalises the key repeat rate.
+     */
     Keyboard = (function () {
         var exports = {},
             REPEAT_DEFAULT = 100,
@@ -666,15 +768,18 @@ Control
             pressedKeys = {};
 
         function keydown(event) {
+            // Don't capture key events on form elements.
             if ($(event.target).is('input, textarea, select')) {
                 return;
             }
 
+            // Key is being pressed (key down event has already been fired).
             if (pressedKeys[event.which]) {
                 return false;
             }
 
             if (keys[event.which]) {
+                // Mark key as being pressed and register key repeat interval.
                 if (typeof keys[event.which].press === 'function') {
                     pressedKeys[event.which] = setInterval(
                         keys[event.which].press,
@@ -686,36 +791,51 @@ Control
                     pressedKeys[event.which] = true;
                 }
 
+                // Fire key down event.
                 if (typeof keys[event.which].down === 'function') {
-                    keys[event.which].down();
+                    keys[event.which].down.call(null);
                 }
 
                 return false;
             }
         }
 
-
         function keyup(event) {
             if (keys[event.which]) {
+                // Clear the key as being pressed.
                 if (keys[event.which].press) {
                     clearInterval(pressedKeys[event.which]);
                 }
 
-                if (typeof keys[event.which].up === 'function') {
-                    keys[event.which].up();
-                }
-
                 delete pressedKeys[event.which];
+
+                // Fire the key up event.
+                if (typeof keys[event.which].up === 'function') {
+                    keys[event.which].up.call(null);
+                }
             }
         }
 
-
+        /**
+         * Registers event listeners to a key.
+         *
+         * @param {object} options Object map of options. Available options are:
+         *                         key {number} Key code.
+         *                         down {function} [optional] Callback fired on key down.
+         *                         press {function} [optional] Callback fired on key repeat.
+         *                         up {function} [optional] Callback fired on key up.
+         *                         repeat {number} [optional] Key repeat rate in milliseconds.
+         */
         function on(options) {
             keys[options.key] = options;
         }
         exports.on = on;
 
-
+        /**
+         * Removes all event listeners for key.
+         *
+         * @param {number} key Key code.
+         */
         function off(key) {
             if (pressedKeys[key]) {
                 if (typeof keys[key].press === 'function') {
@@ -729,15 +849,22 @@ Control
         }
         exports.off = off;
 
-
+        /**
+         * Start listening to key events.
+         */
         function start() {
             $body.on('keydown', keydown);
             $body.on('keyup', keyup);
         }
         exports.start = start;
 
-
+        /**
+         * Stop listening to key events.
+         *
+         * Doesn't remove the event listeners, just 'pauses' them.
+         */
         function stop() {
+            // Clear of pressed keys.
             for (var key in pressedKeys) {
                 if (pressedKeys.hasOwnProperty(key)) {
                     if (typeof keys[key].press === 'function') {
@@ -756,6 +883,12 @@ Control
     }());
 
 
+    /**
+     * Generates random Shape's.
+     *
+     * Uses the Tetris 'Random Generator' algorithm. A queue of unique Shape's
+     * types is used to get the best even, random distribution of Shape's.
+     */
     Generator = (function () {
         var exports = {},
             availableShapes = [
@@ -769,6 +902,11 @@ Control
             ],
             shapeQueue = [];
 
+        /**
+         * Randomly fills up the queue with all the possible unique shapes.
+         *
+         * @private
+         */
         function fillQueue() {
             var shapeNumber;
 
@@ -781,7 +919,11 @@ Control
             }
         }
 
-
+        /**
+         * Generates a random Shape.
+         *
+         * @returns {Shape} A random Shape type instance.
+         */
         function generate() {
             if (shapeQueue.length === 0) {
                 fillQueue();
@@ -795,6 +937,9 @@ Control
     }());
 
 
+    /**
+     * Handles the player controlled Shape.
+     */
     Player = (function () {
         var exports = {},
             SPEED_NORMAL = 500,
@@ -849,19 +994,18 @@ Control
             }
         });
 
-
         function endGame() {
             gameover = true;
             $tetris.addClass('gameover');
             stop();
         }
 
-
         function moveForward() {
             try {
                 shape.move(0, -1);
                 shapeMoves += 1;
             } catch (exception) {
+                // If the Shape collided with a Block or the top boundary.
                 if (exception.name === 'BlockCollision' ||
                    (exception.name === 'BoundaryCollision' && exception.boundary === 1)) {
                     if (shapeMoves === 0) {
@@ -878,20 +1022,25 @@ Control
             }
         }
 
-
         function spawn() {
             shapeMoves = 0;
             softDropCount = 0;
             shape = Generator.generate();
         }
 
-
+        /**
+         * Retrieves the player controlled Shape.
+         *
+         * @returns {Shape} A type of Shape.
+         */
         function getShape() {
             return shape;
         }
         exports.getShape = getShape;
 
-
+        /**
+         * Start spawning Shape's and moving them.
+         */
         function start() {
             if (gameover) {
                 gameover = false;
@@ -908,7 +1057,9 @@ Control
         }
         exports.start = start;
 
-
+        /**
+         * Stop spawning Shape's and moving them.
+         */
         function stop() {
             for (var i = 0; i < KEYS.length; i += 1) {
                 Keyboard.off(KEYS[i].key);
@@ -923,6 +1074,11 @@ Control
     }());
 
 
+    /**
+     * Handles the game's sound.
+     *
+     * Doesn't do anything if the browser doesn't support HTML5 Audio.
+     */
     Sound = (function () {
         var exports = {},
             audio = $tetris.find('audio').get(0),
@@ -943,7 +1099,12 @@ Control
             }
         }
 
-
+        /**
+         * Starts the sound.
+         *
+         * Doesn't necessarily cause sound to start *playing*, as the sound
+         * preference could be disabled by the user.
+         */
         function start() {
             if (!Modernizr.audio) {
                 return;
@@ -955,7 +1116,9 @@ Control
         }
         exports.start = start;
 
-
+        /**
+         * Stops the sound.
+         */
         function stop() {
             if (!Modernizr.audio) {
                 return;
@@ -971,8 +1134,8 @@ Control
         }
         exports.stop = stop;
 
-
         if (Modernizr.audio) {
+            // Register sound preference toggle button.
             $sound.on('click', function () {
                 if (sound) {
                     sound = false;
@@ -986,6 +1149,7 @@ Control
                 renderButton();
             });
 
+            // Initial render of the sound button.
             renderButton();
         }
 
@@ -993,6 +1157,11 @@ Control
     }());
 
 
+    /**
+     * Main control for starting and stopping the game.
+     *
+     * Also handles the game help information.
+     */
     Control = (function () {
         var exports = {},
             running = true,
@@ -1000,6 +1169,9 @@ Control
             $helpButton = $tetris.find('.help-button'),
             $helpBox = $tetris.find('.help-box');
 
+        /**
+         * Starts the game.
+         */
         function start() {
             var shapes = [
                     new ShapeZ(1, 0),
@@ -1025,7 +1197,9 @@ Control
         }
         exports.start = start;
 
-
+        /**
+         * Stops and resets the game.
+         */
         function stop() {
             Block.blocks = [];
             Keyboard.stop();
@@ -1042,7 +1216,6 @@ Control
         }
         exports.stop = stop;
 
-
         function toggleHelp() {
             if (helpActive) {
                 helpActive = false;
@@ -1054,7 +1227,6 @@ Control
                 $helpBox.show();
             }
         }
-
 
         // escape
         Keyboard.on({
@@ -1072,16 +1244,20 @@ Control
             }
         });
 
-
+        // Remove the initial click handler that loads the javascript file.
         $tetris.find('img').off('click');
+
+        // Register handler to start the game.
         $tetris.find('img').on('click', function () {
             start();
         });
 
+        // Register game close button.
         $tetris.find('.close').on('click', function () {
             stop();
         });
 
+        // Register help toggle button.
         $helpButton.on('click', function () {
             toggleHelp();
         });
@@ -1090,5 +1266,6 @@ Control
     }());
 
 
+    // Initial start of the game.
     Control.start();
 }(jQuery, Modernizr));
