@@ -84,7 +84,6 @@ a {
     position: relative;
 
     pre {
-        width: 100%;
         overflow: auto;
         white-space: pre;
         word-wrap: normal;
@@ -193,10 +192,10 @@ body {
         right: 0;
         width: 100%;
         padding: 2px;
+        .box-sizing(border-box);
         color: white;
         background: black; // rgba fallback
         background: rgba(0, 0, 0, 0.85);
-        .box-sizing(border-box);
     }
 
     .gameover {
