@@ -50,7 +50,7 @@
 
         <div id="sidebar">
             <div id="tetris">
-                <img src="{{ site.baseurl }}/img/tetris.png" width="120" height="72">
+                <div class="image sprite-tetris"></div>
                 <div class="game">
                     <canvas width="120" height="240"></canvas>
                     <script class="audio" type="text/html">
@@ -165,7 +165,7 @@
                 .script('js/jquery.min.js')
                 .wait(function () {
                     if (Modernizr.canvas) {
-                        $('#tetris img').on('click', function () {
+                        $('#tetris .image').on('click', function () {
                             $LAB.script('js/tetris.js');
                         });
                     }

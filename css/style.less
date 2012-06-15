@@ -128,13 +128,19 @@ a {
 .sprite-html5 {
     width: 241px;
     height: 64px;
-    .sprite(0px, -64px);
+    .sprite(0px, -55px);
 }
 
 .sprite-creative-commons {
     width: 88px;
     height: 31px;
-    .sprite(0px, -128px);
+    .sprite(0px, -124px);
+}
+
+.sprite-tetris {
+    width: 118px;
+    height: 70px;
+    .sprite(0px, -160px);
 }
 
 
@@ -185,13 +191,17 @@ body {
     width: @tetrisWidth;
     max-height: @tetrisImgHeight; // Flexible height transition workaround
     overflow: hidden;
-    margin: 1px 0 @gridGutterWidth auto; // auto moves the div to the right
+    margin: 0 0 @gridGutterWidth auto; // auto moves the div to the right
     .transition(all 0.2s linear);
     .opacity(50);
     font: bold 12px @monoFontFamily;
 
     &:hover {
         .opacity(100);
+    }
+
+    .image {
+        margin: 1px;
     }
 
     .btn-mini {
@@ -238,7 +248,7 @@ body {
         max-height: 300px;
         .opacity(100);
 
-        img {
+        .image {
             display: none;
         }
 
@@ -264,7 +274,7 @@ body {
     display: inline-block;
 }
 
-.canvas #tetris img {
+.canvas #tetris .image {
     cursor: pointer;
 }
 

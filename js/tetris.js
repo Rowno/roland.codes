@@ -1249,10 +1249,10 @@ Control
         });
 
         // Remove the initial click handler that loads the javascript file.
-        $tetris.find('img').off('click');
+        $tetris.find('.image').off('click');
 
         // Register handler to start the game.
-        $tetris.find('img').on('click', function () {
+        $tetris.find('.image').on('click', function () {
             start();
         });
 
