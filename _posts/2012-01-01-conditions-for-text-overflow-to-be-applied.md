@@ -14,11 +14,11 @@ The first is when the text is prevented from wrapping by using the white-space p
 
 **Code example:**
 
-{% highlight html %}
+```html
 <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis augue metus, pellentesque sed molestie non, porta eget odio. Pellentesque vitae neque euismod purus dignissim aliquet. Nullam sit amet elit neque, et auctor nisi. Quisque suscipit elit eu nulla interdum tempus ac at nisl. Vivamus feugiat vestibulum sollicitudin. Aliquam erat volutpat.
 </div>
-{% endhighlight %}
+```
 
 **Live example:**
 
@@ -31,11 +31,11 @@ The second is when the text contains a *very* long word that can't wrap automati
 
 **Code example:**
 
-{% highlight html %}
+```html
 <div style="overflow: hidden; text-overflow: ellipsis;">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis augue metus, pellentesque sed molestie non, porta eget odio. Pellentesquevitaenequeeuismodpurusdignissimaliquet.Nullamsitametelitneque,etauctornisi.Quisquesuscipiteliteunullainterdumtempusacatnisl. Vivamus feugiat vestibulum sollicitudin. Aliquam erat volutpat.
 </div>
-{% endhighlight %}
+```
 
 **Live example:**
 
@@ -48,15 +48,15 @@ Unfortunately, constraining the height of an element and expecting text-overflow
 
 **Code example:**
 
-{% highlight html %}
-<div style="overflow: hidden; text-overflow: ellipsis; height: 4em;">
+```html
+<div style="overflow: hidden; text-overflow: ellipsis; height: 3em;">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis augue metus, pellentesque sed molestie non, porta eget odio. Pellentesque vitae neque euismod purus dignissim aliquet. Nullam sit amet elit neque, et auctor nisi. Quisque suscipit elit eu nulla interdum tempus ac at nisl. Vivamus feugiat vestibulum sollicitudin. Aliquam erat volutpat.
 </div>
-{% endhighlight %}
+```
 
 **Live example:**
 
-<div style="overflow: hidden; text-overflow: ellipsis; height: 4em;" class="well">
+<div style="overflow: hidden; text-overflow: ellipsis; height: 3em;" class="well">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis augue metus, pellentesque sed molestie non, porta eget odio. Pellentesque vitae neque euismod purus dignissim aliquet. Nullam sit amet elit neque, et auctor nisi. Quisque suscipit elit eu nulla interdum tempus ac at nisl. Vivamus feugiat vestibulum sollicitudin. Aliquam erat volutpat.
 </div>
 

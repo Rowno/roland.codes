@@ -12,6 +12,17 @@ pygments: true
 permalink: /:title/
 paginate: 5
 exclude: ['Makefile', 'README.md', 'psd']
+markdown: redcarpet2
+redcarpet:
+    extensions: [
+        "hard_wrap",
+        "no_intra_emphasis",
+        "autolink",
+        "fenced_code_blocks",
+        "strikethrough",
+        "lax_html_blocks",
+        "with_toc_data"
+    ]
 
 
 # PLUGINS

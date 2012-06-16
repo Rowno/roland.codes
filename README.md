@@ -9,8 +9,9 @@ Build
 To build the website, install the following:
 
  * [Jekyll and Pygments][jekyll-install]
- * [Node.js][nodejs-install]
- * Command-line LESS, which can be installed from NPM using: `npm install -g less`
+ * [Redcarpet][] for GitHub Flavoured Markdown: `gem install redcarpet`
+ * [Node.js][nodejs-install] for compiling LESS
+ * Command-line LESS: `npm install -g less`
 
 And then run Jekyll.
 
@@ -24,5 +25,6 @@ Copyright 2012, Roland Warmerdam.
 
 [Jekyll]: https://github.com/mojombo/jekyll
 [jekyll-install]: https://github.com/mojombo/jekyll/wiki/Install
+[Redcarpet]: https://github.com/tanoku/redcarpet
 [nodejs-install]: https://github.com/joyent/node/wiki/Installation
 [license]: http://creativecommons.org/licenses/by-sa/3.0/
