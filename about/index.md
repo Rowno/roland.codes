@@ -6,7 +6,7 @@ pageId: about
 
 Me
 --
-I'm Roland Warmerdam and I’m a programmer in New Zealand. I develop in a number of different technologies, but I specialise in frontend web development. I enjoy experimenting and developing web apps using the latest web standards and learning about new languages and technologies. I’m also an avid Linux user and dabble in server administration on my virtual private server.
+I'm a programmer based in New Zealand who develops in a number of different technologies but specialises in frontend web development. I enjoy experimenting/developing web apps using the latest web standards and learning about new technologies. I’m also an avid Linux user and dabble in server administration on my virtual private server.
 
 Website
 -------
