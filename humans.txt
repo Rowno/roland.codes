@@ -12,6 +12,13 @@
 /* SITE */
     Last update: {{ site.time | date_to_long_string }}
     Standards: HTML5, CSS3, RSS, Media Queries, Microdata, WAI-ARIA, CORS, Canvas, Local Storage, Audio
-    Components: HTML5 Boilerplate, Twitter Bootstrap, Modernizr, LABjs, jQuery, Hogan.js, jQuery Timeago
     Software: Sublime Text 2, Jekyll, LESS
     Source: {{ site.githubUrl }}
+    Components:
+        HTML5 Boilerplate - http://html5boilerplate.com/
+        Twitter Bootstrap - http://twitter.github.com/bootstrap/
+        Modernizr - http://modernizr.com/
+        LABjs - http://labjs.com/
+        jQuery - http://jquery.com/
+        Hogan.js - http://twitter.github.com/hogan.js/
+        jQuery Timeago - http://timeago.yarp.com/
