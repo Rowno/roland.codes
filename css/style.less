@@ -28,6 +28,13 @@
          url('@{path}.svg#@{family}') format('svg');
 }
 
+// http://nicolasgallagher.com/another-css-image-replacement-technique/
+.image-replacement() {
+    font: 0/0 a;
+    text-shadow: none;
+    color: transparent;
+}
+
 
 // GLOBAL STYLES
 // -------------
@@ -116,31 +123,32 @@ a {
 // SPRITE
 // ------
 .sprite(@x, @y) {
+    .image-replacement();
     background: url(../img/sprite.png) no-repeat @x @y;
 }
 
 .sprite-linode {
+    .sprite(0px, 0px);
     width: 190px;
     height: 50px;
-    .sprite(0px, 0px);
 }
 
 .sprite-html5 {
+    .sprite(0px, -55px);
     width: 241px;
     height: 64px;
-    .sprite(0px, -55px);
 }
 
 .sprite-creative-commons {
+    .sprite(0px, -124px);
     width: 88px;
     height: 31px;
-    .sprite(0px, -124px);
 }
 
 .sprite-tetris {
+    .sprite(0px, -160px);
     width: 118px;
     height: 70px;
-    .sprite(0px, -160px);
 }
 
 
@@ -201,6 +209,7 @@ body {
     }
 
     .image {
+        .sprite-tetris();
         margin: 1px;
     }
 
@@ -272,6 +281,7 @@ body {
 
 .audio #tetris .sound {
     display: inline-block;
+    .ie7-inline-block();
 }
 
 .canvas #tetris .image {
@@ -309,6 +319,7 @@ body {
 
     a {
         display: inline-block;
+        .ie7-inline-block();
         margin-bottom: @gridGutterWidth;
         margin-left: @gridGutterWidth;
         vertical-align: middle;
