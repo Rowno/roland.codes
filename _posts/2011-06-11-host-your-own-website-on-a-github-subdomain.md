@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Host your own website on a GitHub subdomain
-tags: [github, github pages]
+tags: [github]
 commentsIssueId: 2
 ---
 
