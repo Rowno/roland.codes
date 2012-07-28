@@ -40,7 +40,7 @@
 
             $html.html(renderedComments);
             $html.find('time').timeago();
-            $html.find('a').attr('rel', 'nofollow');
+            $html.find('.content a').attr('rel', 'nofollow');
 
             output($html);
         },
