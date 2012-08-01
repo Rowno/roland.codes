@@ -48,7 +48,7 @@ Control
      * Polyfills
      */
 
-    // Array.isArray polyfills
+    // Array.isArray polyfill
     if (!Array.isArray) {
         Array.isArray = function (vArg) {
             return vArg.constructor === Array;
