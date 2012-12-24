@@ -1,4 +1,3 @@
-BASEURL = /rolandwarmerdam.co.nz/_site
 URL = http://localhost/rolandwarmerdam.co.nz/_site
 
 build:
