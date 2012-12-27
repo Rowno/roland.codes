@@ -4,7 +4,7 @@ build:
 	jekyll --base-url $(BASEURL) --url $(URL)
 
 auto:
-	jekyll --auto --base-url $(BASEURL) --url $(URL)
+	jekyll --server --auto --base-url $(BASEURL) --url $(URL)
 
 production:
 	jekyll --url http://rolandwarmerdam.co.nz
