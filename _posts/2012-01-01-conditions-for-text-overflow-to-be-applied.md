@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Conditions for text-overflow to be applied
-tags: [css3, text-overflow]
+tags: [css, text-overflow]
 commentsIssueId: 7
 ---
 
