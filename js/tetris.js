@@ -1,6 +1,3 @@
-/*jslint browser:true */
-/*globals jQuery:false, Modernizr:false */
-
 /*
 CONTENTS
 ========

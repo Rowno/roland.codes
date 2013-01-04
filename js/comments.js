@@ -1,5 +1,4 @@
-/*jslint browser: true */
-/*globals Site:false, jQuery:false, Hogan:false, Modernizr:false */
+/*global Hogan:false */
 
 (function (Site, $, Hogan, Modernizr) {
     'use strict';
