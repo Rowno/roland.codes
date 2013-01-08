@@ -94,24 +94,24 @@ a {
         word-wrap: normal;
 
         // Add the syntax name above the code block
-        code:after {
+        code:before {
             content: attr(class);
             position: absolute;
             top: 1px;
             right: 1px;
-            padding: 0 (@baseLineHeight - 1) / 2; // Bootstrap `pre` padding calculation
-            font-size: 12px;
-            font-weight: bold;
-            text-transform: capitalize;
+            padding: (@baseLineHeight - 1) / 2; // Bootstrap `pre` padding calculation
+            font: bold 0.7em @baseFontFamily;
+            text-transform: uppercase;
             background: white;
             .border-radius(0 4px);
             border: 1px solid #ccc; // fallback for IE7-8
-            border: 1px solid rgba(0,0,0,.15);
+            border: 1px solid rgba(0,0,0,0.15);
             border-top: none;
             border-right: none;
             .transition(all 0.2s linear);
         }
-        &:hover code:after {
+
+        &:hover code:before {
             .opacity(33);
         }
     }
