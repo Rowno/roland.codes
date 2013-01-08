@@ -1,6 +1,6 @@
 ---
 layout: post
-title: GitHub Wiki Sidebars
+title: GitHub Wiki sidebars
 tags: [github]
 commentsIssueId: 13
 ---
