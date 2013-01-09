@@ -11,5 +11,6 @@ production:
 
 deploy: production
 	rsync -avz --delete _site/ vps:/var/www/rolandwarmerdam/htdocs/
+	git push
 
 .PHONY: build production deploy auto
