@@ -18,9 +18,9 @@ And then run Jekyll.
 
 License
 -------
-rolandwarmerdam.co.nz is licensed under the [Creative Commons Attribution-ShareAlike 3.0 Unported License][license].
+The contents of this repository is released under the [Creative Commons Attribution-ShareAlike 3.0 Unported License][license].
 
-Copyright 2012, Roland Warmerdam.
+Copyright © 2013 Roland Warmerdam.
 
 
 [Jekyll]: https://github.com/mojombo/jekyll
