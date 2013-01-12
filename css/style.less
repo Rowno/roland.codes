@@ -442,14 +442,13 @@ body {
 
     .comment {
         margin-top: @gridGutterWidth;
-        .border-radius(3px);
-        border: 1px dashed darken(@backgroundColor, 10%);
+        padding: 2px;
+        .border-radius(4px);
+        background: @backgroundColor;
 
         .header {
-            padding: 3px;
+            padding: 2px 0.5em 4px 2px;
             line-height: 1em;
-            .border-radius(3px);
-            background: @backgroundColor;
             .clearfix();
 
             img {
@@ -473,6 +472,8 @@ body {
 
         .content {
             padding: 5px;
+            background: #fff;
+            .border-radius(4px 4px 2px 2px);
 
             :last-child {
                 margin-bottom: 0;
