@@ -5,9 +5,9 @@
 
 
 /* TEAM */
-    Web Developer: Roland Warmerdam
-    Site:          http://rolandwarmerdam.co.nz/
-    Location:      New Zealand
+    Front End Web Developer: Roland Warmerdam
+    Site:                    http://rolandwarmerdam.co.nz/
+    Location:                New Zealand
 
 /* SITE */
     Last update: {{ site.time | date_to_long_string }}

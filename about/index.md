@@ -6,7 +6,7 @@ pageId: about
 
 Me
 --
-I'm a programmer based in New Zealand who develops in a number of different technologies but specialises in frontend web development. I enjoy experimenting/developing web apps using the latest web standards and learning about new technologies. I’m also an avid Linux user and dabble in server administration on my virtual private server.
+I'm a programmer based in New Zealand who develops in a number of different technologies but specialises in front-end web development. I enjoy experimenting/developing web apps using the latest web standards and learning about new technologies. I’m also an avid Linux user and dabble in server administration on my virtual private server.
 
 Website
 -------
