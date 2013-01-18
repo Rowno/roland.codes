@@ -30,13 +30,6 @@
          url('@{path}.svg#@{family}') format('svg');
 }
 
-// http://nicolasgallagher.com/another-css-image-replacement-technique/
-.image-replacement() {
-    font: 0/0 a;
-    text-shadow: none;
-    color: transparent;
-}
-
 
 // GLOBAL STYLES
 // -------------
@@ -117,11 +110,85 @@ a {
     }
 }
 
+.loader {
+    @size: 10px;
+    @duration: 0.4s;
+    @padding: @size / 2;
+
+    .hide-text();
+    position: relative;
+    margin: 0 auto;
+
+    .cssanimations & {
+        &, &:before, &:after {
+            display: block;
+            width: @size;
+            height: @size;
+            background: #82c4e5;
+            border-radius: @size / 4;
+            -webkit-animation: loader @duration steps(1) infinite;
+               -moz-animation: loader @duration steps(1) infinite;
+                 -o-animation: loader @duration steps(1) infinite;
+                    animation: loader @duration steps(1) infinite;
+        }
+
+        &:before, &:after {
+            content: '';
+            display: block;
+            position: absolute;
+        }
+
+        &:before {
+            left: -@size - @padding;
+            -webkit-animation-delay: @duration / 3 * 2;
+               -moz-animation-delay: @duration / 3 * 2;
+                 -o-animation-delay: @duration / 3 * 2;
+                    animation-delay: @duration / 3 * 2;
+        }
+
+        &:after {
+            right: -@size - @padding;
+            -webkit-animation-delay: @duration / 3;
+               -moz-animation-delay: @duration / 3;
+                 -o-animation-delay: @duration / 3;
+                    animation-delay: @duration / 3;
+        }
+    }
+
+    .no-cssanimations & {
+        background: url(../img/ajax-loader.gif) no-repeat;
+        width: 43px;
+        height: 11px;
+    }
+}
+
+@-webkit-keyframes loader {
+  0%   { background: #82c4e5; }
+  66%  { background: #0088cc; }
+  100% { background: #82c4e5; }
+}
+@-moz-keyframes loader {
+  0%   { background: #82c4e5; }
+  66%  { background: #0088cc; }
+  100% { background: #82c4e5; }
+}
+@-o-keyframes loader {
+  0%   { background: #82c4e5; }
+  66%  { background: #0088cc; }
+  100% { background: #82c4e5; }
+}
+@keyframes loader {
+  0%   { background: #82c4e5; }
+  66%  { background: #0088cc; }
+  100% { background: #82c4e5; }
+}
+
 
 // SPRITE
 // ------
+
 .sprite(@x, @y) {
-    .image-replacement();
+    .hide-text();
     background: url(../img/sprite.png) no-repeat @x @y;
 }
 
@@ -435,10 +502,6 @@ body {
 
 #comments {
     margin-top: @gridGutterWidth;
-
-    .loader {
-        text-align: center;
-    }
 
     .comment {
         @borderSize: 3px;
