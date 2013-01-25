@@ -299,7 +299,6 @@ Control
                 this.x + positions[i].x,
                 this.y + positions[i].y
             ));
-
         }
 
         Render.requestDraw();
