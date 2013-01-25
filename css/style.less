@@ -38,7 +38,7 @@
 @font-face { .font-face('TelegramaRaw', 'font/telegrama-raw'); }
 
 h1, h2, h3, h4, h5, h6 {
-    line-height: @baseLineHeight;
+    line-height: @baseLineHeight * 0.8;
     font-weight: normal;
 }
 
@@ -244,7 +244,7 @@ body {
 
 #header, #header h1 {
     font-size: 44px;
-    line-height: 1em;
+    line-height: 1;
     font-family: 'TelegramaRaw', monospace;
 }
 
@@ -512,7 +512,7 @@ body {
 
         .header {
             padding: 0 0.5em @borderSize 0;
-            line-height: 1em;
+            line-height: 1;
             .clearfix();
 
             img {
