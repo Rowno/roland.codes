@@ -711,9 +711,40 @@ Control
      */
     Render = (function () {
         var exports = {},
-            context = $tetris.find('canvas').get(0).getContext('2d'),
             queued = false,
-            drawing = false;
+            drawing = false,
+            canvas = $tetris.find('canvas')[0],
+            context = canvas.getContext('2d'),
+            devicePixelRatio,
+            backingStoreRatio,
+            ratio,
+            canvasWidth,
+            canvasHeight;
+
+
+        // Initialise high DPI canvas
+
+        devicePixelRatio = window.devicePixelRatio || 1;
+        backingStoreRatio = context.webkitBackingStorePixelRatio ||
+                            context.mozBackingStorePixelRatio ||
+                            context.msBackingStorePixelRatio ||
+                            context.oBackingStorePixelRatio ||
+                            context.backingStorePixelRatio || 1;
+        ratio = devicePixelRatio / backingStoreRatio;
+
+        if (devicePixelRatio !== backingStoreRatio) {
+            canvasWidth = canvas.width;
+            canvasHeight = canvas.height;
+
+            canvas.width = canvasWidth * ratio;
+            canvas.height = canvasHeight * ratio;
+
+            canvas.style.width = canvasWidth + 'px';
+            canvas.style.height = canvasHeight + 'px';
+
+            context.scale(ratio, ratio);
+        }
+
 
         function draw() {
             drawing = true;

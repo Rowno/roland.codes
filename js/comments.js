@@ -8,7 +8,9 @@
     }
 
     var $comments = $('#comments'),
-        commentsTemplate = Hogan.compile($('#comments-template').html());
+        commentsTemplate = Hogan.compile($('#comments-template').html()),
+        devicePixelRatio = window.devicePixelRatio || 1,
+        AVATAR_SIZE = 25;
 
     function output(html) {
         $comments.attr('aria-busy', false);
@@ -32,10 +34,14 @@
         },
         success: function (result) {
             var $html = $('<div />'),
-                renderedComments = commentsTemplate.render({
-                    site: Site.variables,
-                    comments: result
-                });
+                renderedComments;
+
+            result.avatarSize = AVATAR_SIZE * devicePixelRatio;
+
+            renderedComments = commentsTemplate.render({
+                site: Site.variables,
+                comments: result
+            });
 
             $html.html(renderedComments);
             $html.find('time').timeago();

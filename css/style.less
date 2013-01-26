@@ -13,6 +13,7 @@
 
 @import "_bootstrap/bootstrap.less";
 @import "_pygments/github.less";
+@import "_fontawesome.less";
 
 @baseFontSize: 15px;
 @baseLineHeight: 1.618em;
@@ -187,17 +188,26 @@ a {
 // SPRITE
 // ------
 
-.sprite(@x, @y) {
-    .hide-text();
-    background: url(../img/sprite.png) no-repeat @x @y;
-}
+#sprite {
+    .sprite(@x, @y) {
+        .hide-text();
+        background: url(../img/sprite.png) no-repeat @x @y;
 
-.sprite-tetris {
-    .sprite(0, 0);
-    width: 118px;
-    height: 70px;
-}
+        @media print,
+               (-o-min-device-pixel-ratio: 5/4),
+               (-webkit-min-device-pixel-ratio: 1.25),
+               (min-resolution: 120dpi) {
+            background-image: url(../img/sprite2x.png);
+            background-size: 118px 70px;
+        }
+    }
 
+    .tetris {
+        #sprite > .sprite(0, 0);
+        width: 118px;
+        height: 70px;
+    }
+}
 
 // BASE STRUCTURE
 // --------------
@@ -257,12 +267,12 @@ body {
     }
 
     .image {
-        .sprite-tetris();
+        #sprite > .tetris();
         margin: 1px;
     }
 
     .btn-mini {
-        font-size: 12px;
+        width: 2em;
     }
 
     .overlay {
@@ -491,6 +501,8 @@ body {
 
             img {
                 float: left;
+                width: 25px;
+                height: 25px;
             }
 
             .name, .time {
