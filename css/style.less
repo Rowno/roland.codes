@@ -269,6 +269,10 @@ body {
     .image {
         #sprite > .tetris();
         margin: 1px;
+
+        .canvas & {
+            cursor: pointer;
+        }
     }
 
     .btn-mini {
@@ -324,26 +328,13 @@ body {
         }
     }
 
-    .highscore {
+    .no-localstorage & .highscore {
         display: none;
     }
 
-    .sound {
+    .no-audio & .sound {
         display: none;
     }
-}
-
-.localstorage #tetris .highscore {
-    display: block;
-}
-
-.audio #tetris .sound {
-    display: inline-block;
-    .ie7-inline-block();
-}
-
-.canvas #tetris .image {
-    cursor: pointer;
 }
 
 #main-menu {
