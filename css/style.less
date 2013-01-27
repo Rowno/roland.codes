@@ -260,7 +260,7 @@ body {
     margin: 0 0 @gridGutterWidth auto; // auto moves the div to the right
     .transition(all 0.2s linear);
     .opacity(50);
-    font: bold 12px @monoFontFamily;
+    font: 10px 'TelegramaRender', monospace;
 
     &:hover {
         .opacity(100);
@@ -303,11 +303,10 @@ body {
     .help-box {
         top: 0;
         text-align: left;
-        font-size: 10px;
-        font-weight: normal;
 
         strong {
-            font-size: 12px;
+            font-weight: normal;
+            text-decoration: underline;
         }
     }
 
