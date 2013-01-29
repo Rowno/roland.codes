@@ -17,7 +17,7 @@ module.exports = function (grunt) {
                     dumpLineNumbers: 'mediaquery'
                 },
                 files: {
-                    'build/css/style.css': 'css/style.less'
+                    'build/css/style.css': 'build/css/style.less'
                 }
             },
             prod: {
@@ -26,7 +26,7 @@ module.exports = function (grunt) {
                     yuicompress: true
                 },
                 files: {
-                    'build/css/style.css': 'css/style.less'
+                    'build/css/style.css': 'build/css/style.less'
                 }
             }
         },
