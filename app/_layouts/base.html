@@ -27,7 +27,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ site.baseurl }}/apple-touch-icon-72x72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="{{ site.baseurl }}/apple-touch-icon-precomposed.png">
 
-    <script src="{{ site.baseurl }}/js/modernizr.min.js"></script>
+    <script src="{{ site.baseurl }}/js/vendor/modernizr.min.js"></script>
     <script>
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', '{{ site.googleAnalyticsID }}']);
@@ -143,7 +143,7 @@
     </div>
 
 
-    <script src="{{ site.baseurl }}/js/lab.min.js"></script>
+    <script src="{{ site.baseurl }}/js/vendor/lab.min.js"></script>
     <script>
         var Site = (function () {
             'use strict';
@@ -166,7 +166,7 @@
             })
 
             $LAB
-                .script('js/jquery.min.js')
+                .script('js/vendor/jquery.min.js')
                 .wait(function () {
                     if (Modernizr.canvas) {
                         $('#tetris .image').on('click', function () {
