@@ -6,7 +6,7 @@ module.exports = function (grunt) {
     // Project configuration.
     grunt.initConfig({
         jekyll: {
-            dev: {
+            all: {
                 src: 'app',
                 dest: 'build'
             }
@@ -30,10 +30,20 @@ module.exports = function (grunt) {
                 }
             }
         },
+        min: {
+            tetris: {
+                src: ['build/js/tetris.js'],
+                dest: 'build/js/tetris.js'
+            },
+            comments: {
+                src: ['build/js/comments.js'],
+                dest: 'build/js/comments.js'
+            }
+        },
         connect: {
-            server: {
+            all: {
                 port: 4000,
-                base: 'build'
+                base: 'build/'
             }
         }
     });
@@ -42,7 +52,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-connect');
 
-    grunt.registerTask('default', 'jekyll less:dev');
-    grunt.registerTask('server', 'default connect');
-    grunt.registerTask('prod', 'jekyll less:prod');
+    grunt.registerTask('dev', 'jekyll less:dev');
+    grunt.registerTask('prod', 'jekyll less:prod min');
+
+    grunt.registerTask('default', 'dev');
+    grunt.registerTask('server', 'connect');
 };
