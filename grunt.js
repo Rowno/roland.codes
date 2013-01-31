@@ -40,21 +40,32 @@ module.exports = function (grunt) {
                 dest: 'build/js/comments.js'
             }
         },
-        connect: {
-            all: {
-                port: 4000,
-                base: 'build/'
+        watch: {
+            dev: {
+                files: 'app/**/*',
+                tasks: ['dev']
+            },
+            prod: {
+                files: 'app/**/*',
+                tasks: ['prod']
             }
+        },
+        server: {
+            port: 8000,
+            base: 'build/'
         }
     });
 
     grunt.loadNpmTasks('grunt-jekyll');
     grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-connect');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('dev', 'jekyll less:dev');
     grunt.registerTask('prod', 'jekyll less:prod min');
 
+    grunt.registerTask('auto:dev', 'dev server watch:dev');
+    grunt.registerTask('auto:prod', 'prod server watch:prod');
+    grunt.registerTask('auto', 'auto:dev');
+
     grunt.registerTask('default', 'dev');
-    grunt.registerTask('server', 'connect');
 };
