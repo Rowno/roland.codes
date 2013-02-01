@@ -14,7 +14,7 @@ module.exports = function (grunt) {
         less: {
             dev: {
                 options: {
-                    dumpLineNumbers: 'mediaquery'
+                    dumpLineNumbers: 'all'
                 },
                 files: {
                     'build/css/style.css': 'build/css/style.less'
@@ -30,7 +30,7 @@ module.exports = function (grunt) {
                 }
             }
         },
-        min: {
+        uglify: {
             tetris: {
                 src: ['build/js/tetris.js'],
                 dest: 'build/js/tetris.js'
@@ -50,22 +50,27 @@ module.exports = function (grunt) {
                 tasks: ['prod']
             }
         },
-        server: {
-            port: 8000,
-            base: 'build/'
+        connect: {
+            all: {
+                options: {
+                    base: 'build'
+                }
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-jekyll');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-connect');
 
-    grunt.registerTask('dev', 'jekyll less:dev');
-    grunt.registerTask('prod', 'jekyll less:prod min');
+    grunt.registerTask('dev', ['jekyll', 'less:dev']);
+    grunt.registerTask('prod', ['jekyll', 'less:prod', 'uglify']);
 
-    grunt.registerTask('auto:dev', 'dev server watch:dev');
-    grunt.registerTask('auto:prod', 'prod server watch:prod');
-    grunt.registerTask('auto', 'auto:dev');
+    grunt.registerTask('auto:dev', ['dev', 'connect', 'watch:dev']);
+    grunt.registerTask('auto:prod', ['prod', 'connect', 'watch:prod']);
+    grunt.registerTask('auto', ['auto:dev']);
 
-    grunt.registerTask('default', 'dev');
+    grunt.registerTask('default', ['dev']);
 };

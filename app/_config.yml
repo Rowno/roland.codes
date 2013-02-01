@@ -13,7 +13,6 @@ url: "http://rolandwarmerdam.co.nz"
 pygments: true
 permalink: /:title/
 paginate: 5
-exclude: ['Makefile', 'README.md', 'node_modules', 'package.json', 'grunt.js']
 markdown: redcarpet
 redcarpet:
     extensions: [
