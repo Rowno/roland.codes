@@ -311,7 +311,9 @@ body {
     }
 
     .game {
+        // Hide from both screenreaders and browsers
         display: none;
+        visibility: hidden;
     }
 
     &.running {
@@ -324,6 +326,7 @@ body {
 
         .game {
             display: block;
+            visibility: visible;
         }
     }
 
