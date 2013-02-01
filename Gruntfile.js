@@ -40,6 +40,19 @@ module.exports = function (grunt) {
                 dest: 'build/js/comments.js'
             }
         },
+        imagemin: {
+            all: {
+                options: {
+                    optimizationLevel: 7
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'build/img/',
+                    src: ['**/*'],
+                    dest: 'build/img/'
+                }]
+            }
+        },
         watch: {
             dev: {
                 files: 'app/**/*',
@@ -64,9 +77,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
 
     grunt.registerTask('dev', ['jekyll', 'less:dev']);
-    grunt.registerTask('prod', ['jekyll', 'less:prod', 'uglify']);
+    grunt.registerTask('prod', ['jekyll', 'less:prod', 'uglify', 'imagemin']);
 
     grunt.registerTask('auto:dev', ['dev', 'connect', 'watch:dev']);
     grunt.registerTask('auto:prod', ['prod', 'connect', 'watch:prod']);
