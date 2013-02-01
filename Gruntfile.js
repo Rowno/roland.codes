@@ -30,6 +30,18 @@ module.exports = function (grunt) {
                 }
             }
         },
+        jshint: {
+            options: {
+                jshintrc: '.jshintrc'
+            },
+            all: [
+                '.jshintrc',
+                'Gruntfile.js',
+                'package.json',
+                'app/js/**/*.js',
+                '!app/js/vendor/**/*'
+            ]
+        },
         uglify: {
             tetris: {
                 src: ['build/js/tetris.js'],
@@ -76,6 +88,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
 

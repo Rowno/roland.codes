@@ -65,7 +65,7 @@ Control
         }
 
         if (!window.requestAnimationFrame) {
-            window.requestAnimationFrame = function (callback, element) {
+            window.requestAnimationFrame = function (callback) {
                 var currTime = new Date().getTime(),
                     timeToCall = Math.max(0, 16 - (currTime - lastTime)),
                     id = window.setTimeout(
@@ -1218,6 +1218,8 @@ Control
                     new ShapeT(1, 5, 2),
                     new ShapeJ(3, 4)
                 ];
+            // Make JSHint ignore the unused variable
+            shapes.pop();
 
             Keyboard.start();
             Player.start();

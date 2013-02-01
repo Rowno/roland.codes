@@ -23,6 +23,7 @@
     "grunt-contrib-less": "0.5.0rc7",
     "grunt-contrib-watch": "0.2.0rc7",
     "grunt-contrib-uglify": "0.1.1rc6",
+    "grunt-contrib-jshint": "0.1.1rc6",
     "grunt-contrib-connect": "0.1.1rc6",
     "grunt-contrib-imagemin": "0.1.1rc7"
   },
