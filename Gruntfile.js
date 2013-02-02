@@ -3,7 +3,6 @@
 module.exports = function (grunt) {
     'use strict';
 
-    // Project configuration.
     grunt.initConfig({
         jekyll: {
             all: {
@@ -43,13 +42,13 @@ module.exports = function (grunt) {
             ]
         },
         uglify: {
-            tetris: {
-                src: ['build/js/tetris.js'],
-                dest: 'build/js/tetris.js'
-            },
-            comments: {
-                src: ['build/js/comments.js'],
-                dest: 'build/js/comments.js'
+            all: {
+                files: [{
+                    expand: true,
+                    cwd: 'app/js/',
+                    src: ['**/*.js', '!vendor/**/*'],
+                    dest: 'build/js/'
+                }]
             }
         },
         imagemin: {
