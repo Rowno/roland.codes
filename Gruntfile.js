@@ -64,6 +64,29 @@ module.exports = function (grunt) {
                 }]
             }
         },
+        ver: {
+            all: {
+                phases: [
+                    {
+                        files: [
+                            'build/assets/img/**/*.@(png|jpg|gif)'
+                        ],
+                        references: [
+                            'build/assets/css/*.css'
+                        ]
+                    },
+                    {
+                        files: [
+                            'build/assets/css/*.css',
+                            'build/assets/js/**/*.js'
+                        ],
+                        references: [
+                            'build/**/*.html'
+                        ]
+                    }
+                ]
+            }
+        },
         watch: {
             dev: {
                 files: 'app/**/*',
@@ -83,6 +106,7 @@ module.exports = function (grunt) {
         }
     });
 
+    grunt.loadNpmTasks('grunt-ver');
     grunt.loadNpmTasks('grunt-jekyll');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -92,7 +116,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-imagemin');
 
     grunt.registerTask('dev', ['jekyll', 'less:dev']);
-    grunt.registerTask('prod', ['jekyll', 'less:prod', 'uglify', 'imagemin']);
+    grunt.registerTask('prod', ['jekyll', 'less:prod', 'uglify', 'imagemin', 'ver']);
 
     grunt.registerTask('auto:dev', ['dev', 'connect', 'watch:dev']);
     grunt.registerTask('auto:prod', ['prod', 'connect', 'watch:prod']);
