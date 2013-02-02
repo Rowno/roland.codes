@@ -16,7 +16,7 @@ module.exports = function (grunt) {
                     dumpLineNumbers: 'all'
                 },
                 files: {
-                    'build/css/style.css': 'build/css/style.less'
+                    'build/assets/css/style.css': 'app/assets/css/style.less'
                 }
             },
             prod: {
@@ -25,7 +25,7 @@ module.exports = function (grunt) {
                     yuicompress: true
                 },
                 files: {
-                    'build/css/style.css': 'build/css/style.less'
+                    'build/assets/css/style.css': 'app/assets/css/style.less'
                 }
             }
         },
@@ -37,17 +37,17 @@ module.exports = function (grunt) {
                 '.jshintrc',
                 'Gruntfile.js',
                 'package.json',
-                'app/js/**/*.js',
-                '!app/js/vendor/**/*'
+                'app/assets/js/**/*.js',
+                '!app/assets/js/vendor/**/*'
             ]
         },
         uglify: {
             all: {
                 files: [{
                     expand: true,
-                    cwd: 'app/js/',
+                    cwd: 'app/assets/js/',
                     src: ['**/*.js', '!vendor/**/*'],
-                    dest: 'build/js/'
+                    dest: 'build/assets/js/'
                 }]
             }
         },
@@ -58,9 +58,9 @@ module.exports = function (grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: 'build/img/',
+                    cwd: 'app/assets/img/',
                     src: ['**/*'],
-                    dest: 'build/img/'
+                    dest: 'build/assets/img/'
                 }]
             }
         },

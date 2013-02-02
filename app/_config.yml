@@ -6,6 +6,12 @@ copyright: "Copyright © 2011-2013 Roland Warmerdam"
 githubUrl: "https://github.com/Rowno/rolandwarmerdam.co.nz"
 googleAnalyticsID: "UA-21361814-1"
 
+cssDir: assets/css
+jsDir: assets/js
+imgDir: assets/img
+contentImgDir: assets/img/content
+audioDir: assets/audio
+
 
 # JEKYLL
 # ------
