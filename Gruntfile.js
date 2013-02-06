@@ -58,7 +58,7 @@ module.exports = function (grunt) {
                             name: 'app/main'
                         }, {
                             name: 'app/comments',
-                            exclude: ['jquery']
+                            exclude: ['app/variables', 'jquery']
                         }
                     ]
                 }
@@ -87,28 +87,6 @@ module.exports = function (grunt) {
                 }]
             }
         },
-        ver: {
-            all: {
-                phases: [
-                    {
-                        files: [
-                            'build/assets/img/**/*.@(png|jpg|gif)'
-                        ],
-                        references: [
-                            'build/assets/css/*.css'
-                        ]
-                    }, {
-                        files: [
-                            'build/assets/css/*.css',
-                            'build/assets/js/**/*.js'
-                        ],
-                        references: [
-                            'build/**/*.html'
-                        ]
-                    }
-                ]
-            }
-        },
         watch: {
             dev: {
                 files: 'app/**/*',
@@ -128,7 +106,6 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.loadNpmTasks('grunt-ver');
     grunt.loadNpmTasks('grunt-jekyll');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -143,7 +120,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('auto:dev', ['dev', 'connect', 'watch:dev']);
     grunt.registerTask('auto:prod', ['prod', 'connect', 'watch:prod']);
-    grunt.registerTask('auto', ['auto:dev']);
 
+    grunt.registerTask('auto', ['auto:dev']);
     grunt.registerTask('default', ['dev']);
 };
