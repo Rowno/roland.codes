@@ -1,6 +1,4 @@
-/*global Hogan:false */
-
-(function (Site, $, Hogan, Modernizr) {
+define('app/comments', ['jquery', 'hogan', 'jquery.timeago'], function ($, Hogan) {
     'use strict';
 
     if (!Site.variables.commentsIssueId) {
@@ -53,4 +51,4 @@
             output($('#comments-error').html());
         }
     });
-}(Site, jQuery, Hogan, Modernizr));
+});

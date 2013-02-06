@@ -16,7 +16,7 @@ module.exports = function (grunt) {
                     dumpLineNumbers: 'all'
                 },
                 files: {
-                    'build/assets/css/style.css': 'app/assets/css/style.less'
+                    'build/assets/css/style.css': 'build/assets/css/style.less'
                 }
             },
             prod: {
@@ -25,7 +25,7 @@ module.exports = function (grunt) {
                     yuicompress: true
                 },
                 files: {
-                    'build/assets/css/style.css': 'app/assets/css/style.less'
+                    'build/assets/css/style.css': 'build/assets/css/style.less'
                 }
             }
         },
@@ -41,11 +41,34 @@ module.exports = function (grunt) {
                 '!app/assets/js/vendor/**/*'
             ]
         },
+        requirejs: {
+            all: {
+                options: {
+                    baseUrl: 'vendor',
+                    paths: {
+                        app: '..'
+                    },
+                    appDir: 'build/assets/js',
+                    dir: 'build/assets/js',
+                    keepBuildDir: true,
+                    removeCombined: true,
+                    optimize: 'none',
+                    modules: [
+                        {
+                            name: 'app/main'
+                        }, {
+                            name: 'app/comments',
+                            exclude: ['jquery']
+                        }
+                    ]
+                }
+            }
+        },
         uglify: {
             all: {
                 files: [{
                     expand: true,
-                    cwd: 'app/assets/js/',
+                    cwd: 'build/assets/js/',
                     src: ['**/*.js', '!vendor/**/*'],
                     dest: 'build/assets/js/'
                 }]
@@ -58,7 +81,7 @@ module.exports = function (grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: 'app/assets/img/',
+                    cwd: 'build/assets/img/',
                     src: ['**/*'],
                     dest: 'build/assets/img/'
                 }]
@@ -74,8 +97,7 @@ module.exports = function (grunt) {
                         references: [
                             'build/assets/css/*.css'
                         ]
-                    },
-                    {
+                    }, {
                         files: [
                             'build/assets/css/*.css',
                             'build/assets/js/**/*.js'
@@ -114,9 +136,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-contrib-requirejs');
 
     grunt.registerTask('dev', ['jekyll', 'less:dev']);
-    grunt.registerTask('prod', ['jekyll', 'less:prod', 'uglify', 'imagemin', 'ver']);
+    grunt.registerTask('prod', ['jekyll', 'less:prod', 'requirejs', 'uglify', 'imagemin']);
 
     grunt.registerTask('auto:dev', ['dev', 'connect', 'watch:dev']);
     grunt.registerTask('auto:prod', ['prod', 'connect', 'watch:prod']);

@@ -1,8 +1,9 @@
 {
     "globals": {
-        "Site": false,
-        "jQuery": false,
-        "Modernizr": false
+        "Modernizr": false,
+        "requirejs": false,
+        "require": false,
+        "define": false
     },
 
     "browser" : true,

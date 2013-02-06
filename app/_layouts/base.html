@@ -27,7 +27,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ site.baseurl }}/apple-touch-icon-72x72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="{{ site.baseurl }}/apple-touch-icon-precomposed.png">
 
-    <script src="{{ site.baseurl }}/{{ site.jsDir }}/vendor/modernizr.min.js"></script>
+    <script src="{{ site.baseurl }}/{{ site.jsDir }}/vendor/modernizr.js"></script>
     <script>
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', '{{ site.googleAnalyticsID }}']);
@@ -143,7 +143,6 @@
     </div>
 
 
-    <script src="{{ site.baseurl }}/{{ site.jsDir }}/vendor/lab.min.js"></script>
     <script>
         var Site = (function () {
             'use strict';
@@ -157,29 +156,7 @@
                 }
             };
         }());
-
-        (function () {
-            'use strict';
-
-            $LAB.setGlobalDefaults({
-                BasePath: '{{ site.baseurl }}/{{ site.jsDir }}/'
-            })
-
-            $LAB
-                .script('vendor/jquery.min.js')
-                .wait(function () {
-                    if (Modernizr.canvas) {
-                        $('#tetris .image').on('click', function () {
-                            $LAB.script('tetris.js');
-                        });
-                    }
-                })
-                {% if page.scripts %}
-                    {% for path in page.scripts %}
-                        .script('{{ path }}').wait()
-                    {% endfor %}
-                {% endif %};
-        }());
     </script>
+    <script data-main="{{ site.baseurl }}/{{ site.jsDir }}/main.js" src="{{ site.baseurl }}/{{ site.jsDir }}/vendor/require.js"></script>
 </body>
 </html>
