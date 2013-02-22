@@ -1,16 +1,13 @@
-/*global Hogan:false */
-
-(function (Site, $, Hogan, Modernizr) {
+define(['app/variables', 'jquery', 'hogan', 'jquery.timeago'], function (variables, $, Hogan) {
     'use strict';
 
-    if (!Site.variables.commentsIssueId) {
-        return;
-    }
+    var $comments = $('#comments');
+    var commentsTemplate = Hogan.compile($('#comments-template').html());
+    var devicePixelRatio = window.devicePixelRatio || 1;
+    var AVATAR_SIZE = 25;
 
-    var $comments = $('#comments'),
-        commentsTemplate = Hogan.compile($('#comments-template').html()),
-        devicePixelRatio = window.devicePixelRatio || 1,
-        AVATAR_SIZE = 25;
+    variables.commentsIssueId = $comments.data('comments-issue-id');
+
 
     function output(html) {
         $comments.attr('aria-busy', false);
@@ -25,7 +22,7 @@
     }
 
 
-    $.ajax('https://api.github.com/repos/Rowno/rolandwarmerdam.co.nz/issues/' + Site.variables.commentsIssueId + '/comments', {
+    $.ajax('https://api.github.com/repos/Rowno/rolandwarmerdam.co.nz/issues/' + variables.commentsIssueId + '/comments', {
         type: 'GET',
         dataType: 'json',
         cache: false,
@@ -39,7 +36,7 @@
             result.avatarSize = AVATAR_SIZE * devicePixelRatio;
 
             renderedComments = commentsTemplate.render({
-                site: Site.variables,
+                variables: variables,
                 comments: result
             });
 
@@ -53,4 +50,4 @@
             output($('#comments-error').html());
         }
     });
-}(Site, jQuery, Hogan, Modernizr));
+});

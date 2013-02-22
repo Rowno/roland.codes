@@ -1,18 +1,13 @@
 ---
 layout: base
 pageId: post
-scripts: [
-    'js/hogan.min.js',
-    'js/jquery.timeago.min.js',
-    'js/comments.js'
-]
 ---
 
 <div class="post" itemscope itemtype="http://schema.org/BlogPosting">
     {% include post.html %}
 
     {% if page.commentsIssueId %}
-    <aside id="comments" aria-busy="true">
+    <aside id="comments" aria-busy="true" data-comments-issue-id="{{ page.commentsIssueId }}">
         <h2>Comments</h2>
         <p>
             Want to post comment? Simply comment on
@@ -41,7 +36,7 @@ scripts: [
                 </a>
             </span>
 
-            <a class="time" href="{{ site.githubUrl }}/issues/{{ site.commentsIssueId }}/#issuecomment-{{ id }}">
+            <a class="time" href="{{ variables.githubUrl }}/issues/{{ variables.commentsIssueId }}/#issuecomment-{{ id }}">
                 <time datetime="{{ created_at }}" itemprop="commentTime">{{ created_at }}</time>
             </a>
         </div>
@@ -60,7 +55,7 @@ scripts: [
 {% endraw %}
 
 
-<script id="comments-unsupported" type="text/plain">
+<script id="comments-unsupported" type="text/html">
     <div class="unsupported">
         Sorry, your browser doesn't support the
         <span title="Cross-Origin Resource Sharing">features</span>
@@ -79,7 +74,7 @@ scripts: [
 </script>
 
 
-<script id="comments-error" type="text/plain">
+<script id="comments-error" type="text/html">
     <div class="error">
         Oops, something broke while loading the comments. Please try again later or
         <a href="{{ site.githubUrl }}/issues/">report the problem</a>.

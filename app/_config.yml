@@ -1,19 +1,25 @@
 # VARIABLES
 # ---------
-title: Roland Warmerdam
+title: "Roland Warmerdam"
 titleRss: "Roland Warmerdam's Blog"
 copyright: "Copyright © 2011-2013 Roland Warmerdam"
 githubUrl: "https://github.com/Rowno/rolandwarmerdam.co.nz"
 googleAnalyticsID: "UA-21361814-1"
 
+cssDir: "assets/css"
+jsDir: "assets/js"
+imgDir: "assets/img"
+contentImgDir: "assets/img/content"
+audioDir: "assets/audio"
+
 
 # JEKYLL
 # ------
+url: "http://rolandwarmerdam.co.nz"
 pygments: true
-permalink: /:title/
+permalink: "/:title/"
 paginate: 5
-exclude: ['Makefile', 'README.md', 'psd']
-markdown: redcarpet
+markdown: "redcarpet"
 redcarpet:
     extensions: [
         "fenced_code_blocks",
@@ -25,8 +31,3 @@ redcarpet:
         "with_toc_data",
         "hard_wrap"
     ]
-
-
-# PLUGINS
-# -------
-lessc: lessc --yui-compress

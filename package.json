@@ -1,0 +1,33 @@
+{
+  "name": "rolandwarmerdam.co.nz",
+  "version": "1.0.0",
+  "author": "Roland Warmerdam (http://rolandwarmerdam.co.nz)",
+  "homepage": "http://rolandwarmerdam.co.nz",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Rowno/rolandwarmerdam.co.nz.git"
+  },
+  "licenses": [
+    {
+      "type": "CC BY-SA 3.0",
+      "url": "http://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/Rowno/rolandwarmerdam.co.nz/issues"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "0.4.x",
+    "grunt-jekyll": "0.2.x",
+    "grunt-contrib-less": "0.5.x",
+    "grunt-contrib-watch": "0.2.x",
+    "grunt-contrib-uglify": "0.1.x",
+    "grunt-contrib-jshint": "0.1.x",
+    "grunt-contrib-connect": "0.1.x",
+    "grunt-contrib-imagemin": "0.1.x",
+    "grunt-contrib-requirejs": "0.4.x",
+    "commander": "1.1.x"
+  },
+  "private": true
+}

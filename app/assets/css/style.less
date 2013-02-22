@@ -11,9 +11,9 @@
 // MEDIA QUERIES
 
 
-@import "_bootstrap/bootstrap.less";
-@import "_pygments/github.less";
-@import "_fontawesome.less";
+@import "bootstrap/bootstrap.less";
+@import "pygments/github.less";
+@import "fontawesome.less";
 
 @baseFontSize: 15px;
 @baseLineHeight: 1.618em;
@@ -311,7 +311,9 @@ body {
     }
 
     .game {
+        // Hide from both screenreaders and browsers
         display: none;
+        visibility: hidden;
     }
 
     &.running {
@@ -324,6 +326,7 @@ body {
 
         .game {
             display: block;
+            visibility: visible;
         }
     }
 

@@ -19,7 +19,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="{{ site.baseurl }}/css/style.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/{{ site.cssDir }}/style.css">
     <link rel="alternate" type="application/rss+xml" href="{{ site.baseurl }}/feed.rss" title="{{ site.titleRss }}">
 
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ site.baseurl }}/apple-touch-icon-144x144-precomposed.png">
@@ -27,18 +27,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ site.baseurl }}/apple-touch-icon-72x72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="{{ site.baseurl }}/apple-touch-icon-precomposed.png">
 
-    <script src="{{ site.baseurl }}/js/modernizr.min.js"></script>
-    <script>
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', '{{ site.googleAnalyticsID }}']);
-        _gaq.push(['_setSiteSpeedSampleRate', 100]);
-        _gaq.push(['_trackPageview']);
-        (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
+    <script src="{{ site.baseurl }}/{{ site.jsDir }}/vendor/modernizr.js"></script>
 </head>
 <body{% if page.pageId %} id="{{ page.pageId }}"{% endif %}>
     <div id="wrapper">
@@ -69,9 +58,9 @@
                     <canvas width="120" height="240"></canvas>
                     <script class="audio" type="text/html">
                         <audio loop>
-                            <source src="{{ site.baseurl }}/audio/korobeiniki.ogg" type="audio/ogg">
-                            <source src="{{ site.baseurl }}/audio/korobeiniki.aac" type="audio/mp4">
-                            <source src="{{ site.baseurl }}/audio/korobeiniki.mp3" type="audio/mpeg">
+                            <source src="{{ site.baseurl }}/{{ site.audioDir }}/korobeiniki.ogg" type="audio/ogg">
+                            <source src="{{ site.baseurl }}/{{ site.audioDir }}/korobeiniki.aac" type="audio/mp4">
+                            <source src="{{ site.baseurl }}/{{ site.audioDir }}/korobeiniki.mp3" type="audio/mpeg">
                         </audio>
                     </script>
 
@@ -142,44 +131,6 @@
         </footer>
     </div>
 
-
-    <script src="{{ site.baseurl }}/js/lab.min.js"></script>
-    <script>
-        var Site = (function () {
-            'use strict';
-
-            return {
-                variables: {
-                    githubUrl: '{{ site.githubUrl }}'
-                    {% if page.commentsIssueId %}
-                    ,commentsIssueId: {{ page.commentsIssueId }}
-                    {% endif %}
-                }
-            };
-        }());
-
-        (function () {
-            'use strict';
-
-            $LAB.setGlobalDefaults({
-                BasePath: '{{ site.baseurl }}/'
-            })
-
-            $LAB
-                .script('js/jquery.min.js')
-                .wait(function () {
-                    if (Modernizr.canvas) {
-                        $('#tetris .image').on('click', function () {
-                            $LAB.script('js/tetris.js');
-                        });
-                    }
-                })
-                {% if page.scripts %}
-                    {% for path in page.scripts %}
-                        .script('{{ path }}').wait()
-                    {% endfor %}
-                {% endif %};
-        }());
-    </script>
+    <script data-main="{{ site.baseurl }}/{{ site.jsDir }}/main.js" src="{{ site.baseurl }}/{{ site.jsDir }}/vendor/require.js"></script>
 </body>
 </html>
