@@ -1,9 +1,2 @@
-# OS
-.DS_Store
-Thumbs.db
-._*
-*~
-
-# Build
 /build
 /node_modules
