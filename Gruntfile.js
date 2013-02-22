@@ -1,5 +1,8 @@
 /*jshint node:true */
 
+var program = require('commander');
+
+
 module.exports = function (grunt) {
     'use strict';
 
@@ -106,6 +109,30 @@ module.exports = function (grunt) {
         }
     });
 
+    grunt.registerTask('upload', 'Uploads the the website.', function () {
+        var done = this.async();
+
+        program.confirm('Are you sure you want to upload the website? (y/n) ', function (ok) {
+            if (!ok) {
+                done(false);
+                return;
+            }
+
+            grunt.util.spawn({
+                cmd: 'rsync',
+                opts: {stdio: 'inherit'},
+                args: [
+                    '-avz',
+                    '--delete',
+                    'build/',
+                    'vps:/var/www/rolandwarmerdam/htdocs/'
+                ]
+            }, function (error) {
+                done(error);
+            });
+        });
+    });
+
     grunt.loadNpmTasks('grunt-jekyll');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -117,6 +144,8 @@ module.exports = function (grunt) {
 
     grunt.registerTask('dev', ['jekyll', 'less:dev']);
     grunt.registerTask('prod', ['jekyll', 'less:prod', 'requirejs', 'uglify', 'imagemin']);
+
+    grunt.registerTask('deploy', ['prod', 'upload']);
 
     grunt.registerTask('auto:dev', ['dev', 'connect', 'watch:dev']);
     grunt.registerTask('auto:prod', ['prod', 'connect', 'watch:prod']);
