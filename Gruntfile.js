@@ -19,7 +19,7 @@ module.exports = function (grunt) {
                     dumpLineNumbers: 'all'
                 },
                 files: {
-                    'build/assets/css/style.css': 'build/assets/css/style.less'
+                    'build/assets/css/main.css': 'build/assets/css/main.less'
                 }
             },
             prod: {
@@ -28,7 +28,7 @@ module.exports = function (grunt) {
                     yuicompress: true
                 },
                 files: {
-                    'build/assets/css/style.css': 'build/assets/css/style.less'
+                    'build/assets/css/main.css': 'build/assets/css/main.less'
                 }
             }
         },
