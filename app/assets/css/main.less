@@ -43,6 +43,18 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
 }
 
+h1 {
+    font-size: 30px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
 ul {
     list-style-type: square;
 }
@@ -87,22 +99,26 @@ a {
         white-space: pre;
         word-wrap: normal;
 
-        // Add the syntax name above the code block
-        code:before {
-            content: attr(class);
-            position: absolute;
-            top: 1px;
-            right: 1px;
-            padding: (@baseLineHeight - 1) / 2; // Bootstrap `pre` padding calculation
-            font: bold 0.7em @baseFontFamily;
-            text-transform: uppercase;
-            background: white;
-            .border-radius(0 4px);
-            border: 1px solid #ccc; // fallback for IE7-8
-            border: 1px solid rgba(0,0,0,0.15);
-            border-top: none;
-            border-right: none;
-            .transition(all 0.2s linear);
+        code {
+            white-space: pre;
+
+            // Add the syntax name above the code block
+            &:before {
+                content: attr(class);
+                position: absolute;
+                top: 1px;
+                right: 1px;
+                padding: (@baseLineHeight - 1) / 2; // Bootstrap `pre` padding calculation
+                font: bold 0.7em @baseFontFamily;
+                text-transform: uppercase;
+                background: white;
+                .border-radius(0 4px);
+                border: 1px solid #ccc; // fallback for IE7-8
+                border: 1px solid rgba(0,0,0,0.15);
+                border-top: none;
+                border-right: none;
+                .transition(all 0.2s linear);
+            }
         }
 
         &:hover code:before {
@@ -235,6 +251,7 @@ body {
 }
 
 #header, #header h1 {
+    margin: 0;
     font-size: 44px;
     line-height: 1;
     font-family: 'TelegramaRaw', monospace;
@@ -275,8 +292,8 @@ body {
         }
     }
 
-    .btn-mini {
-        width: 2em;
+    .btn-small {
+        width: 2.5em;
     }
 
     .overlay {
@@ -396,6 +413,7 @@ body {
 
     section {
         padding: 5px;
+        padding-top: 0;
         .border-radius(3px);
 
         &:target {
@@ -451,6 +469,7 @@ body {
     }
 
     h3 {
+        margin: 0;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -469,8 +488,14 @@ body {
     }
 }
 
-#goog-wm-qt {
-    margin: 0 0.5em 0 0;
+#goog-fixurl {
+    h3 b {
+        font-weight: normal;
+    }
+
+    input {
+        margin: 0 0.5em 0.5em 0;
+    }
 }
 
 
