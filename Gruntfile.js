@@ -143,7 +143,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-requirejs');
 
     grunt.registerTask('dev', ['jekyll', 'less:dev']);
-    grunt.registerTask('prod', ['jekyll', 'less:prod', 'requirejs', 'uglify', 'imagemin']);
+    grunt.registerTask('prod', ['jekyll', 'less:prod', 'uglify', 'requirejs', 'imagemin']);
 
     grunt.registerTask('deploy', ['prod', 'upload']);
 
