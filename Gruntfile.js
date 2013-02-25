@@ -61,7 +61,7 @@ module.exports = function (grunt) {
                             name: 'app/main'
                         }, {
                             name: 'app/comments',
-                            exclude: ['app/variables', 'jquery']
+                            exclude: ['jquery', 'app/variables', 'app/ga']
                         }
                     ]
                 }
