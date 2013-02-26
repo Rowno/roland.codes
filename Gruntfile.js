@@ -41,7 +41,8 @@ module.exports = function (grunt) {
                 'Gruntfile.js',
                 'package.json',
                 'app/assets/js/**/*.js',
-                '!app/assets/js/vendor/**/*'
+                '!app/assets/js/vendor/**/*',
+                '!app/assets/js/variables.js'
             ]
         },
         requirejs: {
