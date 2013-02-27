@@ -1,0 +1,164 @@
+@font-face { .font-face('TelegramaRender', 'font/telegrama-render'); }
+@font-face { .font-face('TelegramaRaw', 'font/telegrama-raw'); }
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: @baseLineHeight * 0.8;
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 30px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+ul {
+    list-style-type: square;
+}
+
+span[title] {
+    cursor: help;
+    border-bottom: 1px dotted #DDD;
+}
+
+a {
+    .transition(all 0.1s linear);
+
+    &:hover, &:focus {
+        color: @linkColorHover;
+        text-decoration: none;
+    }
+
+    &:active {
+        position: relative;
+        top: 1px;
+        .transition(none);
+    }
+}
+
+.tag {
+    padding: 2px;
+    .border-radius(3px);
+    background: @backgroundColor;
+    white-space: nowrap;
+
+    &:hover, &:focus {
+        background: darken(@backgroundColor, 10%);
+    }
+}
+
+// Pygments code block
+.highlight {
+    position: relative;
+
+    pre {
+        overflow: auto;
+        white-space: pre;
+        word-wrap: normal;
+
+        code {
+            white-space: pre;
+
+            // Add the syntax name above the code block
+            &:before {
+                content: attr(class);
+                position: absolute;
+                top: 1px;
+                right: 1px;
+                padding: (@baseLineHeight - 1) / 2; // Bootstrap `pre` padding calculation
+                font: bold 0.7em @baseFontFamily;
+                text-transform: uppercase;
+                background: white;
+                .border-radius(0 4px);
+                border: 1px solid #ccc; // fallback for IE7-8
+                border: 1px solid rgba(0,0,0,0.15);
+                border-top: none;
+                border-right: none;
+                .transition(all 0.2s linear);
+            }
+        }
+
+        &:hover code:before {
+            .opacity(33);
+        }
+    }
+}
+
+.loader {
+    @size: 10px;
+    @duration: 0.4s;
+    @padding: @size / 2;
+
+    .hide-text();
+    position: relative;
+    margin: 0 auto;
+
+    .cssanimations & {
+        &, &:before, &:after {
+            display: block;
+            width: @size;
+            height: @size;
+            background: #82c4e5;
+            border-radius: @size / 4;
+            -webkit-animation: loader @duration steps(1) infinite;
+               -moz-animation: loader @duration steps(1) infinite;
+                 -o-animation: loader @duration steps(1) infinite;
+                    animation: loader @duration steps(1) infinite;
+        }
+
+        &:before, &:after {
+            content: '';
+            display: block;
+            position: absolute;
+        }
+
+        &:before {
+            left: -@size - @padding;
+            -webkit-animation-delay: @duration / 3 * 2;
+               -moz-animation-delay: @duration / 3 * 2;
+                 -o-animation-delay: @duration / 3 * 2;
+                    animation-delay: @duration / 3 * 2;
+        }
+
+        &:after {
+            right: -@size - @padding;
+            -webkit-animation-delay: @duration / 3;
+               -moz-animation-delay: @duration / 3;
+                 -o-animation-delay: @duration / 3;
+                    animation-delay: @duration / 3;
+        }
+    }
+
+    .no-cssanimations & {
+        background: url(../img/ajax-loader.gif) no-repeat;
+        width: 43px;
+        height: 11px;
+    }
+}
+
+@-webkit-keyframes loader {
+  0%   { background: #82c4e5; }
+  66%  { background: #0088cc; }
+  100% { background: #82c4e5; }
+}
+@-moz-keyframes loader {
+  0%   { background: #82c4e5; }
+  66%  { background: #0088cc; }
+  100% { background: #82c4e5; }
+}
+@-o-keyframes loader {
+  0%   { background: #82c4e5; }
+  66%  { background: #0088cc; }
+  100% { background: #82c4e5; }
+}
+@keyframes loader {
+  0%   { background: #82c4e5; }
+  66%  { background: #0088cc; }
+  100% { background: #82c4e5; }
+}
