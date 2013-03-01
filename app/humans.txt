@@ -9,16 +9,26 @@
     Site:                    http://rolandwarmerdam.co.nz/
     Location:                New Zealand
 
+
 /* SITE */
     Last update: {{ site.time | date_to_long_string }}
     Standards:   HTML5, CSS3, RSS, Media Queries, Microdata, WAI-ARIA, CORS, Canvas, Local Storage, Audio
-    Software:    Sublime Text 2, Jekyll, LESS
-    Source:      {{ site.githubUrl }}
-    Components:
-        HTML5 Boilerplate - http://html5boilerplate.com/
-        Twitter Bootstrap - http://twitter.github.com/bootstrap/
-        Modernizr         - http://modernizr.com/
-        LABjs             - http://labjs.com/
-        jQuery            - http://jquery.com/
-        Hogan.js          - http://twitter.github.com/hogan.js/
-        jQuery Timeago    - http://timeago.yarp.com/
+    Software:    Sublime Text 2
+    Source code: {{ site.githubUrl }}
+
+
+/* COMPONENTS */
+    Build:
+     * Jekyll    - https://github.com/mojombo/jekyll
+     * Grunt     - http://gruntjs.com/
+     * LESS      - http://lesscss.org/
+     * RequireJS - http://requirejs.org/
+
+    Front-end:
+     * HTML5 Boilerplate - http://html5boilerplate.com/
+     * Twitter Bootstrap - http://twitter.github.com/bootstrap/
+     * Font Awesome      - http://fortawesome.github.com/Font-Awesome/
+     * Modernizr         - http://modernizr.com/
+     * jQuery            - http://jquery.com/
+     * Hogan.js          - http://twitter.github.com/hogan.js/
+     * jQuery Timeago    - http://timeago.yarp.com/

@@ -4,6 +4,9 @@ title: Projects
 pageId: projects
 ---
 
+Some of my projects are featured here, but you can check them all out on [GitHub][].
+
+
 Grunt Mocha CLI
 ---------------
 Run Mocha server-side tests in Grunt.
@@ -39,6 +42,7 @@ Chrome Web Store: [Architect - Javascript Template Editor][architect-chrome]
 License: MIT
 
 
+[github]: https://github.com/Rowno
 [grunt-mocha-cli]: https://github.com/Rowno/grunt-mocha-cli
 [node-boilerplate]: https://github.com/Rowno/node-boilerplate
 [jslinter-github]: https://github.com/Rowno/jslinter-firefox
