@@ -1,11 +1,7 @@
 /*jshint node:true */
-
-var program = require('commander');
-
+'use strict';
 
 module.exports = function (grunt) {
-    'use strict';
-
     grunt.initConfig({
         jekyll: {
             all: {
@@ -110,30 +106,7 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('upload', 'Uploads the the website.', function () {
-        var done = this.async();
-
-        program.confirm('Are you sure you want to upload the website? (y/n) ', function (ok) {
-            if (!ok) {
-                done(false);
-                return;
-            }
-
-            grunt.util.spawn({
-                cmd: 'rsync',
-                opts: {stdio: 'inherit'},
-                args: [
-                    '-avz',
-                    '--delete',
-                    'build/',
-                    'vps:/var/www/rolandwarmerdam/htdocs/'
-                ]
-            }, function (error) {
-                done(error);
-            });
-        });
-    });
-
+    grunt.loadTasks('tasks');
     grunt.loadNpmTasks('grunt-jekyll');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
