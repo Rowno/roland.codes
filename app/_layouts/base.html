@@ -34,6 +34,8 @@
     <script src="{{ site.baseurl }}/{{ site.jsDir }}/vendor/modernizr.js"></script>
 </head>
 <body{% if page.pageId %} id="{{ page.pageId }}"{% endif %}>
+    <a id="top-of-page"></a>
+
     <div id="wrapper">
         <header id="header" role="banner">
             {% unless page.title %}<h1>{% endunless %}
@@ -129,7 +131,7 @@
         </div>
 
         <div id="skip-top">
-            <a href="#main">Skip to top of page</a>
+            <a href="#top-of-page">Skip to top of page</a>
         </div>
 
         <footer id="footer" role="contentinfo">
