@@ -162,3 +162,32 @@ a {
   66%  { background: #0088cc; }
   100% { background: #82c4e5; }
 }
+
+.search {
+    display: inline-block;
+    position: relative;
+    max-width: 100%;
+
+    .search-query {
+        width: 100%;
+        height: auto;
+        .box-sizing(border-box);
+        padding-right: 1.5em;
+    }
+
+    .search-submit {
+        position: absolute;
+        right: 7px;
+        top: 50%;
+        margin-top: -0.55em;
+        padding: 0;
+        border: none;
+        background: none;
+        color: @grayLight;
+        .transition(color linear .2s);
+
+        &:hover {
+            color: @gray;
+        }
+    }
+}
