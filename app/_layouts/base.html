@@ -121,11 +121,13 @@
                 </ul>
             </nav>
 
-            <form class="search" role="search" action="//www.google.com/search" method="get">
-                <input type="search" name="q" class="search-query" placeholder="Search">
-                <button type="submit" class="search-submit icon-search"></button>
-                <input type="hidden" name="sitesearch" value="{{ site.url | remove:'http://' | remove:'https://' }}">
-            </form>
+            <div class="search-wrapper">
+                <form class="search" role="search" action="//www.google.com/search" method="get">
+                    <input type="search" name="q" class="search-query" placeholder="Search">
+                    <button type="submit" class="search-submit icon-search"></button>
+                    <input type="hidden" name="sitesearch" value="{{ site.url | remove:'http://' | remove:'https://' }}">
+                </form>
+            </div>
         </div>
 
         <div id="skip-top">
