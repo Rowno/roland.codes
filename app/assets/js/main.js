@@ -11,11 +11,12 @@ require(['jquery', 'variables', 'ga'], function ($) {
 
     // Track JavaScript errors in Google Analytics
     (function (window, undefined) {
-        var link = function (href) {
-                var a = window.document.createElement('a');
-                a.href = href;
-                return a;
-            };
+        function link(href) {
+            var a = window.document.createElement('a');
+            a.href = href;
+            return a;
+        }
+
         window.onerror = function (message, file, row) {
             var host = link(file).hostname;
             _gaq.push([
