@@ -9,7 +9,7 @@ Build
 Install the following dependencies:
 
  * [Jekyll and Pygments][jekyll-install]. E.g: `gem install jekyll`
- * [Node.js][nodejs-install]
+ * [Node.js][]
  * `gem install redcarpet`
  * `npm install -g grunt-cli`
  * `npm install`
@@ -28,5 +28,5 @@ Copyright © 2013 Roland Warmerdam.
 
 [jekyll]: https://github.com/mojombo/jekyll
 [jekyll-install]: https://github.com/mojombo/jekyll/wiki/Install
-[nodejs-install]: https://github.com/joyent/node/wiki/Installation
+[node.js]: http://nodejs.org/
 [license]: http://creativecommons.org/licenses/by-sa/3.0/
