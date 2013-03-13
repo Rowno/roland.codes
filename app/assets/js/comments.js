@@ -1,4 +1,4 @@
-define(['app/variables', 'jquery', 'hogan', 'jquery.timeago'], function (variables, $, Hogan) {
+define(['variables', 'jquery', 'vendor/hogan', 'vendor/jquery.timeago'], function (variables, $, Hogan) {
     'use strict';
 
     var $comments = $('#comments');

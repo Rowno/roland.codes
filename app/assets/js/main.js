@@ -1,12 +1,12 @@
 requirejs.config({
-    baseUrl: '/assets/js/vendor',
+    baseUrl: '/assets/js',
     paths: {
-        app: '..'
+        jquery: 'vendor/jquery'
     }
 });
 
 
-require(['jquery', 'app/variables', 'app/ga'], function ($) {
+require(['jquery', 'variables', 'ga'], function ($) {
     'use strict';
 
     // Track JavaScript errors in Google Analytics
@@ -30,12 +30,12 @@ require(['jquery', 'app/variables', 'app/ga'], function ($) {
     $(function () {
         if (Modernizr.canvas) {
             $('#tetris .image').on('click', function () {
-                require(['app/tetris']);
+                require(['tetris']);
             });
         }
 
         if ($('#comments').length > 0) {
-            require(['app/comments']);
+            require(['comments']);
         }
     });
 });

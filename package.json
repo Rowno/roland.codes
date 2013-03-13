@@ -20,9 +20,10 @@
   "devDependencies": {
     "grunt": "0.4.x",
     "grunt-jekyll": "0.2.x",
+    "grunt-contrib-copy": "0.4.x",
     "grunt-contrib-less": "0.5.x",
+    "grunt-contrib-clean": "0.4.x",
     "grunt-contrib-watch": "0.3.x",
-    "grunt-contrib-uglify": "0.1.x",
     "grunt-contrib-jshint": "0.2.x",
     "grunt-contrib-connect": "0.2.x",
     "grunt-contrib-imagemin": "0.1.x",

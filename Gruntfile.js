@@ -41,37 +41,37 @@ module.exports = function (grunt) {
                 '!app/assets/js/variables.js'
             ]
         },
+        copy: {
+            js: {
+                expand: true,
+                cwd: 'build/assets/js/',
+                src: ['**/*'],
+                dest: 'temp/'
+            }
+        },
+        clean: {
+            temp: ['temp'],
+            logs: ['build/assets/js/build.txt']
+        },
         requirejs: {
             all: {
                 options: {
-                    baseUrl: 'vendor',
-                    paths: {
-                        app: '..'
-                    },
-                    appDir: 'build/assets/js',
+                    mainConfigFile: 'temp/main.js',
+                    baseUrl: '.',
+                    appDir: 'temp',
                     dir: 'build/assets/js',
-                    keepBuildDir: true,
                     removeCombined: true,
-                    optimize: 'none',
+                    optimize: 'uglify2',
+                    useStrict: true,
                     modules: [
                         {
-                            name: 'app/main'
+                            name: 'main'
                         }, {
-                            name: 'app/comments',
-                            exclude: ['jquery', 'app/variables', 'app/ga']
+                            name: 'comments',
+                            exclude: ['jquery', 'variables', 'ga']
                         }
                     ]
                 }
-            }
-        },
-        uglify: {
-            all: {
-                files: [{
-                    expand: true,
-                    cwd: 'build/assets/js/',
-                    src: ['**/*.js', '!vendor/**/*'],
-                    dest: 'build/assets/js/'
-                }]
             }
         },
         imagemin: {
@@ -108,16 +108,25 @@ module.exports = function (grunt) {
 
     grunt.loadTasks('tasks');
     grunt.loadNpmTasks('grunt-jekyll');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
 
     grunt.registerTask('dev', ['jekyll', 'less:dev']);
-    grunt.registerTask('prod', ['jekyll', 'less:prod', 'uglify', 'requirejs', 'imagemin']);
+    grunt.registerTask('prod', [
+        'jekyll',
+        'less:prod',
+        'copy:js',
+        'requirejs',
+        'clean:temp',
+        'imagemin',
+        'clean:logs'
+    ]);
 
     grunt.registerTask('deploy', ['prod', 'upload']);
 

@@ -2,7 +2,7 @@
 
 var _gaq = [];
 
-define(['app/variables'], function (variables) {
+define(['variables'], function (variables) {
     'use strict';
 
     _gaq.push(
