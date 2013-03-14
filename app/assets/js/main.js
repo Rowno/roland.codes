@@ -29,14 +29,28 @@ require(['jquery', 'variables', 'ga'], function ($) {
 
 
     $(function () {
+        /***** On-demand script loading *****/
+
         if (Modernizr.canvas) {
             $('#tetris .image').on('click', function () {
                 require(['tetris']);
+                _gaq.push(['_trackEvent', 'Tetris', 'Load']);
             });
         }
 
         if ($('#comments').length > 0) {
             require(['comments']);
         }
+
+
+        /***** Event tracking *****/
+
+        $('.search').on('submit', function () {
+            _gaq.push(['_trackEvent', 'Site search', 'Submit']);
+        });
+
+        $('#skip-top a').on('click', function () {
+            _gaq.push(['_trackEvent', 'Site navigation', 'In-page', 'Skip to top of page']);
+        });
     });
 });
