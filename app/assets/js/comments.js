@@ -1,8 +1,8 @@
-define(['variables', 'jquery', 'vendor/hogan', 'vendor/jquery.timeago'], function (variables, $, Hogan) {
+define(['variables', 'jquery', 'vendor/mustache', 'vendor/jquery.timeago'],
+        function (variables, $, Mustache) {
     'use strict';
 
     var $comments = $('#comments');
-    var commentsTemplate = Hogan.compile($('#comments-template').html());
     var devicePixelRatio = window.devicePixelRatio || 1;
     var AVATAR_SIZE = 25;
 
@@ -35,10 +35,12 @@ define(['variables', 'jquery', 'vendor/hogan', 'vendor/jquery.timeago'], functio
 
             result.avatarSize = AVATAR_SIZE * devicePixelRatio;
 
-            renderedComments = commentsTemplate.render({
-                variables: variables,
-                comments: result
-            });
+            renderedComments = Mustache.render(
+                $('#comments-template').html(), {
+                    variables: variables,
+                    comments: result
+                }
+            );
 
             $html.html(renderedComments);
             $html.find('time').timeago();
