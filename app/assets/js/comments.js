@@ -33,7 +33,7 @@ define(['variables', 'jquery', 'vendor/mustache', 'vendor/jquery.timeago'],
             var $html = $('<div />'),
                 renderedComments;
 
-            result.avatarSize = AVATAR_SIZE * devicePixelRatio;
+            variables.avatarSize = AVATAR_SIZE * devicePixelRatio;
 
             renderedComments = Mustache.render(
                 $('#comments-template').html(), {
