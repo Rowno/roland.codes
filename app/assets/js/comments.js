@@ -30,12 +30,20 @@ define(['variables', 'jquery', 'vendor/mustache', 'vendor/jquery.timeago'],
             accept: 'application/vnd.github.beta.html+json'
         },
         success: function (result) {
-            var $html = $('<div />'),
-                renderedComments;
+            var $html = $('<div />');
 
             variables.avatarSize = AVATAR_SIZE * devicePixelRatio;
 
-            renderedComments = Mustache.render(
+            // Prevent <img>'s from loading before being stripped
+            result.forEach(function (comment, index) {
+                /*jshint camelcase:false */
+                result[index].body_html = comment.body_html.replace(
+                    /(<img[^>]*)src=['"].*?['"]([^>]*>)/ig,
+                    '$1$2'
+                );
+            });
+
+            var renderedComments = Mustache.render(
                 $('#comments-template').html(), {
                     variables: variables,
                     comments: result
@@ -44,7 +52,29 @@ define(['variables', 'jquery', 'vendor/mustache', 'vendor/jquery.timeago'],
 
             $html.html(renderedComments);
             $html.find('time').timeago();
-            $html.find('.content a').attr('rel', 'nofollow');
+
+
+            // Sanitise
+
+            var $content = $html.find('.content');
+
+            // Remove all images and empty containing elements
+            $content.find('img').each(function () {
+                var $next = $(this).parent();
+                var $current = $next;
+
+                while ($next.text().trim() === '') {
+                    $current = $next;
+                    $next = $current.parent();
+                }
+
+                $current.remove();
+            });
+
+            $content.find('a').attr('rel', 'nofollow');
+
+            $content.find('.email-hidden-toggle, .email-hidden-reply').remove();
+
 
             output($html);
         },
