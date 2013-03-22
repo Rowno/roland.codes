@@ -98,7 +98,23 @@ module.exports = function (grunt) {
         connect: {
             all: {
                 options: {
-                    base: 'build'
+                    base: 'build',
+                    middleware: function (connect, options) {
+                        return [
+                            function (req, res, next) {
+                                /*jshint quotmark:false */
+                                res.setHeader('X-Content-Type-Options', 'nosniff');
+                                res.setHeader('X-XSS-Protection', '1; mode=block');
+                                res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+                                res.setHeader(
+                                    'Content-Security-Policy-Report-Only',
+                                    "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' http://www.google-analytics.com https://ssl.google-analytics.com; img-src 'self' http://www.google-analytics.com https://ssl.google-analytics.com http://gravatar.com https://gravatar.com; connect-src 'self' https://api.github.com; report-uri /csp-report;"
+                                );
+                                next();
+                            },
+                            connect.static(options.base)
+                        ];
+                    }
                 }
             }
         }
