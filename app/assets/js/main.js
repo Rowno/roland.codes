@@ -1,6 +1,7 @@
 requirejs.config({
     baseUrl: '/assets/js',
     paths: {
+        text: 'vendor/text',
         jquery: 'vendor/jquery'
     }
 });
