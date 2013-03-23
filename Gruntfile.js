@@ -12,7 +12,7 @@ module.exports = function (grunt) {
         less: {
             dev: {
                 options: {
-                    dumpLineNumbers: 'all'
+                    dumpLineNumbers: 'comments'
                 },
                 files: {
                     'build/assets/css/main.css': 'build/assets/css/main.less'
