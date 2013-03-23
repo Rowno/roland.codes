@@ -113,6 +113,7 @@ module.exports = function (grunt) {
                                 );
                                 next();
                             },
+                            connect.compress(),
                             connect.static(options.base)
                         ];
                     }
