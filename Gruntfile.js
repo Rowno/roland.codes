@@ -69,6 +69,9 @@ module.exports = function (grunt) {
                         }, {
                             name: 'comments',
                             exclude: ['jquery', 'variables', 'ga']
+                        }, {
+                            name: 'tetris',
+                            exclude: ['jquery']
                         }
                     ]
                 }
