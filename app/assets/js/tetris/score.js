@@ -5,18 +5,17 @@
  * Also deletes and moves the Block's when a row is completed.
  */
 define([
-    'tetris/constants',
+    'tetris/html',
     'tetris/storage',
     'tetris/block',
     'tetris/grid'
-], function (Constants, Storage, Block, Grid) {
+], function ($tetris, Storage, Block, Grid) {
     'use strict';
 
     var exports = {},
         ROW_COMPLETE_SCORES = [40, 100, 300, 1200],
         score = 0,
         highscore = Storage.get('highscore') || 0,
-        $tetris = Constants.get('$TETRIS'),
         $score = $tetris.find('.score .count'),
         $highscore = $tetris.find('.highscore .count');
 

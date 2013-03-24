@@ -1,12 +1,11 @@
-define(['jquery'], function ($) {
+define(function () {
     'use strict';
 
     var exports = {};
     var constants = {
         CANVAS_WIDTH: 120,
         CANVAS_HEIGHT: 240,
-        PADDING: 1,
-        $TETRIS: $('#tetris')
+        PADDING: 1
     };
 
 

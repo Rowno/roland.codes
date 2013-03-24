@@ -2,11 +2,11 @@
  * Handles the player controlled Shape.
  */
 define([
-    'tetris/constants',
+    'tetris/html',
     'tetris/score',
     'tetris/generator',
     'tetris/keyboard'
-], function (Constants, Score, Generator, Keyboard) {
+], function ($tetris, Score, Generator, Keyboard) {
     'use strict';
 
     var exports = {},
@@ -17,8 +17,7 @@ define([
         shapeMoves = 0,
         forwardTimer,
         softDropCount = 0,
-        gameover = false,
-        $tetris = Constants.get('$TETRIS');
+        gameover = false;
 
 
     KEYS.push({ // up arrow

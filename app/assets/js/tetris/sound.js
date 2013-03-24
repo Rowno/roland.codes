@@ -3,13 +3,12 @@
  *
  * Doesn't do anything if the browser doesn't support HTML5 Audio.
  */
-define(['tetris/constants', 'tetris/storage'], function (Constants, Storage) {
+define(['tetris/html', 'tetris/storage'], function ($tetris, Storage) {
     'use strict';
 
     var exports = {},
         audio,
         sound = Storage.get('sound') || false,
-        $tetris = Constants.get('$TETRIS'),
         $sound = $tetris.find('.sound');
 
 

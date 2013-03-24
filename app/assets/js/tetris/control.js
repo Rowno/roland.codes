@@ -4,7 +4,7 @@
  * Also handles the game help information.
  */
 define([
-    'tetris/constants',
+    'tetris/html',
     'tetris/keyboard',
     'tetris/player',
     'tetris/sound',
@@ -17,13 +17,12 @@ define([
     'tetris/shape/s',
     'tetris/shape/t',
     'tetris/shape/z'
-], function (Constants, Keyboard, Player, Sound, Block, Score, ShapeI, ShapeJ, ShapeL, ShapeO, ShapeS, ShapeT, ShapeZ) {
+], function ($tetris, Keyboard, Player, Sound, Block, Score, ShapeI, ShapeJ, ShapeL, ShapeO, ShapeS, ShapeT, ShapeZ) {
     'use strict';
 
     var exports = {},
         running = true,
         helpActive = false,
-        $tetris = Constants.get('$TETRIS'),
         $helpButton = $tetris.find('.help-button'),
         $helpBox = $tetris.find('.help-box');
 

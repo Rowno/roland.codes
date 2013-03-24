@@ -3,14 +3,18 @@
  *
  * Which is really just Block's.
  */
-define(['tetris/constants', 'polyfill/requestanimationframe'], function (Constants) {
+define([
+    'tetris/constants',
+    'tetris/html',
+    'polyfill/requestanimationframe'
+], function (Constants, $tetris) {
     'use strict';
 
     var exports = {},
         queued = false,
         drawing = false,
         blocks = [],
-        canvas = Constants.get('$TETRIS').find('canvas')[0],
+        canvas = $tetris.find('canvas')[0],
         context = canvas.getContext('2d'),
         devicePixelRatio,
         backingStoreRatio,
