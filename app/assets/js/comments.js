@@ -13,6 +13,12 @@ define([
 
     variables.commentsIssueId = $comments.data('comments-issue-id');
 
+    variables.avatarSize = AVATAR_SIZE * devicePixelRatio;
+
+    variables.gravatarUrl = '//';
+    variables.gravatarUrl += ('https:' === location.protocol ? 'secure':'www');
+    variables.gravatarUrl += '.gravatar.com';
+
 
     function output(html) {
         $comments.attr('aria-busy', false);
@@ -41,12 +47,11 @@ define([
         success: function (result) {
             var $html = $('<div />');
 
-            variables.avatarSize = AVATAR_SIZE * devicePixelRatio;
-
-            // Prevent <img>'s from loading before being stripped
-            result.forEach(function (comment, index) {
+            result.forEach(function (comment) {
                 /*jshint camelcase:false */
-                result[index].body_html = comment.body_html.replace(
+
+                // Prevent <img>'s from loading before being stripped
+                comment.body_html = comment.body_html.replace(
                     /(<img[^>]*)src=['"].*?['"]([^>]*>)/ig,
                     '$1$2'
                 );
