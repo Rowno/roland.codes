@@ -1,6 +1,6 @@
 ---
 ---
 define({
-    githubUrl: '{{ site.githubUrl }}',
+    githubRepo: '{{ site.githubRepo }}',
     googleAnalyticsID: '{{ site.googleAnalyticsID }}'
 });

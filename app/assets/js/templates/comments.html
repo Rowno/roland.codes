@@ -11,7 +11,7 @@
                 </a>
             </span>
 
-            <a class="time" href="{{ variables.githubUrl }}/issues/{{ variables.commentsIssueId }}/#issuecomment-{{ id }}">
+            <a class="time" href="https://github.com/{{ variables.githubRepo }}/issues/{{ variables.commentsIssueId }}/#issuecomment-{{ id }}">
                 <time datetime="{{ created_at }}" itemprop="commentTime">{{ created_at }}</time>
             </a>
         </div>
@@ -32,7 +32,7 @@
         Sorry, your browser doesn't support the
         <span title="Cross-Origin Resource Sharing">features</span>
         required to load the comments, but feel free to read them at
-        <a href="{{ variables.githubUrl }}/issues/{{ variables.commentsIssueId }}">GitHub</a>
+        <a href="https://github.com/{{ variables.githubRepo }}/issues/{{ variables.commentsIssueId }}">GitHub</a>
         anyway.
 
         Or even better,
@@ -48,6 +48,6 @@
 {{#error}}
     <div class="error">
         Oops, something broke while loading the comments. Please try again later or
-        <a href="{{ variables.githubUrl }}/issues/">report the problem</a>.
+        <a href="https://github.com/{{ variables.githubRepo }}/issues/">report the problem</a>.
     </div>
 {{/error}}

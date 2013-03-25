@@ -37,7 +37,7 @@ define([
     }
 
 
-    $.ajax('https://api.github.com/repos/Rowno/rolandwarmerdam.co.nz/issues/' + variables.commentsIssueId + '/comments', {
+    $.ajax('https://api.github.com/repos/' + variables.githubRepo + '/issues/' + variables.commentsIssueId + '/comments', {
         type: 'GET',
         dataType: 'json',
         cache: false,

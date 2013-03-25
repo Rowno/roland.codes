@@ -14,7 +14,7 @@
     Last update: {{ site.time | date_to_long_string }}
     Standards:   HTML5, CSS3, RSS, Media Queries, Microdata, WAI-ARIA, CORS, Canvas, Local Storage, Audio
     Software:    Sublime Text 2
-    Source code: {{ site.githubUrl }}
+    Source code: https://github.com/{{ site.githubRepo }}
 
 
 /* COMPONENTS */

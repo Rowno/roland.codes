@@ -18,7 +18,7 @@ Feel free to message me on [Google+][] or email me at <a href="&#109;&#97;&#x69;
 
 [Jekyll]: https://github.com/mojombo/jekyll
 [Linode]: http://www.linode.com/?r=65f866a7004f627ae37fa3283f8a89b4fa9cecbe
-[GitHub]: {{ site.githubUrl }}
-[issues]: {{ site.githubUrl }}/issues?labels=blog+post+comments
+[GitHub]: https://github.com/{{ site.githubRepo }}
+[issues]: https://github.com/{{ site.githubRepo }}/issues?labels=blog+post+comments&state=closed
 [Google+]: https://plus.google.com/108621262237470431255/
 [humans.txt]: {{ site.baseurl }}/humans.txt
