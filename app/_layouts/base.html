@@ -17,6 +17,14 @@
     {% endif %}
     <title>{{ title }}{{ site.title }}</title>
 
+    {% if page.description %}
+        <meta name="description" content="{{ page.description }}">
+    {% endif %}
+
+    {% if page.robots %}
+        <meta name="robots" content="{{ page.robots }}">
+    {% endif %}
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="{{ site.baseurl }}/{{ site.cssDir }}/main.css">
