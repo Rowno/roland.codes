@@ -84,8 +84,10 @@ a {
             }
         }
 
-        &:hover code:before {
-            .opacity(33);
+        &:hover, &:focus {
+            code:before {
+                .opacity(33);
+            }
         }
     }
 }
@@ -187,7 +189,7 @@ a {
         color: @grayLight;
         .transition(color linear .2s);
 
-        &:hover {
+        &:hover, &:focus {
             color: @gray;
         }
     }
