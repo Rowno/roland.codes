@@ -93,47 +93,40 @@ a {
 }
 
 .loader {
-    @size: 10px;
+    @size: 11px;
     @duration: 0.4s;
-    @padding: @size / 2;
 
     .hide-text();
     position: relative;
     margin: 0 auto;
 
     .cssanimations & {
+        width: @size;
+        height: @size;
+
         &, &:before, &:after {
             display: block;
-            width: @size;
-            height: @size;
             background: #82c4e5;
-            border-radius: @size / 4;
-            -webkit-animation: loader @duration steps(1) infinite;
-               -moz-animation: loader @duration steps(1) infinite;
-                 -o-animation: loader @duration steps(1) infinite;
-                    animation: loader @duration steps(1) infinite;
+            border-radius: 25%;
+            .animation(loader @duration @duration/3 steps(1) infinite);
         }
 
         &:before, &:after {
             content: '';
             display: block;
             position: absolute;
+            width: 100%;
+            height: 100%;
         }
 
         &:before {
-            left: -@size - @padding;
-            -webkit-animation-delay: @duration / 3 * 2;
-               -moz-animation-delay: @duration / 3 * 2;
-                 -o-animation-delay: @duration / 3 * 2;
-                    animation-delay: @duration / 3 * 2;
+            left: -150%;
+            .animation-delay(0s);
         }
 
         &:after {
-            right: -@size - @padding;
-            -webkit-animation-delay: @duration / 3;
-               -moz-animation-delay: @duration / 3;
-                 -o-animation-delay: @duration / 3;
-                    animation-delay: @duration / 3;
+            right: -150%;
+            .animation-delay(@duration/3*2);
         }
     }
 
@@ -142,28 +135,19 @@ a {
         width: 43px;
         height: 11px;
     }
+
+    .keyframes() {
+        0%   { background: #0088cc; }
+        33%  { background: #82c4e5; }
+        100% { background: #82c4e5; }
+    }
+
+    @-webkit-keyframes loader { .keyframes(); }
+       @-moz-keyframes loader { .keyframes(); }
+         @-o-keyframes loader { .keyframes(); }
+            @keyframes loader { .keyframes(); }
 }
 
-@-webkit-keyframes loader {
-  0%   { background: #82c4e5; }
-  66%  { background: #0088cc; }
-  100% { background: #82c4e5; }
-}
-@-moz-keyframes loader {
-  0%   { background: #82c4e5; }
-  66%  { background: #0088cc; }
-  100% { background: #82c4e5; }
-}
-@-o-keyframes loader {
-  0%   { background: #82c4e5; }
-  66%  { background: #0088cc; }
-  100% { background: #82c4e5; }
-}
-@keyframes loader {
-  0%   { background: #82c4e5; }
-  66%  { background: #0088cc; }
-  100% { background: #82c4e5; }
-}
 
 .search {
     display: inline-block;

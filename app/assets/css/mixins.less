@@ -1,0 +1,22 @@
+.font-face(@family, @path) {
+    font-family: @family;
+    src: url('@{path}.eot');
+    src: url('@{path}.eot?#iefix') format('embedded-opentype'),
+         url('@{path}.woff') format('woff'),
+         url('@{path}.ttf') format('truetype'),
+         url('@{path}.svg#@{family}') format('svg');
+}
+
+.animation(@animation) {
+    -webkit-animation: @animation;
+       -moz-animation: @animation;
+         -o-animation: @animation;
+            animation: @animation;
+}
+
+.animation-delay(@delay) {
+    -webkit-animation-delay: @delay;
+       -moz-animation-delay: @delay;
+         -o-animation-delay: @delay;
+            animation-delay: @delay;
+}
