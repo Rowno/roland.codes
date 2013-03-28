@@ -1,10 +1,7 @@
-/*global _gaq:true */
-
-var _gaq = [];
-
 define(['variables'], function (variables) {
     'use strict';
 
+    window._gaq = [];
     _gaq.push(
         ['_setAccount', variables.googleAnalyticsId],
         ['_setSiteSpeedSampleRate', 100],
@@ -25,6 +22,4 @@ define(['variables'], function (variables) {
 
     ga('create', 'UA-21361814-6', {'siteSpeedSampleRate': 100});
     ga('send', 'pageview');
-
-    return ga;
 });

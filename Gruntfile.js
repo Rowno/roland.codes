@@ -67,13 +67,13 @@ module.exports = function (grunt) {
                     modules: [
                         {
                             name: 'main',
-                            include: ['variables']
+                            include: ['jquery', 'variables', 'ga']
                         }, {
                             name: 'comments',
                             exclude: ['jquery', 'variables', 'ga']
                         }, {
                             name: 'tetris',
-                            exclude: ['jquery']
+                            exclude: ['jquery', 'variables', 'ga']
                         }
                     ]
                 }

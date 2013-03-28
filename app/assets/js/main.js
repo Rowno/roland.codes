@@ -7,7 +7,7 @@ requirejs.config({
 });
 
 
-require(['jquery', 'ga'], function ($, ga) {
+require(['jquery', 'ga'], function ($) {
     'use strict';
 
     // Track JavaScript errors in Google Analytics
