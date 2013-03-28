@@ -6,7 +6,7 @@ define(['variables'], function (variables) {
     'use strict';
 
     _gaq.push(
-        ['_setAccount', variables.googleAnalyticsID],
+        ['_setAccount', variables.googleAnalyticsId],
         ['_setSiteSpeedSampleRate', 100],
         ['_trackPageview']
     );
