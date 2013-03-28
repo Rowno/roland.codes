@@ -38,6 +38,7 @@ module.exports = function (grunt) {
                 'package.json',
                 'app/assets/js/**/*.js',
                 '!app/assets/js/vendor/**/*',
+                '!app/assets/js/ga.js',
                 '!app/assets/js/variables.js'
             ]
         },
@@ -65,7 +66,8 @@ module.exports = function (grunt) {
                     useStrict: true,
                     modules: [
                         {
-                            name: 'main'
+                            name: 'main',
+                            include: ['variables']
                         }, {
                             name: 'comments',
                             exclude: ['jquery', 'variables', 'ga']
