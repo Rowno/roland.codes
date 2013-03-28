@@ -62,8 +62,8 @@ require(['jquery', 'ga'], function ($) {
         });
 
         $('#skip-top a').on('click', function () {
-            _gaq.push(['_trackEvent', 'Site navigation', 'In-page', 'Skip to top of page']);
-            ga('send', 'event', 'Site navigation', 'In-page', 'Skip to top of page');
+            _gaq.push(['_trackEvent', 'Site navigation', 'In-page link', 'Skip to top of page']);
+            ga('send', 'event', 'Site navigation', 'In-page link', 'Skip to top of page');
         });
     });
 });
