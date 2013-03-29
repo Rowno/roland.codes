@@ -7,14 +7,9 @@ define(['tetris/html', 'tetris/storage'], function ($tetris, Storage) {
     'use strict';
 
     var exports = {},
-        audio,
+        audio = $tetris.find('audio')[0],
         sound = Storage.get('sound') || false,
         $sound = $tetris.find('.sound');
-
-
-    // Dynamically insert the audio tag to avoid unwanted network requests.
-    $tetris.append($tetris.find('.audio').html());
-    audio = $tetris.find('audio').get(0);
 
 
     function renderButton() {
