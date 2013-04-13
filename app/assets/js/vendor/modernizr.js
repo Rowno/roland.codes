@@ -1,5 +1,5 @@
 /* Modernizr 2.6.2 (Custom Build) | MIT & BSD
- * Build: http://modernizr.com/download/#-cssanimations-canvas-audio-localstorage-printshiv-cssclasses-addtest-testprop-testallprops-domprefixes-cors
+ * Build: http://modernizr.com/download/#-cssanimations-canvas-audio-localstorage-printshiv-cssclasses-addtest-teststyles-testprop-testallprops-prefixes-domprefixes-cors
  */
 ;
 
@@ -22,7 +22,13 @@ window.Modernizr = (function( window, document, undefined ) {
     inputElem  ,
 
 
-    toString = {}.toString,    omPrefixes = 'Webkit Moz O ms',
+    toString = {}.toString,
+
+    prefixes = ' -webkit- -moz- -o- -ms- '.split(' '),
+
+
+
+    omPrefixes = 'Webkit Moz O ms',
 
     cssomPrefixes = omPrefixes.split(' '),
 
@@ -40,7 +46,44 @@ window.Modernizr = (function( window, document, undefined ) {
     featureName,
 
 
+    injectElementWithStyles = function( rule, callback, nodes, testnames ) {
 
+      var style, ret, node, docOverflow,
+          div = document.createElement('div'),
+                body = document.body,
+                fakeBody = body || document.createElement('body');
+
+      if ( parseInt(nodes, 10) ) {
+                      while ( nodes-- ) {
+              node = document.createElement('div');
+              node.id = testnames ? testnames[nodes] : mod + (nodes + 1);
+              div.appendChild(node);
+          }
+      }
+
+                style = ['&#173;','<style id="s', mod, '">', rule, '</style>'].join('');
+      div.id = mod;
+          (body ? div : fakeBody).innerHTML += style;
+      fakeBody.appendChild(div);
+      if ( !body ) {
+                fakeBody.style.background = '';
+                fakeBody.style.overflow = 'hidden';
+          docOverflow = docElement.style.overflow;
+          docElement.style.overflow = 'hidden';
+          docElement.appendChild(fakeBody);
+      }
+
+      ret = callback(div, rule);
+        if ( !body ) {
+          fakeBody.parentNode.removeChild(fakeBody);
+          docElement.style.overflow = docOverflow;
+      } else {
+          div.parentNode.removeChild(div);
+      }
+
+      return !!ret;
+
+    },
     _hasOwnProperty = ({}).hasOwnProperty, hasOwnProp;
 
     if ( !is(_hasOwnProperty, 'undefined') && !is(_hasOwnProperty.call, 'undefined') ) {
@@ -49,7 +92,7 @@ window.Modernizr = (function( window, document, undefined ) {
       };
     }
     else {
-      hasOwnProp = function (object, property) { 
+      hasOwnProp = function (object, property) {
         return ((property in object) && is(object.constructor.prototype[property], 'undefined'));
       };
     }
@@ -231,7 +274,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
        }
 
-       return Modernizr; 
+       return Modernizr;
      };
 
 
@@ -241,6 +284,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     Modernizr._version      = version;
 
+    Modernizr._prefixes     = prefixes;
     Modernizr._domPrefixes  = domPrefixes;
     Modernizr._cssomPrefixes  = cssomPrefixes;
 
@@ -252,7 +296,8 @@ window.Modernizr = (function( window, document, undefined ) {
 
     Modernizr.testAllProps  = testPropsAll;
 
-    docElement.className = docElement.className.replace(/(^|\s)no-js(\s|$)/, '$1$2') +
+
+    Modernizr.testStyles    = injectElementWithStyles;    docElement.className = docElement.className.replace(/(^|\s)no-js(\s|$)/, '$1$2') +
 
                                                     (enableClasses ? ' js ' + classes.join(' ') : '');
 
@@ -336,7 +381,7 @@ window.Modernizr = (function( window, document, undefined ) {
     var elements = html5.elements;
     return typeof elements == 'string' ? elements.split(' ') : elements;
   }
-  
+
     /**
    * Returns the data associated to the given document
    * @private
@@ -747,3 +792,26 @@ window.Modernizr = (function( window, document, undefined ) {
 }(this, document));// cors
 // By Theodoor van Donge
 Modernizr.addTest('cors', !!(window.XMLHttpRequest && 'withCredentials' in new XMLHttpRequest()));;
+
+
+
+Modernizr.addTest('csspseudoanimations', function () {
+  var result = false;
+
+  if (!Modernizr.cssanimations || !window.getComputedStyle) {
+    return result;
+  }
+
+  var styles = [
+    '@', Modernizr._prefixes.join('keyframes csspseudoanimations { from { font-size: 10px; } }@').replace(/\@$/,''),
+    '#modernizr:before { content:" "; font-size:5px;',
+    Modernizr._prefixes.join('animation:csspseudoanimations 1ms infinite;'),
+    '}'
+  ].join('');
+
+  Modernizr.testStyles(styles, function (elem) {
+    result = window.getComputedStyle(elem, ':before').getPropertyValue('font-size') === '10px';
+  });
+
+  return result;
+});
