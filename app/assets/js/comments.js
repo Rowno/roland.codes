@@ -47,16 +47,6 @@ define([
         success: function (result) {
             var $html = $('<div />');
 
-            result.forEach(function (comment) {
-                /*jshint camelcase:false */
-
-                // Prevent <img>'s from loading before being stripped
-                comment.body_html = comment.body_html.replace(
-                    /(<img[^>]*)src=['"].*?['"]([^>]*>)/ig,
-                    '$1$2'
-                );
-            });
-
             var view = {
                 variables: variables
             };
@@ -74,19 +64,6 @@ define([
             // Sanitise
 
             var $content = $html.find('.content');
-
-            // Remove all images and empty containing elements
-            $content.find('img').each(function () {
-                var $next = $(this).parent();
-                var $current = $next;
-
-                while ($next.text().trim() === '') {
-                    $current = $next;
-                    $next = $current.parent();
-                }
-
-                $current.remove();
-            });
 
             $content.find('a').attr('rel', 'nofollow');
 

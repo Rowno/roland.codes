@@ -113,8 +113,8 @@ module.exports = function (grunt) {
                                 res.setHeader('X-XSS-Protection', '1; mode=block');
                                 res.setHeader('X-Frame-Options', 'SAMEORIGIN');
                                 res.setHeader(
-                                    'Content-Security-Policy-Report-Only',
-                                    "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' http://www.google-analytics.com https://www.google-analytics.com https://ssl.google-analytics.com; img-src 'self' http://www.google-analytics.com https://www.google-analytics.com https://ssl.google-analytics.com http://www.gravatar.com https://secure.gravatar.com; connect-src 'self' https://api.github.com; report-uri /csp-report;"
+                                    'Content-Security-Policy',
+                                    "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' http://www.google-analytics.com https://www.google-analytics.com https://ssl.google-analytics.com; img-src 'self' https://a248.e.akamai.net http://www.google-analytics.com https://www.google-analytics.com https://ssl.google-analytics.com http://www.gravatar.com https://secure.gravatar.com; connect-src 'self' https://api.github.com; report-uri /csp-report;"
                                 );
                                 next();
                             },
