@@ -7,17 +7,12 @@ define([
 ], function (variables, commentsTemplate, $, Mustache) {
     'use strict';
 
-    var $comments = $('#comments');
-    var devicePixelRatio = window.devicePixelRatio || 1;
     var AVATAR_SIZE = 25;
+    var devicePixelRatio = window.devicePixelRatio || 1;
+    var $comments = $('#comments');
 
     variables.commentsIssueId = $comments.data('comments-issue-id');
-
     variables.avatarSize = AVATAR_SIZE * devicePixelRatio;
-
-    variables.gravatarUrl = '//';
-    variables.gravatarUrl += ('https:' === location.protocol ? 'secure':'www');
-    variables.gravatarUrl += '.gravatar.com';
 
 
     function output(html) {
