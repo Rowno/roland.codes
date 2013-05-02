@@ -52,7 +52,12 @@ module.exports = function (grunt) {
         },
         clean: {
             temp: ['temp'],
-            logs: ['build/assets/js/build.txt']
+            logs: ['build/assets/js/build.txt'],
+            unneeded: [
+                'build/assets/js/build.txt',
+                'build/assets/css/**/*.less',
+                'build/assets/img/psd/'
+            ]
         },
         requirejs: {
             all: {
@@ -146,7 +151,7 @@ module.exports = function (grunt) {
         'requirejs',
         'clean:temp',
         'imagemin',
-        'clean:logs'
+        'clean:unneeded'
     ]);
 
     grunt.registerTask('deploy', ['prod', 'upload']);
