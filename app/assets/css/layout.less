@@ -116,11 +116,15 @@ body {
 
     section {
         padding: 5px;
-        padding-top: 0;
+        margin: @gridGutterWidth 0;
         .border-radius(3px);
 
         &:target {
             background: @backgroundColor;
+        }
+
+        h2 {
+            margin: 0 0 @gridGutterWidth/2 0;
         }
 
         ul {
