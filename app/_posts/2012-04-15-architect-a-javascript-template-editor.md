@@ -15,7 +15,7 @@ More information about Architect and it's source code is available at [GitHub][
 
 As always, pull requests are welcome. :)
 
-[Architect]: http://rowno.github.com/architect/
+[Architect]: http://rowno.github.io/architect/
 [Ace]: https://github.com/ajaxorg/ace
 [HTML5 Boilerplate]: http://html5boilerplate.com/
 [Twitter Bootstrap]: http://twitter.github.com/bootstrap/

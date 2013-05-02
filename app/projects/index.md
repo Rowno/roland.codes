@@ -37,7 +37,7 @@ Architect
 Web app for editing Javascript templates in various engines.
 
 GitHub: [Rowno/architect][architect-github]
-Website: http://rowno.github.com/architect/
+Website: http://rowno.github.io/architect/
 Chrome Web Store: [Architect - Javascript Template Editor][architect-chrome]
 License: MIT
 
