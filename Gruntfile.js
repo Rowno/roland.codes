@@ -55,8 +55,7 @@ module.exports = function (grunt) {
             logs: ['build/assets/js/build.txt'],
             unneeded: [
                 'build/assets/js/build.txt',
-                'build/assets/css/**/*.less',
-                'build/assets/img/psd/'
+                'build/assets/css/**/*.less'
             ]
         },
         requirejs: {
