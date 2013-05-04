@@ -97,11 +97,17 @@ module.exports = function (grunt) {
         },
         watch: {
             dev: {
-                files: 'app/**/*',
+                files: [
+                    'app/**/*',
+                    'Gruntfile.js'
+                ],
                 tasks: ['dev']
             },
             prod: {
-                files: 'app/**/*',
+                files: [
+                    'app/**/*',
+                    'Gruntfile.js'
+                ],
                 tasks: ['prod']
             }
         },
