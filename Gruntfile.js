@@ -96,6 +96,9 @@ module.exports = function (grunt) {
             }
         },
         watch: {
+            options: {
+                livereload: true
+            },
             dev: {
                 files: [
                     'app/**/*',
@@ -125,7 +128,7 @@ module.exports = function (grunt) {
                                 res.setHeader('X-Frame-Options', 'SAMEORIGIN');
                                 res.setHeader(
                                     'Content-Security-Policy',
-                                    "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' https://www.google-analytics.com https://ssl.google-analytics.com; img-src 'self' https://a248.e.akamai.net https://www.google-analytics.com https://ssl.google-analytics.com https://secure.gravatar.com; connect-src 'self' https://api.github.com; report-uri /csp-report;"
+                                    "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' https://www.google-analytics.com https://ssl.google-analytics.com; img-src 'self' https://a248.e.akamai.net https://www.google-analytics.com https://ssl.google-analytics.com https://secure.gravatar.com; connect-src 'self' https://api.github.com ws://127.0.0.1:35729; report-uri /csp-report;        connect-src ws://127.0.0.1:35729;"
                                 );
                                 next();
                             },
