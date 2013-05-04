@@ -16,19 +16,23 @@
     Software:    Sublime Text 2
     Source code: https://github.com/{{ site.githubRepo }}
 
+    Components:
 
-/* COMPONENTS */
-    Build:
-     * Jekyll    - https://github.com/mojombo/jekyll
-     * Grunt     - http://gruntjs.com/
-     * LESS      - http://lesscss.org/
-     * RequireJS - http://requirejs.org/
+        Build:
+         * Jekyll    - https://github.com/mojombo/jekyll
+         * Grunt     - http://gruntjs.com/
+         * LESS      - http://lesscss.org/
+         * RequireJS - http://requirejs.org/
 
-    Front-end:
-     * HTML5 Boilerplate - http://html5boilerplate.com/
-     * Twitter Bootstrap - http://twitter.github.com/bootstrap/
-     * Font Awesome      - http://fortawesome.github.com/Font-Awesome/
-     * Modernizr         - http://modernizr.com/
-     * jQuery            - http://jquery.com/
-     * Hogan.js          - http://twitter.github.com/hogan.js/
-     * jQuery Timeago    - http://timeago.yarp.com/
+        Front-end:
+         * HTML5 Boilerplate - http://html5boilerplate.com/
+         * Twitter Bootstrap - http://twitter.github.com/bootstrap/
+         * Font Awesome      - http://fortawesome.github.com/Font-Awesome/
+         * Modernizr         - http://modernizr.com/
+         * jQuery            - http://jquery.com/
+         * mustache.js       - http://github.com/janl/mustache.js/
+         * jQuery Timeago    - http://timeago.yarp.com/
+
+        Server:
+         * Nginx
+         * SPDY
