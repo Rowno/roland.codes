@@ -12,7 +12,7 @@
             </span>
 
             <a class="time" href="https://github.com/{{ variables.githubRepo }}/issues/{{ variables.commentsIssueId }}/#issuecomment-{{ id }}">
-                <time datetime="{{ created_at }}" itemprop="commentTime">{{ created_at }}</time>
+                <time datetime="{{ created_at }}" title="{{ created_at }}" itemprop="commentTime">{{ created_at }}</time>
             </a>
         </div>
 
