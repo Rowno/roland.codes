@@ -1,6 +1,6 @@
 <header>
     <h1>
-        <a rel="bookmark" href="{{ site.baseurl }}{{ page.url }}" itemprop="headline url">{{ page.title }}</a>
+        <a rel="bookmark" href="{{ page.url }}" itemprop="headline url">{{ page.title }}</a>
     </h1>
 </header>
 
@@ -15,7 +15,7 @@
     Tagged:
     <span itemprop="keywords">
     {% for tag in page.tags %}
-        <a rel="tag" class="tag" href="{{ site.baseurl }}/tags/#{{ tag | cgi_escape }}-tag">{{ tag }}</a>
+        <a rel="tag" class="tag" href="/tags/#{{ tag | cgi_escape }}-tag">{{ tag }}</a>
         {% unless page.tags.last == tag %}, {% endunless %}
     {% endfor %}
     </span>

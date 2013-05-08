@@ -21,4 +21,4 @@ Feel free to message me on [Google+][] or email me at <a href="&#109;&#97;&#x69;
 [GitHub]: https://github.com/{{ site.githubRepo }}
 [issues]: https://github.com/{{ site.githubRepo }}/issues?labels=blog+post+comments&state=closed
 [Google+]: https://plus.google.com/108621262237470431255/
-[humans.txt]: {{ site.baseurl }}/humans.txt
+[humans.txt]: /humans.txt

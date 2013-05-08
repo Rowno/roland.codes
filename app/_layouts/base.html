@@ -27,25 +27,25 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="{{ site.baseurl }}/{{ site.cssDir }}/main.css">
-    <link rel="alternate" type="application/rss+xml" href="{{ site.baseurl }}/feed.rss" title="{{ site.titleRss }}">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="alternate" type="application/rss+xml" href="/feed.rss" title="{{ site.titleRss }}">
 
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ site.baseurl }}/apple-touch-icon-144x144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ site.baseurl }}/apple-touch-icon-114x114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ site.baseurl }}/apple-touch-icon-72x72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="{{ site.baseurl }}/apple-touch-icon-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png">
 
     <meta name="application-name" content="{{ site.title }}">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="{{ site.baseurl }}/apple-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileImage" content="/apple-touch-icon-144x144-precomposed.png">
 
-    <script src="{{ site.baseurl }}/{{ site.jsDir }}/vendor/modernizr.js"></script>
+    <script src="/assets/js/vendor/modernizr.js"></script>
 </head>
 <body{% if page.pageId %} id="{{ page.pageId }}"{% endif %}>
     <div id="wrapper">
         <header id="header" role="banner">
             {% unless page.title %}<h1>{% endunless %}
-                <a rel="home" href="{{ site.baseurl }}/">{{ site.title }}</a>
+                <a rel="home" href="/">{{ site.title }}</a>
             {% unless page.title %}</h1>{% endunless %}
         </header>
 
@@ -70,10 +70,10 @@
 
             <nav id="main-menu" role="navigation">
                 <ul>
-                    <li><a rel="home" href="{{ site.baseurl }}/">Home</a></li>
-                    <li><a rel="author" href="{{ site.baseurl }}/about/">About</a></li>
-                    <li><a href="{{ site.baseurl }}/projects/">Projects</a></li>
-                    <li><a href="{{ site.baseurl }}/archives/">Archives</a></li>
+                    <li><a rel="home" href="/">Home</a></li>
+                    <li><a rel="author" href="/about/">About</a></li>
+                    <li><a href="/projects/">Projects</a></li>
+                    <li><a href="/archives/">Archives</a></li>
                 </ul>
 
                 <ul>
@@ -105,6 +105,6 @@
         </footer>
     </div>
 
-    <script data-main="{{ site.baseurl }}/{{ site.jsDir }}/main.js" src="{{ site.baseurl }}/{{ site.jsDir }}/vendor/require.js"></script>
+    <script data-main="/assets/js/main.js" src="/assets/js/vendor/require.js"></script>
 </body>
 </html>

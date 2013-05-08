@@ -5,12 +5,7 @@ titleRss: "Roland Warmerdam's Blog"
 copyright: "Copyright © 2011-2013 Roland Warmerdam"
 githubRepo: "Rowno/rolandwarmerdam.co.nz"
 googleAnalyticsId: "UA-21361814-1"
-
-cssDir: "assets/css"
-jsDir: "assets/js"
-imgDir: "assets/img"
-contentImgDir: "assets/img/content"
-audioDir: "assets/audio"
+contentImgDir: "/assets/img/content"
 
 
 # JEKYLL
