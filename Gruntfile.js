@@ -98,14 +98,16 @@ module.exports = function (grunt) {
             dev: {
                 files: [
                     'app/**/*',
-                    'Gruntfile.js'
+                    'Gruntfile.js',
+                    '_config.yml'
                 ],
                 tasks: ['dev']
             },
             prod: {
                 files: [
                     'app/**/*',
-                    'Gruntfile.js'
+                    'Gruntfile.js',
+                    '_config.yml'
                 ],
                 tasks: ['prod']
             }
