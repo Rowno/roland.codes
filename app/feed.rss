@@ -7,7 +7,7 @@
         <link>{{ site.url | xml_escape }}</link>
         <description>{{ site.titleRss | xml_escape }}</description>
         <language>en</language>
-        <lastBuildDate>{{ site.time | date:'%a, %d %b %Y %H:%M:%S %Z' }}</lastBuildDate>
+        <lastBuildDate>{{ site.time | date:'%a, %d %b %Y %H:%M:%S %z' }}</lastBuildDate>
         <generator>Jekyll</generator>
         <copyright>{{ site.copyright | xml_escape }}</copyright>
         <atom:link href="{{ site.url | xml_escape }}/feed.rss" rel="self" type="application/rss+xml" />
@@ -17,7 +17,7 @@
                 <guid>{{ site.url | xml_escape }}{{ post.url | xml_escape }}</guid>
                 <link>{{ site.url | xml_escape }}{{ post.url | xml_escape }}</link>
                 <title>{{ post.title | xml_escape }}</title>
-                <pubDate>{{ post.date | date:'%a, %d %b %Y %H:%M:%S %Z' }}</pubDate>
+                <pubDate>{{ post.date | date:'%a, %d %b %Y %H:%M:%S %z' }}</pubDate>
                 <description>{{ post.content | xml_escape }}</description>
             </item>
         {% endfor %}
