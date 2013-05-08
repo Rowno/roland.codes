@@ -4,10 +4,7 @@
 module.exports = function (grunt) {
     grunt.initConfig({
         jekyll: {
-            all: {
-                src: 'app',
-                dest: 'build'
-            }
+            all: {}
         },
         less: {
             dev: {
