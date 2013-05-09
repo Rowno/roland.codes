@@ -74,30 +74,6 @@ blockquote {
 
         code {
             white-space: pre;
-
-            // Add the syntax name above the code block
-            &:before {
-                content: attr(class);
-                position: absolute;
-                top: 1px;
-                right: 1px;
-                padding: (@baseLineHeight - 1) / 2; // Bootstrap `pre` padding calculation
-                font: bold 0.7em @baseFontFamily;
-                text-transform: uppercase;
-                background: white;
-                .border-radius(0 4px);
-                border: 1px solid #ccc; // fallback for IE7-8
-                border: 1px solid rgba(0,0,0,0.15);
-                border-top: none;
-                border-right: none;
-                .transition(all 0.2s linear);
-            }
-        }
-
-        &:hover, &:focus {
-            code:before {
-                .opacity(33);
-            }
         }
     }
 }
