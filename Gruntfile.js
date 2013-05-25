@@ -56,7 +56,7 @@ module.exports = function (grunt) {
                 src: [
                     '**/*',
                     '!assets/css/**/*.less',
-                    '!**/*.{png,jpg,jpeg}',
+                    '!assets/img/**/*.{png,jpg,jpeg,svg}',
                     '!assets/js/**/*'
                 ],
                 dest: 'build/'
@@ -101,7 +101,17 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: 'temp/',
-                    src: ['**/*.{png,jpg,jpeg}'],
+                    src: ['assets/img/**/*.{png,jpg,jpeg}'],
+                    dest: 'build/'
+                }]
+            }
+        },
+        svgmin: {
+            all: {
+                files: [{
+                    expand: true,
+                    cwd: 'temp/',
+                    src: 'assets/img/**/*.svg',
                     dest: 'build/'
                 }]
             }
@@ -155,6 +165,19 @@ module.exports = function (grunt) {
                     }
                 }
             }
+        },
+        concurrent: {
+            dev: [
+                'copy',
+                'less:dev'
+            ],
+            prod: [
+                'copy',
+                'less:prod',
+                'imagemin',
+                'svgmin',
+                'requirejs'
+            ]
         }
     });
 
@@ -162,17 +185,13 @@ module.exports = function (grunt) {
     grunt.registerTask('dev', [
         'clean:build',
         'jekyll',
-        'copy',
-        'less:dev'
+        'concurrent:dev'
     ]);
 
     grunt.registerTask('prod', [
         'clean:build',
         'jekyll',
-        'copy',
-        'less:prod',
-        'imagemin',
-        'requirejs',
+        'concurrent:prod',
         'clean:unneeded'
     ]);
 
