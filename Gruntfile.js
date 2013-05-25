@@ -49,7 +49,14 @@ module.exports = function (grunt) {
             ]
         },
         copy: {
-            all: {
+            dev: {
+                expand: true,
+                filter: 'isFile',
+                cwd: 'temp/',
+                src: ['**/*'],
+                dest: 'build/'
+            },
+            prod: {
                 expand: true,
                 filter: 'isFile',
                 cwd: 'temp/',
@@ -168,11 +175,11 @@ module.exports = function (grunt) {
         },
         concurrent: {
             dev: [
-                'copy',
+                'copy:dev',
                 'less:dev'
             ],
             prod: [
-                'copy',
+                'copy:prod',
                 'less:prod',
                 'imagemin',
                 'svgmin',
