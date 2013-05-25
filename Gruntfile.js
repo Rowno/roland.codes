@@ -49,7 +49,6 @@ module.exports = function (grunt) {
         },
         clean: {
             temp: ['temp'],
-            logs: ['build/assets/js/build.txt'],
             unneeded: [
                 'build/assets/js/build.txt',
                 'build/assets/css/**/*.less'
