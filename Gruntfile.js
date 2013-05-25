@@ -11,7 +11,7 @@ module.exports = function (grunt) {
         jekyll: {
             all: {
                 src: 'app',
-                dest: 'build',
+                dest: 'temp',
                 config: '_config.yml'
             }
         },
@@ -21,7 +21,7 @@ module.exports = function (grunt) {
                     dumpLineNumbers: 'comments'
                 },
                 files: {
-                    'build/assets/css/main.css': 'build/assets/css/main.less'
+                    'build/assets/css/main.css': 'temp/assets/css/main.less'
                 }
             },
             prod: {
@@ -30,7 +30,7 @@ module.exports = function (grunt) {
                     yuicompress: true
                 },
                 files: {
-                    'build/assets/css/main.css': 'build/assets/css/main.less'
+                    'build/assets/css/main.css': 'temp/assets/css/main.less'
                 }
             }
         },
@@ -49,26 +49,31 @@ module.exports = function (grunt) {
             ]
         },
         copy: {
-            js: {
+            all: {
                 expand: true,
-                cwd: 'build/assets/js/',
-                src: ['**/*'],
-                dest: 'temp/'
+                filter: 'isFile',
+                cwd: 'temp/',
+                src: [
+                    '**/*',
+                    '!assets/css/**/*.less',
+                    '!**/*.{png,jpg,jpeg}',
+                    '!assets/js/**/*'
+                ],
+                dest: 'build/'
             }
         },
         clean: {
-            temp: ['temp'],
+            build: ['build'],
             unneeded: [
-                'build/assets/js/build.txt',
-                'build/assets/css/**/*.less'
+                'build/assets/js/build.txt'
             ]
         },
         requirejs: {
             all: {
                 options: {
-                    mainConfigFile: 'temp/main.js',
+                    mainConfigFile: 'temp/assets/js/main.js',
                     baseUrl: '.',
-                    appDir: 'temp',
+                    appDir: 'temp/assets/js',
                     dir: 'build/assets/js',
                     removeCombined: true,
                     optimize: 'uglify2',
@@ -95,7 +100,9 @@ module.exports = function (grunt) {
                 },
                 files: [{
                     expand: true,
-                    src: ['build/**/*.{png,jpg,jpeg}']
+                    cwd: 'temp/',
+                    src: ['**/*.{png,jpg,jpeg}'],
+                    dest: 'build/'
                 }]
             }
         },
@@ -147,14 +154,21 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('dev', ['jekyll', 'less:dev']);
-    grunt.registerTask('prod', [
+
+    grunt.registerTask('dev', [
+        'clean:build',
         'jekyll',
+        'copy',
+        'less:dev'
+    ]);
+
+    grunt.registerTask('prod', [
+        'clean:build',
+        'jekyll',
+        'copy',
         'less:prod',
-        'copy:js',
-        'requirejs',
-        'clean:temp',
         'imagemin',
+        'requirejs',
         'clean:unneeded'
     ]);
 
