@@ -145,7 +145,11 @@ module.exports = function (grunt) {
                                 );
                                 next();
                             },
-                            connect.compress(),
+                            connect.compress({
+                                filter: function (req, res) {
+                                    return (/json|text|javascript|xml/).test(res.getHeader('Content-Type'));
+                                }
+                            }),
                             connect.static(options.base)
                         ];
                     }
