@@ -2,6 +2,11 @@
 'use strict';
 
 module.exports = function (grunt) {
+    // load all grunt tasks
+    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+    grunt.loadTasks('tasks');
+
+
     grunt.initConfig({
         jekyll: {
             all: {}
@@ -137,17 +142,6 @@ module.exports = function (grunt) {
             }
         }
     });
-
-    grunt.loadTasks('tasks');
-    grunt.loadNpmTasks('grunt-jekyll');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-connect');
-    grunt.loadNpmTasks('grunt-contrib-imagemin');
-    grunt.loadNpmTasks('grunt-contrib-requirejs');
 
     grunt.registerTask('dev', ['jekyll', 'less:dev']);
     grunt.registerTask('prod', [
