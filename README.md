@@ -11,8 +11,9 @@ Install the following dependencies:
  * [Jekyll and Pygments][jekyll-install]. E.g: `gem install jekyll`
  * [Node.js][]
  * `gem install redcarpet`
- * `npm install -g grunt-cli`
+ * `npm install -g grunt-cli bower`
  * `npm install`
+ * `bower install`
 
 And then run `grunt dev` to build the website or run `grunt auto` to build the website, start a server and watch for changes.
 

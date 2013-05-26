@@ -2,8 +2,8 @@ define([
     'variables',
     'text!templates/comments.html',
     'jquery',
-    'vendor/mustache',
-    'vendor/jquery.timeago'
+    'mustache',
+    'jquery-timeago'
 ], function (variables, commentsTemplate, $, Mustache) {
     'use strict';
 

@@ -1,8 +1,10 @@
 requirejs.config({
     baseUrl: '/assets/js',
     paths: {
-        text: 'vendor/text',
-        jquery: 'vendor/jquery'
+        'jquery':         '../bower_components/jquery/jquery',
+        'jquery-timeago': '../bower_components/jquery-timeago/jquery.timeago',
+        'mustache':       '../bower_components/mustache/mustache',
+        'text':           '../bower_components/requirejs-text/text'
     }
 });
 

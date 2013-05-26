@@ -1,0 +1,11 @@
+{
+  "name": "rolandwarmerdam.co.nz",
+  "version": "1.0.0",
+  "dependencies": {
+    "jquery": "~2.0.1",
+    "jquery-timeago": "~1.2.0",
+    "mustache": "~0.7.2",
+    "requirejs": "~2.1.6",
+    "requirejs-text": "~2.0.6"
+  }
+}

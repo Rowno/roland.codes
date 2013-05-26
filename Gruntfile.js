@@ -79,12 +79,13 @@ module.exports = function (grunt) {
             all: {
                 options: {
                     mainConfigFile: 'temp/assets/js/main.js',
-                    baseUrl: '.',
-                    appDir: 'temp/assets/js',
+                    baseUrl: 'temp/assets/js',
                     dir: 'build/assets/js',
                     removeCombined: true,
-                    optimize: 'uglify2',
+                    wrap: true,
                     useStrict: true,
+                    optimize: 'uglify2',
+                    preserveLicenseComments: false,
                     modules: [
                         {
                             name: 'main',
