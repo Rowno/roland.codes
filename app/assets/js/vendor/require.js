@@ -1,1 +1,1 @@
-/home/rowno/www/rolandwarmerdam.co.nz/app/assets/bower_components/requirejs/require.js
+../../bower_components/requirejs/require.js
