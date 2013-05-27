@@ -82,7 +82,6 @@ module.exports = function (grunt) {
                     baseUrl: 'temp/assets/js',
                     dir: 'build/assets/js',
                     removeCombined: true,
-                    wrap: true,
                     useStrict: true,
                     optimize: 'uglify2',
                     preserveLicenseComments: false,
@@ -121,6 +120,30 @@ module.exports = function (grunt) {
                     cwd: 'temp/',
                     src: 'assets/img/**/*.svg',
                     dest: 'build/'
+                }]
+            }
+        },
+        handlebars: {
+            options: {
+                amd: true,
+                namespace: false
+            },
+            dev: {
+                files: [{
+                    expand: true,
+                    cwd: 'temp/',
+                    src: 'assets/js/templates/*.html',
+                    dest: 'build/',
+                    ext: '.js'
+                }]
+            },
+            prod: {
+                files: [{
+                    expand: true,
+                    cwd: 'temp/',
+                    src: 'assets/js/templates/*.html',
+                    dest: 'temp/', // Output to temp so requirejs can pick it up
+                    ext: '.js'
                 }]
             }
         },
@@ -177,6 +200,7 @@ module.exports = function (grunt) {
         concurrent: {
             dev: [
                 'copy:dev',
+                'handlebars:dev',
                 'less:dev'
             ],
             prod: [
@@ -199,6 +223,7 @@ module.exports = function (grunt) {
     grunt.registerTask('prod', [
         'clean:build',
         'jekyll',
+        'handlebars:prod', // Needs to run before requirejs
         'concurrent:prod',
         'clean:unneeded'
     ]);

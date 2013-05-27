@@ -3,8 +3,13 @@ requirejs.config({
     paths: {
         'jquery':         '../bower_components/jquery/jquery',
         'jquery-timeago': '../bower_components/jquery-timeago/jquery.timeago',
-        'mustache':       '../bower_components/mustache/mustache',
+        'handlebars':     '../bower_components/handlebars/handlebars.runtime',
         'text':           '../bower_components/requirejs-text/text'
+    },
+    shim: {
+        'handlebars': {
+            exports: 'Handlebars'
+        }
     }
 });
 
