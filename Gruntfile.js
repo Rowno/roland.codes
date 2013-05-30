@@ -40,8 +40,10 @@ module.exports = function (grunt) {
             },
             all: [
                 '.jshintrc',
-                'Gruntfile.js',
+                '.bowerrc',
+                'bower.json',
                 'package.json',
+                'Gruntfile.js',
                 'app/assets/js/**/*.js',
                 '!app/assets/js/vendor/**/*',
                 '!app/assets/js/ga.js',
