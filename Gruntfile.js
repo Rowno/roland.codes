@@ -230,11 +230,11 @@ module.exports = function (grunt) {
         'clean:unneeded'
     ]);
 
+    grunt.registerTask('server:dev', ['dev', 'connect', 'watch:dev']);
+    grunt.registerTask('server:prod', ['prod', 'connect', 'watch:prod']);
+    grunt.registerTask('server', ['server:dev']);
+
     grunt.registerTask('deploy', ['prod', 'upload']);
 
-    grunt.registerTask('auto:dev', ['dev', 'connect', 'watch:dev']);
-    grunt.registerTask('auto:prod', ['prod', 'connect', 'watch:prod']);
-
-    grunt.registerTask('auto', ['auto:dev']);
-    grunt.registerTask('default', ['dev']);
+    grunt.registerTask('default', ['server']);
 };

@@ -6,7 +6,8 @@ This is the source code of my personal website/blog, which is a static website g
 
 Build
 -----
-Install the following dependencies:
+
+### Setup
 
  * [Jekyll and Pygments][jekyll-install]. E.g: `gem install jekyll`
  * [Node.js][]
@@ -15,7 +16,12 @@ Install the following dependencies:
  * `npm install`
  * `bower install`
 
-And then run `grunt dev` to build the website or run `grunt auto` to build the website, start a server and watch for changes.
+### Tasks
+
+ * `grunt dev` - development build.
+ * `grunt prod` - production build.
+ * `grunt server` - development build and start a server / watch for changes.
+ * `grunt server:prod` - production build and start a server / watch for changes.
 
 For a list of all available tasks, run `grunt --help`.
 
