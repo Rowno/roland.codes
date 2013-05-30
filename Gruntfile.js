@@ -2,6 +2,8 @@
 'use strict';
 
 module.exports = function (grunt) {
+    var target = !!grunt.option('prod') ? 'prod' : 'dev';
+
     // auto load all grunt tasks
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
     grunt.loadTasks('tasks');
@@ -232,10 +234,8 @@ module.exports = function (grunt) {
         'clean:unneeded'
     ]);
 
-    grunt.registerTask('server:dev', ['dev', 'connect', 'watch:dev']);
-    grunt.registerTask('server:prod', ['prod', 'connect', 'watch:prod']);
-    grunt.registerTask('server', ['server:dev']);
-
+    grunt.registerTask('build', [target]);
+    grunt.registerTask('server', [target, 'connect', 'watch:' + target]);
     grunt.registerTask('deploy', ['prod', 'upload']);
 
     grunt.registerTask('default', ['server']);

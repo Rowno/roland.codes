@@ -20,17 +20,15 @@ Build
 
 Available build tasks:
 
- * `grunt dev` - development build.
- * `grunt prod` - production build.
- * `grunt server` - development build and start a server / watch for changes.
- * `grunt server:prod` - production build and start a server / watch for changes.
-
-For a list of all available tasks, run `grunt --help`.
+ * `grunt build` - build the website.
+ * `grunt server` - build the website, start a server and watch for changes.
+ * `grunt jshint` - lint the Javascript and JSON files.
 
 #### Flags ####
 
-The following flags can be added to any task (e.g: `grunt server --drafts`):
+The following command line flags can also be added to the `build` and `server` tasks:
 
+ * `--prod` - do a production build.
  * `--drafts` - render draft posts.
 
 
