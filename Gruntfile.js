@@ -12,7 +12,8 @@ module.exports = function (grunt) {
             all: {
                 src: 'app',
                 dest: 'temp',
-                config: '_config.yml'
+                config: '_config.yml',
+                drafts: !!grunt.option('drafts')
             }
         },
         less: {

@@ -7,7 +7,7 @@ This is the source code of my personal website/blog, which is a static website g
 Build
 -----
 
-### Setup
+### Setup ###
 
  * [Jekyll and Pygments][jekyll-install]. E.g: `gem install jekyll`
  * [Node.js][]
@@ -16,7 +16,9 @@ Build
  * `npm install`
  * `bower install`
 
-### Tasks
+### Tasks ###
+
+Available build tasks:
 
  * `grunt dev` - development build.
  * `grunt prod` - production build.
@@ -24,6 +26,12 @@ Build
  * `grunt server:prod` - production build and start a server / watch for changes.
 
 For a list of all available tasks, run `grunt --help`.
+
+#### Flags ####
+
+The following flags can be added to any task (e.g: `grunt server --drafts`):
+
+ * `--drafts` - render draft posts.
 
 
 License
