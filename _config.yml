@@ -10,8 +10,6 @@ contentImgDir: "/assets/img/content"
 
 # JEKYLL
 # ------
-source: "app"
-destination: "build"
 url: "http://rolandwarmerdam.co.nz"
 pygments: true
 permalink: "/:title/"

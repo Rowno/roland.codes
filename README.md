@@ -6,17 +6,30 @@ This is the source code of my personal website/blog, which is a static website g
 
 Build
 -----
-Install the following dependencies:
+
+### Setup ###
 
  * [Jekyll and Pygments][jekyll-install]. E.g: `gem install jekyll`
  * [Node.js][]
  * `gem install redcarpet`
- * `npm install -g grunt-cli`
+ * `npm install -g grunt-cli bower`
  * `npm install`
+ * `bower install`
 
-And then run `grunt dev` to build the website or run `grunt auto` to build the website, start a server and watch for changes.
+### Tasks ###
 
-For a list of all available tasks, run `grunt --help`.
+Available build tasks:
+
+ * `grunt build` - build the website.
+ * `grunt server` - build the website, start a server and watch for changes.
+ * `grunt jshint` - lint the Javascript and JSON files.
+
+#### Flags ####
+
+The following command line flags can also be added to the `build` and `server` tasks:
+
+ * `--prod` - do a production build.
+ * `--drafts` - render draft posts.
 
 
 License

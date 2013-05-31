@@ -1,10 +1,9 @@
 define([
     'variables',
-    'text!templates/comments.html',
+    'templates/comments',
     'jquery',
-    'vendor/mustache',
-    'vendor/jquery.timeago'
-], function (variables, commentsTemplate, $, Mustache) {
+    'jquery-timeago'
+], function (variables, commentsTemplate, $) {
     'use strict';
 
     var AVATAR_SIZE = 25;
@@ -23,7 +22,7 @@ define([
 
 
     if (!Modernizr.cors) {
-        output(Mustache.render(commentsTemplate, {
+        output(commentsTemplate({
             variables: variables,
             unsupported: true
         }));
@@ -52,7 +51,7 @@ define([
                 view.comments = result;
             }
 
-            $html.html(Mustache.render(commentsTemplate, view));
+            $html.html(commentsTemplate(view));
             $html.find('time').timeago();
 
 
@@ -68,7 +67,7 @@ define([
             output($html);
         },
         error: function () {
-            output(Mustache.render(commentsTemplate, {
+            output(commentsTemplate({
                 variables: variables,
                 error: true
             }));
