@@ -30,7 +30,7 @@
          * Font Awesome      - http://fortawesome.github.com/Font-Awesome/
          * Modernizr         - http://modernizr.com/
          * jQuery            - http://jquery.com/
-         * mustache.js       - http://github.com/janl/mustache.js/
+         * Handlebars.js     - https://github.com/wycats/handlebars.js/
          * jQuery Timeago    - http://timeago.yarp.com/
 
         Server:
