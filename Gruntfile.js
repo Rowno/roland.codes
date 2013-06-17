@@ -183,7 +183,7 @@ module.exports = function (grunt) {
                         return [
                             function (req, res, next) {
                                 /*jshint quotmark:false */
-                                res.setHeader('X-UA-Compatible', 'IE=Edge,chrome=1');
+                                res.setHeader('X-UA-Compatible', 'IE=Edge');
                                 res.setHeader('X-Content-Type-Options', 'nosniff');
                                 res.setHeader('X-XSS-Protection', '1; mode=block');
                                 res.setHeader('X-Frame-Options', 'SAMEORIGIN');
