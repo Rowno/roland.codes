@@ -1,16 +1,20 @@
 /*jshint node:true */
 'use strict';
 
-var commander = require('commander');
+var inquirer = require('inquirer');
 
 
 module.exports = function (grunt) {
     grunt.registerTask('upload', function () {
         var done = this.async();
 
-        commander.confirm('Are you sure you want to upload the website? (y/n) ', function (ok) {
-            if (!ok) {
-                done(false);
+        inquirer.prompt([{
+            type: 'confirm',
+            name: 'confirm',
+            message: 'Are you sure you want to upload the website?'
+        }], function (answers) {
+            if (!answers.confirm) {
+                done();
                 return;
             }
 
