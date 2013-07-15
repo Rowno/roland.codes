@@ -11,7 +11,6 @@ Build
 
  * [Jekyll and Pygments][jekyll-install]. E.g: `gem install jekyll`
  * [Node.js][]
- * `gem install redcarpet`
  * `npm install -g grunt-cli bower`
  * `npm install`
  * `bower install`
