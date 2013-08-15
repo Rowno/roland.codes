@@ -14,7 +14,7 @@ requirejs.config({
 });
 
 
-require(['jquery', 'ga'], function ($) {
+require(['jquery', 'ga', 'variables'], function ($) {
     'use strict';
 
     $(function () {

@@ -93,14 +93,13 @@ module.exports = function (grunt) {
                     preserveLicenseComments: false,
                     modules: [
                         {
-                            name: 'main',
-                            include: ['jquery', 'variables', 'ga']
+                            name: 'main'
                         }, {
                             name: 'comments',
-                            exclude: ['jquery', 'variables', 'ga']
+                            exclude: ['main']
                         }, {
                             name: 'tetris',
-                            exclude: ['jquery', 'variables', 'ga']
+                            exclude: ['main']
                         }
                     ]
                 }
