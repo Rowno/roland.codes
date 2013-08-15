@@ -90,6 +90,7 @@ module.exports = function (grunt) {
                     removeCombined: true,
                     useStrict: true,
                     optimize: 'uglify2',
+                    generateSourceMaps: true,
                     preserveLicenseComments: false,
                     modules: [
                         {
