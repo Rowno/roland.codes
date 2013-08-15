@@ -11,4 +11,21 @@ define(['variables'], function (variables) {
         'siteSpeedSampleRate': 100
     });
     ga('send', 'pageview');
+
+
+    // Track javascript errors using Google Analytics
+    window.onerror = function (message, file, line, column) {
+        var a = window.document.createElement('a');
+        a.href = file;
+        var host = a.hostname;
+
+        ga(
+            'send',
+            'event',
+            (host === window.location.hostname || host === null || host === '' ? '' : 'external ') + 'error',
+            message,
+            file + ' LINE:' + line + (column ? ' COLUMN:' + column : ''),
+            {'nonInteraction': true}
+        );
+    };
 });
