@@ -1,7 +1,6 @@
 {
     "globals": {
         "Modernizr": false,
-        "_gaq": false,
         "ga": false,
         "requirejs": false,
         "require": false,
