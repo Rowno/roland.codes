@@ -18,21 +18,21 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "matchdep": "~0.1.2",
-    "inquirer": "~0.2.3",
     "grunt": "~0.4.1",
+    "grunt-concurrent": "~0.3.0",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-connect": "~0.3.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-handlebars": "~0.5.10",
+    "grunt-contrib-imagemin": "~0.1.4",
+    "grunt-contrib-jshint": "~0.6.2",
+    "grunt-contrib-less": "~0.7.0",
+    "grunt-contrib-requirejs": "~0.4.1",
+    "grunt-contrib-watch": "~0.5.1",
     "grunt-jekyll": "~0.3.8",
     "grunt-svgmin": "~0.2.0",
-    "grunt-concurrent": "~0.3.0",
-    "grunt-contrib-copy": "~0.4.1",
-    "grunt-contrib-less": "~0.7.0",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-watch": "~0.5.1",
-    "grunt-contrib-jshint": "~0.6.2",
-    "grunt-contrib-connect": "~0.3.0",
-    "grunt-contrib-imagemin": "~0.1.4",
-    "grunt-contrib-requirejs": "~0.4.1",
-    "grunt-contrib-handlebars": "~0.5.10"
+    "inquirer": "~0.2.3",
+    "matchdep": "~0.1.2"
   },
   "private": true
 }
