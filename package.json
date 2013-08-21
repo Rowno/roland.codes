@@ -32,7 +32,7 @@
     "grunt-jekyll": "~0.3.8",
     "grunt-svgmin": "~0.2.0",
     "inquirer": "~0.2.3",
-    "matchdep": "~0.1.2"
+    "load-grunt-tasks": "~0.1.0"
   },
   "private": true
 }

@@ -4,8 +4,8 @@
 module.exports = function (grunt) {
     var target = !!grunt.option('prod') ? 'prod' : 'dev';
 
-    // auto load all grunt tasks
-    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+    // Load all grunt tasks
+    require('load-grunt-tasks')(grunt);
     grunt.loadTasks('tasks');
 
 
