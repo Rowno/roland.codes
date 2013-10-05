@@ -21,7 +21,7 @@ ln -s ~/.config/sublime-text-2/Packages sublime-text-2-settings
 
 ```bash
 cd ~/Dropbox
-ln -s ~/'Library/Application Support/Sublime Text 2' sublime-text-2-settings
+ln -s ~/Library/Application Support/Sublime Text 2/Packages sublime-text-2-settings
 ```
 
 **Windows**
