@@ -13,7 +13,7 @@
 /* SITE */
     Last update: {{ site.time | date_to_long_string }}
     Standards:   HTML5, CSS3, RSS, Media Queries, Microdata, WAI-ARIA, CORS, Canvas, Local Storage, Audio
-    Software:    Sublime Text 2
+    Software:    Sublime Text 3
     Source code: https://github.com/{{ site.githubRepo }}
 
     Components:
