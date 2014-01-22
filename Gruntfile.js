@@ -25,7 +25,6 @@ module.exports = function (grunt) {
             prod: [
                 'copy:prod',
                 'less:prod',
-                'imagemin',
                 'svgmin',
                 'requirejs'
             ]
@@ -45,7 +44,14 @@ module.exports = function (grunt) {
                                 res.setHeader('X-Frame-Options', 'SAMEORIGIN');
                                 res.setHeader(
                                     'Content-Security-Policy',
-                                    "default-src 'self' chrome-extension:; style-src 'self' chrome-extension: 'unsafe-inline'; script-src 'self' chrome-extension: https://www.google-analytics.com https://ssl.google-analytics.com; img-src *; connect-src 'self' chrome-extension: https://api.github.com ws://127.0.0.1:35729; report-uri /csp-report;"
+                                    [
+                                        "default-src 'self' chrome-extension:",
+                                        "style-src 'self' chrome-extension: 'unsafe-inline'",
+                                        "script-src 'self' chrome-extension: https://www.google-analytics.com https://ssl.google-analytics.com http://localhost:35729",
+                                        "img-src *",
+                                        "connect-src 'self' chrome-extension: https://api.github.com ws://localhost:35729",
+                                        "report-uri /csp-report"
+                                    ].join(';')
                                 );
                                 next();
                             },
@@ -80,6 +86,19 @@ module.exports = function (grunt) {
                     '!assets/js/**/*' // requirejs
                 ],
                 dest: 'build/'
+            }
+        },
+        cssmin: {
+            all: {
+                options: {
+                    keepSpecialComments: 0
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'build/',
+                    src: 'assets/css/**/*.css',
+                    dest: 'build/'
+                }]
             }
         },
         handlebars: {
@@ -121,10 +140,12 @@ module.exports = function (grunt) {
         },
         jekyll: {
             all: {
-                src: 'app',
-                dest: 'temp',
-                config: '_config.yml',
-                drafts: !!grunt.option('drafts')
+                options: {
+                    src: 'app',
+                    dest: 'temp',
+                    config: '_config.yml',
+                    drafts: !!grunt.option('drafts')
+                }
             }
         },
         jshint: {
@@ -146,17 +167,14 @@ module.exports = function (grunt) {
         less: {
             dev: {
                 options: {
-                    dumpLineNumbers: 'comments'
+                    sourceMap: true,
+                    outputSourceFiles: true
                 },
                 files: {
                     'build/assets/css/main.css': 'temp/assets/css/main.less'
                 }
             },
             prod: {
-                options: {
-                    compress: true,
-                    yuicompress: true
-                },
                 files: {
                     'build/assets/css/main.css': 'temp/assets/css/main.less'
                 }
@@ -231,7 +249,9 @@ module.exports = function (grunt) {
         'clean:build',
         'jekyll',
         'handlebars:prod', // needs to run before requirejs
+        'imagemin',
         'concurrent:prod',
+        'cssmin',
         'clean:unneeded'
     ]);
 
