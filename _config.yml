@@ -10,7 +10,7 @@ contentImgDir: "/assets/img/content"
 
 # JEKYLL
 # ------
-url: "http://rolandwarmerdam.co.nz"
+url: "https://rolandwarmerdam.co.nz"
 pygments: true
 permalink: "/:title/"
 paginate: 5
