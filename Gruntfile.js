@@ -1,12 +1,75 @@
 /*jshint node:true */
 'use strict';
 
+
+function combineCspSources(sources) {
+    return sources.reduce(function (combined, source) {
+        if (source === 'none' ||
+            source === 'self' ||
+            source === 'unsafe-inline' ||
+            source === 'unsafe-eval')
+        {
+            source = '\'' + source + '\'';
+        }
+
+        return combined + ' ' + source;
+    }, '');
+}
+
+function generateCsp(csp) {
+    var defaultSources = '';
+
+    if (csp['default-src']) {
+        defaultSources = combineCspSources(csp['default-src']);
+    }
+
+    return Object.keys(csp).reduce(function (combined, directive) {
+        combined += directive;
+
+        if (directive !== 'default-src' &&
+            directive !== 'report-uri' &&
+            csp[directive][0] !== 'none' &&
+            csp[directive][0] !== '*')
+        {
+            combined += defaultSources;
+        }
+
+        combined += combineCspSources(csp[directive]);
+
+        combined += '; ';
+
+        return combined;
+    }, '');
+}
+
+
 module.exports = function (grunt) {
     var target = !!grunt.option('prod') ? 'prod' : 'dev';
 
     // Load all grunt tasks
     require('load-grunt-tasks')(grunt);
     grunt.loadTasks('tasks');
+
+
+    var csp = {
+        'default-src': [
+            'self'
+        ],
+        'style-src': ['unsafe-inline'],
+        'script-src': [
+            'https://www.google-analytics.com',
+            'https://codepen.io'
+        ],
+        'img-src': ['*'],
+        'connect-src': ['https://api.github.com'],
+        'frame-src': ['https://codepen.io'],
+        'report-uri': ['/csp-report']
+    };
+
+    // Local CSP additions
+    csp['script-src'].push('http://localhost:35729');
+    csp['connect-src'].push('ws://localhost:35729');
+    csp['frame-src'].push('http://codepen.io');
 
 
     grunt.initConfig({
@@ -42,17 +105,7 @@ module.exports = function (grunt) {
                                 res.setHeader('X-Content-Type-Options', 'nosniff');
                                 res.setHeader('X-XSS-Protection', '1; mode=block');
                                 res.setHeader('X-Frame-Options', 'SAMEORIGIN');
-                                res.setHeader(
-                                    'Content-Security-Policy',
-                                    [
-                                        "default-src 'self' chrome-extension:",
-                                        "style-src 'self' chrome-extension: 'unsafe-inline'",
-                                        "script-src 'self' chrome-extension: https://www.google-analytics.com https://ssl.google-analytics.com http://localhost:35729",
-                                        "img-src *",
-                                        "connect-src 'self' chrome-extension: https://api.github.com ws://localhost:35729",
-                                        "report-uri /csp-report"
-                                    ].join(';')
-                                );
+                                res.setHeader('Content-Security-Policy', generateCsp(csp));
                                 next();
                             },
                             connect.compress({
