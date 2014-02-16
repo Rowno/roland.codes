@@ -31,6 +31,10 @@ require(['jquery', 'ga', 'variables'], function ($) {
             require(['comments']);
         }
 
+        if ($('.codepen').length > 0) {
+            require(['https://codepen.io/assets/embed/ei.js']);
+        }
+
 
         /***** Event tracking *****/
 
