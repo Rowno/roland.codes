@@ -1,7 +1,7 @@
 requirejs.config({
     baseUrl: '/assets/js',
     paths: {
-        'jquery':         '../bower_components/jquery/jquery',
+        'jquery':         '../bower_components/jquery/dist/jquery',
         'jquery-timeago': '../bower_components/jquery-timeago/jquery.timeago',
         'handlebars':     '../bower_components/handlebars/handlebars.runtime',
         'text':           '../bower_components/requirejs-text/text'
