@@ -50,7 +50,7 @@
         </header>
 
         <div id="skip-main-menu">
-            <a href="#main-menu" accesskey="m">Skip to main menu</a>
+            <a href="#main-menu">Skip to main menu</a>
         </div>
 
         <div id="main" role="main">
@@ -85,15 +85,20 @@
 
             <div class="search-wrapper">
                 <form class="search" role="search" action="//www.google.com/search" method="get">
-                    <input type="search" name="q" accesskey="s" class="search-query" placeholder="Search">
-                    <button type="submit" class="search-submit icon-search"></button>
+                    <label>
+                        <span class="visuallyhidden">Search</span>
+                        <input type="search" name="q" class="search-query" placeholder="Search">
+                    </label>
+                    <button type="submit" class="search-submit icon-search">
+                        <span class="visuallyhidden">Submit</span>
+                    </button>
                     <input type="hidden" name="sitesearch" value="{{ site.url | remove:'http://' | remove:'https://' }}">
                 </form>
             </div>
         </div>
 
         <div id="skip-top">
-            <a href="#" accesskey="t">Skip to top of page</a>
+            <a href="#">Skip to top of page</a>
         </div>
 
         <footer id="footer" role="contentinfo">
