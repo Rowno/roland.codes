@@ -41,6 +41,6 @@ Copyright © 2013 Roland Warmerdam.
 
 
 [jekyll]: https://github.com/mojombo/jekyll
-[jekyll-install]: https://github.com/mojombo/jekyll/wiki/Install
+[jekyll-install]: http://jekyllrb.com/docs/installation/
 [node.js]: http://nodejs.org/
 [license]: http://creativecommons.org/licenses/by-sa/3.0/

@@ -113,7 +113,7 @@ module.exports = function (grunt) {
                                     return (/json|text|javascript|xml/).test(res.getHeader('Content-Type'));
                                 }
                             }),
-                            connect.static(options.base)
+                            connect.static(options.base[0])
                         ];
                     }
                 }
