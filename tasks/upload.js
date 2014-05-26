@@ -22,10 +22,10 @@ module.exports = function (grunt) {
                 cmd: 'rsync',
                 opts: {stdio: 'inherit'},
                 args: [
-                    '-avz',
+                    '-avzh',
                     '--delete',
                     'build/',
-                    'vps:/var/www/rolandwarmerdam/htdocs/'
+                    'vps:/var/www/rolandwarmerdam.co.nz/files/'
                 ]
             }, function (error) {
                 done(error);
