@@ -6,15 +6,15 @@ pageId: about
 
 Me
 --
-* Front End / Node.js web developer.
-* Front End Web Developer on the [Xero][] Marketing team in Wellington, New Zealand.
-* Linux (Ubuntu) user.
-* New web technology hacker/experimenter.
-* Gamer.
+ * Front End / Node.js web developer.
+ * Front End Web Developer on the [Xero][] Marketing team in Wellington, New Zealand.
+ * Linux (Ubuntu) user.
+ * New web technology hacker/experimenter.
+ * Gamer.
 
 Website
 -------
-This is a static website generated using [Jekyll][] and is hosted on my [Linode][] VPS. All of the website's source code and content is available at [GitHub][], including the comments which are hosted using [repurposed GitHub issues][issues] (pull requests are welcome). For more information about what powers this website, have a look at the [humans.txt][].
+This is a static website generated using [Jekyll][] and is hosted on my [DigitalOcean][] VPS. All of the website's source code and content is available at [GitHub][], including the comments which are hosted using [repurposed GitHub issues][issues] (pull requests are welcome). For more information about what powers this website, have a look at the [humans.txt][].
 
 Contact
 -------
@@ -22,8 +22,8 @@ Feel free to email me at <a href="&#109;&#97;&#x69;&#108;&#116;&#111;:&#114;&#11
 
 [Xero]: http://www.xero.com/
 [Jekyll]: http://jekyllrb.com/
-[Linode]: https://www.linode.com/?r=65f866a7004f627ae37fa3283f8a89b4fa9cecbe
-[GitHub]: https://github.com/{{ site.githubRepo }}
-[issues]: https://github.com/{{ site.githubRepo }}/issues?labels=blog+post+comments&state=closed
+[DigitalOcean]: https://www.digitalocean.com/?refcode=24b9eae28d0a
+[GitHub]: https://github.com/{{site.githubRepo}}
+[issues]: https://github.com/{{site.githubRepo}}/issues?labels=blog+post+comments&state=closed
 [Google+]: https://plus.google.com/108621262237470431255/
 [humans.txt]: /humans.txt
