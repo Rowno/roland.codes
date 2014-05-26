@@ -4,15 +4,7 @@
   "author": "Roland Warmerdam (http://rolandwarmerdam.co.nz)",
   "homepage": "http://rolandwarmerdam.co.nz",
   "repository": "Rowno/rolandwarmerdam.co.nz",
-  "licenses": [
-    {
-      "type": "CC BY-SA 3.0",
-      "url": "http://creativecommons.org/licenses/by-sa/3.0/"
-    }
-  ],
-  "bugs": {
-    "url": "https://github.com/Rowno/rolandwarmerdam.co.nz/issues"
-  },
+  "license": "CC BY-SA 3.0",
   "dependencies": {},
   "devDependencies": {
     "grunt-concurrent": "~0.5.0",
