@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!--
-    ############################################################################
-    # I hope you like my source code! If you're trying to figure out what      #
-    # powers this website, check out the humans.txt ;-)                        #
-    ############################################################################
-    -->
+    <script src="/assets/js/vendor/modernizr.js"></script>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
     {% if page.title %}
         {% capture title %}{{ page.title }} | {% endcapture %}
@@ -25,15 +24,7 @@
         <meta name="robots" content="{{ page.robots }}">
     {% endif %}
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="/assets/css/main.css">
     <link rel="alternate" type="application/rss+xml" href="/feed.rss" title="{{ site.titleRss }}">
-
-    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
-    <script src="/assets/js/vendor/modernizr.js"></script>
 </head>
 <body{% if page.pageId %} id="{{ page.pageId }}"{% endif %}>
     <div id="wrapper">
