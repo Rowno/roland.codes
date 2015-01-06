@@ -220,8 +220,7 @@ module.exports = function (grunt) {
         less: {
             dev: {
                 options: {
-                    sourceMap: true,
-                    outputSourceFiles: true
+                    dumpLineNumbers: 'comments'
                 },
                 files: {
                     'build/assets/css/main.css': 'temp/assets/css/main.less'
@@ -242,7 +241,6 @@ module.exports = function (grunt) {
                     removeCombined: true,
                     useStrict: true,
                     optimize: 'uglify2',
-                    generateSourceMaps: true,
                     preserveLicenseComments: false,
                     modules: [
                         {
