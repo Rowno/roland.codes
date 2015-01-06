@@ -24,6 +24,9 @@ module.exports = function (grunt) {
                 args: [
                     '-avzh',
                     '--delete',
+                    '--no-perms',
+                    '--no-owner',
+                    '--no-group',
                     'build/',
                     'vps:/var/www/rolandwarmerdam.co.nz/files/'
                 ]
