@@ -1,0 +1,76 @@
+==================================================================
+https://keybase.io/rowno
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://rolandwarmerdam.co.nz
+  * I am rowno (https://keybase.io/rowno) on keybase.
+  * I have a public key with fingerprint CC7F 0D5B 7A48 CA5C CDAE  9B25 BBF6 E861 6306 9491
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "client": {
+            "name": "keybase.io node.js client",
+            "version": "0.7.7"
+        },
+        "key": {
+            "fingerprint": "cc7f0d5b7a48ca5ccdae9b25bbf6e86163069491",
+            "host": "keybase.io",
+            "key_id": "BBF6E86163069491",
+            "uid": "1cb3381e68b7bc65aa7c6b0fc7077619",
+            "username": "rowno"
+        },
+        "merkle_root": {
+            "ctime": 1429082842,
+            "hash": "b4e82a1d3cb6379a20bea154f483e7841187248cf77047df224eab748622a7e1ebf1a8f8f0fa262a43eeeedd1e5d130c31738ca1ac0f980e8c5053df68d9aef7",
+            "seqno": 201384
+        },
+        "service": {
+            "hostname": "rolandwarmerdam.co.nz",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1429082862,
+    "expire_in": 157680000,
+    "prev": "6125b18c3040bef7e591139141b94fc41eda5ded9f36f9f435da4533411abe93",
+    "seqno": 6,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v1
+
+owFdUmtoHUUYvfe2hkaNTYLQWhIMC2laTG93dmZ3Zq9W25jUYin46EvB3s7jm2Rv
+kt3b3ZukaYhUfLamUDS1LViRiqbFUiLxR8H+EKxoekUJVKQ/FCXgo4gIggVjirMh
+Pur8msf5znfO+eZo3ZJMLnv73N3Rw9XtMlv9SWR25Bt/GbFEpIatwogl+wIIK+ku
+5P1gFaxeGBY8gXwQtYSRgnwpaVnEtFuDECdBFBqUnad5ao22p/C0WAdhN8TlOEi5
+LCmptpUrKCdMcldKxcEXjiuE9oB5yMO25xMfGcqeKKnc1NVa4CwGytx2dGz2um7G
+Dyw8ICkwZgg8JqiQnss5lZ6wtaQ2pR7yU2AC8aKlOBoKo1RsP8S9fVCMo2jBsawE
+6Tsijm8zhxHHyOFJj6kQBJjDkcJSeJj63LEFcOQSTRgGyghCjDrGm6bUJlRpxyHA
+BSXMcxxOAYHQiDPNtK254zmcYDBLKQSuQtiWGFFskkFc2tpnNjDp2i5W2mPK56Cp
+0Z/APiO64NgIMzKanuPBQEKqO83sH2t9PFRDPDbWFO/PyygfHjDV5TiqRDLqM5Ce
+SqWcFFL7leEyvG9uhkAUF+mKIgiVmd1/h4sM9H/ReCYa2F8OYigGKcKlHrPNShvB
+oKH0kJkuYhLbxESlKbg+QthHBAmfaEkQKO4qUL7GnvY1wa7ixMXYJMkF+Phfw57R
+ybsNZRJ0h7wyEIM1eijbtDSTzWVqbsmlvzdza23931+afLcs89KTV/+gq3dOTs3u
+udiyZOoUeaVtz22vzqw6su7L3aWGNZ+8K+cfOreyduPU2NWebe0zY2cv3Ln86KMH
+SqvX/3DvST1Rzl5pfuuUf7nzcdzU+M2N6tD9Dc/Pj3etHX/tDvrZm+ODuTOPtcxN
+1T+x4em2ibpweu17E3vvqcLOL7Y/sOLF2WUfbJrwOy+/cHx3dvqR5tnDmyr37T+/
+tObHK4Xez1vvevvP6xtat53d+s6+hmOvX9+8t2sgg77fePFEzaEHP/xo67X63z89
+cWR50zlZt6W4ZfLaxx2l09Pzv2W+OvzG3MsrLx08OHmp7caq86Vvx3Y1Xmg+PfPs
+6Mn6xpysfc75esXPT3W27vr1TPcz1fUjfwE=
+=YFOA
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/rowno
+
+==================================================================
