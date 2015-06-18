@@ -3,14 +3,14 @@
 title: "Roland Warmerdam"
 titleRss: "Roland Warmerdam's Blog"
 copyright: "Copyright © 2011-2015 Roland Warmerdam"
-githubRepo: "Rowno/rolandwarmerdam.co.nz"
+githubRepo: "Rowno/roland.codes"
 googleAnalyticsId: "UA-21361814-6"
 contentImgDir: "/assets/img/content"
 
 
 # JEKYLL
 # ------
-url: "https://rolandwarmerdam.co.nz"
+url: "https://roland.codes"
 pygments: true
 permalink: "/:title/"
 paginate: 5

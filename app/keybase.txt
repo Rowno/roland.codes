@@ -4,7 +4,7 @@ https://keybase.io/rowno
 
 I hereby claim:
 
-  * I am an admin of https://rolandwarmerdam.co.nz
+  * I am an admin of https://roland.codes
   * I am rowno (https://keybase.io/rowno) on keybase.
   * I have a public key with fingerprint CC7F 0D5B 7A48 CA5C CDAE  9B25 BBF6 E861 6306 9491
 
@@ -29,7 +29,7 @@ To do so, I am signing this object:
             "seqno": 201384
         },
         "service": {
-            "hostname": "rolandwarmerdam.co.nz",
+            "hostname": "roland.codes",
             "protocol": "https:"
         },
         "type": "web_service_binding",

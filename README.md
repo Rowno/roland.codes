@@ -1,7 +1,7 @@
-rolandwarmerdam.co.nz
+roland.codes
 =====================
 
-[![Dev Dependency Status](https://david-dm.org/Rowno/rolandwarmerdam.co.nz/dev-status.svg)](https://david-dm.org/Rowno/rolandwarmerdam.co.nz#info=devDependencies)
+[![Dev Dependency Status](https://david-dm.org/Rowno/roland.codes/dev-status.svg)](https://david-dm.org/Rowno/roland.codes#info=devDependencies)
 
 This is the source code of my personal website/blog, which is a static website generated using [Jekyll][].
 

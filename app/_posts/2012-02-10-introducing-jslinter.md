@@ -20,6 +20,6 @@ JSLinter is available for download at [addons.mozilla.org][JSLinter] and it's s
 
 [SublimeLinter]: https://github.com/SublimeLinter/SublimeLinter
 [grunt-contrib-jshint]: https://github.com/gruntjs/grunt-contrib-jshint
-[JSLinter]: https://addons.mozilla.org/addon/jslinter?src=external-rolandwarmerdam.co.nz
+[JSLinter]: https://addons.mozilla.org/addon/jslinter?src=external-roland.codes
 [Addon SDK]: https://addons.mozilla.org/developers/builder
 [Github]: https://github.com/Rowno/jslinter

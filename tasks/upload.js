@@ -28,7 +28,7 @@ module.exports = function (grunt) {
                     '--no-owner',
                     '--no-group',
                     'build/',
-                    'vps:/var/www/rolandwarmerdam.co.nz/files/'
+                    'vps:/var/www/roland.codes/files/'
                 ]
             }, function (error) {
                 done(error);

@@ -1,9 +1,9 @@
 {
-  "name": "rolandwarmerdam.co.nz",
+  "name": "roland.codes",
   "version": "1.0.0",
-  "author": "Roland Warmerdam (http://rolandwarmerdam.co.nz)",
-  "homepage": "http://rolandwarmerdam.co.nz",
-  "repository": "Rowno/rolandwarmerdam.co.nz",
+  "author": "Roland Warmerdam (https://roland.codes)",
+  "homepage": "https://roland.codes",
+  "repository": "Rowno/roland.codes",
   "license": "CC BY-SA 3.0",
   "dependencies": {},
   "devDependencies": {
