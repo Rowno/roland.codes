@@ -1,8 +1,6 @@
 @import 'vendor/normalize';
+@import 'vendor/h5bp';
+@import 'vendor/include-media';
+@import 'components/variables';
+@import 'components/helpers';
 @import 'components/global';
-
-main {
-    h1 {
-        display: flex;
-    }
-}

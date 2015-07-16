@@ -1,7 +1,11 @@
-*,
-*::before,
-*::after {
+html {
     box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
 }
 
 html,
@@ -10,9 +14,4 @@ button {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     font-smoothing: antialiased;
-}
-
-body {
-    line-height: 1.6250em;
-    font-weight: 300; // to thicken it a bit, we need to remove font-smoothing
 }
