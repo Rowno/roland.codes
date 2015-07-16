@@ -1,5 +1,6 @@
 ---
 layout: test.html
+title: About
 ---
 
-Home page
+About me

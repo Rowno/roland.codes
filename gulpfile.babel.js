@@ -9,15 +9,18 @@ const Browserify = require('browserify');
 const Buffered = require('vinyl-buffer');
 const Changed = require('gulp-changed');
 const Del = require('del');
+const Express = require('express');
 const FrontMatter = require('gulp-front-matter');
 const Gulp = require('gulp');
 const Gulpif = require('gulp-if');
 const Gulpsmith = require('gulpsmith');
 const Layouts = require('metalsmith-layouts');
 const Livereload = require('gulp-livereload');
+const Markdown = require('metalsmith-markdownit');
 const MinifyCss = require('gulp-minify-css');
 const Minimist = require('minimist');
 const MoldSourceMap = require('mold-source-map');
+const Permalinks = require('metalsmith-permalinks');
 const RunSequence = require('run-sequence');
 const Sass = require('gulp-sass');
 const Source = require('vinyl-source-stream');
@@ -25,8 +28,6 @@ const Sourcemaps = require('gulp-sourcemaps');
 const Swig = require('swig');
 const Uglify = require('gulp-uglify');
 const Watchify = require('watchify');
-const Markdown = require('metalsmith-markdownit');
-const Express = require('express');
 
 const internals = {};
 internals.options = Minimist(process.argv);
@@ -53,6 +54,7 @@ Gulp.task('metalsmith', () => {
     const metalsmith = Gulpsmith()
         .metadata({})
         .use(Markdown())
+        .use(Permalinks({ pattern: ':title' }))
         .use(Layouts({
             engine: 'swig',
             directory: internals.templates

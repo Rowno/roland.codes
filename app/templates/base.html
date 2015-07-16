@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Roland Warmerdam</title>
+        <title>{% if title %}{{ title }} | {% endif %}Roland Warmerdam</title>
         <meta name="description" content="">
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,17 +20,16 @@
     </head>
     <body>
         <header role="banner">
-            <h1>Roland Warmerdam</h1>
+            <h1><a href="/">Roland Warmerdam</a></h1>
         </header>
 
         <nav role="navigation">
             <ul>
-                <li><a href="">About</a></li>
+                <li><a href="/about/">About</a></li>
             </ul>
         </nav>
 
         <main role="main">
-            {{ title }}
             {% block main %}{% endblock %}
         </main>
 
