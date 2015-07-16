@@ -21,7 +21,7 @@ const MoldSourceMap = require('mold-source-map');
 const RunSequence = require('run-sequence');
 const Sass = require('gulp-sass');
 const Source = require('vinyl-source-stream');
-//const Sourcemaps = require('gulp-sourcemaps');
+const Sourcemaps = require('gulp-sourcemaps');
 const Swig = require('swig');
 const Uglify = require('gulp-uglify');
 const Watchify = require('watchify');
@@ -41,7 +41,7 @@ internals.dest = 'build';
 
 Gulp.task('clean', cb => Del(internals.dest, cb));
 
-Gulp.task('static', function () {
+Gulp.task('static', () => {
     return Gulp.src(internals.staticGlob)
         .pipe(Changed(internals.dest))
         .pipe(Gulp.dest(internals.dest))
@@ -50,7 +50,6 @@ Gulp.task('static', function () {
 
 Gulp.task('metalsmith', () => {
     Swig.setDefaults({ cache: false });
-
     const metalsmith = Gulpsmith()
         .metadata({})
         .use(Markdown())
@@ -71,10 +70,10 @@ Gulp.task('metalsmith', () => {
 
 Gulp.task('sass', () => {
     return Gulp.src(internals.sassGlob)
-        //.pipe(Sourcemaps.init())
+        .pipe(Sourcemaps.init())
         .pipe(Sass({ errLogToConsole: true, sourceComments: true }))
         .pipe(Autoprefixer())
-        //.pipe(Sourcemaps.write())
+        .pipe(Sourcemaps.write())
         .pipe(Gulpif(internals.prod, MinifyCss({ keepSpecialComments: 0 })))
         .pipe(Gulp.dest(Path.join(internals.dest, 'assets')))
         .pipe(Livereload());
