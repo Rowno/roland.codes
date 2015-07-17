@@ -1,5 +1,3 @@
 ---
-layout: test.html
+layout: home.html
 ---
-
-Home page

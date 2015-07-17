@@ -1,5 +1,5 @@
 ---
-layout: test.html
+layout: base.html
 title: About
 ---
 

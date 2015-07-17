@@ -1,0 +1,106 @@
+.hero {
+    padding: 70px 20px 20px;
+    background: #ff8465;
+    color: #fff;
+    text-align: center;
+
+    a {
+        color: inherit;
+
+        &:hover, &:focus {
+            opacity: 0.7;
+        }
+    }
+
+    &__avatar {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 40px;
+        border-radius: 100%;
+    }
+
+    &__heading {
+        font-size: 80px;
+        font-weight: lighter;
+    }
+
+    &__tagline {
+        opacity: 0.8;
+        font-size: 18px;
+    }
+
+    &__skills {
+        @include list-reset;
+        display: flex;
+        max-width: 940px;
+        margin: auto;
+        margin-top: 80px;
+    }
+
+    &__skill {
+        margin: 0 auto;
+
+        svg {
+            vertical-align: middle;
+            // width: 100px;
+            // height: 100px;
+            // max-width: 70px;
+            // max-height: 62px;
+            stroke: #fff;
+            stroke-width: 1px;
+            transform: translateZ(0); // Fixes Chrome rendering bug
+            stroke-dasharray: 300;
+            stroke-dashoffset: 300;
+            animation: line 2s linear forwards;
+
+            @keyframes line {
+                from {
+                    stroke-dashoffset: 300;
+                }
+                to {
+                    stroke-dashoffset: 0;
+                }
+            }
+        }
+
+        $delay: 0.6s;
+
+        &:nth-child(2) svg {
+            animation-delay: $delay;
+        }
+
+        &:nth-child(3) svg {
+            animation-delay: $delay * 2;
+        }
+
+        &:nth-child(4) svg {
+            animation-delay: $delay * 3;
+        }
+
+        &:nth-child(5) svg {
+            animation-delay: $delay * 4;
+        }
+
+        &:nth-child(6) svg {
+            animation-delay: $delay * 5;
+        }
+    }
+
+    &__nav {
+        @include list-reset;
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        margin-top: 180px;
+        font-size: 20px;
+
+        @include media('height<800px') {
+            margin-top: 50px;
+        }
+
+        a {
+            display: inline-block;
+            padding: 30px;
+        }
+    }
+}

@@ -37,3 +37,9 @@
         clear: both;
     }
 }
+
+@mixin list-reset {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
