@@ -73,7 +73,7 @@ Gulp.task('metalsmith', () => {
 Gulp.task('sass', () => {
     return Gulp.src(internals.sassGlob)
         .pipe(Sourcemaps.init())
-        .pipe(Sass({ errLogToConsole: true, sourceComments: true }))
+        .pipe(Sass({ sourceComments: true }))
         .pipe(Autoprefixer())
         .pipe(Sourcemaps.write())
         .pipe(Gulpif(internals.prod, MinifyCss({ keepSpecialComments: 0 })))
