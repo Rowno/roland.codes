@@ -1,6 +1,5 @@
 .hero {
     padding: 70px 20px 20px;
-    background: #ff8465;
     color: #fff;
     text-align: center;
 
@@ -41,7 +40,6 @@
         margin: 0 auto;
 
         svg {
-            vertical-align: middle;
             // width: 100px;
             // height: 100px;
             // max-width: 70px;
@@ -101,6 +99,64 @@
         a {
             display: inline-block;
             padding: 30px;
+        }
+    }
+}
+
+
+
+.project-list {
+    background: #fff;
+
+    &__wrapper {
+        max-width: 840px;
+        padding: 60px 20px;
+        margin: auto;
+    }
+
+    &__heading {
+        text-align: center;
+    }
+
+    &__project {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 60px 0;
+
+        &__image {
+            max-width: 100%;
+        }
+
+        &__content {
+            max-width: 400px;
+        }
+
+        &__heading {
+            margin-bottom: 20px;
+        }
+
+        &__logos {
+            margin-bottom: 20px;
+            font-size: 0;
+
+            svg {
+                max-width: 22px;
+                max-height: 22px;
+                margin-right: 13px;
+                stroke-width: 3px;
+            }
+        }
+
+        &__description {
+            margin: 0;
+        }
+
+        &__link {
+            display: inline-block;
+            padding: 10px 25px;
+            margin-top: 40px;
+            color: #fff;
         }
     }
 }

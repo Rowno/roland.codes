@@ -21,9 +21,12 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
+    font-weight: inherit;
     line-height: 1;
 }
 
 a {
     text-decoration: none;
+    transition: 0.2s;
+    transition-property: color, background-color;
 }

@@ -1,0 +1,28 @@
+.heading {
+    color: #3d3d3d;
+    font-size: 36px;
+
+    &--small {
+        font-size: 24px;
+    }
+}
+
+body {
+    background: #ff8465;
+}
+
+.themed {
+    &--bg {
+        background: #ff8465;
+    }
+
+    &--bg#{&}--hover {
+        &:hover, &:focus {
+            background: darken(#ff8465, 10%);
+        }
+    }
+
+    &--stroke {
+        stroke: #ff8465;
+    }
+}
