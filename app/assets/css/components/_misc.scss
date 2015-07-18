@@ -7,22 +7,41 @@
     }
 }
 
-body {
-    background: #ff8465;
-}
-
 .themed {
-    &--bg {
-        background: #ff8465;
+    transition: 2s;
+
+    &--hover {
+        transition: 0.2s;
     }
 
-    &--bg#{&}--hover {
-        &:hover, &:focus {
-            background: darken(#ff8465, 10%);
-        }
+    &--bg {
+        transition-property: background;
     }
 
     &--stroke {
-        stroke: #ff8465;
+        transition-property: stroke;
     }
 }
+
+@mixin theme($name, $color) {
+    .theme--#{$name} .themed {
+        &--bg {
+            background: $color;
+
+            &.themed--hover {
+                &:hover, &:focus {
+                    background: darken($color, 10%);
+                }
+            }
+        }
+
+        &--stroke {
+            stroke: $color;
+        }
+    }
+}
+
+@include theme('1', #ff8465); // red
+@include theme('2', #8465ff); // blue purple
+@include theme('3', #6584ff); // blue
+@include theme('4', #ff6584); // red pink
