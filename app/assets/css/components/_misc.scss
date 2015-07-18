@@ -26,19 +26,26 @@
 }
 
 @mixin theme($name, $color) {
-    .theme--#{$name} .themed {
-        &--bg {
-            background: $color;
-
-            &.themed--hover {
-                &:hover, &:focus {
-                    background: darken($color, 5%);
-                }
-            }
+    .theme--#{$name} {
+        ::selection {
+            background-color: $color;
+            color: #fff;
         }
 
-        &--stroke {
-            stroke: $color;
+        .themed {
+            &--bg {
+                background: $color;
+
+                &.themed--hover {
+                    &:hover, &:focus {
+                        background: darken($color, 5%);
+                    }
+                }
+            }
+
+            &--stroke {
+                stroke: $color;
+            }
         }
     }
 }
