@@ -64,13 +64,14 @@
         display: block;
         transform: scaleX(0);
         border-top: 1px solid currentColor;
-        transition: all cubic-bezier(0.58, 0, 0.43, 2) 0.2s;
+        transition: all ease-in 0.2s;
     }
 
     &:hover, &:focus {
         &:before,
         &:after {
             transform: scaleX(1);
+            transition-timing-function: cubic-bezier(0.58, 0, 0.43, 2);
         }
     }
 }
