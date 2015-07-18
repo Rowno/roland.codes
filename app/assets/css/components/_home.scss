@@ -86,31 +86,9 @@
         }
 
         a {
-            $padding: 30px;
             display: inline-block;
-            position: relative;
-            padding: $padding;
+            padding: 30px;
             color: inherit;
-
-            &:before,
-            &:after {
-                content: '';
-                display: block;
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 0;
-                margin: auto;
-                border-top: 1px solid #fff;
-                transition: all cubic-bezier(0.58, 0, 0.43, 2) 0.2s;
-            }
-
-            &:hover, &:focus {
-                &:before,
-                &:after {
-                    width: calc(100% - #{($padding - 10px) * 2});
-                }
-            }
         }
     }
 }

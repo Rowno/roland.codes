@@ -7,6 +7,8 @@
     }
 }
 
+
+
 .themed {
     transition: 2s;
 
@@ -30,7 +32,7 @@
 
             &.themed--hover {
                 &:hover, &:focus {
-                    background: darken($color, 10%);
+                    background: darken($color, 5%);
                 }
             }
         }
@@ -45,3 +47,23 @@
 @include theme('2', #8465ff); // blue purple
 @include theme('3', #6584ff); // blue
 @include theme('4', #ff6584); // red pink
+
+
+
+.line-hover {
+    &:before,
+    &:after {
+        content: '';
+        display: block;
+        transform: scaleX(0);
+        border-top: 1px solid currentColor;
+        transition: all cubic-bezier(0.58, 0, 0.43, 2) 0.2s;
+    }
+
+    &:hover, &:focus {
+        &:before,
+        &:after {
+            transform: scaleX(1);
+        }
+    }
+}

@@ -1,0 +1,44 @@
+.contact {
+    padding: 125px 20px;
+    font-size: 22px;
+    text-align: center;
+    color: #fff;
+
+    &__heading {
+        font-size: 30px;
+        line-height: 1.5;
+    }
+
+    &__email {
+        display: inline-block;
+        margin-top: 30px;
+        color: inherit;
+    }
+
+    &__social {
+        @include list-reset;
+        display: inline-block;
+        margin-top: 70px;
+        font-size: 0;
+
+        &:hover, &:focus {
+            a {
+                opacity: 0.5;
+            }
+        }
+
+        li {
+            display: inline-block;
+        }
+
+        a {
+            display: inline-block;
+            padding: 33px;
+            transition-property: opacity;
+
+            &:hover, &:focus {
+                opacity: 1;
+            }
+        }
+    }
+}
