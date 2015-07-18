@@ -21,7 +21,7 @@
         margin-top: 70px;
         font-size: 0;
 
-        &:hover, &:focus {
+        &:hover, &:focus-within {
             a {
                 opacity: 0.5;
             }
