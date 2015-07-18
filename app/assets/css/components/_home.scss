@@ -3,14 +3,6 @@
     color: #fff;
     text-align: center;
 
-    a {
-        color: inherit;
-
-        &:hover, &:focus {
-            opacity: 0.7;
-        }
-    }
-
     &__avatar {
         width: 100px;
         height: 100px;
@@ -52,9 +44,6 @@
             animation: line 2s linear forwards;
 
             @keyframes line {
-                from {
-                    stroke-dashoffset: 300;
-                }
                 to {
                     stroke-dashoffset: 0;
                 }
@@ -97,8 +86,31 @@
         }
 
         a {
+            $padding: 30px;
             display: inline-block;
-            padding: 30px;
+            position: relative;
+            padding: $padding;
+            color: inherit;
+
+            &:before,
+            &:after {
+                content: '';
+                display: block;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 0;
+                margin: auto;
+                border-top: 1px solid #fff;
+                transition: all cubic-bezier(0.58, 0, 0.43, 2) 0.2s;
+            }
+
+            &:hover, &:focus {
+                &:before,
+                &:after {
+                    width: calc(100% - #{($padding - 10px) * 2});
+                }
+            }
         }
     }
 }
