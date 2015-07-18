@@ -16,6 +16,7 @@ button {
 }
 
 body {
+    min-width: 320px;
     font: $font-weight #{$font-size}/#{$line-height} $font-family;
 }
 
