@@ -1,6 +1,6 @@
 'use strict';
 const THEME_NUM = 4;
-const THEME_INTERVAL = 10;
+const THEME_INTERVAL = 30;
 let currentTheme = 1;
 
 setInterval(() => {
