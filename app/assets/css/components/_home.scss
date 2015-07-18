@@ -11,8 +11,16 @@
     }
 
     &__heading {
-        font-size: 80px;
+        font-size: 6.5vw;
         font-weight: lighter;
+
+        @include media('>1280px') {
+            font-size: 80px;
+        }
+
+        @include media('<700px') {
+            font-size: 45px;
+        }
     }
 
     &__tagline {
