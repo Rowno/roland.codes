@@ -18,7 +18,11 @@ setInterval(() => {
 
 
 document.body.addEventListener('click', function (event) {
-    if (!event.target || !event.target.hash) {
+    if (!event.target ||
+        !event.target.hash ||
+        !event.target.attributes.href ||
+        event.target.hash !== event.target.attributes.href.value)
+    {
         return;
     }
 
