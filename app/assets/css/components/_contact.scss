@@ -21,10 +21,13 @@
         margin-top: 70px;
         font-size: 0;
 
-        &:hover, &:focus-within {
-            a {
-                opacity: 0.5;
-            }
+        &:hover a {
+            opacity: 0.5;
+        }
+
+        // Keep separate because rules with unsupported selectors get dropped
+        &:focus-within a {
+            opacity: 0.5;
         }
 
         li {
