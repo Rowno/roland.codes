@@ -1,8 +1,12 @@
 .contact {
-    padding: 125px 20px;
+    padding: 125px $page-padding;
     font-size: 22px;
     text-align: center;
     color: #fff;
+
+    @include media('height<m-height') {
+        padding: 60px $page-padding;
+    }
 
     &__heading {
         font-size: 30px;
@@ -21,6 +25,10 @@
         margin-top: 70px;
         font-size: 0;
 
+        @include media('height<m-height') {
+            margin-top: 35px;
+        }
+
         &:hover a {
             opacity: 0.5;
         }
@@ -38,6 +46,10 @@
             display: inline-block;
             padding: 33px;
             transition-property: opacity;
+
+            @include media('<530px') {
+                padding: 25px;
+            }
 
             &:hover, &:focus {
                 opacity: 1;

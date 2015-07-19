@@ -1,5 +1,5 @@
 .hero {
-    padding: 70px 20px 20px;
+    padding: 70px $page-padding 20px;
     color: #fff;
     text-align: center;
 
@@ -56,6 +56,11 @@
                     stroke-dashoffset: 0;
                 }
             }
+
+            @include media('<640px') {
+                width: 9vw;
+                height: 9vw;
+            }
         }
 
         $delay: 0.6s;
@@ -89,7 +94,7 @@
         margin-top: 180px;
         font-size: 20px;
 
-        @include media('height<800px') {
+        @include media('height<m-height') {
             margin-top: 50px;
         }
 
@@ -97,6 +102,10 @@
             display: inline-block;
             padding: 30px;
             color: inherit;
+
+            @include media('<640px') {
+                padding: 15px;
+            }
         }
     }
 }
@@ -108,7 +117,7 @@
 
     &__wrapper {
         max-width: 840px;
-        padding: 60px 20px;
+        padding: 60px $page-padding;
         margin: auto;
     }
 
@@ -122,8 +131,16 @@
         align-items: center;
         padding: 60px 0;
 
+        @include media('height<m-height') {
+            padding: 40px 0;
+        }
+
         &__image {
-            max-width: 100%;
+            margin-right: 40px;
+
+            img {
+                max-width: 100%;
+            }
         }
 
         &__content {
