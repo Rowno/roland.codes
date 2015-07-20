@@ -3,11 +3,20 @@
     color: #fff;
     text-align: center;
 
+    @include media('<500px') {
+        padding: $page-padding;
+        padding-bottom: 45px;
+    }
+
     &__avatar {
         width: 100px;
         height: 100px;
         margin-bottom: 40px;
         border-radius: 100%;
+
+        @include media('<400px') {
+            display: none;
+        }
     }
 
     &__heading {
@@ -18,14 +27,25 @@
             font-size: 80px;
         }
 
-        @include media('<700px') {
-            font-size: 45px;
+        @include media('<550px') {
+            font-size: 35px;
+        }
+
+        @include media('<400px') {
+            font-size: 24px;
+            text-align: left;
         }
     }
 
     &__tagline {
         opacity: 0.8;
         font-size: 18px;
+
+        @include media('<400px') {
+            font-size: 12px;
+            text-transform: uppercase;
+            text-align: left;
+        }
     }
 
     &__skills {
@@ -34,6 +54,10 @@
         max-width: 940px;
         margin: auto;
         margin-top: 80px;
+
+        @include media('<400px') {
+            margin-top: 50px;
+        }
     }
 
     &__skill {
@@ -51,15 +75,21 @@
             stroke-dashoffset: 300;
             animation: line 2s linear forwards;
 
+            @include media('<640px') {
+                width: 9vw;
+                height: 9vw;
+            }
+
+            @include media('<400px') {
+                width: 22px;
+                height: 22px;
+                stroke-width: 2px;
+            }
+
             @keyframes line {
                 to {
                     stroke-dashoffset: 0;
                 }
-            }
-
-            @include media('<640px') {
-                width: 9vw;
-                height: 9vw;
             }
         }
 
@@ -96,6 +126,10 @@
 
         @include media('height<m-height') {
             margin-top: 50px;
+        }
+
+        @include media('<500px') {
+            display: none;
         }
 
         a {
