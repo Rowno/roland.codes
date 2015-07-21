@@ -149,13 +149,22 @@
 .project-list {
     background: #fff;
 
+    @include media('<600px') {
+        text-align: center;
+    }
+
     &__wrapper {
         max-width: 840px;
         padding: 60px $page-padding;
         margin: auto;
+
+        @include media('<600px') {
+            padding: 45px 0;
+        }
     }
 
     &__heading {
+        margin-bottom: 35px;
         text-align: center;
     }
 
@@ -163,14 +172,39 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        position: relative;
         padding: 60px 0;
 
         @include media('height<m-height') {
             padding: 40px 0;
         }
 
+        @include media('<600px') {
+            flex-direction: column;
+            padding: 40px 0 65px;
+        }
+
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            width: 60px;
+            height: 1px;
+            margin: auto;
+            background: #F2F2F2;
+        }
+
         &__image {
             margin-right: 40px;
+
+            @include media('<600px') {
+                order: 1;
+                margin-right: 0;
+                margin-top: 40px;
+            }
 
             img {
                 max-width: 100%;
@@ -179,6 +213,11 @@
 
         &__content {
             max-width: 400px;
+
+            @include media('<600px') {
+                max-width: none;
+                padding: 0 $page-padding;
+            }
         }
 
         &__heading {
@@ -192,8 +231,18 @@
             svg {
                 max-width: 22px;
                 max-height: 22px;
-                margin-right: 13px;
+                margin-left: 13px;
                 stroke-width: 3px;
+
+                @include media('<600px') {
+                    width: 16px;
+                    height: 16px;
+                    stroke-width: 4px;
+                }
+
+                &:first-child {
+                    margin-left: 0;
+                }
             }
         }
 

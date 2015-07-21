@@ -2,8 +2,16 @@
     color: #3d3d3d;
     font-size: 36px;
 
+    @include media('<600px') {
+        font-size: 24px;
+    }
+
     &--small {
         font-size: 24px;
+
+        @include media('<600px') {
+            font-size: 20px;
+        }
     }
 }
 
