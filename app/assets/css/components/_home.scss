@@ -33,7 +33,16 @@
 
         @include media('<400px') {
             font-size: 24px;
+            font-weight: $font-weight;
             text-align: left;
+        }
+
+        br {
+            display: none;
+
+            @include media('<400px') {
+                display: inline;
+            }
         }
     }
 
@@ -42,7 +51,7 @@
         font-size: 18px;
 
         @include media('<400px') {
-            font-size: 12px;
+            font-size: 13px;
             text-transform: uppercase;
             text-align: left;
         }
@@ -76,13 +85,13 @@
             animation: line 2s linear forwards;
 
             @include media('<640px') {
-                width: 9vw;
-                height: 9vw;
+                max-width: 10vw;
+                max-height: 9vw;
             }
 
             @include media('<400px') {
-                width: 22px;
-                height: 22px;
+                max-width: 30px;
+                max-height: 24px;
                 stroke-width: 2px;
             }
 
@@ -182,19 +191,19 @@
         @include media('<600px') {
             flex-direction: column;
             padding: 40px 0 65px;
-        }
 
-        &:before {
-            content: '';
-            display: block;
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 0;
-            width: 60px;
-            height: 1px;
-            margin: auto;
-            background: #F2F2F2;
+            &:before {
+                content: '';
+                display: block;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                width: 60px;
+                height: 1px;
+                margin: auto;
+                background: #F2F2F2;
+            }
         }
 
         &__image {
