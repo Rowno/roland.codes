@@ -21,7 +21,48 @@
         <meta property="og:image" content="">
     </head>
     <body class="themed themed--bg">
-        {% block body %}{% endblock %}
+        <button type="button" class="push-nav-toggle">
+            Toggle navigation
+            <span class="push-nav-toggle__icon"></span>
+        </button>
+
+        <nav role="navigation" class="push-nav">
+            <ul class="push-nav__links">
+                <li>
+                    <a class="push-nav__link line-hover" href="/#about">About</a>
+                </li>
+                <li>
+                    <span class="push-nav__link push-nav__link--has-sub">Projects</span>
+
+                    <ul>
+                        <li>
+                            <a class="push-nav__link line-hover" href="/projects/monocle/">The Monocle</a>
+                        </li>
+                        <li>
+                            <a class="push-nav__link line-hover" href="/projects/monocle/">The Monocle</a>
+                        </li>
+                        <li>
+                            <a class="push-nav__link line-hover" href="/projects/monocle/">The Monocle</a>
+                        </li>
+                        <li>
+                            <a class="push-nav__link line-hover" href="/projects/monocle/">The Monocle</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="push-nav__link line-hover" href="/blog/">Blog</a>
+                </li>
+                <li>
+                    <a class="push-nav__link line-hover" href="/#contact">Contact</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="body-wrapper">
+            {% block body %}{% endblock %}
+
+            <div class="push-nav-overlay"></div>
+        </div>
 
         <script src="/assets/js/index.js"></script>
     </body>

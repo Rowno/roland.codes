@@ -1,0 +1,136 @@
+$push-nav-width: 280px;
+$push-nav-speed: 0.4s;
+
+.body-wrapper {
+    transition: transform $push-nav-speed;
+
+    .push-nav-active & {
+        transform: translateX(-$push-nav-width);
+    }
+}
+
+.push-nav {
+    visibility: hidden;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    .push-nav-active & {
+        visibility: visible;
+    }
+
+    &__links {
+        @include list-reset;
+        width: $push-nav-width;
+        transform: translateX($push-nav-width);
+        padding: 125px 40px 0;
+        color: #fff;
+        font-size: 20px;
+        transition: $push-nav-speed;
+        transition-property: visibility, transform;
+
+        .push-nav-active & {
+            transform: translateX(0);
+        }
+
+        .push-nav__link {
+            display: inline-block;
+            padding: 0.3em 0;
+            color: inherit;
+            letter-spacing: 0.1em;
+
+            &--has-sub {
+                padding-right: 10px;
+                border-bottom: 1px solid #fff;
+            }
+        }
+
+        ul {
+            @include list-reset;
+            margin: 40px 0;
+            font-size: 14px;
+        }
+    }
+}
+
+.push-nav-toggle {
+    @include button-reset;
+    @include hide-text;
+    opacity: 0.7;
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 0;
+    padding: 25px;
+    transition: opacity 0.2s;
+
+    &:hover, &:focus {
+        outline: none;
+        opacity: 1;
+    }
+
+    &__icon {
+        $spacing: 13px;
+        margin: $spacing 0;
+
+        &,
+        &:before,
+        &:after {
+            display: inline-block;
+            width: 40px;
+            height: 2px;
+            background: #fff;
+            transition: $push-nav-speed;
+        }
+
+        &:before,
+        &:after {
+            content: '';
+            // Center lines inside parent
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        &:before {
+            transform: translateY(-$spacing);
+        }
+
+        &:after {
+            transform: translateY($spacing);
+        }
+
+        .push-nav-active & {
+            background: transparent;
+
+            &:before {
+                transform: rotate(45deg);
+            }
+
+            &:after {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+}
+
+.push-nav-overlay {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #fff;
+    transition: $push-nav-speed;
+    transition-property: visibility, opacity;
+
+    .push-nav-active & {
+        visibility: visible;
+        opacity: 0.8;
+    }
+}

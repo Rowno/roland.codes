@@ -43,3 +43,9 @@
     margin: 0;
     list-style: none;
 }
+
+@mixin button-reset {
+    padding: 0;
+    border: none;
+    background: none;
+}

@@ -1,5 +1,7 @@
 'use strict';
+require('babel-core/polyfill');
 require('./vendor/polyfills/smoothscroll');
+require('./push-nav');
 const THEME_NUM = 4;
 const THEME_INTERVAL = 30;
 let currentTheme = 1;
@@ -17,12 +19,17 @@ setInterval(() => {
 }, THEME_INTERVAL * 1000);
 
 
-document.body.addEventListener('click', function (event) {
-    if (!event.target ||
-        !event.target.hash ||
-        !event.target.attributes.href ||
-        event.target.hash !== event.target.attributes.href.value)
-    {
+
+function isHashLink(node) {
+    return node &&
+        node.hash &&
+        node.attributes.href &&
+        node.hash === node.attributes.href.value;
+}
+
+// Hash link smooth scrolling
+document.body.addEventListener('click', event => {
+    if (!isHashLink(event.target)) {
         return;
     }
 
