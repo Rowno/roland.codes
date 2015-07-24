@@ -1,0 +1,47 @@
+.themed {
+    transition: 2s;
+
+    &--hover {
+        &:hover, &:focus {
+            transition: 0.2s;
+        }
+    }
+
+    &--bg {
+        transition-property: background;
+    }
+
+    &--stroke {
+        transition-property: stroke;
+    }
+}
+
+@mixin theme($name, $color) {
+    .theme--#{$name} {
+        ::selection {
+            background-color: $color;
+            color: #fff;
+        }
+
+        .themed {
+            &--bg {
+                background: $color;
+
+                &.themed--hover {
+                    &:hover, &:focus {
+                        background: darken($color, 5%);
+                    }
+                }
+            }
+
+            &--stroke {
+                stroke: $color;
+            }
+        }
+    }
+}
+
+@include theme('1', #FF9B65);
+@include theme('2', #ff6565);
+@include theme('3', #6584ff);
+@include theme('4', #ff6565);
