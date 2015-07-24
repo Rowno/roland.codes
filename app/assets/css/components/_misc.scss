@@ -68,18 +68,23 @@
 
 
 .line-hover {
+    display: inline-block;
+
     &:before,
     &:after {
         content: '';
+        visibility: hidden;
         display: block;
         transform: scaleX(0);
         border-top: 1px solid currentColor;
-        transition: all ease-in 0.2s;
+        transition: ease-in 0.2s;
+        transition-property: visibility, transform;
     }
 
     &:hover, &:focus {
         &:before,
         &:after {
+            visibility: visible;
             transform: scaleX(1);
             transition-timing-function: cubic-bezier(0.58, 0, 0.43, 2);
         }
