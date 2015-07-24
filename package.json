@@ -9,7 +9,7 @@
   "devDependencies": {
     "babel-core": "^5.7.4",
     "babelify": "^6.1.2",
-    "browserify": "^10.2.4",
+    "browserify": "^11.0.0",
     "del": "^1.2.0",
     "express": "^4.13.1",
     "gulp": "^3.9.0",
@@ -24,6 +24,7 @@
     "gulp-uglify": "^1.2.0",
     "gulpsmith": "^0.5.3",
     "lodash.assign": "^3.2.0",
+    "metalsmith": "^2.0.1",
     "metalsmith-layouts": "^1.0.0",
     "metalsmith-markdownit": "^0.1.2",
     "metalsmith-permalinks": "^0.4.0",
