@@ -4,7 +4,6 @@
   "author": "Roland Warmerdam (https://roland.codes)",
   "repository": "Rowno/roland.codes",
   "homepage": "https://roland.codes",
-  "license": "CC-BY-SA-3.0",
   "private": true,
   "dependencies": {
     "fastclick": "^1.0.6"
