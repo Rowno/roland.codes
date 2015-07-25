@@ -77,7 +77,6 @@
             // max-height: 62px;
             stroke: #fff;
             stroke-width: 1px;
-            transform: translateZ(0); // Fixes Chrome rendering bug
             stroke-dasharray: 300;
             stroke-dashoffset: 300;
             animation: line 2s linear forwards;
