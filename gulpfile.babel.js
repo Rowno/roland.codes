@@ -15,6 +15,7 @@ const Gulp = require('gulp');
 const Gulpif = require('gulp-if');
 const Gulpsmith = require('gulpsmith');
 const Layouts = require('metalsmith-layouts');
+const He = require('he');
 const Livereload = require('gulp-livereload');
 const Markdown = require('metalsmith-markdownit');
 const MinifyCss = require('gulp-minify-css');
@@ -51,8 +52,12 @@ Gulp.task('static', () => {
 
 Gulp.task('metalsmith', () => {
     Swig.setDefaults({ cache: false });
+    Swig.setFilter('encode', input => He.encode(input, { encodeEverything: true }));
+
     const metalsmith = Gulpsmith()
-        .metadata({})
+        .metadata({
+            email: 'hi@roland.codes'
+        })
         .use(Markdown())
         .use(Permalinks({ pattern: ':title' }))
         .use(Layouts({

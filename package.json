@@ -26,6 +26,7 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.2.0",
     "gulpsmith": "^0.5.3",
+    "he": "^0.5.0",
     "lodash.assign": "^3.2.0",
     "metalsmith": "^2.0.1",
     "metalsmith-layouts": "^1.0.0",
