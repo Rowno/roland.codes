@@ -39,9 +39,18 @@ $push-nav-speed: 0.4s;
             color: inherit;
             letter-spacing: 0.1em;
 
-            &--has-sub {
-                padding-right: 10px;
+            &:after {
+                content: '';
+                visibility: hidden;
+                display: block;
                 border-bottom: 1px solid #fff;
+            }
+
+            &--has-sub,
+            &:hover, &:focus {
+                &:after {
+                    visibility: visible;
+                }
             }
         }
 
