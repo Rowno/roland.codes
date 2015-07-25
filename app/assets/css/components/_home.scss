@@ -71,10 +71,6 @@
         margin: 0 auto;
 
         svg {
-            // width: 100px;
-            // height: 100px;
-            // max-width: 70px;
-            // max-height: 62px;
             stroke: #fff;
             stroke-width: 1px;
             stroke-dasharray: 300;
@@ -234,7 +230,7 @@
 
         &__logos {
             margin-bottom: 20px;
-            font-size: 0;
+            font-size: 0; // Remove space between inline elements
 
             svg {
                 max-width: 22px;

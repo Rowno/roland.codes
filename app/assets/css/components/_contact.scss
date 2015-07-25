@@ -22,7 +22,7 @@
     &__social {
         display: inline-block;
         margin-top: 70px;
-        font-size: 0;
+        font-size: 0; // Remove space between inline elements
 
         @include media('height<m-height') {
             margin-top: 35px;

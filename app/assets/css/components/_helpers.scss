@@ -1,9 +1,11 @@
+// Hides the text inside an element (for image replacement)
 @mixin hide-text {
     color: transparent;
     font: 0/0 a;
     text-shadow: none;
 }
 
+// Hides an element (for image replacement)
 @mixin hide-element($focusable: false) {
     border: 0;
     clip: rect(0 0 0 0);
@@ -26,6 +28,7 @@
     }
 }
 
+// Clears floats
 @mixin clearfix {
     &:before,
     &:after {

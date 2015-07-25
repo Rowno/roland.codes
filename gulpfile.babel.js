@@ -66,6 +66,7 @@ Gulp.task('metalsmith', () => {
         }));
 
     return Gulp.src(internals.metalsmithGlob)
+        // Parse front matter for metalsmith
         .pipe(FrontMatter()).on('data', file => {
             Assign(file, file.frontMatter);
             delete file.frontMatter;
@@ -97,8 +98,11 @@ Gulp.task('browserify', () => {
 
     function createBundle(bundle) {
         return bundle.bundle()
+            // Improve source map paths
             .pipe(MoldSourceMap.transformSources(file => '/source/' + Path.relative('./app/', file)))
+            // Convert text stream to vinyl file stream
             .pipe(Source('assets/js/index.js'))
+            // Buffer the streamed file contents
             .pipe(Buffered())
             .pipe(Gulpif(internals.prod, Uglify()))
             .pipe(Gulp.dest(internals.dest))

@@ -27,6 +27,7 @@ $push-nav-speed: 0.4s;
         color: #fff;
         font-size: 20px;
         transition: $push-nav-speed;
+        // transition visibility to delay hiding of the links on close
         transition-property: visibility, transform;
 
         .push-nav-active & {

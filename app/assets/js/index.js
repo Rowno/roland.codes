@@ -10,6 +10,7 @@ require('./push-nav');
 document.body.addEventListener('click', event => {
     const node = event.target;
 
+    // Only fire for hash links pointing at the current page
     if (!node.hash ||
         node.hostname !== window.location.hostname ||
         node.pathname !== window.location.pathname)
