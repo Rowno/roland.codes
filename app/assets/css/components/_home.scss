@@ -58,10 +58,8 @@
     }
 
     &__skills {
-        @include list-reset;
         display: flex;
         max-width: 940px;
-        margin: auto;
         margin-top: 80px;
 
         @include media('<400px') {
@@ -126,10 +124,8 @@
     }
 
     &__nav {
-        @include list-reset;
         display: flex;
         justify-content: center;
-        margin: auto;
         margin-top: 180px;
         font-size: 20px;
 

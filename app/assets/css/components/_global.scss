@@ -31,3 +31,15 @@ a {
     transition: 0.2s;
     transition-property: color, background-color;
 }
+
+ul, ol {
+    padding: 0;
+    margin: auto;
+    list-style: none;
+}
+
+button {
+    padding: 0;
+    border: none;
+    background: none;
+}
