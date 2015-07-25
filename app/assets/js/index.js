@@ -1,6 +1,7 @@
 'use strict';
 require('babel-core/polyfill');
-require('./vendor/polyfills/smoothscroll');
+require('smoothscroll');
+require('fastclick')(document.body);
 require('./theme');
 require('./push-nav');
 

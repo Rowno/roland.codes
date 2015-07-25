@@ -6,6 +6,10 @@
   "homepage": "https://roland.codes",
   "license": "CC-BY-SA-3.0",
   "private": true,
+  "dependencies": {
+    "fastclick": "^1.0.6",
+    "smoothscroll": "^0.1.0"
+  },
   "devDependencies": {
     "babel-core": "^5.7.4",
     "babelify": "^6.1.2",
