@@ -132,7 +132,11 @@
             margin-top: 50px;
         }
 
-        @include media('<500px') {
+        @include media('<800px') {
+            margin-top: 50px;
+        }
+
+        @include media('<400px') {
             display: none;
         }
 
