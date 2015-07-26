@@ -8,9 +8,17 @@
         padding: 60px $page-padding;
     }
 
+    @include media('<700px') {
+        padding: 60px $page-padding;
+    }
+
     &__heading {
         font-size: 30px;
         line-height: 1.5;
+
+        @include media('<500px') {
+            font-size: 24px;
+        }
     }
 
     &__email {
@@ -20,13 +28,11 @@
     }
 
     &__social {
-        display: inline-block;
+        display: flex;
+        justify-content: space-between;
+        max-width: 345px;
+        margin: auto;
         margin-top: 70px;
-        font-size: 0; // Remove space between inline elements
-
-        @include media('height<m-height') {
-            margin-top: 35px;
-        }
 
         &:hover a {
             opacity: 0.5;
@@ -43,12 +49,7 @@
 
         a {
             display: inline-block;
-            padding: 33px;
             transition-property: opacity;
-
-            @include media('<530px') {
-                padding: 25px;
-            }
 
             &:hover, &:focus {
                 opacity: 1;
