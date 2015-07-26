@@ -62,7 +62,7 @@ Gulp.task('static', () => {
 });
 
 Gulp.task('metalsmith', () => {
-    Swig.setDefaults({ cache: false });
+    Swig.setDefaults({ cache: false, autoescape: false });
     // Encodes all characters to HTML entities (for obfuscation)
     Swig.setFilter('encode', input => He.encode(input, { encodeEverything: true }));
     // Adds classes to an html element
