@@ -1,5 +1,6 @@
 /*eslint-env node */
 'use strict';
+const Fs = require('fs');
 const Path = require('path');
 
 const Assign = require('lodash.assign');
@@ -8,14 +9,16 @@ const Babelify = require('babelify');
 const Browserify = require('browserify');
 const Buffered = require('vinyl-buffer');
 const Changed = require('gulp-changed');
+const Cheerio = require('cheerio');
 const Del = require('del');
 const Express = require('express');
 const FrontMatter = require('gulp-front-matter');
+const Globby = require('globby');
 const Gulp = require('gulp');
 const Gulpif = require('gulp-if');
 const Gulpsmith = require('gulpsmith');
-const Layouts = require('metalsmith-layouts');
 const He = require('he');
+const Layouts = require('metalsmith-layouts');
 const Livereload = require('gulp-livereload');
 const Markdown = require('metalsmith-markdownit');
 const MinifyCss = require('gulp-minify-css');
@@ -39,6 +42,14 @@ internals.metalsmithGlob = 'app/content/**/*';
 internals.sassGlob = 'app/assets/**/*.scss';
 internals.templates = 'app/templates';
 internals.dest = 'build';
+internals.svgs = {};
+
+
+// Load svgs into variables so they can be inlined using metalsmith
+Globby.sync('app/static/assets/images/*.svg').forEach(path => {
+    var name = Path.basename(path, '.svg');
+    internals.svgs[name] = Fs.readFileSync(path, { encoding: 'utf8' });
+});
 
 
 Gulp.task('clean', cb => Del(internals.dest, cb));
@@ -52,11 +63,19 @@ Gulp.task('static', () => {
 
 Gulp.task('metalsmith', () => {
     Swig.setDefaults({ cache: false });
+    // Encodes all characters to HTML entities (for obfuscation)
     Swig.setFilter('encode', input => He.encode(input, { encodeEverything: true }));
+    // Adds classes to an html element
+    Swig.setFilter('class', (input, classes) => {
+        let $ = Cheerio.load(input);
+        $('> *').addClass(classes);
+        return $.html();
+    });
 
     const metalsmith = Gulpsmith()
         .metadata({
-            email: 'hi@roland.codes'
+            email: 'hi@roland.codes',
+            svgs: internals.svgs
         })
         .use(Markdown())
         .use(Permalinks({ pattern: ':title' }))
