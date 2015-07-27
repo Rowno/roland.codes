@@ -80,14 +80,14 @@ $push-nav-speed: 0.4s;
     &__icon {
         $spacing: 13px;
         margin: $spacing 0;
+        background: #fff;
 
         &,
         &:before,
         &:after {
-            display: inline-block;
+            display: block;
             width: 40px;
             height: 2px;
-            background: #fff;
             transition: $push-nav-speed;
         }
 
@@ -99,6 +99,7 @@ $push-nav-speed: 0.4s;
             left: 0;
             right: 0;
             margin: auto;
+            background: inherit;
         }
 
         &:before {
@@ -110,7 +111,13 @@ $push-nav-speed: 0.4s;
         }
 
         .push-nav-active & {
-            background: transparent;
+            height: 0;
+            background: none;
+
+            &:before,
+            &:after {
+                background: #fff;
+            }
 
             &:before {
                 transform: rotate(45deg);

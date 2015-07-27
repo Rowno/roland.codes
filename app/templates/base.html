@@ -20,10 +20,10 @@
         <meta property="og:description" content="">
         <meta property="og:image" content="">
     </head>
-    <body class="themed themed--bg">
-        <button type="button" class="push-nav-toggle">
+    <body class="themed--bg">
+        <button type="button" class="push-nav-toggle themed--hover">
             Toggle navigation
-            <span class="push-nav-toggle__icon"></span>
+            <span class="push-nav-toggle__icon{% if pushNavThemed %} themed--bg{% endif %}"></span>
         </button>
 
         <nav role="navigation" class="push-nav">
