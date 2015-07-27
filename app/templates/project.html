@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% set pushNavThemed = true %}
+
+{% block body %}
+<header role="banner" class="hero-small">
+    <a class="hero-small__home themed--color themed--hover" href="/" title="Home">RW</a>
+
+    <a class="hero-small__email themed--color themed--hover"
+       target="_blank"
+       href="{{'mailto:'|encode}}{{email|encode}}">{{email|encode}}</a>
+</header>
+
+<main role="main">
+    <div class="project-detail">
+        <div class="project-detail__wrapper">
+            <div class="project-detail__images">
+                <img src="/assets/images/project-image.png"
+                     srcset="/assets/images/project-image@2x.png 2x"
+                     alt="">
+
+                <div class="project-detail__small-images">
+                    <img src="/assets/images/project-image.png"
+                         srcset="/assets/images/project-image@2x.png 2x"
+                         alt="">
+
+                    <img src="/assets/images/project-image.png"
+                         srcset="/assets/images/project-image@2x.png 2x"
+                         alt="">
+
+                    <img src="/assets/images/project-image.png"
+                         srcset="/assets/images/project-image@2x.png 2x"
+                         alt="">
+                </div>
+            </div>
+
+            <h1 class="project-detail__heading">The Monocle</h1>
+
+            <div class="project-detail__logos">
+                {{svgs.html|class('themed--stroke')}}
+                {{svgs.css|class('themed--stroke')}}
+                {{svgs.js|class('themed--stroke')}}
+            </div>
+
+            <div class="project-detail__description">
+                {{contents}}
+            </div>
+
+            <ul class="project-detail__links">
+                <li>
+                    <a class="themed--color themed--hover"
+                       href="https://www.xero.com/podcasts/">Website</a>
+                </li>
+            </ul>
+
+            <div class="project-detail__codepen">
+                <p class="codepen"
+                   data-height="400"
+                   data-theme-id="17006"
+                   data-slug-hash="rhlfd"
+                   data-default-tab="result">
+                    See the demo:
+                    <a class="themed--color themed--hover"
+                       href="/demos/legacy-flexbox-invisible-float-bug/">Legacy flexbox invisible float bug fix</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    {% include "contact.html" %}
+</main>
+
+<script async src="https://codepen.io/assets/embed/ei.js"></script>
+{% endblock %}
