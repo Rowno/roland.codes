@@ -14,6 +14,10 @@
     &--stroke {
         transition-property: stroke;
     }
+
+    &--color {
+        transition-property: color;
+    }
 }
 
 @mixin theme($name, $color) {
@@ -23,19 +27,34 @@
             color: #fff;
         }
 
-        .themed {
-            &--bg {
-                background: $color;
+        .themed--bg {
+            background: $color;
+        }
 
-                &.themed--hover {
-                    &:hover, &:focus {
-                        background: darken($color, 5%);
-                    }
+        .themed--stroke {
+            stroke: $color;
+        }
+
+        .themed--color {
+            color: $color;
+        }
+
+        .themed--hover {
+            &:hover, &:focus {
+                &.themed--bg,
+                .themed--bg {
+                    background: darken($color, 5%);
                 }
-            }
 
-            &--stroke {
-                stroke: $color;
+                &.themed--stroke,
+                .themed--stroke {
+                    stroke: darken($color, 10%);
+                }
+
+                &.themed--color,
+                .themed--color {
+                    color: darken($color, 15%);
+                }
             }
         }
     }
