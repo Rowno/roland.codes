@@ -2,9 +2,7 @@
     transition: 2s;
 
     &--hover {
-        &:hover, &:focus {
-            transition: 0.2s;
-        }
+        transition: 0.2s;
     }
 
     &--bg {
