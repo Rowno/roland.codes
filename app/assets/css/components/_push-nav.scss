@@ -63,6 +63,8 @@ $push-nav-speed: 0.4s;
 }
 
 .push-nav-toggle {
+    $spacing: 13px;
+    $thinkness: 2px;
     @include hide-text;
     opacity: 0.7;
     position: absolute;
@@ -77,54 +79,35 @@ $push-nav-speed: 0.4s;
         opacity: 1;
     }
 
-    &__icon {
-        $spacing: 13px;
-        margin: $spacing 0;
+    &__line {
+        width: 40px;
+        height: $thinkness;
+        margin-top: $spacing;
         background: #fff;
+        transition: $push-nav-speed;
 
-        &,
-        &:before,
-        &:after {
-            display: block;
-            width: 40px;
-            height: 2px;
-            transition: $push-nav-speed;
+        &:first-child {
+            margin-top: 0;
         }
 
-        &:before,
-        &:after {
-            content: '';
-            // Center lines inside parent
-            position: absolute;
-            left: 0;
-            right: 0;
-            margin: auto;
-            background: inherit;
-        }
-
-        &:before {
-            transform: translateY(-$spacing);
-        }
-
-        &:after {
-            transform: translateY($spacing);
+        .push-nav-active .themed--hover &.themed--bg {
+            background: #fff;
         }
 
         .push-nav-active & {
-            height: 0;
-            background: none;
-
-            &:before,
-            &:after {
-                background: #fff;
+            &--2 {
+                opacity: 0;
+                transform: scale(0);
             }
 
-            &:before {
-                transform: rotate(45deg);
+            &--1 {
+                transform: rotate(45deg) translateY($spacing + $thinkness);
+                transform-origin: 50% #{$spacing + $thinkness};
             }
 
-            &:after {
-                transform: rotate(-45deg);
+            &--3 {
+                transform: rotate(-45deg) translateY(-$spacing - $thinkness);
+                transform-origin: 50% #{-$spacing - $thinkness};
             }
         }
     }

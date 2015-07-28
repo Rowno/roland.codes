@@ -23,7 +23,9 @@
     <body class="themed--bg">
         <button type="button" class="push-nav-toggle themed--hover">
             Toggle navigation
-            <span class="push-nav-toggle__icon{% if pushNavThemed %} themed--bg{% endif %}"></span>
+            {% for line in [1,2,3] %}
+                <div class="push-nav-toggle__line push-nav-toggle__line--{{line}}{% if pushNavThemed %} themed--bg{% endif %}"></div>
+            {% endfor %}
         </button>
 
         <nav role="navigation" class="push-nav">
