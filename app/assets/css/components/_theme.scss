@@ -1,20 +1,20 @@
 .themed {
-    transition: 2s;
-
-    &--hover {
-        transition: 0.2s;
-    }
+    $speed: 2s;
 
     &--bg {
-        transition-property: background;
+        transition: background $speed;
     }
 
     &--stroke {
-        transition-property: stroke;
+        transition: stroke $speed;
     }
 
     &--color {
-        transition-property: color;
+        transition: color $speed;
+    }
+
+    &--hover {
+        transition: 0.2s;
     }
 }
 
