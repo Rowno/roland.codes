@@ -22,10 +22,75 @@
 }
 
 .project-detail {
+    padding: 75px $page-padding 135px;
     background: #fff;
 
     &__wrapper {
         max-width: 940px;
         margin: auto;
+    }
+
+    &__top {
+        display: flex;
+    }
+
+    &__images {
+        flex: 1;
+        margin-right: 6.5%;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &__text {
+        flex: 1;
+        max-width: 420px;
+    }
+
+    &__heading {
+        font-size: 30px;
+    }
+
+    &__logos {
+        margin-top: 12px;
+        font-size: 0; // Remove space between inline elements
+
+        svg {
+            max-width: 22px;
+            max-height: 22px;
+            margin-left: 13px;
+            stroke-width: 3px;
+
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+    }
+
+    &__description {
+        margin-top: 35px;
+    }
+
+    &__links {
+        display: flex;
+        margin-left: -10px;
+
+        li {
+            border-left: 1px solid #f6f6f6;
+
+            &:first-child {
+                border-left: none;
+            }
+        }
+
+        a {
+            display: inline-block;
+            padding: 0 10px;
+        }
+    }
+
+    &__codepen {
+        margin-top: 90px;
     }
 }

@@ -13,44 +13,40 @@
 <main role="main">
     <div class="project-detail">
         <div class="project-detail__wrapper">
-            <div class="project-detail__images">
-                <img src="/assets/images/project-image.png"
-                     srcset="/assets/images/project-image@2x.png 2x"
-                     alt="">
-
-                <div class="project-detail__small-images">
-                    <img src="/assets/images/project-image.png"
-                         srcset="/assets/images/project-image@2x.png 2x"
-                         alt="">
-
-                    <img src="/assets/images/project-image.png"
-                         srcset="/assets/images/project-image@2x.png 2x"
-                         alt="">
-
-                    <img src="/assets/images/project-image.png"
-                         srcset="/assets/images/project-image@2x.png 2x"
+            <div class="project-detail__top">
+                <div class="project-detail__images">
+                    <img class="project-detail__image"
+                         src="/assets/content/projects/monocle/large.png"
+                         srcset="/assets/content/projects/monocle/large@2x.png 2x"
                          alt="">
                 </div>
+
+                <div class="project-detail__text">
+                    <h1 class="project-detail__heading">The Monocle</h1>
+
+                    <div class="project-detail__logos">
+                        {{svgs.html|class('themed--stroke')}}
+                        {{svgs.css|class('themed--stroke')}}
+                        {{svgs.js|class('themed--stroke')}}
+                    </div>
+
+                    <div class="project-detail__description">
+                        {{contents}}
+                    </div>
+
+                    <ul class="project-detail__links">
+                        <li>
+                            <a href="https://www.xero.com/podcasts/">Website</a>
+                        </li>
+                        <li>
+                            <a href="https://www.xero.com/podcasts/">GitHub</a>
+                        </li>
+                        <li>
+                            <a href="https://www.xero.com/podcasts/">npm</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-
-            <h1 class="project-detail__heading">The Monocle</h1>
-
-            <div class="project-detail__logos">
-                {{svgs.html|class('themed--stroke')}}
-                {{svgs.css|class('themed--stroke')}}
-                {{svgs.js|class('themed--stroke')}}
-            </div>
-
-            <div class="project-detail__description">
-                {{contents}}
-            </div>
-
-            <ul class="project-detail__links">
-                <li>
-                    <a class="themed--color themed--hover"
-                       href="https://www.xero.com/podcasts/">Website</a>
-                </li>
-            </ul>
 
             <div class="project-detail__codepen">
                 <p class="codepen"
