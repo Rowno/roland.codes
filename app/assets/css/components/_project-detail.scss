@@ -87,6 +87,11 @@
             margin-left: 13px;
             stroke-width: 3px;
 
+            @include media('<700px') {
+                width: 18px;
+                height: 18px;
+            }
+
             &:first-child {
                 margin-left: 0;
             }

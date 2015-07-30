@@ -239,9 +239,8 @@
                 stroke-width: 3px;
 
                 @include media('<600px') {
-                    width: 16px;
-                    height: 16px;
-                    stroke-width: 4px;
+                    width: 18px;
+                    height: 18px;
                 }
 
                 &:first-child {
