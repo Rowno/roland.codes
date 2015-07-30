@@ -21,8 +21,9 @@ $push-nav-speed: 0.4s;
     }
 
     &__links {
+        position: relative;
+        right: -$push-nav-width;
         width: $push-nav-width;
-        transform: translateX($push-nav-width);
         padding: 125px 40px 0;
         color: #fff;
         font-size: 20px;
@@ -31,7 +32,7 @@ $push-nav-speed: 0.4s;
         transition-property: visibility, transform;
 
         .push-nav-active & {
-            transform: translateX(0);
+            transform: translateX(-$push-nav-width);
         }
 
         .push-nav__link {
