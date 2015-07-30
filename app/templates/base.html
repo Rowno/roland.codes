@@ -37,18 +37,13 @@
                     <span class="push-nav__link push-nav__link--has-sub">Projects</span>
 
                     <ul>
-                        <li>
-                            <a class="push-nav__link themed--no-color" href="/projects/monocle/">The Monocle</a>
-                        </li>
-                        <li>
-                            <a class="push-nav__link themed--no-color" href="/projects/monocle/">The Monocle</a>
-                        </li>
-                        <li>
-                            <a class="push-nav__link themed--no-color" href="/projects/monocle/">The Monocle</a>
-                        </li>
-                        <li>
-                            <a class="push-nav__link themed--no-color" href="/projects/monocle/">The Monocle</a>
-                        </li>
+                        {% for project in collections.projects %}
+                            <li>
+                                <a class="push-nav__link themed--no-color" href="/{{ project.path }}/">
+                                    {{ project.title }}
+                                </a>
+                            </li>
+                        {% endfor %}
                     </ul>
                 </li>
                 <li>

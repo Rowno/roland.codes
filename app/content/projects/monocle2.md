@@ -1,10 +1,8 @@
 ---
 layout: project.html
-title: The Monocle
-logos: [ html, css, js ]
+title: The Monocle 2
+logos: [ html, css ]
 links:
-    - name: Website
-      url: https://www.xero.com/podcasts/
     - name: GitHub
       url: https://www.xero.com/podcasts/
     - name: npm

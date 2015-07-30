@@ -13,22 +13,22 @@
 
     <ul class="hero__skills">
         <li class="hero__skill">
-            {{svgs.html}}
+            {{ svgs.html }}
         </li>
         <li class="hero__skill">
-            {{svgs.css}}
+            {{ svgs.css }}
         </li>
         <li class="hero__skill">
-            {{svgs.js}}
+            {{ svgs.js }}
         </li>
         <li class="hero__skill">
-            {{svgs.node}}
+            {{ svgs.node }}
         </li>
         <li class="hero__skill">
-            {{svgs.linux}}
+            {{ svgs.linux }}
         </li>
         <li class="hero__skill">
-            {{svgs.tetris}}
+            {{ svgs.tetris }}
         </li>
     </ul>
 
@@ -55,31 +55,31 @@
         <div class="project-list__wrapper">
             <h2 class="project-list__heading heading">Projects</h2>
 
-            {% for project in [1,2,3] %}
+            {% for project in collections.projects %}
                 <section class="project-list__project">
                     <div class="project-list__project__image">
-                        <img src="/assets/content/projects/monocle/home.png"
-                             srcset="/assets/content/projects/monocle/home@2x.png 2x"
+                        <img src="/assets/content/{{ project.path }}/home.png"
+                             srcset="/assets/content/{{ project.path }}/home@2x.png 2x"
                              alt="">
                     </div>
 
                     <div class="project-list__project__content">
                         <h3 class="project-list__project__heading heading heading--small">
-                            The Monocle
+                            {{ project.title }}
                         </h3>
 
                         <div class="project-list__project__logos">
-                            {{svgs.html|class('themed--stroke')}}
-                            {{svgs.css|class('themed--stroke')}}
-                            {{svgs.js|class('themed--stroke')}}
+                            {% for logo in project.logos %}
+                                {{ svgs[logo] | class('themed--stroke') }}
+                            {% endfor %}
                         </div>
 
                         <p class="project-list__project__description">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, consectetur delectus sunt modi, culpa beatae. In hic maiores quasi repudiandae tempore, aliquam, autem adipisci similique dolorum distinctio commodi beatae dolore.
+                            {{ project.description }}
                         </p>
 
                         <a class="project-list__project__link themed--bg themed--hover themed--no-color"
-                           href="/projects/monocle/">Check it out</a>
+                           href="/{{ project.path }}/">Check it out</a>
                     </div>
                 </section>
             {% endfor %}

@@ -10,6 +10,7 @@ const Browserify = require('browserify');
 const Buffered = require('vinyl-buffer');
 const Changed = require('gulp-changed');
 const Cheerio = require('cheerio');
+const Collections = require('metalsmith-collections');
 const Del = require('del');
 const Express = require('express');
 const FrontMatter = require('gulp-front-matter');
@@ -77,6 +78,9 @@ Gulp.task('metalsmith', () => {
             email: 'hi@roland.codes',
             svgs: internals.svgs
         })
+        .use(Collections({
+            projects: { pattern: 'projects/*.md' }
+        }))
         .use(Markdown())
         .use(Permalinks())
         .use(Layouts({
