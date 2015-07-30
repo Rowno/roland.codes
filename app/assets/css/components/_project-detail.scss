@@ -7,6 +7,10 @@
     background: #fff;
     line-height: 1;
 
+    @include media('<700px') {
+        border-bottom: 1px solid #efefef;
+    }
+
     &__home {
         font-size: 42px;
         font-weight: lighter;
@@ -18,12 +22,20 @@
         border: 1px solid currentColor;
         border-radius: 100px;
         font-size: 18px;
+
+        @include media('<450px') {
+            display: none;
+        }
     }
 }
 
 .project-detail {
     padding: 75px $page-padding 135px;
     background: #fff;
+
+    @include media('<700px') {
+        padding: 50px 0 35px;
+    }
 
     &__wrapper {
         max-width: 940px;
@@ -32,20 +44,33 @@
 
     &__top {
         display: flex;
+
+        @include media('<700px') {
+            flex-direction: column;
+        }
     }
 
     &__images {
-        flex: 1;
         margin-right: 6.5%;
 
+        @include media('<700px') {
+            order: 1;
+            margin-right: 0;
+            margin-top: 50px;
+        }
+
         img {
-            width: 100%;
+            max-width: 100%;
         }
     }
 
     &__text {
-        flex: 1;
-        max-width: 420px;
+        max-width: 600px;
+
+        @include media('<700px') {
+            padding-left: $page-padding;
+            padding-right: $page-padding;
+        }
     }
 
     &__heading {
@@ -92,5 +117,9 @@
 
     &__codepen {
         margin-top: 90px;
+
+        @include media('<700px') {
+            margin-top: 60px;
+        }
     }
 }

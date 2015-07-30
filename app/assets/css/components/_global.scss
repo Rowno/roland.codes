@@ -17,6 +17,7 @@ button {
 }
 
 body {
+    position: relative; // Makes root absolutely positioned element stop at the min-width
     min-width: 320px; // Set a sane limit
     font: $font-weight #{$font-size}/#{$line-height} $font-family;
 }
