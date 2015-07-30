@@ -7,7 +7,7 @@
 
     <a class="hero-small__email"
        target="_blank"
-       href="{{'mailto:'|encode}}{{email|encode}}">{{email|encode}}</a>
+       href="{{ 'mailto:' | encode }}{{ email | encode }}">{{ email | encode }}</a>
 </header>
 
 <main role="main">
@@ -16,34 +16,30 @@
             <div class="project-detail__top">
                 <div class="project-detail__images">
                     <img class="project-detail__image"
-                         src="/assets/content/projects/monocle/large.png"
-                         srcset="/assets/content/projects/monocle/large@2x.png 2x"
+                         src="/assets/content/{{ path }}/large.png"
+                         srcset="/assets/content/{{ path }}/large@2x.png 2x"
                          alt="">
                 </div>
 
                 <div class="project-detail__text">
-                    <h1 class="project-detail__heading">The Monocle</h1>
+                    <h1 class="project-detail__heading">{{ title }}</h1>
 
                     <div class="project-detail__logos">
-                        {{svgs.html|class('themed--stroke')}}
-                        {{svgs.css|class('themed--stroke')}}
-                        {{svgs.js|class('themed--stroke')}}
+                        {% for logo in logos %}
+                            {{ svgs[logo] | class('themed--stroke') }}
+                        {% endfor %}
                     </div>
 
                     <div class="project-detail__description">
-                        {{contents}}
+                        {{ contents }}
                     </div>
 
                     <ul class="project-detail__links">
-                        <li>
-                            <a href="https://www.xero.com/podcasts/">Website</a>
-                        </li>
-                        <li>
-                            <a href="https://www.xero.com/podcasts/">GitHub</a>
-                        </li>
-                        <li>
-                            <a href="https://www.xero.com/podcasts/">npm</a>
-                        </li>
+                        {% for link in links %}
+                            <li>
+                                <a href="{{ link.url }}">{{ link.name }}</a>
+                            </li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>

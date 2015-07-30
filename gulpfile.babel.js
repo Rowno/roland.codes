@@ -78,7 +78,7 @@ Gulp.task('metalsmith', () => {
             svgs: internals.svgs
         })
         .use(Markdown())
-        .use(Permalinks({ pattern: ':title' }))
+        .use(Permalinks())
         .use(Layouts({
             engine: 'swig',
             directory: internals.templates

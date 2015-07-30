@@ -1,5 +1,14 @@
 ---
 layout: project.html
+title: The Monocle
+logos: [ html, css, js ]
+links:
+    - name: Website
+      url: https://www.xero.com/podcasts/
+    - name: GitHub
+      url: https://www.xero.com/podcasts/
+    - name: npm
+      url: https://www.xero.com/podcasts/
 ---
 
 Cupidatat etiam amet conubia, laboriosam habitant nec, cum, deserunt bibendum dolores odit hac convallis veniam lacus, expedita ipsum, laboriosam nullam repellat error per! Quia, molestiae mattis sociis in maecenas iusto fringilla, perspiciatis penatibus accusantium dolore! Ullam architecto, commodo laudantium a. Illo nibh eveniet!
