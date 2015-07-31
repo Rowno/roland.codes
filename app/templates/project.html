@@ -1,15 +1,9 @@
 {% extends "base.html" %}
+{% set headerWhite = true %}
+{% set headerShortName = true %}
 {% set pushNavThemed = true %}
 
 {% block body %}
-<header role="banner" class="hero-small">
-    <a class="hero-small__home" href="/" title="Home">RW</a>
-
-    <a class="hero-small__email"
-       target="_blank"
-       href="{{ 'mailto:' | encode }}{{ email | encode }}">{{ email | encode }}</a>
-</header>
-
 <main role="main">
     <div class="project-detail">
         <div class="project-detail__wrapper">
