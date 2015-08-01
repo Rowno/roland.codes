@@ -1,6 +1,7 @@
 .header {
     display: flex;
     align-items: center;
+    min-height: 90px;
     padding: $page-padding;
     padding-right: $page-padding + 80px;
     line-height: 1;
@@ -24,6 +25,17 @@
         margin-right: auto;
         font-size: 36px;
         font-weight: lighter;
+
+        &:not(.header__name--short) {
+            @include media('<500px') {
+                font-size: 7vw;
+                font-weight: $font-weight;
+            }
+
+            @include media('<350px') {
+                font-size: 24px;
+            }
+        }
     }
 
     &__section {
@@ -39,5 +51,9 @@
         border: 1px solid currentColor;
         border-radius: 100px;
         font-size: 18px;
+
+        @include media('<700px') {
+            display: none;
+        }
     }
 }

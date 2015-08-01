@@ -1,56 +1,49 @@
 {% extends "base.html" %}
 
 {% block body %}
-<header role="banner" class="hero">
-    <img class="hero__avatar"
-         src="/assets/images/avatar.jpg"
-         srcset="/assets/images/avatar@2x.jpg 2x"
-         alt="">
+<main role="main">
+    <div class="hero">
+        <h1 class="hero__heading">Front end developer.<br> Technology hacker. Gamer.</h1>
 
-    <h1 class="hero__heading">Roland <br>Warmerdam</h1>
-
-    <p class="hero__tagline">Front end developer extraordinaire</p>
-
-    <ul class="hero__skills">
-        <li class="hero__skill">
-            {{ svgs.html }}
-        </li>
-        <li class="hero__skill">
-            {{ svgs.css }}
-        </li>
-        <li class="hero__skill">
-            {{ svgs.js }}
-        </li>
-        <li class="hero__skill">
-            {{ svgs.node }}
-        </li>
-        <li class="hero__skill">
-            {{ svgs.linux }}
-        </li>
-        <li class="hero__skill">
-            {{ svgs.tetris }}
-        </li>
-    </ul>
-
-    <nav role="navigation">
-        <ul class="hero__nav">
-            <li>
-                <a class="line-hover themed--no-color" href="/#about">About</a>
+        <ul class="hero__skills">
+            <li class="hero__skill">
+                {{ svgs.html }}
             </li>
-            <li>
-                <a class="line-hover themed--no-color" href="/#projects">Projects</a>
+            <li class="hero__skill">
+                {{ svgs.css }}
             </li>
-            <li>
-                <a class="line-hover themed--no-color" href="/blog/">Blog</a>
+            <li class="hero__skill">
+                {{ svgs.node }}
             </li>
-            <li>
-                <a class="line-hover themed--no-color" href="/#contact">Contact</a>
+            <li class="hero__skill">
+                {{ svgs.linux }}
+            </li>
+            <li class="hero__skill">
+                {{ svgs.git }}
+            </li>
+            <li class="hero__skill">
+                {{ svgs.tetris }}
             </li>
         </ul>
-    </nav>
-</header>
 
-<main role="main">
+        <nav role="navigation">
+            <ul class="hero__nav">
+                <li>
+                    <a class="line-hover themed--no-color" href="/#projects">Projects</a>
+                </li>
+                <li>
+                    <a class="line-hover themed--no-color" href="/#about">About</a>
+                </li>
+                <li>
+                    <a class="line-hover themed--no-color" href="/blog/">Blog</a>
+                </li>
+                <li>
+                    <a class="line-hover themed--no-color" href="/#contact">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
     <section class="project-list" id="projects">
         <div class="project-list__wrapper">
             <h2 class="project-list__heading heading">Projects</h2>

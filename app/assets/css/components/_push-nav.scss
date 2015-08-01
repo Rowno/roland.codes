@@ -31,6 +31,10 @@ $push-nav-speed: 0.4s;
         // transition visibility to delay hiding of the links on close
         transition-property: visibility, transform;
 
+        @include media('height<600px') {
+            padding-top: 70px;
+        }
+
         .push-nav-active & {
             transform: translateX(-$push-nav-width);
         }

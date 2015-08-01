@@ -1,74 +1,37 @@
 .hero {
     padding: 70px $page-padding 20px;
     color: #fff;
-    text-align: center;
 
-    @include media('<500px') {
-        padding: $page-padding;
-        padding-bottom: 45px;
-    }
-
-    &__avatar {
-        width: 100px;
-        height: 100px;
-        margin-bottom: 40px;
-        border-radius: 100%;
-
-        @include media('<400px') {
-            display: none;
-        }
+    @include media('<450px') {
+        padding: 0 $page-padding 40px;
     }
 
     &__heading {
-        font-size: 6.5vw;
+        font-size: 7vw;
         font-weight: lighter;
 
-        @include media('>1280px') {
-            font-size: 80px;
+        @include media('>800px') {
+            font-size: 55px;
         }
 
-        @include media('<550px') {
-            font-size: 35px;
-        }
-
-        @include media('<400px') {
-            font-size: 24px;
+        @include media('<450px') {
+            font-size: 14px;
             font-weight: $font-weight;
-            text-align: left;
-        }
-
-        br {
-            display: none;
-
-            @include media('<400px') {
-                display: inline;
-            }
-        }
-    }
-
-    &__tagline {
-        opacity: 0.8;
-        font-size: 18px;
-
-        @include media('<400px') {
-            font-size: 13px;
             text-transform: uppercase;
-            text-align: left;
         }
     }
 
     &__skills {
         display: flex;
-        max-width: 940px;
-        margin-top: 80px;
+        margin: 80px 0 0;
 
-        @include media('<400px') {
+        @include media('<450px') {
             margin-top: 50px;
         }
     }
 
     &__skill {
-        margin: 0 auto;
+        flex-basis: 130px;
 
         svg {
             stroke: #fff;
@@ -82,7 +45,7 @@
                 max-height: 9vw;
             }
 
-            @include media('<400px') {
+            @include media('<450px') {
                 max-width: 30px;
                 max-height: 24px;
                 stroke-width: 2px;
@@ -120,7 +83,6 @@
 
     &__nav {
         display: flex;
-        justify-content: center;
         margin-top: 180px;
         font-size: 20px;
 
@@ -128,11 +90,11 @@
             margin-top: 50px;
         }
 
-        @include media('<800px') {
+        @include media('<650px') {
             margin-top: 50px;
         }
 
-        @include media('<400px') {
+        @include media('<450px') {
             display: none;
         }
 
@@ -141,7 +103,7 @@
             padding: 30px;
             color: inherit;
 
-            @include media('<640px') {
+            @include media('<550px') {
                 padding: 15px;
             }
         }

@@ -21,6 +21,33 @@
         <meta property="og:image" content="">
     </head>
     <body class="themed--bg">
+        <div class="body-wrapper">
+            <header role="banner" class="header{% if headerWhite %} header--white{% endif %}">
+                {% if headerShortName %}
+                    <a class="header__name header__name--short"
+                       href="/"
+                       title="Roland Warmerdam"
+                       rel="home">RW</a>
+                {% else %}
+                    <a class="header__name"
+                       href="/"
+                       rel="home">Roland Warmerdam</a>
+                {% endif %}
+
+                {% if headerSection %}
+                    <span class="header__section">{{ headerSection | escape }}</span>
+                {% endif %}
+
+                <a class="header__email"
+                   target="_blank"
+                   href="{{ 'mailto:' | encode }}{{ email | encode }}">{{ email | encode }}</a>
+            </header>
+
+            {% block body %}{% endblock %}
+
+            <div class="push-nav-overlay"></div>
+        </div>
+
         <button type="button" class="push-nav-toggle themed--hover">
             Toggle navigation
             {% for line in [1,2,3] %}
@@ -54,28 +81,6 @@
                 </li>
             </ul>
         </nav>
-
-        <div class="body-wrapper">
-            <header role="banner" class="header{% if headerWhite %} header--white{% endif %}">
-                {% if headerShortName %}
-                    <a class="header__name" href="/" title="Roland Warmerdam" rel="home">RW</a>
-                {% else %}
-                    <a class="header__name" href="/" rel="home">Roland Warmerdam</a>
-                {% endif %}
-
-                {% if headerSection %}
-                    <span class="header__section">{{ headerSection | escape }}</span>
-                {% endif %}
-
-                <a class="header__email"
-                   target="_blank"
-                   href="{{ 'mailto:' | encode }}{{ email | encode }}">{{ email | encode }}</a>
-            </header>
-
-            {% block body %}{% endblock %}
-
-            <div class="push-nav-overlay"></div>
-        </div>
 
         <script src="/assets/js/index.js"></script>
     </body>
