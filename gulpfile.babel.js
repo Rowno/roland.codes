@@ -53,7 +53,7 @@ Globby.sync('app/static/assets/images/*.svg').forEach(path => {
 });
 
 
-Gulp.task('clean', cb => Del(internals.dest, cb));
+Gulp.task('clean', () => Del(internals.dest));
 
 Gulp.task('static', () => {
     return Gulp.src(internals.staticGlob)
