@@ -113,7 +113,11 @@ Gulp.task('sass', () => {
 Gulp.task('browserify', () => {
     let b = Browserify({
         entries: ['./app/assets/js/index.js'],
-        transform: [Babelify],
+        transform: [
+            Babelify.configure({
+                optional: ['runtime']
+            })
+        ],
         debug: true,
         cache: {},
         packageCache: {}

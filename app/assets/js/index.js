@@ -1,7 +1,7 @@
 'use strict';
-require('babel-core/polyfill');
-require('./vendor/polyfills/smoothscroll');
+require('picturefill');
 require('fastclick')(document.body);
+require('./vendor/polyfills/smoothscroll');
 require('./theme');
 require('./push-nav');
 
