@@ -4,7 +4,7 @@ const Fs = require('fs');
 const Path = require('path');
 
 const Assign = require('lodash.assign');
-const Autoprefixer = require('gulp-autoprefixer');
+const Autoprefixer = require('autoprefixer');
 const Babelify = require('babelify');
 const Browserify = require('browserify');
 const Buffered = require('vinyl-buffer');
@@ -23,6 +23,7 @@ const Layouts = require('metalsmith-layouts');
 const Livereload = require('gulp-livereload');
 const Markdown = require('metalsmith-markdownit');
 const MinifyCss = require('gulp-minify-css');
+const PostCss = require('gulp-postcss');
 const Minimist = require('minimist');
 const MoldSourceMap = require('mold-source-map');
 const Permalinks = require('metalsmith-permalinks');
@@ -103,7 +104,7 @@ Gulp.task('sass', () => {
     return Gulp.src(internals.sassGlob)
         .pipe(Sourcemaps.init())
         .pipe(Sass({ sourceComments: true }))
-        .pipe(Autoprefixer())
+        .pipe(PostCss([Autoprefixer()]))
         .pipe(Sourcemaps.write())
         .pipe(Gulpif(internals.prod, MinifyCss({ keepSpecialComments: 0 })))
         .pipe(Gulp.dest(Path.join(internals.dest, 'assets')))
