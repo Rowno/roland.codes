@@ -107,6 +107,10 @@
                 padding: 15px;
             }
         }
+
+        > li:first-child a {
+            padding-left: 0;
+        }
     }
 }
 
