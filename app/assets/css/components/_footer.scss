@@ -1,0 +1,144 @@
+.footer {
+    display: flex;
+    max-width: 1400px;
+    padding: 125px 0;
+    margin: auto;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+
+    @include media('height<m-height') {
+        padding: 60px 0;
+    }
+
+    @include media('<700px') {
+        flex-direction: column;
+        padding: 60px $page-padding;
+    }
+
+    &__column {
+        position: relative;
+        flex: 1;
+        padding: 0 40px;
+
+        @include media('<700px') {
+            padding: 40px 0;
+
+            &:first-child {
+                padding-top: 0;
+            }
+
+            &:last-child {
+                padding-bottom: 0;
+            }
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: block;
+            width: 1px;
+            height: 180px;
+            background: #fff;
+
+            @include media('<700px') {
+                top: 0;
+                right: 0;
+                width: 50%;
+                height: 1px;
+                margin: auto;
+                transform: none;
+            }
+        }
+
+        &:first-child:before {
+            display: none;
+        }
+    }
+
+    &__heading {
+        margin-bottom: 30px;
+        font-size: 30px;
+        line-height: 1.5;
+
+        @include media('<500px') {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+    }
+
+    &__avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+    }
+
+    &__content {
+        max-width: 420px;
+        margin: auto;
+        margin-top: 25px;
+        line-height: 2;
+    }
+
+    &__email {
+        opacity: 0.7;
+        display: inline-block;
+        padding: 16px 48px;
+        margin-top: 25px;
+        border: 1px solid currentColor;
+        color: inherit;
+        font-size: 24px;
+        line-height: 1;
+        transition-property: opacity;
+
+        @include media('<700px') {
+            margin-top: 0;
+            padding-left: 26px;
+            padding-right: 26px;
+            font-size: 20px;
+        }
+
+        &:hover, &:focus {
+            opacity: 1;
+        }
+    }
+
+    &__social {
+        display: inline-block;
+        max-width: 345px;
+        margin: auto;
+        margin-top: 40px;
+        font-size: 0;
+
+        &:hover a {
+            opacity: 0.5;
+        }
+
+        // Keep separate because rules with unsupported selectors get dropped
+        &:focus-within a {
+            opacity: 0.5;
+        }
+
+        li {
+            display: inline-block;
+        }
+
+        a {
+            display: inline-block;
+            padding: 15px;
+            transition-property: opacity;
+
+            &:hover, &:focus {
+                opacity: 1;
+            }
+        }
+
+        img {
+            max-width: 45px;
+            max-height: 24px;
+        }
+    }
+}
