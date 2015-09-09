@@ -1,4 +1,4 @@
-/*eslint-env node */
+/* eslint-env node */
 'use strict';
 const Fs = require('fs');
 const Path = require('path');
@@ -37,7 +37,7 @@ const Watchify = require('watchify');
 
 const internals = {};
 internals.options = Minimist(process.argv);
-internals.prod = internals.options.prod || process.env.NODE_ENV === 'production';
+internals.prod = internals.options.prod || process.env.NODE_ENV === 'production'; // eslint-disable-line no-process-env
 internals.watch = internals.options.watch;
 internals.staticGlob = 'app/static/**/*';
 internals.metalsmithGlob = 'app/content/**/*';
@@ -47,11 +47,15 @@ internals.dest = 'build';
 internals.svgs = {};
 
 
+/* eslint-disable no-sync */
+
 // Load svgs into variables so they can be inlined using metalsmith
 Globby.sync('app/static/assets/images/*.svg').forEach(path => {
-    var name = Path.basename(path, '.svg');
-    internals.svgs[name] = Fs.readFileSync(path, { encoding: 'utf8' });
+    const svgName = Path.basename(path, '.svg');
+    internals.svgs[svgName] = Fs.readFileSync(path, { encoding: 'utf8' });
 });
+
+/* eslint-enable no-sync */
 
 
 Gulp.task('clean', () => Del(internals.dest));
@@ -69,7 +73,7 @@ Gulp.task('metalsmith', () => {
     Swig.setFilter('encode', input => He.encode(input, { encodeEverything: true }));
     // Adds classes to an html element
     Swig.setFilter('class', (input, classes) => {
-        let $ = Cheerio.load(input);
+        const $ = Cheerio.load(input);
         $('> *').addClass(classes);
         return $.html();
     });
@@ -93,7 +97,7 @@ Gulp.task('metalsmith', () => {
         // Parse front matter for metalsmith
         .pipe(FrontMatter()).on('data', file => {
             Assign(file, file.frontMatter);
-            delete file.frontMatter;
+            Reflect.deleteProperty(file, 'frontMatter');
         })
         .pipe(metalsmith)
         .pipe(Gulp.dest(internals.dest))
@@ -115,9 +119,7 @@ Gulp.task('browserify', () => {
     let b = Browserify({
         entries: ['./app/assets/js/index.js'],
         transform: [
-            Babelify.configure({
-                optional: ['runtime']
-            })
+            Babelify.configure({ optional: ['runtime'] })
         ],
         debug: true,
         cache: {},
@@ -127,7 +129,7 @@ Gulp.task('browserify', () => {
     function createBundle(bundle) {
         return bundle.bundle()
             // Improve source map paths
-            .pipe(MoldSourceMap.transformSources(file => '/source/' + Path.relative('./app/', file)))
+            .pipe(MoldSourceMap.transformSources(file => `/source/${Path.relative('./app/', file)}`))
             // Convert text stream to vinyl file stream
             .pipe(Source('assets/js/index.js'))
             // Buffer the streamed file contents
@@ -152,7 +154,7 @@ Gulp.task('build', callback => {
 
             Gulp.watch([
                 internals.metalsmithGlob,
-                internals.templates + '/**/*'
+                `${internals.templates}/**/*`
             ], ['metalsmith']);
 
             Gulp.watch(internals.sassGlob, ['sass']);
