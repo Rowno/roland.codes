@@ -11,7 +11,10 @@ const Buffered = require('vinyl-buffer');
 const Changed = require('gulp-changed');
 const Cheerio = require('cheerio');
 const Collections = require('metalsmith-collections');
+const DateInFilename = require('metalsmith-date-in-filename');
 const Del = require('del');
+const Drafts = require('metalsmith-drafts');
+const Excerpts = require('metalsmith-excerpts');
 const Express = require('express');
 const FrontMatter = require('gulp-front-matter');
 const Globby = require('globby');
@@ -83,10 +86,13 @@ Gulp.task('metalsmith', () => {
             email: 'hi@roland.codes',
             svgs: internals.svgs
         })
+        .use(Drafts())
+        .use(DateInFilename())
         .use(Collections({
             projects: { pattern: 'projects/*.md' }
         }))
         .use(Markdown())
+        .use(Excerpts())
         .use(Permalinks())
         .use(Layouts({
             engine: 'swig',
