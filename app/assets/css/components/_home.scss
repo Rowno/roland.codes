@@ -140,7 +140,6 @@
 
     &__project {
         display: flex;
-        justify-content: space-between;
         align-items: center;
         position: relative;
         padding: 60px 0;
@@ -168,6 +167,8 @@
         }
 
         &__image {
+            flex: 1;
+            max-width: 350px;
             margin-right: 40px;
 
             @include media('<600px') {
@@ -182,10 +183,11 @@
         }
 
         &__content {
-            max-width: 400px;
+            flex: 1;
+            max-width: 460px;
+            margin: 0;
 
             @include media('<600px') {
-                max-width: none;
                 padding: 0 $page-padding;
             }
         }
