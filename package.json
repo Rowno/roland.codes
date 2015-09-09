@@ -35,7 +35,6 @@
     "lodash.assign": "^3.2.0",
     "metalsmith": "^2.0.1",
     "metalsmith-collections": "^0.7.0",
-    "metalsmith-date-in-filename": "0.0.14",
     "metalsmith-drafts": "0.0.1",
     "metalsmith-excerpts": "^1.0.0",
     "metalsmith-layouts": "^1.0.0",
