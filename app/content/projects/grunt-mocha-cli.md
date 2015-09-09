@@ -1,14 +1,14 @@
 ---
 layout: project.html
-title: The Monocle 2
-logos: [ html, css ]
+title: Grunt Mocha CLI
+logos: [ node ]
 links:
     - name: GitHub
-      url: https://www.xero.com/podcasts/
+      url: https://github.com/Rowno/grunt-mocha-cli
     - name: npm
-      url: https://www.xero.com/podcasts/
+      url: https://www.npmjs.com/package/grunt-mocha-cli
 description: >
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, consectetur delectus sunt modi, culpa beatae. In hic maiores quasi repudiandae tempore, aliquam, autem adipisci similique dolorum distinctio commodi beatae dolore.
+    Grunt plugin for running server-side Mocha tests.
 ---
 
 Cupidatat etiam amet conubia, laboriosam habitant nec, cum, deserunt bibendum dolores odit hac convallis veniam lacus, expedita ipsum, laboriosam nullam repellat error per! Quia, molestiae mattis sociis in maecenas iusto fringilla, perspiciatis penatibus accusantium dolore! Ullam architecto, commodo laudantium a. Illo nibh eveniet!
