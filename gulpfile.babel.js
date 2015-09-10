@@ -46,7 +46,10 @@ internals.metalsmithGlob = 'app/content/**/*';
 internals.sassGlob = 'app/assets/**/*.scss';
 internals.templates = 'app/templates';
 internals.dest = 'build';
-internals.svgs = {};
+internals.metadata = {
+    email: 'hi@roland.codes',
+    svgs: {}
+};
 
 
 /* eslint-disable no-sync */
@@ -54,7 +57,7 @@ internals.svgs = {};
 // Load svgs into variables so they can be inlined using metalsmith
 Globby.sync('app/static/assets/images/*.svg').forEach(path => {
     const svgName = Path.basename(path, '.svg');
-    internals.svgs[svgName] = Fs.readFileSync(path, { encoding: 'utf8' });
+    internals.metadata.svgs[svgName] = Fs.readFileSync(path, { encoding: 'utf8' });
 });
 
 /* eslint-enable no-sync */
@@ -81,18 +84,41 @@ Gulp.task('metalsmith', () => {
     });
 
     const metalsmith = Gulpsmith()
-        .metadata({
-            email: 'hi@roland.codes',
-            svgs: internals.svgs
-        })
-        .use(Drafts())
+        .metadata(internals.metadata)
+        .use(Drafts()) // First to avoid unnecessary parsing
         .use(Collections({
+            blog: {
+                pattern: 'blog/*.md',
+                sortBy: 'date',
+                reverse: true,
+            },
             projects: { pattern: 'projects/*.md' }
         }))
-        .use(Markdown())
+        .use((files) => { // Extract date from filenames
+            const DATE_REGEX = /(\d{4}-\d{2}-\d{2})-(.*?)$/;
+
+            Object.keys(files).forEach((filename) => {
+                const { base, dir } = Path.parse(filename);
+                const metadata = files[filename];
+                const match = DATE_REGEX.exec(base);
+
+                if (!match) {
+                    return;
+                }
+
+                metadata.date = new Date(match[1]);
+                files[Path.join(dir, match[2])] = metadata;
+                Reflect.deleteProperty(files, filename);
+            });
+        })
+        .use(Markdown({
+            html: true,
+            linkify: true,
+            typographer: true
+        }))
+        .use(Permalinks()) // After markdown because it only renames .html files
         .use(Excerpts())
-        .use(Permalinks())
-        .use(Layouts({
+        .use(Layouts({ // Last when all the metadata is available
             engine: 'swig',
             directory: internals.templates
         }));
