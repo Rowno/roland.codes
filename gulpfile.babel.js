@@ -86,15 +86,7 @@ Gulp.task('metalsmith', () => {
     const metalsmith = Gulpsmith()
         .metadata(internals.metadata)
         .use(Drafts()) // First to avoid unnecessary parsing
-        .use(Collections({
-            blog: {
-                pattern: 'blog/*.md',
-                sortBy: 'date',
-                reverse: true,
-            },
-            projects: { pattern: 'projects/*.md' }
-        }))
-        .use((files) => { // Extract date from filenames
+        .use((files) => { // Extract date from filenames before sorting on them
             const DATE_REGEX = /(\d{4}-\d{2}-\d{2})-(.*?)$/;
 
             Object.keys(files).forEach((filename) => {
@@ -111,6 +103,14 @@ Gulp.task('metalsmith', () => {
                 Reflect.deleteProperty(files, filename);
             });
         })
+        .use(Collections({
+            blog: {
+                pattern: 'blog/*.md',
+                sortBy: 'date',
+                reverse: true,
+            },
+            projects: { pattern: 'projects/*.md' }
+        }))
         .use(Markdown({
             html: true,
             linkify: true,
