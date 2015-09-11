@@ -32,7 +32,6 @@
     "gulp-uglify": "^1.2.0",
     "gulpsmith": "^0.5.3",
     "he": "^0.5.0",
-    "lodash.assign": "^3.2.0",
     "metalsmith": "^2.0.1",
     "metalsmith-collections": "^0.7.0",
     "metalsmith-drafts": "0.0.1",

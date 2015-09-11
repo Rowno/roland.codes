@@ -3,7 +3,6 @@
 const Fs = require('fs');
 const Path = require('path');
 
-const Assign = require('lodash.assign');
 const Autoprefixer = require('autoprefixer');
 const Babelify = require('babelify');
 const Browserify = require('browserify');
@@ -126,7 +125,7 @@ Gulp.task('metalsmith', () => {
     return Gulp.src(internals.metalsmithGlob)
         // Parse front matter for metalsmith
         .pipe(FrontMatter()).on('data', file => {
-            Assign(file, file.frontMatter);
+            Object.assign(file, file.frontMatter);
             Reflect.deleteProperty(file, 'frontMatter');
         })
         .pipe(metalsmith)
