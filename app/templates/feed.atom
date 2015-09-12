@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+    <id>{{ baseurl | escape }}/</id>
+    <title>Roland Warmerdam</title>
+    <updated>{{ buildDate | date('c') }}</updated>
+    <link rel="self" href="{{ baseurl | escape }}/feed.atom" />
+    <rights>{{ copyright | escape }}</rights>
+
+    {% for post in collections.blog %}
+        <entry>
+            <id>{{ baseurl | escape }}/{{ post.path | escape }}/</id>
+            <title>{{ post.title | escape }}</title>
+            <updated>{{ post.date | date('c') }}</updated>
+            <link rel="alternate" href="{{ baseurl | escape }}/{{ post.path | escape }}/" />
+            <author>
+                <name>Roland Warmerdam</name>
+                <uri>{{ baseurl | escape }}/</uri>
+            </author>
+            <content type="html">
+                {{ post.prelayoutContents.toString('utf8') | escape }}
+            </content>
+        </entry>
+    {% endfor %}
+
+</feed>

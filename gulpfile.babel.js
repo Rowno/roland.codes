@@ -46,8 +46,11 @@ internals.sassGlob = 'app/assets/**/*.scss';
 internals.templates = 'app/templates';
 internals.dest = 'build';
 internals.metadata = {
+    baseurl: 'https://roland.codes',
+    buildDate: new Date(),
+    copyright: `Copyright © 2011-${new Date().getFullYear()} Roland Warmerdam`,
     email: 'hi@roland.codes',
-    svgs: {}
+    svgs: {},
 };
 
 
@@ -117,6 +120,14 @@ Gulp.task('metalsmith', () => {
         }))
         .use(Permalinks()) // After markdown because it only renames .html files
         .use(Excerpts())
+        .use((files) => { // Keep a copy of the contents without layout applied
+            Object.keys(files)
+                .filter((filename) => Path.extname(filename) === '.html')
+                .forEach((filename) => {
+                    const metadata = files[filename];
+                    metadata.prelayoutContents = metadata.contents;
+                });
+        })
         .use(Layouts({ // Last when all the metadata is available
             engine: 'swig',
             directory: internals.templates
