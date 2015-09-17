@@ -45,6 +45,7 @@ internals.metalsmithGlob = 'app/content/**/*';
 internals.sassGlob = 'app/assets/**/*.scss';
 internals.templates = 'app/templates';
 internals.dest = 'build';
+internals.mode = { mode: '644' };
 internals.metadata = {
     baseurl: 'https://roland.codes',
     buildDate: new Date(),
@@ -70,7 +71,7 @@ Gulp.task('clean', () => Del(internals.dest));
 Gulp.task('static', () => {
     return Gulp.src(internals.staticGlob)
         .pipe(Changed(internals.dest))
-        .pipe(Gulp.dest(internals.dest))
+        .pipe(Gulp.dest(internals.dest, internals.mode))
         .pipe(Livereload());
 });
 
@@ -140,7 +141,7 @@ Gulp.task('metalsmith', () => {
             Reflect.deleteProperty(file, 'frontMatter');
         })
         .pipe(metalsmith)
-        .pipe(Gulp.dest(internals.dest))
+        .pipe(Gulp.dest(internals.dest, internals.mode))
         .pipe(Livereload());
 });
 
@@ -151,7 +152,7 @@ Gulp.task('sass', () => {
         .pipe(PostCss([Autoprefixer()]))
         .pipe(Sourcemaps.write())
         .pipe(Gulpif(internals.prod, MinifyCss({ keepSpecialComments: 0 })))
-        .pipe(Gulp.dest(Path.join(internals.dest, 'assets')))
+        .pipe(Gulp.dest(Path.join(internals.dest, 'assets'), internals.mode))
         .pipe(Livereload());
 });
 
@@ -175,7 +176,7 @@ Gulp.task('browserify', () => {
             // Buffer the streamed file contents
             .pipe(Buffered())
             .pipe(Gulpif(internals.prod, Uglify()))
-            .pipe(Gulp.dest(internals.dest))
+            .pipe(Gulp.dest(internals.dest, internals.mode))
             .pipe(Livereload());
     }
 
