@@ -12,7 +12,7 @@ Build
 
 ### Setup ###
 
- * Install [Node.js][] v0.12
+ * Install [Node.js][] v4
  * Install Gulp: `npm install -g gulp`
  * Install dependencies: `npm install`
 
@@ -20,9 +20,9 @@ Build
 
 Available build tasks:
 
- * `gulp --harmony` - build the website, start a server and watch for changes (implicit --watch flag).
- * `gulp build --harmony` - build the website.
- * `gulp server --harmony` - build the website and start a server.
+ * `gulp` - build the website, start a server and watch for changes (implicit --watch flag).
+ * `gulp build` - build the website.
+ * `gulp server` - build the website and start a server.
  * `gulp alex` - run [Alex](http://alexjs.com/) over all the content.
  * `gulp lint` - run [ESLint](http://eslint.org/) over all the Javascript.
 
