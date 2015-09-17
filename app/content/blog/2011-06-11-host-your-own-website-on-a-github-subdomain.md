@@ -1,5 +1,5 @@
 ---
-layout: post.html
+layout: blog-post.html
 title: Host your own website on a GitHub subdomain
 tags: [github]
 commentsIssueId: 2

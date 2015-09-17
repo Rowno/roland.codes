@@ -1,5 +1,5 @@
 ---
-layout: post.html
+layout: blog-post.html
 title: Sync Sublime Text 2 settings
 tags: [tools, sublime text 2]
 commentsIssueId: 15

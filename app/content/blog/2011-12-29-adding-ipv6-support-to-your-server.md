@@ -1,5 +1,5 @@
 ---
-layout: post.html
+layout: blog-post.html
 title: Adding IPv6 support to your server
 tags: [apache, ipv6, linode, ubuntu]
 commentsIssueId: 6

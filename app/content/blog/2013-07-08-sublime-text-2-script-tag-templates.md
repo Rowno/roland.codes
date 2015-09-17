@@ -1,5 +1,5 @@
 ---
-layout: post.html
+layout: blog-post.html
 title: Make Sublime Text 2 treat script tag templates as HTML
 tags: [tools, sublime text 2]
 commentsIssueId: 17

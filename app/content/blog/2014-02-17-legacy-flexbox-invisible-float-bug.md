@@ -1,5 +1,5 @@
 ---
-layout: post.html
+layout: blog-post.html
 title: Legacy flexbox invisible float bug
 tags: [css, flexbox, bugfix]
 commentsIssueId: 21

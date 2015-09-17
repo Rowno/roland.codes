@@ -1,5 +1,5 @@
 ---
-layout: post.html
+layout: blog-post.html
 title: Disable the Addon Bar context menu on Addon SDK widgets
 tags: [addon sdk]
 commentsIssueId: 4

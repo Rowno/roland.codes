@@ -1,0 +1,18 @@
+{% extends "blog.html" %}
+
+{% block body %}
+    {% for post in collections.blog %}
+        <article class="blog-excerpt">
+            <header>
+                <time datetime="{{ post.date | date('c') }}">
+                    {{ post.date | date('j M, Y') }}
+                </time>
+                <h2>
+                    <a href="/{{ post.path }}/">{{ post.title }}</a>
+                </h2>
+            </header>
+
+            {{ post.excerpt }}
+        </article>
+    {% endfor %}
+{% endblock %}

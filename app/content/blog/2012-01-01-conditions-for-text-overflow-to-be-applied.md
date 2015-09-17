@@ -1,5 +1,5 @@
 ---
-layout: post.html
+layout: blog-post.html
 title: Conditions for text-overflow to be applied
 tags: [css, text-overflow]
 commentsIssueId: 7

@@ -1,5 +1,5 @@
 ---
-layout: post.html
+layout: blog-post.html
 title: Browser search engine shortcuts
 tags: [tools]
 commentsIssueId: 22

@@ -1,0 +1,13 @@
+{% extends "blog.html" %}
+
+{% block body %}
+    <header>
+        <h1>{{ title }}</h1>
+        {{ summary }}
+        <time datetime="{{ date | date('c') }}">
+            {{ date | date('j F, Y') }}
+        </time>
+    </header>
+
+    {{ contents }}
+{% endblock %}

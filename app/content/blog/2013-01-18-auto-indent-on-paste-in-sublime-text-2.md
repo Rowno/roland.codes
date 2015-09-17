@@ -1,5 +1,5 @@
 ---
-layout: post.html
+layout: blog-post.html
 title: Auto indent on paste in Sublime Text 2
 tags: [tools, sublime text 2]
 commentsIssueId: 16

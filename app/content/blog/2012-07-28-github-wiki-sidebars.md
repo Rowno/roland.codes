@@ -1,5 +1,5 @@
 ---
-layout: post.html
+layout: blog-post.html
 title: GitHub Wiki sidebars
 tags: [github]
 commentsIssueId: 13

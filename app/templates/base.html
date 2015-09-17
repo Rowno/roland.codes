@@ -36,16 +36,14 @@
                        rel="home">Roland Warmerdam</a>
                 {% endif %}
 
-                {% if headerSection %}
-                    <span class="header__section">{{ headerSection | escape }}</span>
-                {% endif %}
-
                 <a class="header__email"
                    target="_blank"
                    href="{{ 'mailto:' | encode }}{{ email | encode }}">{{ email | encode }}</a>
             </header>
 
-            {% block body %}{% endblock %}
+            <main role="main">
+                {% block body %}{% endblock %}
+            </main>
 
             <div class="push-nav-overlay"></div>
         </div>

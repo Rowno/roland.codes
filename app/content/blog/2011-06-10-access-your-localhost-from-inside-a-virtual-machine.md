@@ -1,5 +1,5 @@
 ---
-layout: post.html
+layout: blog-post.html
 title: Access your localhost from inside a virtual machine
 tags: [localhost, virtual machine]
 commentsIssueId: 1
