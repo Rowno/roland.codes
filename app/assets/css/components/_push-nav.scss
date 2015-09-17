@@ -126,6 +126,7 @@ $push-nav-speed: 0.4s;
     right: 0;
     top: 0;
     bottom: 0;
+    min-height: 100vh;
     background: #fff;
     transition: $push-nav-speed;
     transition-property: visibility, opacity;
