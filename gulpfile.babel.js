@@ -3,6 +3,7 @@
 const Fs = require('fs');
 const Path = require('path');
 
+const Alex = require('gulp-alex');
 const Autoprefixer = require('autoprefixer');
 const Babelify = require('babelify');
 const Browserify = require('browserify');
@@ -211,6 +212,10 @@ Gulp.task('server', ['build'], callback => {
     const app = Express();
     app.use(Express.static('build'));
     app.listen(8000, callback);
+});
+
+Gulp.task('alex', () => {
+    return Gulp.src('app/**/*.md').pipe(Alex());
 });
 
 Gulp.task('default', () => {
