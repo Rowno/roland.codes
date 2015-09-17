@@ -12,14 +12,13 @@ function togglePushNav() {
     pushNavActive = !pushNavActive;
 }
 
-function linkClick(event) {
-    const node = event.target;
+function linkClick(e) {
+    const node = e.target;
 
     // Only fire for hash links pointing at the current page
     if (!node.hash ||
         node.hostname !== window.location.hostname ||
-        node.pathname !== window.location.pathname)
-    {
+        node.pathname !== window.location.pathname) {
         return;
     }
 
@@ -30,6 +29,6 @@ function linkClick(event) {
 
 document.querySelector('.push-nav-toggle').addEventListener('click', togglePushNav, false);
 document.querySelector('.push-nav-overlay').addEventListener('click', togglePushNav, false);
-for (let a of document.querySelectorAll('.push-nav a')) {
+for (const a of document.querySelectorAll('.push-nav a')) {
     a.addEventListener('click', linkClick, false);
 }

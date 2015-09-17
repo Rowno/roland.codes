@@ -23,6 +23,7 @@
     "gulp": "^3.9.0",
     "gulp-alex": "^1.0.0",
     "gulp-changed": "^1.2.1",
+    "gulp-eslint": "^1.0.0",
     "gulp-front-matter": "^1.2.3",
     "gulp-if": "^1.2.5",
     "gulp-livereload": "^3.8.0",

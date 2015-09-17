@@ -13,6 +13,7 @@ const Cheerio = require('cheerio');
 const Collections = require('metalsmith-collections');
 const Del = require('del');
 const Drafts = require('metalsmith-drafts');
+const Eslint = require('gulp-eslint');
 const Excerpts = require('metalsmith-excerpts');
 const Express = require('express');
 const FrontMatter = require('gulp-front-matter');
@@ -216,6 +217,13 @@ Gulp.task('server', ['build'], callback => {
 
 Gulp.task('alex', () => {
     return Gulp.src('app/**/*.md').pipe(Alex());
+});
+
+Gulp.task('lint', () => {
+    return Gulp.src(['app/**/*.js', '!app/**/vendor/**/*'])
+        .pipe(Eslint())
+        .pipe(Eslint.format())
+        .pipe(Eslint.failOnError());
 });
 
 Gulp.task('default', () => {

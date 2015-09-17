@@ -5,12 +5,12 @@ let currentTheme = 1;
 
 
 setInterval(() => {
-    document.documentElement.classList.remove('theme--' + currentTheme);
+    document.documentElement.classList.remove(`theme--${currentTheme}`);
 
     currentTheme += 1;
     if (currentTheme > THEME_NUM) {
         currentTheme = 1;
     }
 
-    document.documentElement.classList.add('theme--' + currentTheme);
+    document.documentElement.classList.add(`theme--${currentTheme}`);
 }, THEME_INTERVAL * 1000);

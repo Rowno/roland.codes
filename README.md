@@ -23,7 +23,8 @@ Available build tasks:
  * `gulp --harmony` - build the website, start a server and watch for changes (implicit --watch flag).
  * `gulp build --harmony` - build the website.
  * `gulp server --harmony` - build the website and start a server.
- * `gulp alex` - run [Alex](https://github.com/wooorm/alex) over the content.
+ * `gulp alex` - run [Alex](http://alexjs.com/) over all the content.
+ * `gulp lint` - run [ESLint](http://eslint.org/) over all the Javascript.
 
 #### Flags ####
 

@@ -7,14 +7,13 @@ require('./push-nav');
 
 
 // Hash link smooth scrolling
-document.body.addEventListener('click', event => {
-    const node = event.target;
+document.body.addEventListener('click', e => {
+    const node = e.target;
 
     // Only fire for hash links pointing at the current page
     if (!node.hash ||
         node.hostname !== window.location.hostname ||
-        node.pathname !== window.location.pathname)
-    {
+        node.pathname !== window.location.pathname) {
         return;
     }
 
@@ -25,6 +24,6 @@ document.body.addEventListener('click', event => {
     }
 
     window.scrollTo({top: element.offsetTop, behavior: 'smooth'});
-    event.preventDefault(); // Prevent default scroll
+    e.preventDefault(); // Prevent default scroll
     window.location.hash = node.hash; // Manually add hash to url to maintain history
 }, false);
