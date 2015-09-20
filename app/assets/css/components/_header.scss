@@ -46,7 +46,7 @@
         border-radius: 100px;
         font-size: 18px;
 
-        @include media('<700px') {
+        @include media('<800px') {
             display: none;
         }
     }

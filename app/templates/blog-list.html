@@ -1,18 +1,41 @@
-{% extends "blog.html" %}
+{% extends "base.html" %}
+{% set headerShortName = true %}
+{% set headerWhite = true %}
+{% set pushNavThemed = true %}
 
 {% block body %}
-    {% for post in collections.blog %}
-        <article class="blog-excerpt">
-            <header>
-                <time datetime="{{ post.date | date('c') }}">
-                    {{ post.date | date('j M, Y') }}
-                </time>
-                <h2>
-                    <a href="/{{ post.path }}/">{{ post.title }}</a>
-                </h2>
-            </header>
+    <div class="blog-list">
+        <h1 class="blog-list__title blog-list__title--top">
+            &lt;blog&gt;
+        </h1>
 
-            {{ post.excerpt }}
-        </article>
-    {% endfor %}
+        <div class="blog-list__posts">
+            {% for post in collections.blog %}
+                <article class="blog-list__post">
+                    <header>
+                        <time class="blog-list__post__date" datetime="{{ post.date | date('c') }}">
+                            {{ post.date | date('j M, Y') }}
+                        </time>
+                        <h2 class="blog-list__post__title">
+                            <a href="/{{ post.path }}/">{{ post.title }}</a>
+                        </h2>
+                    </header>
+
+                    <div class="blog-list__post__content">
+                        {{ post.excerpt }}
+                    </div>
+
+                    {% if !loop.last %}
+                        <div class="blog-list__post__separator themed--bg"></div>
+                    {% endif %}
+                </article>
+            {% endfor %}
+        </div>
+
+        <div class="blog-list__title blog-list__title--bottom">
+            &lt;/blog&gt;
+        </div>
+    </div>
+
+    {% include "footer-short.html" %}
 {% endblock %}

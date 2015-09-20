@@ -1,0 +1,50 @@
+.footer-short {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 35px;
+
+    &__name {
+        margin-right: auto;
+        color: #fff;
+        font-size: 40px;
+        font-weight: lighter;
+
+        @include media('<750px') {
+            display: none;
+        }
+    }
+
+    &__social {
+        display: inline-block;
+        font-size: 0;
+
+        &:hover a {
+            opacity: 0.5;
+        }
+
+        // Keep separate because rules with unsupported selectors get dropped
+        &:focus-within a {
+            opacity: 0.5;
+        }
+
+        li {
+            display: inline-block;
+        }
+
+        a {
+            display: inline-block;
+            padding: 15px;
+            transition-property: opacity;
+
+            &:hover, &:focus {
+                opacity: 1;
+            }
+        }
+
+        img {
+            max-width: 45px;
+            max-height: 24px;
+        }
+    }
+}

@@ -1,0 +1,93 @@
+.blog-list {
+    padding: 0 $page-padding 100px;
+    background: #fff;
+
+    @include media('<600px') {
+        padding-top: 25px;
+        padding-bottom: 60px;
+        border-top: 1px solid #efefef;
+    }
+
+    &__title {
+        font-size: 46px;
+        font-weight: lighter;
+        text-align: center;
+
+        @include media('<600px') {
+            font-size: 30px;
+        }
+    }
+
+    &__title--top {
+        margin-top: -3ex;
+        margin-bottom: 80px;
+
+        @include media('<600px') {
+            margin-top: 0;
+            margin-bottom: 55px;
+        }
+    }
+
+    &__title--bottom {
+        margin-top: 100px;
+
+        @include media('<600px') {
+            margin-top: 80px;
+        }
+    }
+
+    &__post {
+        position: relative;
+        max-width: 620px;
+        padding: 64px 0;
+        margin: auto;
+
+        @include media('<600px') {
+            padding: 40px 0;
+        }
+
+        &:first-child {
+            padding-top: 0;
+        }
+
+        &:last-child {
+            padding-bottom: 0;
+        }
+
+        &__date {
+            display: block;
+            margin-bottom: 15px;
+            font-size: 12px;
+            text-transform: uppercase;
+
+            @include media('<600px') {
+                margin-bottom: 20px;
+            }
+        }
+
+        &__title {
+            margin-bottom: 30px;
+            font-size: 30px;
+            font-weight: lighter;
+
+            @include media('<600px') {
+                margin-bottom: 25px;
+                font-size: 23px;
+            }
+        }
+
+        &__content {
+            > :last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        &__separator {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100px;
+            height: 1px;
+        }
+    }
+}
