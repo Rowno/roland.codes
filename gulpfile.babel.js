@@ -121,7 +121,7 @@ Gulp.task('metalsmith', () => {
             linkify: true,
             typographer: true
         }))
-        .use(Permalinks()) // After markdown because it only renames .html files
+        .use(Permalinks({ relative: false })) // After markdown because it only renames .html files
         .use(Excerpts())
         .use((files) => { // Keep a copy of the contents without layout applied
             Object.keys(files)
