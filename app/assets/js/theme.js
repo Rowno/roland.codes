@@ -4,7 +4,7 @@ const THEME_INTERVAL = 30;
 let currentTheme = 1;
 
 
-setInterval(() => {
+function changeTheme() {
     document.documentElement.classList.remove(`theme--${currentTheme}`);
 
     currentTheme += 1;
@@ -13,4 +13,9 @@ setInterval(() => {
     }
 
     document.documentElement.classList.add(`theme--${currentTheme}`);
-}, THEME_INTERVAL * 1000);
+}
+
+setTimeout(() => {
+    changeTheme();
+    setInterval(changeTheme, THEME_INTERVAL * 1000);
+}, 500);
