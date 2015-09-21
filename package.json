@@ -5,6 +5,12 @@
   "repository": "Rowno/roland.codes",
   "homepage": "https://roland.codes",
   "private": true,
+  "scripts": {
+    "test": "gulp lint && gulp alex",
+    "build": "gulp build",
+    "server": "gulp build --watch",
+    "deploy": "gulp build --prod && rsync -avzh --delete --no-owner --no-group build/* vps:/var/www/rebuild.roland.codes/files/"
+  },
   "dependencies": {
     "fastclick": "^1.0.6",
     "picturefill": "^2.3.1"
