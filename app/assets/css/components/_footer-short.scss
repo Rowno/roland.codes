@@ -2,13 +2,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 35px;
+    padding: 23px;
 
     &__name {
         margin-right: auto;
         color: #fff;
         font-size: 40px;
         font-weight: lighter;
+        letter-spacing: 0.1em;
 
         @include media('<750px') {
             display: none;

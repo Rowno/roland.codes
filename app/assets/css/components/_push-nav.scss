@@ -24,7 +24,7 @@ $push-nav-speed: 0.4s;
         position: relative;
         right: -$push-nav-width;
         width: $push-nav-width;
-        padding: 125px 40px 0;
+        padding: 116px 42px 0;
         color: #fff;
         font-size: 20px;
         transition: $push-nav-speed;
@@ -39,35 +39,44 @@ $push-nav-speed: 0.4s;
             transform: translateX(-$push-nav-width);
         }
 
-        .push-nav__link {
-            display: inline-block;
-            padding: 0.3em 0;
-            color: inherit;
-            letter-spacing: 0.1em;
+        ul {
+            margin: 52px 0 45px;
+            font-size: 14px;
 
-            &:after {
-                content: '';
-                visibility: hidden;
-                display: block;
-                border-bottom: 1px solid #fff;
-            }
-
-            &:hover, &:focus {
-                &:after {
-                    visibility: visible;
-                }
+            .push-nav__link {
+                padding: 0.4em 0;
             }
         }
+    }
 
-        ul {
-            margin: 40px 0;
-            font-size: 14px;
+    &__link {
+        display: inline-block;
+        position: relative;
+        padding: 0.3em 0;
+        color: inherit;
+        letter-spacing: 0.1em;
+
+        &:after {
+            content: '';
+            visibility: hidden;
+            display: block;
+            position: absolute;
+            left: 0;
+            right: -0.4em;
+            bottom: 0;
+            border-bottom: 1px solid #fff;
+        }
+
+        &:hover, &:focus {
+            &:after {
+                visibility: visible;
+            }
         }
     }
 }
 
 .push-nav-toggle {
-    $spacing: 13px;
+    $spacing: 12px;
     $thinkness: 2px;
     @include hide-text;
     opacity: 0.7;

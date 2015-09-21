@@ -1,5 +1,5 @@
 .blog-list {
-    padding: 0 $page-padding 100px;
+    padding: 0 $page-padding 85px;
     background: #fff;
 
     @include media('<600px') {
@@ -12,6 +12,7 @@
         font-size: 46px;
         font-weight: lighter;
         text-align: center;
+        letter-spacing: 0.1em;
 
         @include media('<600px') {
             font-size: 30px;
@@ -20,7 +21,7 @@
 
     &__title--top {
         margin-top: -3ex;
-        margin-bottom: 80px;
+        margin-bottom: 75px;
 
         @include media('<600px') {
             margin-top: 0;
@@ -39,7 +40,7 @@
     &__post {
         position: relative;
         max-width: 620px;
-        padding: 64px 0;
+        padding: 60px 0 70px;
         margin: auto;
 
         @include media('<600px') {
@@ -56,7 +57,7 @@
 
         &__date {
             display: block;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             font-size: 12px;
             text-transform: uppercase;
 
@@ -66,7 +67,7 @@
         }
 
         &__title {
-            margin-bottom: 30px;
+            margin-bottom: 27px;
             font-size: 30px;
             font-weight: lighter;
 
