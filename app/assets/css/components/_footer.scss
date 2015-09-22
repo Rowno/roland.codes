@@ -1,7 +1,7 @@
 .footer {
     display: flex;
     max-width: 1400px;
-    padding: 125px 0;
+    padding: 140px 0;
     margin: auto;
     color: #fff;
     font-size: 14px;
@@ -62,11 +62,13 @@
     &__heading {
         margin-bottom: 30px;
         font-size: 30px;
+        font-weight: lighter;
         line-height: 1.5;
 
         @include media('<500px') {
-            margin-bottom: 20px;
+            margin-bottom: 22px;
             font-size: 24px;
+            font-weight: $font-weight;
         }
     }
 
@@ -79,7 +81,7 @@
     &__content {
         max-width: 420px;
         margin: auto;
-        margin-top: 25px;
+        margin-top: 20px;
         line-height: 2;
     }
 
@@ -87,7 +89,7 @@
         opacity: 0.7;
         display: inline-block;
         padding: 16px 48px;
-        margin-top: 25px;
+        margin-top: 30px;
         border: 1px solid currentColor;
         color: inherit;
         font-size: 24px;
@@ -109,7 +111,7 @@
     &__social {
         display: inline-block;
         margin: auto;
-        margin-top: 40px;
+        margin-top: 45px;
         font-size: 0;
 
         &:hover a {

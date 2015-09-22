@@ -27,6 +27,7 @@
             @include media('<500px') {
                 font-size: 7vw;
                 font-weight: $font-weight;
+                line-height: 1.4;
             }
 
             @include media('<350px') {
