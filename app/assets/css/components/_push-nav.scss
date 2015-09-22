@@ -55,10 +55,14 @@ $push-nav-speed: 0.4s;
         padding: 0.3em 0;
         color: inherit;
         letter-spacing: 0.1em;
-        transition: transform 0.2s;
+        transition: 0.2s;
+        // Transition a second noop property to avoid a frame drop bug in Chrome
+        transition-property: transform, perspective;
+        perspective: 1000px;
 
         &:hover, &:focus {
             transform: translateX(10px);
+            perspective: 1001px;
         }
 
         &:after {
