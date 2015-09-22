@@ -3,7 +3,7 @@
     background: #fff;
 
     @include media('<700px') {
-        padding: 50px 0 35px;
+        padding: 20px 0 35px;
     }
 
     &__wrapper {
@@ -44,6 +44,13 @@
 
     &__heading {
         font-size: 30px;
+        font-weight: lighter;
+        letter-spacing: 0.1em;
+
+        @include media('<700px') {
+            font-size: 23px;
+            font-weight: $font-weight;
+        }
     }
 
     &__logos {
