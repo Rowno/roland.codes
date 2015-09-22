@@ -18,4 +18,4 @@ function changeTheme() {
 setTimeout(() => {
     changeTheme();
     setInterval(changeTheme, THEME_INTERVAL * 1000);
-}, 500);
+}, 1000);
