@@ -45,7 +45,7 @@
     &__heading {
         font-size: 30px;
         font-weight: lighter;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.01em;
 
         @include media('<700px') {
             font-size: 23px;

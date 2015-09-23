@@ -17,7 +17,7 @@
     &__heading {
         font-size: 6.4vw;
         font-weight: lighter;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.01em;
         line-height: 1.3;
 
         @include media('>860px') {
