@@ -24,7 +24,7 @@
     </head>
     <body class="themed--bg">
         <div class="body-wrapper">
-            {% include "header.html" %}
+            {% include "partials/header.html" %}
 
             <main role="main">
                 {% block body %}{% endblock %}
@@ -33,7 +33,7 @@
             <div class="push-nav-overlay"></div>
         </div>
 
-        {% include "push-nav.html" %}
+        {% include "partials/push-nav.html" %}
 
         <script src="/assets/js/index.js"></script>
     </body>
