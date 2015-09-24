@@ -48,40 +48,7 @@
             <div class="push-nav-overlay"></div>
         </div>
 
-        <button type="button" class="push-nav-toggle themed--hover">
-            Toggle navigation
-            {% for line in [1,2,3] %}
-                <div class="push-nav-toggle__line push-nav-toggle__line--{{line}}{% if pushNavThemed %} themed--bg{% endif %}"></div>
-            {% endfor %}
-        </button>
-
-        <nav role="navigation" class="push-nav">
-            <ul class="push-nav__links">
-                <li>
-                    <a class="push-nav__link themed--no-color" href="/#about">About</a>
-                </li>
-                <li>
-                    <a class="push-nav__link themed--no-color"
-                       href="/#projects">Projects</a>
-
-                    <ul>
-                        {% for project in collections.projects %}
-                            <li>
-                                <a class="push-nav__link themed--no-color" href="/{{ project.path }}/">
-                                    {{ project.title }}
-                                </a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </li>
-                <li>
-                    <a class="push-nav__link themed--no-color" href="/blog/">Blog</a>
-                </li>
-                <li>
-                    <a class="push-nav__link themed--no-color" href="/#contact">Contact</a>
-                </li>
-            </ul>
-        </nav>
+        {% include "push-nav.html" %}
 
         <script src="/assets/js/index.js"></script>
     </body>
