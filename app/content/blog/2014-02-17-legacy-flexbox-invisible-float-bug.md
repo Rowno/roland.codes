@@ -13,6 +13,7 @@ Luckily I chanced on a hack that fixes the bug. All you have to do is give the f
 
 This bug affects legacy Flexbox in all Webkit browsers. Which includes Chrome 20-, Safari 6-, iOS 6.1- and Android 4.3-.
 
-<p data-height="350" data-theme-id="4385" data-slug-hash="rhlfd" data-default-tab="result" class="codepen">
+<p data-height="350" data-theme-id="17006" data-slug-hash="rhlfd" data-default-tab="result" class="codepen">
     See the demo: <a href='/demos/legacy-flexbox-invisible-float-bug/'>Legacy flexbox invisible float bug fix</a>.
 </p>
+<script async src="https://assets.codepen.io/assets/embed/ei.js"></script>

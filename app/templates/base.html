@@ -15,11 +15,11 @@
         <link rel="apple-touch-icon" href="/assets/images/touch-icon.png">
 
         <meta name="application-name" content="Roland Warmerdam">
-        <meta name="description" content="">
+        <meta name="description" content="{{ description | escape }}">
         <meta property="og:type" content="website">
         <meta property="og:url" content="">
-        <meta property="og:title" content="">
-        <meta property="og:description" content="">
+        <meta property="og:title" content="{% if title %}{{ title | escape }} | {% endif %}Roland Warmerdam">
+        <meta property="og:description" content="{{ description | escape }}">
         <meta property="og:image" content="">
     </head>
     <body class="themed--bg">

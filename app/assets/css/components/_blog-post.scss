@@ -1,0 +1,118 @@
+.blog-post {
+    $avatar-size: 30px;
+    $avatar-margin: 15px;
+
+    &__header {
+        padding: 20px $page-padding 115px;
+        color: #fff;
+
+        &__wrapper {
+            max-width: 620px;
+            margin: auto;
+        }
+    }
+
+    &__title {
+        font-size: 36px;
+        font-weight: lighter;
+        letter-spacing: 0.03em;
+    }
+
+    &__description {
+        margin-top: 15px;
+        font-size: 18px;
+        line-height: 1.4;
+    }
+
+    &__date {
+        display: block;
+        margin-top: 15px;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+
+    &__body {
+        padding: 45px $page-padding 115px;
+        background: #fff;
+
+        &__wrapper {
+            max-width: 620px;
+            margin: auto;
+        }
+    }
+
+    &__content {
+        margin-bottom: 40px;
+    }
+
+    &__separator {
+        width: 100px;
+        height: 1px;
+    }
+
+    &__comments {
+        margin-top: 75px;
+
+        &__title {
+            margin-bottom: 50px;
+            font-size: 30px;
+            font-weight: lighter;
+            letter-spacing: 0.04em;
+        }
+
+        &__add {
+            display: inline-block;
+            margin-left: -$avatar-size - $avatar-margin;
+            letter-spacing: 0.03em;
+
+            @include media('<770px') {
+                margin-left: 0;
+            }
+
+            svg {
+                margin-right: $avatar-margin;
+                transition: inherit;
+                transition-property: fill;
+                fill: currentColor;
+            }
+        }
+    }
+
+    &__comment {
+        margin-bottom: 65px;
+
+        &__header {
+            display: flex;
+            align-items: center;
+            margin-left: -$avatar-size - $avatar-margin;
+            margin-bottom: 8px;
+
+            @include media('<770px') {
+                margin-left: 0;
+            }
+        }
+
+        &__avatar {
+            width: $avatar-size;
+            height: $avatar-size;
+            margin-right: $avatar-margin;
+            border-radius: 100%;
+        }
+
+        &__name {
+            font-size: 20px;
+        }
+
+        &__date {
+            opacity: 0.4;
+            margin-left: auto;
+            font-size: 12px;
+            letter-spacing: 0.03em;
+            transition: opacity 0.2s;
+
+            &:hover, &:focus {
+                opacity: 1;
+            }
+        }
+    }
+}

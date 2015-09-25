@@ -13,6 +13,7 @@ The solution is to explicitly set the `flex-basis` to `auto` (e.g `flex: 1 1 aut
 
 Note: Autoprefixer inserts the `-ms-flex` shorthand property even if you use the separate properties. So in this case you'll need to set the `flex-basis` explicitly.
 
-<p data-height="280" data-theme-id="4385" data-slug-hash="Abtqg" data-default-tab="result" class="codepen">
+<p data-height="280" data-theme-id="17006" data-slug-hash="Abtqg" data-default-tab="result" class="codepen">
     See the demo: <a href="/demos/ie-flex-collapse-bug/">IE flex collapse bug fix</a>.
 </p>
+<script async src="https://assets.codepen.io/assets/embed/ei.js"></script>

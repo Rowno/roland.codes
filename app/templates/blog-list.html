@@ -13,9 +13,12 @@
             {% for post in collections.blog %}
                 <article class="blog-list__post">
                     <header>
-                        <time class="blog-list__post__date" datetime="{{ post.date | date('c') }}">
+                        <time class="blog-list__post__date"
+                              datetime="{{ post.date | date('c') }}"
+                              title="{{ post.date | date('c') }}">
                             {{ post.date | date('j M, Y') }}
                         </time>
+
                         <h2 class="blog-list__post__title">
                             <a href="/{{ post.path }}/">{{ post.title }}</a>
                         </h2>
