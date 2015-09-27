@@ -1,0 +1,44 @@
+.row {
+  display: -webkit-box;
+  display: flex;
+}
+
+.column {
+  float: left;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  width: 300px;
+}
+.fix .column {
+  position: relative;
+}
+
+.inner {
+  -webkit-box-flex: 1;
+  flex: 1 1 auto;
+  background: lightblue;
+}
+
+.inner {
+  padding: 0.3em 0.5em;
+  margin: 0.5em;
+  border-radius: 0.5em;
+}
+
+.fix-toggle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.3em 0.5em;
+  border-bottom-right-radius: 0.3em;
+  background: white;
+  box-shadow: 0 0 3px 1px #333;
+  line-height: 1;
+}
+
+.test-text {
+  margin: 0.5em;
+}

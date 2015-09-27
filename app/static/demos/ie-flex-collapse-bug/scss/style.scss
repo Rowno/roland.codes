@@ -1,0 +1,45 @@
+@import "compass/css3";
+
+.row {
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.column {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 300px;
+}
+
+.inner {
+  -ms-flex: 1;
+  flex: 1;
+  background: lightblue;
+  
+  .fix & {
+    // Explicitly set the flex-basis to fix the bug
+    -ms-flex: 1 auto;
+    flex: 1 auto;
+  }
+}
+
+
+
+.inner {
+  padding: 0.3em 0.5em;
+  margin: 0.5em;
+  border-radius: 0.5em;
+}
+
+.fix-toggle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0.3em 0.5em;
+  border-bottom-right-radius: 0.3em;
+  background: white;
+  box-shadow: 0 0 3px 1px #333;
+  line-height: 1;
+}
