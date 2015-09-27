@@ -1,6 +1,7 @@
 /* eslint-env node */
 'use strict';
 const Fs = require('fs');
+const Https = require('https');
 const Path = require('path');
 
 const Alex = require('gulp-alex');
@@ -11,6 +12,7 @@ const Buffered = require('vinyl-buffer');
 const Changed = require('gulp-changed');
 const Cheerio = require('cheerio');
 const Collections = require('metalsmith-collections');
+const Csp = require('helmet-csp');
 const Del = require('del');
 const Drafts = require('metalsmith-drafts');
 const Eslint = require('gulp-eslint');
@@ -58,6 +60,9 @@ internals.metadata = {
 
 
 /* eslint-disable no-sync */
+
+const privateKey = Fs.readFileSync('gulp/server.key', 'utf8');
+const certificate = Fs.readFileSync('gulp/server.crt', 'utf8');
 
 // Load svgs into variables so they can be inlined using metalsmith
 Globby.sync('app/static/assets/images/*.svg').forEach(path => {
@@ -202,7 +207,10 @@ Gulp.task('build', callback => {
 
             Gulp.watch(internals.sassGlob, ['sass']);
 
-            Livereload.listen();
+            Livereload.listen({
+                key: privateKey,
+                cert: certificate
+            });
         }
 
         callback();
@@ -211,8 +219,40 @@ Gulp.task('build', callback => {
 
 Gulp.task('server', ['build'], callback => {
     const app = Express();
-    app.use(Express.static('build'));
-    app.listen(8000, callback);
+
+    app.use(Csp({
+        childSrc: ["'self'", 'https://codepen.io'],
+        connectSrc: ["'self'", 'https://api.github.com', 'wss://localhost:35729'],
+        defaultSrc: ["'self'"],
+        fontSrc: ["'self'", 'https://fonts.gstatic.com'],
+        formAction: ["'self'"],
+        frameAncestors: ["'self'"],
+        frameSrc: ["'self'", 'https://codepen.io'],
+        imgSrc: ['*'],
+        manifestSrc: ["'self'"],
+        mediaSrc: ["'self'"],
+        objectSrc: ["'none'"],
+        reportUri: ['/csp-report'],
+        scriptSrc: ["'self'", "'unsafe-eval'", 'https://www.google-analytics.com', 'https://assets.codepen.io', 'https://localhost:35729'],
+        styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
+        upgradeInsecureRequests: [],
+    }));
+
+    app.use(Express.static('build', {
+        setHeaders(res) {
+            res.setHeader('X-UA-Compatible', 'IE=Edge');
+            res.setHeader('X-Content-Type-Options', 'nosniff');
+            res.setHeader('X-XSS-Protection', '1; mode=block');
+            res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+        }
+    }));
+
+    Https.createServer({
+        key: privateKey,
+        cert: certificate
+    }, app).listen(8000, callback);
+
+    console.log('Server listening on https://localhost:8000');
 });
 
 Gulp.task('alex', () => {
