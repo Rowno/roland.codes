@@ -4,6 +4,7 @@ require('fastclick')(document.body);
 require('./vendor/polyfills/smoothscroll');
 require('./theme');
 require('./push-nav');
+require('./vendor/ga');
 
 
 // Hash link smooth scrolling
