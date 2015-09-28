@@ -9,7 +9,9 @@ const Timeago = require('simple-timeago');
 const template = Fs.readFileSync('app/templates/partials/comments.html', 'utf8');
 const $commentsList = $('.blog-post__comments__list');
 
+
 Swig.setFilter('fuzzydate', (input) => Timeago(new Date(input)));
+
 
 if ($commentsList.length > 0) {
     const commentsIssueId = $commentsList.data('commentsIssueId');
