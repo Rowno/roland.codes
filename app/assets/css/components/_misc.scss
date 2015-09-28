@@ -27,7 +27,7 @@
         display: block;
         transform: scaleX(0);
         border-top: 1px solid currentColor;
-        transition: ease-in 0.2s;
+        transition: ease-in $transition-speed;
         transition-property: visibility, transform;
     }
 

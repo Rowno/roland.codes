@@ -47,7 +47,7 @@
                 bottom: -8px;
                 width: 0;
                 border-top: 1px solid currentColor;
-                transition: width 0.2s;
+                transition: width $transition-speed;
             }
 
             &:hover, &:focus {
