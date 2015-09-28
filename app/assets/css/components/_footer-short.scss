@@ -31,11 +31,6 @@
             opacity: 0.5;
         }
 
-        // Keep separate because rules with unsupported selectors get dropped
-        &:focus-within a {
-            opacity: 0.5;
-        }
-
         li {
             display: inline-block;
         }
