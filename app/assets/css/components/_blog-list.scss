@@ -16,6 +16,7 @@
 
         @include media('<600px') {
             font-size: 30px;
+            font-weight: $light;
         }
     }
 
@@ -74,6 +75,7 @@
             @include media('<600px') {
                 margin-bottom: 25px;
                 font-size: 23px;
+                font-weight: $light;
             }
         }
 
