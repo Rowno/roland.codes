@@ -62,13 +62,13 @@
     &__heading {
         margin-bottom: 30px;
         font-size: 30px;
-        font-weight: lighter;
+        font-weight: $thin;
         line-height: 1.5;
 
         @include media('<500px') {
             margin-bottom: 22px;
             font-size: 24px;
-            font-weight: $font-weight;
+            font-weight: $light;
         }
     }
 

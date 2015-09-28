@@ -21,13 +21,13 @@
     &__name {
         margin-right: auto;
         font-size: 36px;
-        font-weight: lighter;
+        font-weight: $thin;
         letter-spacing: 0.02em;
 
         &:not(.header__name--short) {
             @include media('<500px') {
                 font-size: 7vw;
-                font-weight: $font-weight;
+                font-weight: $light;
                 line-height: 1.4;
             }
 

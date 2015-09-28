@@ -19,7 +19,7 @@
 
     &__title {
         font-size: 36px;
-        font-weight: lighter;
+        font-weight: $thin;
         letter-spacing: 0.03em;
 
         @include media('<600px') {
@@ -87,7 +87,7 @@
         &__title {
             margin-bottom: 50px;
             font-size: 30px;
-            font-weight: lighter;
+            font-weight: $thin;
             letter-spacing: 0.04em;
 
             @include media('<600px') {

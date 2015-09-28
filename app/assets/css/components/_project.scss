@@ -44,12 +44,12 @@
 
     &__heading {
         font-size: 30px;
-        font-weight: lighter;
+        font-weight: $thin;
         letter-spacing: 0.01em;
 
         @include media('<700px') {
             font-size: 23px;
-            font-weight: $font-weight;
+            font-weight: $light;
         }
     }
 

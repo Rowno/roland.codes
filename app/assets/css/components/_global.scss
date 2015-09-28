@@ -20,7 +20,7 @@ body {
     position: relative; // Makes root absolutely positioned element stop at the min-width
     min-width: 320px; // Set a sane limit
     color: #3D3D3D;
-    font: $font-weight #{$font-size}/#{$line-height} $font-family;
+    font: $light #{$font-size}/#{$line-height} $font-family;
 }
 
 // Reset headings
