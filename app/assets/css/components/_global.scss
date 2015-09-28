@@ -49,3 +49,49 @@ button {
     border: none;
     background: none;
 }
+
+@font-face {
+    font-family: 'Hack';
+    src: local('Hack'),
+         url('/assets/fonts/hack.woff2') format('woff2'),
+         url('/assets/fonts/hack.woff') format('woff'),
+         url('/assets/fonts/hack.ttf') format('truetype');
+}
+
+code, kbd, pre, samp {
+    border-radius: 3px;
+    background: rgba(0,0,0,0.04);
+    font-family: 'Hack';
+    font-size: 0.85em;
+    line-height: 1.5;
+}
+
+code, kbd, samp {
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+
+    &:before,
+    &:after {
+        content: '\00a0';
+        letter-spacing: -0.2em;
+    }
+}
+
+pre {
+    overflow: auto;
+    padding: 16px;
+}
+
+code, kbd, pre, samp {
+    code, kbd, pre, samp {
+        padding: 0;
+        background: none;
+        font-size: inherit;
+
+        &:before,
+        &:after {
+            content: '';
+            letter-spacing: inherit;
+        }
+    }
+}

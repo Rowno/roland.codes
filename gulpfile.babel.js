@@ -24,14 +24,15 @@ const Gulp = require('gulp');
 const Gulpif = require('gulp-if');
 const Gulpsmith = require('gulpsmith');
 const He = require('he');
+const Highlight = require('highlight.js');
 const Layouts = require('metalsmith-layouts');
 const Livereload = require('gulp-livereload');
 const Markdown = require('metalsmith-markdownit');
 const MinifyCss = require('gulp-minify-css');
-const PostCss = require('gulp-postcss');
 const Minimist = require('minimist');
 const MoldSourceMap = require('mold-source-map');
 const Permalinks = require('metalsmith-permalinks');
+const PostCss = require('gulp-postcss');
 const RunSequence = require('run-sequence');
 const Sass = require('gulp-sass');
 const Source = require('vinyl-source-stream');
@@ -124,7 +125,14 @@ Gulp.task('metalsmith', () => {
         .use(Markdown({
             html: true,
             linkify: true,
-            typographer: true
+            typographer: true,
+            highlight: (code, lang) => {
+                if (lang && Highlight.getLanguage(lang)) {
+                    return Highlight.highlight(lang, code).value;
+                }
+
+                return Highlight.highlightAuto(code).value;
+            }
         }))
         .use(Permalinks({ relative: false })) // After markdown because it only renames .html files
         .use(Excerpts())
