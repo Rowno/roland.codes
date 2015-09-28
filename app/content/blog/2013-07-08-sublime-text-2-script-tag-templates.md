@@ -23,10 +23,8 @@ Here's what you need to do:
 
 Now any script tags with a `type` of `text/template` will be treated as HTML:
 
-{% raw %}
-```
+```handlebars
 <script type="text/template">
     <h1>{{title}}</h1>
 </script>
 ```
-{% endraw %}
