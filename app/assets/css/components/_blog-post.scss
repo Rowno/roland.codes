@@ -60,6 +60,10 @@
             letter-spacing: 0.04em;
         }
 
+        &__list {
+            margin-bottom: 65px;
+        }
+
         &__add {
             display: inline-block;
             margin-left: -$avatar-size - $avatar-margin;
@@ -106,6 +110,7 @@
         &__date {
             opacity: 0.4;
             margin-left: auto;
+            color: #3D3D3D;
             font-size: 12px;
             letter-spacing: 0.03em;
             transition: opacity 0.2s;

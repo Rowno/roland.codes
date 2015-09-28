@@ -167,7 +167,8 @@ Gulp.task('browserify', () => {
     let b = Browserify({
         entries: ['./app/assets/js/index.js'],
         transform: [
-            Babelify.configure({ optional: ['runtime'] })
+            Babelify.configure({ optional: ['runtime'] }),
+            'brfs'
         ],
         debug: true,
         cache: {},
