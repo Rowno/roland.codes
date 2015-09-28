@@ -1,6 +1,7 @@
 'use strict';
 require('picturefill');
 require('fastclick')(document.body);
+const $ = require('jquery');
 require('./vendor/polyfills/smoothscroll');
 require('./theme');
 require('./push-nav');
@@ -9,7 +10,7 @@ require('./vendor/ga');
 
 
 // Hash link smooth scrolling
-document.body.addEventListener('click', e => {
+$(document.body).on('click', e => {
     const node = e.target;
 
     // Only fire for hash links pointing at the current page
@@ -19,13 +20,13 @@ document.body.addEventListener('click', e => {
         return;
     }
 
-    const element = document.querySelector(node.hash);
+    const $element = $(node.hash);
 
-    if (!element) {
+    if ($element.length === 0) {
         return;
     }
 
-    window.scrollTo({top: element.offsetTop, behavior: 'smooth'});
+    window.scrollTo({top: $element.offset().top, behavior: 'smooth'});
     e.preventDefault(); // Prevent default scroll
     window.location.hash = node.hash; // Manually add hash to url to maintain history
-}, false);
+});

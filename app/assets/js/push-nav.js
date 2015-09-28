@@ -1,4 +1,5 @@
 'use strict';
+const $ = require('jquery');
 let pushNavActive = false;
 
 
@@ -27,8 +28,6 @@ function linkClick(e) {
 }
 
 
-document.querySelector('.push-nav-toggle').addEventListener('click', togglePushNav, false);
-document.querySelector('.push-nav-overlay').addEventListener('click', togglePushNav, false);
-for (const a of document.querySelectorAll('.push-nav a')) {
-    a.addEventListener('click', linkClick, false);
-}
+$('.push-nav-toggle').on('click', togglePushNav);
+$('.push-nav-overlay').on('click', togglePushNav);
+$('.push-nav').on('click', 'a', linkClick);

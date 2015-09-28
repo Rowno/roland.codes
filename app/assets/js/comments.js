@@ -13,9 +13,8 @@ Swig.setFilter('fuzzydate', (input) => Timeago(new Date(input)));
 
 if ($commentsList.length > 0) {
     const commentsIssueId = $commentsList.data('commentsIssueId');
-    const url = `https://api.github.com/repos/Rowno/roland.codes/issues/${commentsIssueId}/comments`;
 
-    window.fetch(url, {
+    window.fetch(`https://api.github.com/repos/Rowno/roland.codes/issues/${commentsIssueId}/comments`, {
         headers: {
             Accept: 'application/vnd.github.v3.html+json'
         }
