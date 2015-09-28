@@ -6,6 +6,11 @@
         padding: 20px $page-padding 115px;
         color: #fff;
 
+        @include media('<600px') {
+            padding-top: 28px;
+            padding-bottom: 35px;
+        }
+
         &__wrapper {
             max-width: 620px;
             margin: auto;
@@ -16,12 +21,21 @@
         font-size: 36px;
         font-weight: lighter;
         letter-spacing: 0.03em;
+
+        @include media('<600px') {
+            font-size: 23px;
+        }
     }
 
     &__description {
         margin-top: 15px;
         font-size: 18px;
         line-height: 1.4;
+
+        @include media('<600px') {
+            margin-top: 20px;
+            font-size: 16px;
+        }
     }
 
     &__date {
@@ -29,6 +43,10 @@
         margin-top: 15px;
         font-size: 12px;
         text-transform: uppercase;
+
+        @include media('<600px') {
+            margin-top: 40px;
+        }
     }
 
     &__body {
@@ -39,10 +57,19 @@
             max-width: 620px;
             margin: auto;
         }
+
+        @include media('<600px') {
+            padding-top: 30px;
+            padding-bottom: 50px;
+        }
     }
 
     &__content {
         margin-bottom: 40px;
+
+        @include media('<600px') {
+            margin-bottom: 45px;
+        }
     }
 
     &__separator {
@@ -53,11 +80,20 @@
     &__comments {
         margin-top: 75px;
 
+        @include media('<600px') {
+            margin-top: 55px;
+        }
+
         &__title {
             margin-bottom: 50px;
             font-size: 30px;
             font-weight: lighter;
             letter-spacing: 0.04em;
+
+            @include media('<600px') {
+                margin-bottom: 65px;
+                font-size: 23px;
+            }
         }
 
         &__list {
@@ -84,6 +120,10 @@
 
     &__comment {
         margin-bottom: 65px;
+
+        @include media('<600px') {
+            margin-bottom: 35px;
+        }
 
         &__header {
             display: flex;
@@ -114,6 +154,10 @@
             font-size: 12px;
             letter-spacing: 0.03em;
             transition: opacity 0.2s;
+
+            @include media('<600px') {
+                font-size: 10px;
+            }
 
             &:hover, &:focus {
                 opacity: 1;
