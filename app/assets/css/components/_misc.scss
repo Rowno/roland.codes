@@ -40,13 +40,3 @@
         }
     }
 }
-
-.cp_embed_iframe {
-    border: 2px solid #f6f6f6;
-
-    @include media('<700px') {
-        border-left: none;
-        border-right: none;
-        border-bottom-width: 18px;
-    }
-}
