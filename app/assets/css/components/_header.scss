@@ -6,7 +6,7 @@
     padding-right: $page-padding + 85px;
     line-height: 1;
 
-    &:not(&.header--white) a {
+    &:not(.header--white) a {
         color: #fff;
 
         &:hover, &:focus {
@@ -71,7 +71,7 @@
         }
     }
 
-    &:not(&.header--white) &__email {
+    &:not(.header--white) &__email {
         opacity: 0.7;
         transition-property: opacity;
 
