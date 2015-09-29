@@ -67,14 +67,8 @@ code, kbd, pre, samp {
 }
 
 code, kbd, samp {
-    padding-top: 0.2em;
-    padding-bottom: 0.2em;
-
-    &:before,
-    &:after {
-        content: '\00a0';
-        letter-spacing: -0.2em;
-    }
+    padding: 0.25em 0.7em;
+    margin: 0 3px;
 }
 
 pre {
@@ -85,13 +79,8 @@ pre {
 code, kbd, pre, samp {
     code, kbd, pre, samp {
         padding: 0;
+        margin: 0;
         background: none;
         font-size: inherit;
-
-        &:before,
-        &:after {
-            content: '';
-            letter-spacing: inherit;
-        }
     }
 }
