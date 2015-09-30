@@ -1,15 +1,22 @@
-<button type="button" class="push-nav-toggle themed--hover">
+<button type="button"
+        class="push-nav-toggle themed--hover"
+        aria-controls="push-nav"
+        aria-expanded="false"
+        aria-haspopup="true"
+        tabindex="1">
     Toggle navigation
+
     {% for line in [1,2,3] %}
         <div class="push-nav-toggle__line push-nav-toggle__line--{{line}}{% if pushNavThemed %} themed--bg{% endif %}"></div>
     {% endfor %}
 </button>
 
-<nav role="navigation" class="push-nav">
+<nav role="navigation" class="push-nav" id="push-nav">
     <ul class="push-nav__links">
         <li>
             <a class="push-nav__link push-nav__link--primary themed--no-color"
-               href="/#about">
+               href="/#about"
+               tabindex="1">
                 <span class="push-nav__link__line">
                     About
                 </span>
@@ -17,7 +24,8 @@
         </li>
         <li>
             <a class="push-nav__link push-nav__link--primary themed--no-color push-nav__link--active'"
-               href="/#projects">
+               href="/#projects"
+               tabindex="1">
                 <span class="push-nav__link__line">
                     Projects
                 </span>
@@ -28,7 +36,8 @@
                     {% for project in collections.projects %}
                         <li>
                             <a class="push-nav__link push-nav__link--secondary themed--no-color"
-                               href="/{{ project.path }}/">
+                               href="/{{ project.path }}/"
+                               tabindex="1">
                                 {{ project.title }}
                             </a>
                         </li>
@@ -38,7 +47,8 @@
         </li>
         <li>
             <a class="push-nav__link push-nav__link--primary themed--no-color"
-               href="/blog/">
+               href="/blog/"
+               tabindex="1">
                 <span class="push-nav__link__line">
                     Blog
                 </span>
@@ -46,7 +56,8 @@
         </li>
         <li>
             <a class="push-nav__link push-nav__link--primary themed--no-color"
-               href="/#contact">
+               href="/#contact"
+               tabindex="1">
                 <span class="push-nav__link__line">
                     Contact
                 </span>

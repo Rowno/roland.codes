@@ -3,14 +3,18 @@
         <a class="header__name header__name--short"
            href="/"
            title="Roland Warmerdam"
-           rel="home">RW</a>
+           aria-label="Roland Warmerdam"
+           rel="home"
+           tabindex="1">RW</a>
     {% else %}
         <a class="header__name"
            href="/"
-           rel="home">Roland Warmerdam</a>
+           rel="home"
+           tabindex="1">Roland Warmerdam</a>
     {% endif %}
 
     <a class="header__email"
        target="_blank"
-       href="{{ 'mailto:' | encode }}{{ email | encode }}">{{ email | encode }}</a>
+       href="{{ 'mailto:' | encode }}{{ email | encode }}"
+       tabindex="1">{{ email | encode }}</a>
 </header>

@@ -3,14 +3,17 @@ const $ = require('jquery');
 
 const path = window.location.pathname;
 const $pushNav = $('.push-nav');
+const $pushNavToggle = $('.push-nav-toggle');
 let pushNavActive = false;
 
 
 function togglePushNav() {
     if (pushNavActive) {
         document.body.classList.remove('push-nav-active');
+        $pushNavToggle.attr('aria-expanded', false);
     } else {
         document.body.classList.add('push-nav-active');
+        $pushNavToggle.attr('aria-expanded', true);
     }
 
     pushNavActive = !pushNavActive;
@@ -39,6 +42,6 @@ for (const link of $pushNav.find('.push-nav__link')) {
 }
 
 
-$('.push-nav-toggle').on('click', togglePushNav);
+$pushNavToggle.on('click', togglePushNav);
 $('.push-nav-overlay').on('click', togglePushNav);
 $pushNav.on('click', 'a', linkClick);
