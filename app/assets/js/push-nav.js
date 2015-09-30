@@ -1,5 +1,8 @@
 'use strict';
 const $ = require('jquery');
+
+const path = window.location.pathname;
+const $pushNav = $('.push-nav');
 let pushNavActive = false;
 
 
@@ -28,6 +31,14 @@ function linkClick(e) {
 }
 
 
+for (const link of $pushNav.find('.push-nav__link')) {
+    if (link.pathname !== '/' && path.startsWith(link.pathname) ||
+        link.pathname + link.hash === '/#projects' && path.startsWith('/projects/')) {
+        link.classList.add('push-nav__link--active');
+    }
+}
+
+
 $('.push-nav-toggle').on('click', togglePushNav);
 $('.push-nav-overlay').on('click', togglePushNav);
-$('.push-nav').on('click', 'a', linkClick);
+$pushNav.on('click', 'a', linkClick);

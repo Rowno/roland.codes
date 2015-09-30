@@ -1,6 +1,7 @@
 /* eslint-disable no-sync */
 'use strict';
 const Fs = require('fs');
+
 require('whatwg-fetch');
 const $ = require('jquery');
 const Swig = require('swig');

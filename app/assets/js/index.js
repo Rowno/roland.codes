@@ -2,6 +2,7 @@
 require('picturefill');
 require('fastclick')(document.body);
 const $ = require('jquery');
+
 require('./vendor/polyfills/smoothscroll');
 require('./theme');
 require('./push-nav');

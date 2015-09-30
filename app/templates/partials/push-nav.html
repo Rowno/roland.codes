@@ -8,27 +8,49 @@
 <nav role="navigation" class="push-nav">
     <ul class="push-nav__links">
         <li>
-            <a class="push-nav__link themed--no-color" href="/#about">About</a>
+            <a class="push-nav__link push-nav__link--primary themed--no-color"
+               href="/#about">
+                <span class="push-nav__link__line">
+                    About
+                </span>
+            </a>
         </li>
         <li>
-            <a class="push-nav__link themed--no-color"
-               href="/#projects">Projects</a>
+            <a class="push-nav__link push-nav__link--primary themed--no-color push-nav__link--active'"
+               href="/#projects">
+                <span class="push-nav__link__line">
+                    Projects
+                </span>
+            </a>
 
-            <ul>
-                {% for project in collections.projects %}
-                    <li>
-                        <a class="push-nav__link themed--no-color" href="/{{ project.path }}/">
-                            {{ project.title }}
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
+            {% if path.startsWith('projects') %}
+                <ul>
+                    {% for project in collections.projects %}
+                        <li>
+                            <a class="push-nav__link push-nav__link--secondary themed--no-color"
+                               href="/{{ project.path }}/">
+                                {{ project.title }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
         </li>
         <li>
-            <a class="push-nav__link themed--no-color" href="/blog/">Blog</a>
+            <a class="push-nav__link push-nav__link--primary themed--no-color"
+               href="/blog/">
+                <span class="push-nav__link__line">
+                    Blog
+                </span>
+            </a>
         </li>
         <li>
-            <a class="push-nav__link themed--no-color" href="/#contact">Contact</a>
+            <a class="push-nav__link push-nav__link--primary themed--no-color"
+               href="/#contact">
+                <span class="push-nav__link__line">
+                    Contact
+                </span>
+            </a>
         </li>
     </ul>
 </nav>
