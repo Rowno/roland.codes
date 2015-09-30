@@ -82,16 +82,6 @@ Gulp.task('metalsmith', () => {
                 Reflect.deleteProperty(files, filename);
             });
         })
-        .use(Collections({
-            blog: {
-                pattern: 'blog/*.md',
-                sortBy: 'date',
-                reverse: true,
-            },
-            projects: {
-                pattern: 'projects/*.md'
-            }
-        }))
         .use(Markdown({
             html: true,
             linkify: true,
@@ -105,6 +95,14 @@ Gulp.task('metalsmith', () => {
             }
         }))
         .use(Collections({
+            blog: {
+                pattern: 'blog/*.html',
+                sortBy: 'date',
+                reverse: true,
+            },
+            projects: {
+                pattern: 'projects/*.html'
+            },
             html: {
                 pattern: '**/*.html'
             }
