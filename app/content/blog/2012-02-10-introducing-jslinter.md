@@ -1,7 +1,6 @@
 ---
 layout: blog-post.html
 title: Introducing JSLinter!
-tags: [addon sdk, firefox addon, jslint, jslinter]
 commentsIssueId: 8
 ---
 

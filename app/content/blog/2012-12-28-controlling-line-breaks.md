@@ -1,7 +1,6 @@
 ---
 layout: blog-post.html
 title: Controlling line breaks
-tags: [css]
 commentsIssueId: 14
 ---
 

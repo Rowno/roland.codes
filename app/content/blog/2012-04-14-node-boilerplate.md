@@ -1,7 +1,6 @@
 ---
 layout: blog-post.html
 title: Node Boilerplate
-tags: [node.js]
 commentsIssueId: 10
 ---
 

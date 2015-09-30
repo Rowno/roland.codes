@@ -1,7 +1,6 @@
 ---
 layout: blog-post.html
 title: Ubuntu shutdown hang
-tags: [ubuntu]
 commentsIssueId: 19
 ---
 

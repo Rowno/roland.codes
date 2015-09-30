@@ -1,7 +1,6 @@
 ---
 layout: blog-post.html
 title: Architect, a Javascript template editor
-tags: [javascript, template, web app]
 commentsIssueId: 11
 ---
 

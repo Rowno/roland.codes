@@ -1,8 +1,7 @@
 ---
 layout: blog-post.html
 title: Browser search engine shortcuts
-description: A quick method for adding shortcuts that will change your life in a really cool way. Because I said so.
-tags: [tools]
+description: A quick method for adding shortcuts that will change your life in a really cool way. Because I said so.
 commentsIssueId: 22
 ---
 

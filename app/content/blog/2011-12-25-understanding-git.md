@@ -1,7 +1,6 @@
 ---
 layout: blog-post.html
 title: Understanding Git
-tags: [git]
 commentsIssueId: 5
 ---
 

@@ -1,7 +1,6 @@
 ---
 layout: blog-post.html
 title: VMWare to VirtualBox
-tags: [virtual machine, virtualbox, vmware]
 commentsIssueId: 9
 ---
 

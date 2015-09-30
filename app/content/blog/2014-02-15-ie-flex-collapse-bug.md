@@ -1,7 +1,6 @@
 ---
 layout: blog-post.html
 title: IE flex collapse bug
-tags: [css, flexbox, bugfix]
 commentsIssueId: 20
 ---
 

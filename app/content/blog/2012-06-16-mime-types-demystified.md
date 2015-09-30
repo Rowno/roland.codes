@@ -1,7 +1,6 @@
 ---
 layout: blog-post.html
 title: MIME types demystified
-tags: [mime type]
 commentsIssueId: 12
 ---
 

@@ -1,7 +1,6 @@
 ---
 layout: blog-post.html
 title: Addon SDK double keyboard events bug
-tags: [addon sdk]
 commentsIssueId: 3
 ---
 
