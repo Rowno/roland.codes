@@ -17,7 +17,7 @@ function togglePushNav() {
 }
 
 function linkClick(e) {
-    const node = e.target;
+    const node = e.currentTarget;
 
     // Only fire for hash links pointing at the current page
     if (!node.hash ||

@@ -11,8 +11,8 @@ require('./vendor/ga');
 
 
 // Hash link smooth scrolling
-$(document.body).on('click', e => {
-    const node = e.target;
+$(document.body).on('click', 'a', e => {
+    const node = e.currentTarget;
 
     // Only fire for hash links pointing at the current page
     if (!node.hash ||
