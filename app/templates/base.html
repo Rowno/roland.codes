@@ -17,10 +17,10 @@
         <meta name="application-name" content="Roland Warmerdam">
         <meta name="description" content="{{ description | escape }}">
         <meta property="og:type" content="website">
-        <meta property="og:url" content="">
-        <meta property="og:title" content="{% if title %}{{ title | escape }} | {% endif %}Roland Warmerdam">
+        <meta property="og:url" content="{{ baseurl | escape }}/{{ path }}/">
+        <meta property="og:title" content="{% if title %}{{ title }} | {% endif %}Roland Warmerdam">
         <meta property="og:description" content="{{ description | escape }}">
-        <meta property="og:image" content="">
+        <meta property="og:image" content="{{ baseurl | escape }}/assets/images/touch-icon.png">
     </head>
     <body class="themed--bg">
         <div class="body-wrapper">
