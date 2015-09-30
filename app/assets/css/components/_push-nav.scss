@@ -10,6 +10,7 @@ $push-nav-speed: 0.4s;
 }
 
 .push-nav {
+    $padding: 42px;
     visibility: hidden;
     overflow: hidden;
     position: absolute;
@@ -24,7 +25,7 @@ $push-nav-speed: 0.4s;
         position: relative;
         right: -$push-nav-width;
         width: $push-nav-width;
-        padding: 116px 42px 0;
+        padding-top: 116px;
         color: #fff;
         font-size: 20px;
         transition: $push-nav-speed;
@@ -44,25 +45,22 @@ $push-nav-speed: 0.4s;
             font-size: 14px;
 
             .push-nav__link {
-                padding: 0.4em 0;
+                padding-top: 0.4em;
+                padding-bottom: 0.4em;
             }
         }
     }
 
     &__link {
-        display: inline-block;
+        display: block;
         position: relative;
-        padding: 0.3em 0;
+        padding: 0.3em $padding;
         color: inherit;
         letter-spacing: 0.1em;
-        transition: $transition-speed;
-        // Transition a second noop property to avoid a frame drop bug in Chrome
-        transition-property: transform, perspective;
-        perspective: 1000px;
+        transition: padding $transition-speed;
 
         &:hover, &:focus {
-            transform: translateX(10px);
-            perspective: 1001px;
+            padding-left: $padding + 10px;
         }
 
         &:after {
