@@ -104,6 +104,11 @@ Gulp.task('metalsmith', () => {
                 return Highlight.highlightAuto(code).value;
             }
         }))
+        .use(Collections({
+            html: {
+                pattern: '**/*.html'
+            }
+        }))
         .use(Permalinks({ relative: false })) // After markdown because it only renames .html files
         .use(Excerpts())
         .use((files) => { // Keep a copy of the contents without layout applied
