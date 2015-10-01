@@ -23,8 +23,8 @@ Available build tasks:
  * `gulp` - build the website, start a server and watch for changes (implicit --watch flag).
  * `gulp build` - build the website.
  * `gulp server` - build the website and start a server.
- * `gulp alex` - run [Alex](http://alexjs.com/) over all the content.
- * `gulp lint` - run [ESLint](http://eslint.org/) over all the Javascript.
+ * `gulp alex` - run [Alex][] over all the content.
+ * `gulp lint` - run [ESLint][] over all the Javascript.
 
 #### Flags ####
 
@@ -37,8 +37,14 @@ The following command line flags can also be added to tasks:
 License
 -------
 
+This repository isn't licensed because I want my personal website/brand to be unique. However feel free to play around with the code and learn from it.
+
+And of course pull requests are always welcome. :sparkling_heart:
+
 Copyright © 2013 Roland Warmerdam.
 
 
-[metalsmith]: http://www.metalsmith.io/
-[node.js]: http://nodejs.org/
+[Metalsmith]: http://www.metalsmith.io/
+[Node.js]: http://nodejs.org/
+[Alex]: http://alexjs.com/
+[ESLint]: http://eslint.org/

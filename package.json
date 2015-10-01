@@ -4,6 +4,7 @@
   "author": "Roland Warmerdam (https://roland.codes)",
   "repository": "Rowno/roland.codes",
   "homepage": "https://roland.codes",
+  "license": "UNLICENSED",
   "private": true,
   "scripts": {
     "test": "gulp lint && gulp alex",
