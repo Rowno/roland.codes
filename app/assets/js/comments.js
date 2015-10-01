@@ -57,6 +57,6 @@ if ($commentsList.length > 0) {
             Please try again later or
             <a href="https://github.com/Rowno/roland.codes/issues/">report the problem</a>.
         `);
-        console.error(error);
+        throw error;
     });
 }

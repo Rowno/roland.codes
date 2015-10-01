@@ -19,13 +19,13 @@ Gulp.task('server', ['build'], callback => {
         fontSrc: ["'self'", 'https://fonts.gstatic.com'],
         formAction: ["'self'"],
         frameAncestors: ["'self'"],
-        frameSrc: ["'self'", 'https://codepen.io'],
+        frameSrc: ["'self'", 'https://codepen.io'], // Replaced by childSrc
         imgSrc: ['*'],
         manifestSrc: ["'self'"],
         mediaSrc: ["'self'"],
         objectSrc: ["'none'"],
         reportUri: ['/csp-report'],
-        scriptSrc: ["'self'", "'unsafe-eval'", 'https://www.google-analytics.com', 'https://assets.codepen.io', 'https://localhost:35729'],
+        scriptSrc: ["'self'", 'https://www.google-analytics.com', 'https://localhost:35729'],
         styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
         upgradeInsecureRequests: [],
     }));

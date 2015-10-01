@@ -7,6 +7,7 @@ require('./vendor/polyfills/smoothscroll');
 require('./theme');
 require('./push-nav');
 require('./comments');
+require('./codepen');
 require('./vendor/ga');
 
 
