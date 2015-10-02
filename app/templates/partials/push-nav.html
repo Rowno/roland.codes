@@ -31,7 +31,7 @@
                 </span>
             </a>
 
-            {% if path.startsWith('projects') %}
+            {% if path | startswith('projects') %}
                 <ul>
                     {% for project in collections.projects %}
                         <li>

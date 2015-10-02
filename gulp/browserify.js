@@ -13,10 +13,14 @@ const Uglify = require('gulp-uglify');
 const Watchify = require('watchify');
 
 const Common = require('./common');
+const Nunjucksify = require('./nunjucksify');
 
 
 function createBundle(bundle) {
     return bundle.bundle()
+        .on('error', (error) => {
+            console.error(error);
+        })
         // Improve source map paths
         .pipe(MoldSourceMap.transformSources(file => `/source/${Path.relative('./app/', file)}`))
         // Convert text stream to vinyl file stream
@@ -34,7 +38,7 @@ Gulp.task('browserify', () => {
         entries: ['./app/assets/js/index.js'],
         transform: [
             Babelify.configure({ optional: ['runtime'] }),
-            'brfs'
+            Nunjucksify,
         ],
         debug: true,
         cache: {},

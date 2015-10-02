@@ -15,8 +15,9 @@ const Highlight = require('highlight.js');
 const Layouts = require('metalsmith-layouts');
 const Livereload = require('gulp-livereload');
 const Markdown = require('metalsmith-markdownit');
+const Moment = require('moment');
+const Nunjucks = require('nunjucks');
 const Permalinks = require('metalsmith-permalinks');
-const Swig = require('swig');
 
 const Common = require('./common');
 
@@ -29,6 +30,22 @@ const metadata = {
     svgs: {},
 };
 let watching = false;
+const nunjucksEnv = Nunjucks.configure(Common.templatesPath, {
+    autoescape: false,
+    watch: false,
+    noCache: false,
+});
+
+
+nunjucksEnv.addFilter('date', (input, format) => Moment(input).format(format));
+nunjucksEnv.addFilter('startswith', (input, value) => input.startsWith(value));
+nunjucksEnv.addFilter('encode', (input) => He.encode(input, { encodeEverything: true }));
+// Adds classes to an html element
+nunjucksEnv.addFilter('class', (input, classes) => {
+    const $ = Cheerio.load(input);
+    $('> *').addClass(classes);
+    return $.html();
+});
 
 
 /* eslint-disable no-sync */
@@ -40,17 +57,6 @@ Globby.sync('app/static/assets/images/*.svg').forEach(path => {
 });
 
 /* eslint-enable no-sync */
-
-
-Swig.setDefaults({ cache: false, autoescape: false });
-// Encodes all characters to HTML entities (for obfuscation)
-Swig.setFilter('encode', input => He.encode(input, { encodeEverything: true }));
-// Adds classes to an html element
-Swig.setFilter('class', (input, classes) => {
-    const $ = Cheerio.load(input);
-    $('> *').addClass(classes);
-    return $.html();
-});
 
 
 Gulp.task('metalsmith', () => {
@@ -118,7 +124,7 @@ Gulp.task('metalsmith', () => {
                 });
         })
         .use(Layouts({ // Last when all the metadata is available
-            engine: 'swig',
+            engine: 'nunjucks',
             directory: Common.templatesPath
         }));
 

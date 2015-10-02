@@ -12,12 +12,16 @@
     "server": "gulp server --watch",
     "deploy": "gulp build --prod && rsync -avzh --delete --no-owner --no-group build/* vps:/var/www/rebuild.roland.codes/files/"
   },
+  "browser": {
+    "nunjucks": "nunjucks/browser/nunjucks-slim"
+  },
   "dependencies": {
     "fastclick": "^1.0.6",
     "jquery": "^3.0.0-alpha1",
+    "moment": "^2.10.6",
+    "nunjucks": "^1.3.4",
     "picturefill": "^2.3.1",
     "simple-timeago": "^1.0.0",
-    "swig": "^1.4.2",
     "whatwg-fetch": "^0.9.0"
   },
   "devDependencies": {
@@ -25,7 +29,6 @@
     "babel-core": "^5.7.4",
     "babel-runtime": "^5.8.20",
     "babelify": "^6.1.2",
-    "brfs": "^1.4.1",
     "browserify": "^11.0.0",
     "cheerio": "^0.19.0",
     "del": "^2.0.0",
@@ -58,6 +61,7 @@
     "minimist": "^1.1.1",
     "mold-source-map": "^0.4.0",
     "run-sequence": "^1.1.1",
+    "through2": "^2.0.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.2.3"

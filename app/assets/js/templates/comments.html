@@ -15,8 +15,8 @@
             <a class="blog-post__comment__date themed--no-color"
                rel="nofollow"
                href="https://github.com/Rowno/roland.codes/issues/{{ commentsIssueId }}/#issuecomment-{{ comment.id }}">
-                <time datetime="{{ comment.created_at | date('c') }}"
-                      title="{{ comment.created_at | date('c') }}">
+                <time datetime="{{ comment.created_at | date }}"
+                      title="{{ comment.created_at | date }}">
                     {{ comment.created_at | fuzzydate }}
                 </time>
             </a>

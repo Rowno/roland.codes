@@ -1,17 +1,19 @@
 /* eslint-disable no-sync */
 'use strict';
-const Fs = require('fs');
 
 require('whatwg-fetch');
 const $ = require('jquery');
-const Swig = require('swig');
+const Moment = require('moment');
+const Nunjucks = require('nunjucks');
 const Timeago = require('simple-timeago');
 
-const template = Fs.readFileSync('app/templates/partials/comments.html', 'utf8');
 const $commentsList = $('.blog-post__comments__list');
+const nunjucksEnv = Nunjucks.configure({ autoescape: true });
+const template = require('./templates/comments.html')(nunjucksEnv);
 
 
-Swig.setFilter('fuzzydate', (input) => Timeago(new Date(input)));
+nunjucksEnv.addFilter('date', (input, format) => Moment(input).format(format));
+nunjucksEnv.addFilter('fuzzydate', (input) => Timeago(new Date(input)));
 
 
 if ($commentsList.length > 0) {
@@ -38,11 +40,9 @@ if ($commentsList.length > 0) {
             return;
         }
 
-        const $comments = $(Swig.render(template, {
-            locals: {
-                commentsIssueId,
-                comments
-            }
+        const $comments = $(template.render({
+            commentsIssueId,
+            comments
         }));
 
         // Sanitise

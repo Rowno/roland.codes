@@ -14,9 +14,9 @@
                 {% endif %}
 
                 <time class="blog-post__date"
-                      datetime="{{ date | date('c') }}"
-                      title="{{ date | date('c') }}">
-                    {{ date | date('j F, Y') }}
+                      datetime="{{ date | date }}"
+                      title="{{ date | date }}">
+                    {{ date | date('M MMMM, GGGG') }}
                 </time>
             </div>
         </header>
