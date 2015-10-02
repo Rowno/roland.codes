@@ -1,6 +1,7 @@
 ---
 layout: project.html
 title: The Monocle
+order: 2
 logos: [ html, css, js ]
 links:
     - name: Website

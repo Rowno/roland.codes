@@ -1,6 +1,7 @@
 ---
 layout: project.html
 title: Grunt Mocha CLI
+order: 1
 logos: [ node ]
 links:
     - name: GitHub

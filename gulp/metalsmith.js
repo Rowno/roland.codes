@@ -107,10 +107,11 @@ Gulp.task('metalsmith', () => {
                 reverse: true,
             },
             projects: {
-                pattern: 'projects/*.html'
+                pattern: 'projects/*.html',
+                sortBy: 'order',
             },
             html: {
-                pattern: '**/*.html'
+                pattern: '**/*.html',
             }
         }))
         .use(Permalinks({ relative: false })) // After markdown because it only renames .html files
