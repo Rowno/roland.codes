@@ -20,6 +20,7 @@
     }
 
     &__images {
+        flex: 1;
         margin-right: 6.5%;
 
         @include media('<700px') {
@@ -34,7 +35,8 @@
     }
 
     &__text {
-        max-width: 600px;
+        flex: 1;
+        max-width: 620px;
 
         @include media('<700px') {
             padding-left: $page-padding;
