@@ -30,12 +30,13 @@ const metadata = {
     svgs: {},
 };
 let watching = false;
+
+
 const nunjucksEnv = Nunjucks.configure(Common.templatesPath, {
     autoescape: false,
     watch: false,
-    noCache: false,
+    noCache: true,
 });
-
 
 nunjucksEnv.addFilter('date', (input, format) => Moment(input).format(format));
 nunjucksEnv.addFilter('startswith', (input, value) => input.startsWith(value));
