@@ -1,6 +1,5 @@
 /* eslint-disable no-sync */
 'use strict';
-
 require('whatwg-fetch');
 const $ = require('jquery');
 const Moment = require('moment');
@@ -8,9 +7,10 @@ const Nunjucks = require('nunjucks');
 const Timeago = require('simple-timeago');
 
 const $commentsList = $('.blog-post__comments__list');
+
+
 const nunjucksEnv = Nunjucks.configure({ autoescape: true });
 const template = require('./templates/comments.html')(nunjucksEnv);
-
 
 nunjucksEnv.addFilter('date', (input, format) => Moment(input).format(format));
 nunjucksEnv.addFilter('fuzzydate', (input) => Timeago(new Date(input)));

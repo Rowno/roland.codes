@@ -30,5 +30,5 @@ $(document.body).on('click', 'a', e => {
 
     window.scrollTo({top: $element.offset().top, behavior: 'smooth'});
     e.preventDefault(); // Prevent default scroll
-    window.location.hash = node.hash; // Manually add hash to url to maintain history
+    window.history.pushState(null, null, node.hash); // Manually add hash to url to maintain history
 });
