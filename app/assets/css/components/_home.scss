@@ -184,7 +184,8 @@
 
         &__image {
             flex: 1;
-            max-width: 350px;
+            max-width: 100%;
+            min-width: 0;
             margin-right: 40px;
 
             @include media('<600px') {

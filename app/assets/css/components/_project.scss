@@ -21,6 +21,8 @@
 
     &__images {
         flex: 1;
+        max-width: 100%;
+        min-width: 0;
         margin-right: 6.5%;
 
         @include media('<700px') {
