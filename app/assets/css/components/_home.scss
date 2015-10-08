@@ -184,11 +184,14 @@
 
         &__image {
             flex: 1;
-            max-width: 100%;
-            min-width: 0;
+            // 1: Fixes Firefox flexible image inside flex item bug
+            max-width: 100%; // 1
+            min-width: 0;    // 1
+            min-height: 1px; // Fixes IE flex-direction:column intrinsic height bug
             margin-right: 40px;
 
             @include media('<600px') {
+                flex-basis: auto; // Fixes IE flex-direction:column collapsing bug
                 order: 1;
                 margin-right: 0;
                 margin-top: 40px;
@@ -201,10 +204,12 @@
 
         &__content {
             flex: 1;
+            width: 100%; // Fixes IE flex-direction:column text wrapping
             max-width: 460px;
             margin: 0;
 
             @include media('<600px') {
+                flex-basis: auto; // Fixes IE flex-direction:column collapsing bug
                 padding: 0 $page-padding;
             }
         }

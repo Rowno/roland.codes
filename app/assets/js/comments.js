@@ -1,4 +1,3 @@
-/* eslint-disable no-sync */
 'use strict';
 require('whatwg-fetch');
 const $ = require('jquery');

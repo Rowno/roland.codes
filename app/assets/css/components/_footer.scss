@@ -22,6 +22,7 @@
         padding: 0 40px;
 
         @include media('<700px') {
+            flex-basis: auto; // Fixes IE flex-direction:column collapsing bug
             padding: 40px 0;
 
             &:first-child {
@@ -130,11 +131,6 @@
             &:hover, &:focus {
                 opacity: 1;
             }
-        }
-
-        img {
-            max-width: 45px;
-            max-height: 24px;
         }
     }
 }

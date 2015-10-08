@@ -1,4 +1,5 @@
 'use strict';
+require('babel-core/polyfill');
 require('picturefill');
 require('fastclick')(document.body);
 const $ = require('jquery');
