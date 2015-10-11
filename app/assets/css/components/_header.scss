@@ -19,6 +19,7 @@
     }
 
     &__name {
+        position: relative;
         margin-right: auto;
         font-size: 36px;
         font-weight: $thin;
@@ -59,6 +60,7 @@
     }
 
     &__email {
+        position: relative;
         display: inline-block;
         padding: 12px 25px;
         margin-left: auto;
