@@ -1,12 +1,12 @@
 .footer-short {
     display: flex;
     align-items: center;
-    justify-content: center;
     padding: 15px;
     padding-left: 30px;
     padding-right: 25px;
 
     @include media('<750px') {
+        justify-content: center; // Defined here to avoid an IE positioning bug
         padding-left: $page-padding;
         padding-right: $page-padding;
     }
