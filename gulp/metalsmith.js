@@ -38,14 +38,40 @@ const nunjucksEnv = Nunjucks.configure(Common.templatesPath, {
     noCache: true,
 });
 
-nunjucksEnv.addFilter('date', (input, format) => Moment(input).format(format));
-nunjucksEnv.addFilter('startswith', (input, value) => input.startsWith(value));
-nunjucksEnv.addFilter('encode', (input) => He.encode(input, { encodeEverything: true }));
+nunjucksEnv.addFilter('date', (input, format) => {
+    if (typeof input === 'string') {
+        return Moment(input).format(format);
+    }
+
+    return input;
+});
+
+nunjucksEnv.addFilter('startswith', (input, value) => {
+    if (typeof input === 'string') {
+        return input.startsWith(value)
+    }
+
+    return input;
+});
+
+// Unicode encodes all characters
+nunjucksEnv.addFilter('encode', (input) => {
+    if (typeof input === 'string') {
+        return He.encode(input, { encodeEverything: true });
+    }
+
+    return input;
+});
+
 // Adds classes to an html element
 nunjucksEnv.addFilter('class', (input, classes) => {
-    const $ = Cheerio.load(input);
-    $('> *').addClass(classes);
-    return $.html();
+    if (typeof input === 'string') {
+        const $ = Cheerio.load(input);
+        $('> *').addClass(classes);
+        return $.html();
+    }
+
+    return input;
 });
 
 

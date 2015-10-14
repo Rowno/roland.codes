@@ -1,5 +1,6 @@
 'use strict';
 const Https = require('https');
+const Path = require('path');
 
 const Csp = require('helmet-csp');
 const Express = require('express');
@@ -30,14 +31,26 @@ Gulp.task('server', ['build'], callback => {
         upgradeInsecureRequests: [],
     }));
 
-    app.use(Express.static('build', {
-        setHeaders(res) {
-            res.setHeader('X-UA-Compatible', 'IE=Edge');
-            res.setHeader('X-Content-Type-Options', 'nosniff');
-            res.setHeader('X-XSS-Protection', '1; mode=block');
-            res.setHeader('X-Frame-Options', 'SAMEORIGIN');
-        }
-    }));
+    app.use((req, res, next) => {
+        res.set({
+            'X-UA-Compatible': 'IE=Edge',
+            'X-Content-Type-Options': 'nosniff',
+            'X-XSS-Protection': '1; mode=block',
+            'X-Frame-Options': 'SAMEORIGIN',
+        });
+        next();
+    });
+
+    app.use(Express.static('build'));
+
+    app.use((req, res) => {
+        res.status(404).sendFile(Path.resolve('build/404.html'), (error) => {
+            if (error) {
+                console.log(error);
+                res.status(error.status).end();
+            }
+        });
+    });
 
     Https.createServer({
         key: Common.privateKey,
