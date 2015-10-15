@@ -38,13 +38,7 @@ const nunjucksEnv = Nunjucks.configure(Common.templatesPath, {
     noCache: true,
 });
 
-nunjucksEnv.addFilter('date', (input, format) => {
-    if (typeof input === 'string') {
-        return Moment(input).format(format);
-    }
-
-    return input;
-});
+nunjucksEnv.addFilter('date', (input, format) => Moment(input).format(format));
 
 nunjucksEnv.addFilter('startswith', (input, value) => {
     if (typeof input === 'string') {
