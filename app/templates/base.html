@@ -14,12 +14,14 @@
         <link rel="icon" sizes="192x192" href="/assets/images/touch-icon.png">
         <link rel="apple-touch-icon" href="/assets/images/touch-icon.png">
 
+        {% if description %}
+            <meta name="description" content="{{ description | escape }}">
+            <meta property="og:description" content="{{ description | escape }}">
+        {% endif %}
         <meta name="application-name" content="Roland Warmerdam">
-        <meta name="description" content="{{ description | escape }}">
         <meta property="og:type" content="website">
         <meta property="og:url" content="{{ baseurl | escape }}/{{ path | escape }}{% if path %}/{% endif %}">
         <meta property="og:title" content="{% if title %}{{ title }} | {% endif %}Roland Warmerdam">
-        <meta property="og:description" content="{{ description | escape }}">
         <meta property="og:image" content="{{ baseurl | escape }}/assets/images/touch-icon.png">
     </head>
     <body class="themed--bg">
