@@ -9,9 +9,14 @@ links:
     - name: npm
       url: https://www.npmjs.com/package/grunt-mocha-cli
 description: >
-    Grunt plugin for running server-side Mocha tests.
+    A Grunt plugin for running server-side Mocha tests.
 ---
 
-Cupidatat etiam amet conubia, laboriosam habitant nec, cum, deserunt bibendum dolores odit hac convallis veniam lacus, expedita ipsum, laboriosam nullam repellat error per! Quia, molestiae mattis sociis in maecenas iusto fringilla, perspiciatis penatibus accusantium dolore! Ullam architecto, commodo laudantium a. Illo nibh eveniet!
+A Grunt plugin for running server-side Mocha tests.
 
-Curae beatae officia autem soluta fugiat. Ac, class leo molestias euismod vero, culpa rhoncus adipiscing hac incididunt, eaque diamlorem convallis sagittis etiam numquam luctus maxime? Provident, turpis qui sociosqu. Totam excepturi nihil? Nobis risus. Vero auctor facilis! Dolore iste aptent possimus doloremque posuere minus veniam? Occaecat eaque augue, ligula laboriosam, mauris nam quisquam! Illum odio, occaecati cupiditate.
+Built the entire plugin. I created it because all other Mocha plugins used Mocha’s Node API, which don’t support all of Mocha’s command line options or allow Node flags to be set.
+
+~1000 downloads a day, included in the [Kraken.js Yeoman generator][kraken].
+
+
+[kraken]: https://github.com/krakenjs/generator-kraken
