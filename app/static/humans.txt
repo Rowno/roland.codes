@@ -4,13 +4,14 @@
 # TEAM
 
     Roland Warmerdam -- Web Developer -- https://roland.codes/
-    Arlen McCluskey  -- UX Designer   -- http://billykick.com/
-
-# THANKS
-
-    <name>
+    Arlen McCluskey  -- Designer      -- http://billykick.com/
 
 # TECHNOLOGY COLOPHON
 
-    HTML5, CSS3
-    Normalize.css, jQuery
+    HTML5, CSS3, ES2015
+    Gulp, Metalsmith, Nunjucks, markdown-it
+    HTML5 Boilerplate, Normalize.css, libsass, Autoprefixer, clean-css, include-media
+    jQuery, Babel, Browserify, UglifyJS, ESLint, Picturefill, Moment.js, FastClick, highlight.js
+    Atom
+
+    https://github.com/Rowno/roland.codes
