@@ -25,7 +25,7 @@
         max-width: 100%; // 1
         min-width: 0;    // 1
         min-height: 1px; // Fixes IE flex-direction:column intrinsic height bug
-        margin-right: 6.5%;
+        margin-right: 6.3%;
 
         @include media('<700px') {
             flex-basis: auto; // Fixes IE flex-direction:column collapsing bug
