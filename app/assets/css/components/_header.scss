@@ -58,27 +58,4 @@
             }
         }
     }
-
-    &__email {
-        position: relative;
-        display: inline-block;
-        padding: 12px 25px;
-        margin-left: auto;
-        border: 1px solid currentColor;
-        border-radius: 100px;
-        font-size: 18px;
-
-        @include media('<800px') {
-            display: none;
-        }
-    }
-
-    &:not(.header--white) &__email {
-        opacity: 0.7;
-        transition-property: opacity;
-
-        &:hover, &:focus {
-            opacity: 1;
-        }
-    }
 }
