@@ -1,6 +1,6 @@
 {
   "name": "roland.codes",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "Roland Warmerdam (https://roland.codes)",
   "repository": "Rowno/roland.codes",
   "homepage": "https://roland.codes",
@@ -10,7 +10,7 @@
     "test": "gulp lint && gulp alex",
     "build": "gulp build",
     "server": "gulp server --watch",
-    "deploy": "gulp build --prod && rsync -avzh --delete --no-owner --no-group build/* vps:/var/www/rebuild.roland.codes/files/"
+    "deploy": "gulp build --prod && rsync -avzh --delete --no-owner --no-group build/* vps:/var/www/roland.codes/files/"
   },
   "browser": {
     "nunjucks": "nunjucks/browser/nunjucks-slim"
