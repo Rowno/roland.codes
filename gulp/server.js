@@ -9,6 +9,9 @@ const Gulp = require('gulp');
 const Common = require('./common');
 require('./build');
 
+const NOT_FOUND = 404;
+const PORT = 8000;
+
 
 Gulp.task('server', ['build'], callback => {
     const app = Express();
@@ -44,7 +47,7 @@ Gulp.task('server', ['build'], callback => {
     app.use(Express.static('build'));
 
     app.use((req, res) => {
-        res.status(404).sendFile(Path.resolve('build/404.html'), (error) => {
+        res.status(NOT_FOUND).sendFile(Path.resolve('build/404.html'), (error) => {
             if (error) {
                 console.log(error);
                 res.status(error.status).end();
@@ -55,7 +58,7 @@ Gulp.task('server', ['build'], callback => {
     Https.createServer({
         key: Common.privateKey,
         cert: Common.certificate
-    }, app).listen(8000, callback);
+    }, app).listen(PORT, callback);
 
-    console.log('Server listening on https://localhost:8000');
+    console.log(`Server listening on https://localhost:${PORT}`);
 });

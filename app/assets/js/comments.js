@@ -6,7 +6,7 @@ const Nunjucks = require('nunjucks');
 const Timeago = require('simple-timeago');
 
 const $commentsList = $('.blog-post__comments__list');
-
+const OK = 200;
 
 const nunjucksEnv = Nunjucks.configure({ autoescape: true });
 const template = require('./templates/comments.html')(nunjucksEnv);
@@ -24,7 +24,7 @@ if ($commentsList.length > 0) {
         }
     })
     .then((response) => {
-        if (response.status === 200) {
+        if (response.status === OK) {
             return response;
         }
 

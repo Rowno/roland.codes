@@ -42,7 +42,7 @@ nunjucksEnv.addFilter('date', (input, format) => Moment(input).format(format));
 
 nunjucksEnv.addFilter('startswith', (input, value) => {
     if (typeof input === 'string') {
-        return input.startsWith(value)
+        return input.startsWith(value);
     }
 
     return input;

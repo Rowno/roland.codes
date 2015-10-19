@@ -1,6 +1,7 @@
 'use strict';
 const THEME_NUM = 4;
 const THEME_INTERVAL = 30;
+const SECOND = 1000;
 let currentTheme = 1;
 
 
@@ -17,5 +18,5 @@ function changeTheme() {
 
 setTimeout(() => {
     changeTheme();
-    setInterval(changeTheme, THEME_INTERVAL * 1000);
-}, 1000);
+    setInterval(changeTheme, THEME_INTERVAL * SECOND);
+}, SECOND);
