@@ -19,7 +19,7 @@
         }
     }
 
-    &__images {
+    &__image {
         flex: 1;
         // 1: Fixes Firefox flexible image inside flex item bug
         max-width: 100%; // 1
