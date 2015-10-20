@@ -1,6 +1,8 @@
 ---
 layout: project.html
 title: Open Source
+socialImage: /assets/content/projects/open-source/large@2x.png
+twitterCard: summary_large_image
 order: 4
 logos: [ html, css, js, node ]
 links:

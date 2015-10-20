@@ -1,6 +1,8 @@
 ---
 layout: project.html
 title: Dotfiles
+socialImage: /assets/content/projects/dotfiles/large@2x.png
+twitterCard: summary_large_image
 order: 5
 links:
     - name: GitHub

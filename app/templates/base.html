@@ -20,9 +20,12 @@
         {% endif %}
         <meta name="application-name" content="Roland Warmerdam">
         <meta property="og:type" content="website">
-        <meta property="og:url" content="{{ baseurl | escape }}/{{ path | escape }}{% if path %}/{% endif %}">
+        <meta property="og:url" content="{{ baseurl | escape }}/{% if path %}{{ path | escape }}/{% endif %}">
         <meta property="og:title" content="{% if title %}{{ title }} | {% endif %}Roland Warmerdam">
-        <meta property="og:image" content="{{ baseurl | escape }}/assets/images/touch-icon.png">
+        <meta property="og:image" content="{{ baseurl | escape }}{% if socialImage %}{{ socialImage | escape }}{% else %}/assets/images/touch-icon.png{% endif %}">
+        <meta property="twitter:site" content="@rowno1">
+        <meta property="twitter:creator" content="@rowno1">
+        <meta property="twitter:card" content="{% if twitterCard %}{{ twitterCard | escape }}{% else %}summary{% endif %}">
     </head>
     <body class="themed--bg">
         <div class="background background--1"></div>

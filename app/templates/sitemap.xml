@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     {% for page in collections.html %}
         <url>
-            <loc>{{ baseurl | escape }}/{{ page.path | escape }}{% if page.path %}/{% endif %}</loc>
+            <loc>{{ baseurl | escape }}/{% if page.path %}{{ page.path | escape }}/{% endif %}</loc>
         </url>
     {% endfor %}
 </urlset>

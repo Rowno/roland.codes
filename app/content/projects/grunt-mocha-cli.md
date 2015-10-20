@@ -1,6 +1,8 @@
 ---
 layout: project.html
 title: Grunt Mocha CLI
+socialImage: /assets/content/projects/grunt-mocha-cli/large@2x.png
+twitterCard: summary_large_image
 order: 1
 logos: [ node ]
 links:
