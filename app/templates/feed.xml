@@ -4,7 +4,7 @@
     <id>{{ baseurl | escape }}/</id>
     <title>Roland Warmerdam</title>
     <updated>{{ buildDate | date }}</updated>
-    <link rel="self" href="{{ baseurl | escape }}/feed.atom" />
+    <link rel="self" href="{{ baseurl | escape }}/feed.xml" />
     <rights>{{ copyright | escape }}</rights>
 
     {% for post in collections.blog %}
