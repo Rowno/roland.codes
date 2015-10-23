@@ -13,7 +13,7 @@ const NOT_FOUND = 404;
 const PORT = 8000;
 
 
-Gulp.task('server', ['build'], callback => {
+Gulp.task('server', ['build'], (callback) => {
     const app = Express();
 
     app.use(Csp({

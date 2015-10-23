@@ -72,7 +72,7 @@ nunjucksEnv.addFilter('class', (input, classes) => {
 /* eslint-disable no-sync */
 
 // Load svgs into variables so they can be inlined using metalsmith
-Globby.sync('app/static/assets/images/*.svg').forEach(path => {
+Globby.sync('app/static/assets/images/*.svg').forEach((path) => {
     const svgName = Path.basename(path, '.svg');
     metadata.svgs[svgName] = Fs.readFileSync(path, { encoding: 'utf8' });
 });
@@ -152,7 +152,7 @@ Gulp.task('metalsmith', () => {
 
     return Gulp.src(taskGlob)
         // Parse front matter for metalsmith
-        .pipe(FrontMatter()).on('data', file => {
+        .pipe(FrontMatter()).on('data', (file) => {
             Object.assign(file, file.frontMatter);
             Reflect.deleteProperty(file, 'frontMatter');
         })

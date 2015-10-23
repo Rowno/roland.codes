@@ -22,7 +22,7 @@ function createBundle(bundle) {
             console.error(error);
         })
         // Improve source map paths
-        .pipe(MoldSourceMap.transformSources(file => `/source/${Path.relative('./app/', file)}`))
+        .pipe(MoldSourceMap.transformSources((file) => `/source/${Path.relative('./app/', file)}`))
         // Convert text stream to vinyl file stream
         .pipe(Source('assets/js/index.js'))
         // Buffer the streamed file contents

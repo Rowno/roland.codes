@@ -10,7 +10,7 @@ require('./css');
 require('./browserify');
 
 
-Gulp.task('build', callback => {
+Gulp.task('build', (callback) => {
     return RunSequence('clean', ['static', 'metalsmith', 'css', 'browserify'], () => {
         if (Common.watch) {
             Livereload.listen({
