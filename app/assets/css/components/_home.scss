@@ -148,9 +148,11 @@
         margin-bottom: 15px;
         text-align: center;
         letter-spacing: 0.1em;
+        font-size: 36px;
 
         @include media('<600px') {
             margin-bottom: 35px;
+            font-size: 24px;
         }
     }
 
@@ -216,6 +218,11 @@
 
         &__heading {
             margin-bottom: 15px;
+            font-size: 24px;
+
+            @include media('<600px') {
+                font-size: 20px;
+            }
         }
 
         &__logos {
