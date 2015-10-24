@@ -1,16 +1,16 @@
-.themed {
-    $speed: 2s;
+$theme-speed: 3.5s;
 
+.themed {
     &--bg {
-        transition: background $speed;
+        transition: background $theme-speed;
     }
 
     &--stroke {
-        transition: stroke $speed;
+        transition: stroke $theme-speed;
     }
 
     &--color {
-        transition: color $speed;
+        transition: color $theme-speed;
     }
 
     &--hover {

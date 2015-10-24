@@ -1,6 +1,6 @@
 'use strict';
-const THEME_NUM = 4;
-const THEME_INTERVAL = 7;
+const THEME_NUM = 6;
+const THEME_INTERVAL = 3.5;
 const SECOND = 1000;
 let currentTheme = 1;
 
