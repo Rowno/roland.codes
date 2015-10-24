@@ -11,7 +11,7 @@ links:
     - name: Website
       url: https://roland.codes/
 description: >
-    My personal website/blog.
+    Personal site & blog. Everything from the global color shifting effect to the beautiful ultra-optimized code under the hood.
 ---
 
 Built all the HTML, CSS, Javascript, build process and custom static site generator setup. Also built the server that hosts the website (which is a [DigitalOcean][] VPS). I rebuilt it to better represent/show my skills and used it as an opportunity to try out some new technologies and create a custom static site generator setup that suits my needs.
