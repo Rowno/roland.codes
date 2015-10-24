@@ -3,7 +3,7 @@ layout: project.html
 title: roland.codes
 socialImage: /assets/content/projects/roland.codes/social.png
 twitterCard: summary_large_image
-order: 3
+order: 2
 logos: [ html, css, js, node ]
 links:
     - name: GitHub

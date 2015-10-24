@@ -3,7 +3,7 @@ layout: project.html
 title: Monocle
 socialImage: /assets/content/projects/monocle/large@2x.png
 twitterCard: summary_large_image
-order: 2
+order: 4
 logos: [ html, css, js ]
 links:
     - name: Website
