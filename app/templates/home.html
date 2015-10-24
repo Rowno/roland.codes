@@ -71,8 +71,11 @@
                             {{ project.description }}
                         </p>
 
-                        <a class="project-list__project__link themed--bg themed--hover themed--no-color"
-                           href="/{{ project.path }}/">Check it out</a>
+                        <a class="project-list__project__link themed--no-color themed--bg" href="/{{ project.path }}/">
+                            <span class="project-list__project__link__hover">
+                                Check it out
+                            </span>
+                       </a>
                     </div>
                 </section>
             {% endfor %}

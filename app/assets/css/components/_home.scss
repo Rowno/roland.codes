@@ -245,9 +245,19 @@
 
         &__link {
             display: inline-block;
-            padding: 10px 30px;
             margin-top: 40px;
             color: #fff;
+
+            &__hover {
+                display: inline-block;
+                padding: 10px 30px;
+                transition: background $transition-speed/2;
+            }
+
+            &:hover &__hover,
+            &:focus &__hover {
+                background: rgba(0,0,0,0.1);
+            }
         }
     }
 }
