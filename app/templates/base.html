@@ -13,17 +13,17 @@
         <link rel="apple-touch-icon" href="/assets/images/touch-icon.png">
 
         {% if description %}
-            <meta name="description" content="{{ description | escape }}">
-            <meta property="og:description" content="{{ description | escape }}">
+            <meta name="description" content="{{ description | e }}">
+            <meta property="og:description" content="{{ description | e }}">
         {% endif %}
         <meta name="application-name" content="Roland Warmerdam">
         <meta property="og:type" content="website">
-        <meta property="og:url" content="{{ baseurl | escape }}/{% if path %}{{ path | escape }}/{% endif %}">
-        <meta property="og:title" content="{% if title %}{{ title }} | {% endif %}Roland Warmerdam">
-        <meta property="og:image" content="{{ baseurl | escape }}{% if socialImage %}{{ socialImage | escape }}{% else %}/assets/images/touch-icon.png{% endif %}">
+        <meta property="og:url" content="{{ baseurl | e }}/{% if path %}{{ path | e }}/{% endif %}">
+        <meta property="og:title" content="{% if title %}{{ title | e }} | {% endif %}Roland Warmerdam">
+        <meta property="og:image" content="{{ baseurl | e }}{{ socialImage | default('/assets/images/touch-icon.png') | e }}">
         <meta property="twitter:site" content="@rowno1">
         <meta property="twitter:creator" content="@rowno1">
-        <meta property="twitter:card" content="{% if twitterCard %}{{ twitterCard | escape }}{% else %}summary{% endif %}">
+        <meta property="twitter:card" content="{{ twitterCard | default('summary') | e }}">
 
         {% if noindex %}
             <meta name="robots" content="noindex">

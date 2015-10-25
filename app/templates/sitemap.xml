@@ -3,7 +3,7 @@
     {% for page in collections.html %}
         {% if not page.noindex %}
             <url>
-                <loc>{{ baseurl | escape }}/{% if page.path %}{{ page.path | escape }}/{% endif %}</loc>
+                <loc>{{ baseurl | e }}/{% if page.path %}{{ page.path | e }}/{% endif %}</loc>
             </url>
         {% endif %}
     {% endfor %}

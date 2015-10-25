@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-    <id>{{ baseurl | escape }}/</id>
+    <id>{{ baseurl | e }}/</id>
     <title>Roland Warmerdam</title>
     <updated>{{ buildDate | date }}</updated>
-    <link rel="self" href="{{ baseurl | escape }}/feed.xml" />
-    <rights>{{ copyright | escape }}</rights>
+    <link rel="self" href="{{ baseurl | e }}/feed.xml" />
+    <rights>{{ copyright | e }}</rights>
 
     {% for post in collections.blog %}
         <entry>
-            <id>{{ baseurl | escape }}/{{ post.path | escape }}/</id>
-            <title>{{ post.title | escape }}</title>
+            <id>{{ baseurl | e }}/{{ post.path | e }}/</id>
+            <title>{{ post.title | e }}</title>
             <updated>{{ post.date | date }}</updated>
-            <link rel="alternate" href="{{ baseurl | escape }}/{{ post.path | escape }}/" />
+            <link rel="alternate" href="{{ baseurl | e }}/{{ post.path | e }}/" />
             <author>
                 <name>Roland Warmerdam</name>
-                <uri>{{ baseurl | escape }}/</uri>
+                <uri>{{ baseurl | e }}/</uri>
             </author>
             <content type="html">
-                {{ post.prelayoutContents.toString('utf8') | escape }}
+                {{ post.prelayoutContents.toString('utf8') | e }}
             </content>
         </entry>
     {% endfor %}
