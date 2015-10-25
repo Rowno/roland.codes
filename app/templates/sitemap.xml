@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     {% for page in collections.html %}
-        <url>
-            <loc>{{ baseurl | escape }}/{% if page.path %}{{ page.path | escape }}/{% endif %}</loc>
-        </url>
+        {% if not page.noindex %}
+            <url>
+                <loc>{{ baseurl | escape }}/{% if page.path %}{{ page.path | escape }}/{% endif %}</loc>
+            </url>
+        {% endif %}
     {% endfor %}
 </urlset>

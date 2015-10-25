@@ -24,6 +24,10 @@
         <meta property="twitter:site" content="@rowno1">
         <meta property="twitter:creator" content="@rowno1">
         <meta property="twitter:card" content="{% if twitterCard %}{{ twitterCard | escape }}{% else %}summary{% endif %}">
+
+        {% if noindex %}
+            <meta name="robots" content="noindex">
+        {% endif %}
     </head>
     <body class="themed--bg">
         <div class="background background--1"></div>
