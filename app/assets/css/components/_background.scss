@@ -1,23 +1,28 @@
-.background {
-    position: fixed;
-    z-index: -1;
-    top: 0;
-    width: 100vw;  // IE/Edge
-    height: 100vh; // fallback
-    width: 100vmax;
-    height: 100vmax;
-    background: rgba(0,0,0,0.05);
-    animation: background 90s linear infinite;
-}
+body {
+    &:after,
+    &:before {
+        content: '';
+        display: block;
+        position: fixed;
+        z-index: -1;
+        top: 0;
+        width: 100vw;  // IE/Edge
+        height: 100vh; // fallback
+        width: 100vmax;
+        height: 100vmax;
+        background: rgba(0,0,0,0.05);
+        animation: background 90s linear infinite;
+    }
 
-.background--1 {
-    left: 15vw;
-}
+    &:after {
+        left: 15vw;
+    }
 
-.background--2 {
-    right: 15vw;
-    animation-delay: -30s;
-    animation-direction: reverse;
+    &:before {
+        right: 15vw;
+        animation-delay: -30s;
+        animation-direction: reverse;
+    }
 }
 
 @keyframes background {
