@@ -12,6 +12,10 @@ require('./codepen');
 require('./vendor/ga');
 
 
+// Prevents transitions from triggering on page load
+$(() => document.documentElement.classList.remove('preload'));
+
+
 // Hash link smooth scrolling
 $(document.body).on('click', 'a', (e) => {
     const node = e.currentTarget;

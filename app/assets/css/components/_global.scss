@@ -8,6 +8,11 @@ html {
     box-sizing: inherit;
 }
 
+// Prevents transitions from triggering on page load
+.preload * {
+    transition: none !important;
+}
+
 // Fix the thick text rendering on OSX
 html,
 button {

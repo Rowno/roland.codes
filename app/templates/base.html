@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="theme--1">
+<html lang="en" class="theme--1 preload">
     <head>
         <meta charset="utf-8">
         <title>{% if title %}{{ title }} | {% endif %}Roland Warmerdam</title>
@@ -42,6 +42,6 @@
 
         {% include "partials/push-nav.html" %}
 
-        <script src="/assets/js/index.js"></script>
+        <script src="/assets/js/index.js" async></script>
     </body>
 </html>
