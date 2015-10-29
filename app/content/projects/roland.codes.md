@@ -18,7 +18,7 @@ This website is designed and built to push the envelope in a number of ways.
 
 Under the hood, it runs on clean, concise, hand-written HTML, CSS and JS. I built it with a custom static site generator setup using Metalsmith and Gulp.
 
-The signature [shifting color effect][theme] is created with series of classes tied to a single global class which rotates. The [moving background shapes][background] are simply two large rectangles, rotating in opposite directions at an offset from one another.
+The signature [shifting color effect][theme] is created with series of classes tied to a single global class which rotates. The [moving background shapes][background] are simply two large squares, rotating in opposite directions at an offset from one another.
 
 The demanding visual effects meant CPU usage had to be seriously optimized. I did this using a single global class to set the color which minimises DOM manipulation and using CSS transforms for any movements to allow the GPU to handle them smoothly.
 
