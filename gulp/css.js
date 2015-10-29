@@ -27,7 +27,16 @@ Gulp.task('css', () => {
         .pipe(Sass({ sourceComments: true }))
         .pipe(PostCss([Autoprefixer()]))
         .pipe(Sourcemaps.write())
-        .pipe(Gulpif(Common.prod, MinifyCss({ keepSpecialComments: 0 })))
+        .pipe(Gulpif(Common.prod, MinifyCss({
+            keepSpecialComments: 0,
+            // Workaround a bug that causes the vmax fallbacks to be stripped
+            aggressiveMerging: false,
+            compatibility: {
+                units: {
+                    vmax: false
+                }
+            },
+        })))
         .pipe(Gulp.dest(Path.join(Common.dest, 'assets'), Common.mode))
         .pipe(Livereload());
 });
