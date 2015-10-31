@@ -22,13 +22,6 @@ const Permalinks = require('metalsmith-permalinks');
 const Common = require('./common');
 
 const taskGlob = 'app/content/**/*';
-const metadata = {
-    baseurl: 'https://roland.codes',
-    buildDate: new Date(),
-    copyright: `Copyright © 2011-${new Date().getFullYear()} Roland Warmerdam`,
-    email: 'hi@roland.codes',
-    svgs: {},
-};
 let watching = false;
 
 
@@ -69,18 +62,7 @@ nunjucksEnv.addFilter('class', (input, classes) => {
 });
 
 
-/* eslint-disable no-sync */
-
-// Load svgs into variables so they can be inlined using metalsmith
-Globby.sync('app/static/assets/images/*.svg').forEach((path) => {
-    const svgName = Path.basename(path, '.svg');
-    metadata.svgs[svgName] = Fs.readFileSync(path, { encoding: 'utf8' });
-});
-
-/* eslint-enable no-sync */
-
-
-Gulp.task('metalsmith', () => {
+Gulp.task('metalsmith', (done) => {
     if (!watching && Common.watch) {
         Gulp.watch([
             taskGlob,
@@ -89,74 +71,101 @@ Gulp.task('metalsmith', () => {
         watching = true;
     }
 
-    const metalsmith = Gulpsmith()
-        .metadata(metadata)
-        .use(Drafts()) // First to avoid unnecessary parsing
-        .use((files) => { // Extract date from filenames before sorting on them
-            const DATE_REGEX = /(\d{4}-\d{2}-\d{2})-(.*?)$/;
+    const metadata = {
+        baseurl: 'https://roland.codes',
+        buildDate: new Date(),
+        copyright: `Copyright © 2011-${new Date().getFullYear()} Roland Warmerdam`,
+        email: 'hi@roland.codes',
+        svgs: {},
+    };
 
-            Object.keys(files).forEach((filename) => {
-                const { base, dir } = Path.parse(filename);
-                const data = files[filename];
-                const match = DATE_REGEX.exec(base);
 
-                if (!match) {
-                    return;
-                }
+    // Load svgs into variables so they can be inlined using metalsmith
+    Globby('app/static/assets/images/*.svg').then((paths) => {
+        return Promise.all(paths.map((path) => {
+            return new Promise((resolve, reject) => {
+                const svgName = Path.basename(path, '.svg');
 
-                data.date = new Date(match[1]);
-                files[Path.join(dir, match[2])] = data;
-                Reflect.deleteProperty(files, filename);
-            });
-        })
-        .use(Markdown({
-            html: true,
-            linkify: true,
-            typographer: true,
-            highlight: (code, lang) => {
-                if (lang && Highlight.getLanguage(lang)) {
-                    return Highlight.highlight(lang, code).value;
-                }
+                Fs.readFile(path, { encoding: 'utf8' }, (error, contents) => {
+                    if (error) {
+                        reject(error);
+                    }
 
-                return Highlight.highlightAuto(code).value;
-            }
-        }))
-        .use(Collections({
-            blog: {
-                pattern: 'blog/*.html',
-                sortBy: 'date',
-                reverse: true,
-            },
-            projects: {
-                pattern: 'projects/*.html',
-                sortBy: 'order',
-            },
-            html: {
-                pattern: '**/*.html',
-            }
-        }))
-        .use(Permalinks({ relative: false })) // After markdown because it only renames .html files
-        .use(Excerpts())
-        .use((files) => { // Keep a copy of the contents without layout applied
-            Object.keys(files)
-                .filter((filename) => Path.extname(filename) === '.html')
-                .forEach((filename) => {
-                    const data = files[filename];
-                    data.prelayoutContents = data.contents;
+                    resolve([svgName, contents]);
                 });
-        })
-        .use(Layouts({ // Last when all the metadata is available
-            engine: 'nunjucks',
-            directory: Common.templatesPath
+            });
         }));
+    }).then((svgs) => {
+        svgs.forEach(([svgName, contents]) => metadata.svgs[svgName] = contents);
+    }).then(() => {
+        Gulp.src(taskGlob)
+            // Parse front matter for metalsmith
+            .pipe(FrontMatter()).on('data', (file) => {
+                Object.assign(file, file.frontMatter);
+                Reflect.deleteProperty(file, 'frontMatter');
+            })
+            .pipe(Gulpsmith()
+                .metadata(metadata)
+                .use(Drafts()) // First to avoid unnecessary parsing
+                .use((files) => { // Extract date from filenames before sorting on them
+                    const DATE_REGEX = /(\d{4}-\d{2}-\d{2})-(.*?)$/;
 
-    return Gulp.src(taskGlob)
-        // Parse front matter for metalsmith
-        .pipe(FrontMatter()).on('data', (file) => {
-            Object.assign(file, file.frontMatter);
-            Reflect.deleteProperty(file, 'frontMatter');
-        })
-        .pipe(metalsmith)
-        .pipe(Gulp.dest(Common.dest, Common.mode))
-        .pipe(Livereload());
+                    Object.keys(files).forEach((filename) => {
+                        const { base, dir } = Path.parse(filename);
+                        const data = files[filename];
+                        const match = DATE_REGEX.exec(base);
+
+                        if (!match) {
+                            return;
+                        }
+
+                        data.date = new Date(match[1]);
+                        files[Path.join(dir, match[2])] = data;
+                        Reflect.deleteProperty(files, filename);
+                    });
+                })
+                .use(Markdown({
+                    html: true,
+                    linkify: true,
+                    typographer: true,
+                    highlight: (code, lang) => {
+                        if (lang && Highlight.getLanguage(lang)) {
+                            return Highlight.highlight(lang, code).value;
+                        }
+
+                        return Highlight.highlightAuto(code).value;
+                    }
+                }))
+                .use(Collections({
+                    blog: {
+                        pattern: 'blog/*.html',
+                        sortBy: 'date',
+                        reverse: true,
+                    },
+                    projects: {
+                        pattern: 'projects/*.html',
+                        sortBy: 'order',
+                    },
+                    html: {
+                        pattern: '**/*.html',
+                    }
+                }))
+                .use(Permalinks({ relative: false })) // After markdown because it only renames .html files
+                .use(Excerpts())
+                .use((files) => { // Keep a copy of the contents without layout applied
+                    Object.keys(files)
+                        .filter((filename) => Path.extname(filename) === '.html')
+                        .forEach((filename) => {
+                            const data = files[filename];
+                            data.prelayoutContents = data.contents;
+                        });
+                })
+                .use(Layouts({ // Last when all the metadata is available
+                    engine: 'nunjucks',
+                    directory: Common.templatesPath
+                })))
+            .pipe(Gulp.dest(Common.dest, Common.mode))
+            .pipe(Livereload())
+            .on('end', done);
+    });
 });
