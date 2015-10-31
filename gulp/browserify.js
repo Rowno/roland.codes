@@ -37,7 +37,7 @@ Gulp.task('browserify', () => {
     let b = Browserify({
         entries: ['./app/assets/js/index.js'],
         transform: [
-            Babelify.configure(),
+            Babelify,
             Nunjucksify,
         ],
         debug: true,

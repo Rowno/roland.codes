@@ -1,4 +1,5 @@
 'use strict';
+require('babel-polyfill');
 const Alex = require('gulp-alex');
 const Del = require('del');
 const Eslint = require('gulp-eslint');
