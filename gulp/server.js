@@ -20,7 +20,7 @@ Gulp.task('server', ['build'], (callback) => {
         childSrc: ["'self'", 'https://codepen.io'],
         connectSrc: ["'self'", 'https://api.github.com', 'wss://localhost:35729'],
         defaultSrc: ["'self'"],
-        fontSrc: ["'self'", 'https://fonts.gstatic.com'],
+        fontSrc: ["'self'"],
         formAction: ["'self'"],
         frameAncestors: ["'self'"],
         frameSrc: ["'self'", 'https://codepen.io'], // Replaced by childSrc
@@ -30,7 +30,7 @@ Gulp.task('server', ['build'], (callback) => {
         objectSrc: ["'none'"],
         reportUri: ['/csp-report'],
         scriptSrc: ["'self'", 'https://www.google-analytics.com', 'https://localhost:35729'],
-        styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
+        styleSrc: ["'self'", "'unsafe-inline'"],
         upgradeInsecureRequests: [],
     }));
 
