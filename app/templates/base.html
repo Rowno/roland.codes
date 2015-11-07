@@ -43,5 +43,28 @@
         {% include "partials/push-nav.html" %}
 
         <script src="/assets/js/index.js" async></script>
+
+        <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "WebSite",
+            "name": "Roland Warmerdam",
+            "url": "{{ baseurl | e }}"
+        }
+        </script>
+        <script type="application/ld+json">
+        {
+            "@context" : "http://schema.org",
+            "@type" : "Person",
+            "name" : "Roland Warmerdam",
+            "url" : "{{ baseurl | e }}",
+            "sameAs" : [
+                "https://twitter.com/rowno1",
+                "https://github.com/Rowno",
+                "https://www.npmjs.com/~rowno",
+                "https://nz.linkedin.com/in/rolandwarmerdam"
+            ]
+        }
+        </script>
     </body>
 </html>

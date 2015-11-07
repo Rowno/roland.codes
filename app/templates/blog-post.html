@@ -3,19 +3,20 @@
 
 {% block body %}
     <div class="blog-post">
-        <header class="blog-post__header">
+        <header class="blog-post__header" itemscope itemtype="http://schema.org/BlogPosting">
             <div class="blog-post__header__wrapper">
-                <h1 class="blog-post__title">{{ title }}</h1>
+                <h1 class="blog-post__title" itemprop="headline">{{ title }}</h1>
 
                 {% if description %}
-                    <div class="blog-post__description">
+                    <div class="blog-post__description" itemprop="description">
                         {{ description }}
                     </div>
                 {% endif %}
 
                 <time class="blog-post__date"
                       datetime="{{ date | date }}"
-                      title="{{ date | date }}">
+                      title="{{ date | date }}"
+                      itemprop="datePublished">
                     {{ date | date('M MMMM, GGGG') }}
                 </time>
             </div>
@@ -23,7 +24,7 @@
 
         <div class="blog-post__body">
             <div class="blog-post__body__wrapper">
-                <div class="blog-post__content">
+                <div class="blog-post__content" itemprop="articleBody">
                     {{ contents }}
                 </div>
 
@@ -50,4 +51,33 @@
     </div>
 
     {% include "partials/footer-short.html" %}
+
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+                "@id": "{{ baseurl | e }}",
+                "name": "Home"
+            }
+        }, {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+                "@id": "{{ baseurl | e }}/blog/",
+                "name": "Blog"
+            }
+        }, {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+                "@id": "{{ baseurl | e }}/{{ path | e }}/",
+                "name": "{{ title }}"
+            }
+        }]
+    }
+    </script>
 {% endblock %}
