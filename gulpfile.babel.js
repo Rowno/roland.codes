@@ -17,7 +17,8 @@ Gulp.task('alex', () => {
         'app/**/*.md',
         'README.md',
     ])
-    .pipe(Alex());
+    .pipe(Alex())
+    .pipe(Alex.reporter());
 });
 
 Gulp.task('lint', () => {
