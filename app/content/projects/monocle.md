@@ -7,7 +7,7 @@ order: 4
 logos: [ html, css, js ]
 links:
     - name: Website
-      url: https://www.xero.com/podcasts/
+      url: https://www.xero.com/nz/accounting-software/beautiful/
 description: >
     An interactive 'monocle' (magnifying glass) that can be dragged around to reveal an image.
 ---
