@@ -18,7 +18,7 @@ Gulp.task('server', ['build'], (callback) => {
 
     app.use(Csp({
         childSrc: ["'self'", 'https://codepen.io'],
-        connectSrc: ["'self'", 'https://api.github.com', 'wss://localhost:35729'],
+        connectSrc: ["'self'", 'https://api.github.com', 'https://api.segment.io', 'wss://localhost:35729'],
         defaultSrc: ["'self'"],
         fontSrc: ["'self'"],
         formAction: ["'self'"],
@@ -29,7 +29,7 @@ Gulp.task('server', ['build'], (callback) => {
         mediaSrc: ["'self'"],
         objectSrc: ["'none'"],
         reportUri: ['/csp-report'],
-        scriptSrc: ["'self'", 'https://www.google-analytics.com', 'https://localhost:35729'],
+        scriptSrc: ["'self'", 'https://www.google-analytics.com', 'https://cdn.segment.com', 'https://localhost:35729'],
         styleSrc: ["'self'", "'unsafe-inline'"],
         upgradeInsecureRequests: [],
     }));

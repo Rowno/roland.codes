@@ -9,7 +9,7 @@ require('./theme');
 require('./push-nav');
 require('./comments');
 require('./codepen');
-require('./vendor/ga');
+require('./vendor/segment');
 
 
 // Prevents transitions from triggering on page load
