@@ -10,6 +10,7 @@ require('./push-nav');
 require('./comments');
 require('./codepen');
 require('./vendor/segment');
+require('./rolee');
 
 
 // Prevents transitions from triggering on page load
