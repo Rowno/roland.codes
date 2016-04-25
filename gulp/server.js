@@ -28,7 +28,7 @@ Gulp.task('server', ['build'], (callback) => {
         manifestSrc: ["'self'"],
         mediaSrc: ["'self'"],
         objectSrc: ["'none'"],
-        reportUri: ['/csp-report'],
+        reportUri: ['https://rowno.report-uri.io/r/default/csp/enforce'],
         scriptSrc: ["'self'", 'https://www.google-analytics.com', 'https://cdn.segment.com', 'https://localhost:35729'],
         styleSrc: ["'self'", "'unsafe-inline'"],
         upgradeInsecureRequests: [],
