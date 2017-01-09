@@ -1,7 +1,0 @@
----
-root: true
-extends: rowno/es6
-env:
-    browser: true
-    commonjs: true
-    node: true

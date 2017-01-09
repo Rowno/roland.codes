@@ -1,69 +1,69 @@
 $theme-speed: 3.5s;
 
 .themed {
-    &--bg {
-        transition: background $theme-speed;
-    }
+  &--bg {
+    transition: background $theme-speed;
+  }
 
-    &--stroke {
-        transition: stroke $theme-speed;
-    }
+  &--stroke {
+    transition: stroke $theme-speed;
+  }
 
-    &--color {
-        transition: color $theme-speed;
-    }
+  &--color {
+    transition: color $theme-speed;
+  }
 
-    &--hover {
-        transition: $transition-speed;
-    }
+  &--hover {
+    transition: $transition-speed;
+  }
 }
 
 @mixin theme($name, $color) {
-    .theme--#{$name} {
-        ::selection {
-            background-color: $color;
-            color: #fff;
-        }
-
-        .themed--bg {
-            background: $color;
-        }
-
-        .themed--stroke {
-            stroke: $color;
-        }
-
-        .themed--color {
-            color: $color;
-        }
-
-        .themed--hover {
-            &:hover, &:focus {
-                &.themed--bg,
-                .themed--bg {
-                    background: darken($color, 5%);
-                }
-
-                &.themed--stroke,
-                .themed--stroke {
-                    stroke: darken($color, 10%);
-                }
-
-                &.themed--color,
-                .themed--color {
-                    color: darken($color, 15%);
-                }
-            }
-        }
-
-        a:not(.themed--no-color) {
-            color: $color;
-
-            &:hover, &:focus {
-                color: darken($color, 15%);
-            }
-        }
+  .theme--#{$name} {
+    ::selection {
+      background-color: $color;
+      color: #fff;
     }
+
+    .themed--bg {
+      background: $color;
+    }
+
+    .themed--stroke {
+      stroke: $color;
+    }
+
+    .themed--color {
+      color: $color;
+    }
+
+    .themed--hover {
+      &:hover, &:focus {
+        &.themed--bg,
+        .themed--bg {
+          background: darken($color, 5%);
+        }
+
+        &.themed--stroke,
+        .themed--stroke {
+          stroke: darken($color, 10%);
+        }
+
+        &.themed--color,
+        .themed--color {
+          color: darken($color, 15%);
+        }
+      }
+    }
+
+    a:not(.themed--no-color) {
+      color: $color;
+
+      &:hover, &:focus {
+        color: darken($color, 15%);
+      }
+    }
+  }
 }
 
 @include theme('1', #74C390);

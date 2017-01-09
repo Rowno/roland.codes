@@ -4,64 +4,64 @@
         aria-expanded="false"
         aria-haspopup="true"
         tabindex="1">
-    Toggle navigation
+  Toggle navigation
 
-    {% for line in [1,2,3] %}
-        <div class="push-nav-toggle__line push-nav-toggle__line--{{line}}{% if pushNavThemed %} themed--bg{% endif %}"></div>
-    {% endfor %}
+  {% for line in [1,2,3] %}
+    <div class="push-nav-toggle__line push-nav-toggle__line--{{line}}{% if pushNavThemed %} themed--bg{% endif %}"></div>
+  {% endfor %}
 </button>
 
 <nav role="navigation" class="push-nav" id="push-nav">
-    <ul class="push-nav__links">
-        <li>
-            <a class="push-nav__link push-nav__link--primary themed--no-color"
-               href="/#about"
-               tabindex="1">
-                <span class="push-nav__link__line">
-                    About
-                </span>
-            </a>
-        </li>
-        <li>
-            <a class="push-nav__link push-nav__link--primary themed--no-color push-nav__link--active'"
-               href="/#projects"
-               tabindex="1">
-                <span class="push-nav__link__line">
-                    Projects
-                </span>
-            </a>
+  <ul class="push-nav__links">
+    <li>
+      <a class="push-nav__link push-nav__link--primary themed--no-color"
+         href="/#about"
+         tabindex="1">
+        <span class="push-nav__link__line">
+          About
+        </span>
+      </a>
+    </li>
+    <li>
+      <a class="push-nav__link push-nav__link--primary themed--no-color push-nav__link--active'"
+         href="/#projects"
+         tabindex="1">
+        <span class="push-nav__link__line">
+          Projects
+        </span>
+      </a>
 
-            {% if path | startswith('projects') %}
-                <ul>
-                    {% for project in collections.projects %}
-                        <li>
-                            <a class="push-nav__link push-nav__link--secondary themed--no-color"
-                               href="/{{ project.path }}/"
-                               tabindex="1">
-                                {{ project.title }}
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        </li>
-        <li>
-            <a class="push-nav__link push-nav__link--primary themed--no-color"
-               href="/blog/"
-               tabindex="1">
-                <span class="push-nav__link__line">
-                    Blog
-                </span>
-            </a>
-        </li>
-        <li>
-            <a class="push-nav__link push-nav__link--primary themed--no-color"
-               href="/#contact"
-               tabindex="1">
-                <span class="push-nav__link__line">
-                    Contact
-                </span>
-            </a>
-        </li>
-    </ul>
+      {% if path | startswith('projects') %}
+        <ul>
+          {% for project in collections.projects %}
+            <li>
+              <a class="push-nav__link push-nav__link--secondary themed--no-color"
+                 href="/{{ project.path }}/"
+                 tabindex="1">
+                {{ project.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </li>
+    <li>
+      <a class="push-nav__link push-nav__link--primary themed--no-color"
+         href="/blog/"
+         tabindex="1">
+        <span class="push-nav__link__line">
+          Blog
+        </span>
+      </a>
+    </li>
+    <li>
+      <a class="push-nav__link push-nav__link--primary themed--no-color"
+         href="/#contact"
+         tabindex="1">
+        <span class="push-nav__link__line">
+          Contact
+        </span>
+      </a>
+    </li>
+  </ul>
 </nav>

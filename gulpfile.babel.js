@@ -1,40 +1,25 @@
-'use strict';
-require('babel-polyfill');
-const Alex = require('gulp-alex');
-const Del = require('del');
-const Eslint = require('gulp-eslint');
-const Gulp = require('gulp');
+'use strict'
+require('babel-polyfill')
+const alex = require('gulp-alex')
+const del = require('del')
+const gulp = require('gulp')
 
-const Common = require('./gulp/common');
-require('./gulp/server');
-require('./gulp/build');
+const common = require('./gulp/common')
+require('./gulp/server')
+require('./gulp/build')
 
+gulp.task('clean', () => del(common.dest))
 
-Gulp.task('clean', () => Del(Common.dest));
+gulp.task('alex', () => {
+  return gulp.src([
+    'app/**/*.md',
+    'README.md'
+  ])
+  .pipe(alex())
+  .pipe(alex.reporter())
+})
 
-Gulp.task('alex', () => {
-    return Gulp.src([
-        'app/**/*.md',
-        'README.md',
-    ])
-    .pipe(Alex())
-    .pipe(Alex.reporter());
-});
-
-Gulp.task('lint', () => {
-    return Gulp.src([
-        'app/**/*.js',
-        '!app/**/vendor/**/*',
-        '!app/static/demos/**/*',
-        'gulpfile.babel.js',
-        'gulp/**/*.js',
-    ])
-    .pipe(Eslint())
-    .pipe(Eslint.format())
-    .pipe(Eslint.failOnError());
-});
-
-Gulp.task('default', () => {
-    Common.watch = true;
-    Gulp.start('server');
-});
+gulp.task('default', () => {
+  common.watch = true
+  gulp.start('server')
+})

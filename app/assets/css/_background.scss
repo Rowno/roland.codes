@@ -1,35 +1,35 @@
 body {
-    &:after,
-    &:before {
-        content: '';
-        display: block;
-        position: fixed;
-        top: 0;
-        width: 100vw;  // IE/Edge
-        height: 100vh; // fallback
-        width: 100vmax;
-        height: 100vmax;
-        background: rgba(0,0,0,0.05);
-        animation: background 90s linear infinite;
-    }
+  &:after,
+  &:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    width: 100vw;  // IE/Edge
+    height: 100vh; // fallback
+    width: 100vmax;
+    height: 100vmax;
+    background: rgba(0,0,0,0.05);
+    animation: background 90s linear infinite;
+  }
 
-    &:after {
-        left: 15vw;
-    }
+  &:after {
+    left: 15vw;
+  }
 
-    &:before {
-        right: 15vw;
-        animation-delay: -30s;
-        animation-direction: reverse;
-    }
+  &:before {
+    right: 15vw;
+    animation-delay: -30s;
+    animation-direction: reverse;
+  }
 }
 
 @keyframes background {
-    0% {
-        transform: rotate(0deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
 
-    100% {
-        transform: rotate(360deg);
-    }
+  100% {
+    transform: rotate(360deg);
+  }
 }

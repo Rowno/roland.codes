@@ -4,63 +4,63 @@
 {% set pushNavThemed = true %}
 
 {% block body %}
-    <div class="blog-list">
-        <h1 class="blog-list__title blog-list__title--top">
-            &lt;blog&gt;
-        </h1>
+  <div class="blog-list">
+    <h1 class="blog-list__title blog-list__title--top">
+        &lt;blog&gt;
+    </h1>
 
-        <div class="blog-list__posts">
-            {% for post in collections.blog %}
-                <article class="blog-list__post">
-                    <header>
-                        <time class="blog-list__post__date"
-                              datetime="{{ post.date | date }}"
-                              title="{{ post.date | date }}">
-                            {{ post.date | date('M MMM, GGGG') }}
-                        </time>
+    <div class="blog-list__posts">
+      {% for post in collections.blog %}
+        <article class="blog-list__post">
+          <header>
+            <time class="blog-list__post__date"
+                  datetime="{{ post.date | date }}"
+                  title="{{ post.date | date }}">
+              {{ post.date | date('M MMM, GGGG') }}
+            </time>
 
-                        <h2 class="blog-list__post__title">
-                            <a href="/{{ post.path }}/">{{ post.title }}</a>
-                        </h2>
-                    </header>
+            <h2 class="blog-list__post__title">
+              <a href="/{{ post.path }}/">{{ post.title }}</a>
+            </h2>
+          </header>
 
-                    <div class="blog-list__post__content">
-                        {{ post.excerpt }}
-                    </div>
+          <div class="blog-list__post__content">
+            {{ post.excerpt }}
+          </div>
 
-                    {% if not loop.last %}
-                        <div class="blog-list__post__separator themed--bg"></div>
-                    {% endif %}
-                </article>
-            {% endfor %}
-        </div>
-
-        <div class="blog-list__title blog-list__title--bottom">
-            &lt;/blog&gt;
-        </div>
+          {% if not loop.last %}
+            <div class="blog-list__post__separator themed--bg"></div>
+          {% endif %}
+        </article>
+      {% endfor %}
     </div>
 
-    {% include "partials/footer-short.html" %}
+    <div class="blog-list__title blog-list__title--bottom">
+      &lt;/blog&gt;
+    </div>
+  </div>
 
-    <script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [{
-            "@type": "ListItem",
-            "position": 1,
-            "item": {
-                "@id": "{{ baseurl | e }}",
-                "name": "Home"
-            }
-        }, {
-            "@type": "ListItem",
-            "position": 2,
-            "item": {
-                "@id": "{{ baseurl | e }}/blog/",
-                "name": "Blog"
-            }
-        }]
-    }
-    </script>
+  {% include "partials/footer-short.html" %}
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "{{ baseurl | e }}",
+        "name": "Home"
+      }
+    }, {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "{{ baseurl | e }}/blog/",
+        "name": "Blog"
+      }
+    }]
+  }
+  </script>
 {% endblock %}

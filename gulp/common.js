@@ -1,21 +1,16 @@
-'use strict';
-const Fs = require('fs');
-const Path = require('path');
+'use strict'
+const fs = require('fs')
+const path = require('path')
 
-const Minimist = require('minimist');
+const minimist = require('minimist')
 
-const options = Minimist(process.argv);
+const options = minimist(process.argv)
 
+exports.prod = options.prod || process.env.NODE_ENV === 'production'
+exports.watch = options.watch
+exports.templatesPath = 'app/templates'
+exports.dest = 'build'
+exports.mode = {mode: '644'}
 
-exports.prod = options.prod || process.env.NODE_ENV === 'production'; // eslint-disable-line no-process-env
-exports.watch = options.watch;
-exports.templatesPath = 'app/templates';
-exports.dest = 'build';
-exports.mode = { mode: '644' };
-
-/* eslint-disable no-sync */
-
-exports.privateKey = Fs.readFileSync(Path.join(__dirname, 'server.key'), 'utf8');
-exports.certificate = Fs.readFileSync(Path.join(__dirname, 'server.crt'), 'utf8');
-
-/* eslint-enable no-sync */
+exports.privateKey = fs.readFileSync(path.join(__dirname, 'server.key'), 'utf8')
+exports.certificate = fs.readFileSync(path.join(__dirname, 'server.crt'), 'utf8')

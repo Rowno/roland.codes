@@ -5,66 +5,66 @@
 
 {% block body %}
 <main role="main">
-    <div class="project-detail">
-        <div class="project-detail__wrapper">
-            <div class="project-detail__top">
-                <div class="project-detail__image">
-                    <img class="themed--bg"
-                         src="/assets/content/{{ path }}/large.png"
-                         srcset="/assets/content/{{ path }}/large@2x.png 2x"
-                         alt="">
-                </div>
-
-                <div class="project-detail__text">
-                    <h1 class="project-detail__heading">{{ title }}</h1>
-
-                    <div class="project-detail__logos">
-                        {% for logo in logos %}
-                            {{ svgs[logo] | class('themed--stroke') }}
-                        {% endfor %}
-                    </div>
-
-                    <div class="project-detail__description">
-                        {{ contents }}
-                    </div>
-
-                    <ul class="project-detail__links">
-                        {% for link in links %}
-                            <li>
-                                <a href="{{ link.url }}">{{ link.name }}</a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-
-            {#
-            <p class="codepen" data-id="rhlfd" data-height="350">
-                See the demo:
-                <a href="/demos/legacy-flexbox-invisible-float-bug/">
-                    Legacy flexbox invisible float bug fix
-                </a>.
-            </p>
-            #}
+  <div class="project-detail">
+    <div class="project-detail__wrapper">
+      <div class="project-detail__top">
+        <div class="project-detail__image">
+          <img class="themed--bg"
+               src="/assets/content/{{ path }}/large.png"
+               srcset="/assets/content/{{ path }}/large@2x.png 2x"
+               alt="">
         </div>
+
+        <div class="project-detail__text">
+          <h1 class="project-detail__heading">{{ title }}</h1>
+
+          <div class="project-detail__logos">
+            {% for logo in logos %}
+              {{ svgs[logo] | class('themed--stroke') }}
+            {% endfor %}
+          </div>
+
+          <div class="project-detail__description">
+            {{ contents }}
+          </div>
+
+          <ul class="project-detail__links">
+            {% for link in links %}
+              <li>
+                <a href="{{ link.url }}">{{ link.name }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+      {#
+      <p class="codepen" data-id="rhlfd" data-height="350">
+        See the demo:
+        <a href="/demos/legacy-flexbox-invisible-float-bug/">
+          Legacy flexbox invisible float bug fix
+        </a>.
+      </p>
+      #}
     </div>
+  </div>
 
-    {% include "partials/footer.html" %}
+  {% include "partials/footer.html" %}
 
-    <script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [{
-            "@type": "ListItem",
-            "position": 1,
-            "item": {
-                "@id": "{{ baseurl | e }}",
-                "name": "Home"
-            }
-        }]
-    }
-    </script>
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "{{ baseurl | e }}",
+        "name": "Home"
+      }
+    }]
+  }
+  </script>
 </main>
 
 {% endblock %}

@@ -7,13 +7,13 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "test": "gulp lint && gulp alex",
+    "test": "xo && gulp alex",
     "build": "gulp build",
     "server": "gulp server --watch",
     "deploy": "gulp build --prod && rsync -avzh --delete --no-owner --no-group build/* vps:/var/www/roland.codes/files/"
   },
   "engines": {
-    "node": ">=4.0"
+    "node": "6.x.x"
   },
   "browser": {
     "nunjucks": "nunjucks/browser/nunjucks-slim"
@@ -36,13 +36,11 @@
     "browserify": "^12.0.0",
     "cheerio": "^0.19.0",
     "del": "^2.0.0",
-    "eslint-config-rowno": "^2.0.0",
     "express": "^4.13.1",
     "globby": "^3.0.0",
     "gulp": "^3.9.0",
     "gulp-alex": "^2.0.0",
     "gulp-changed": "^1.2.1",
-    "gulp-eslint": "^1.0.0",
     "gulp-front-matter": "^1.2.3",
     "gulp-if": "^2.0.0",
     "gulp-livereload": "^3.8.0",
@@ -68,6 +66,27 @@
     "through2": "^2.0.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.2.3"
+    "watchify": "^3.2.3",
+    "xo": "^0.17.1"
+  },
+  "xo": {
+    "esnext": true,
+    "space": true,
+    "semicolon": false,
+    "overrides": [
+      {
+        "files": "app/**/*.js",
+        "envs": [
+          "browser"
+        ]
+      }
+    ],
+    "ignores": [
+      "app/**/vendor/**/*",
+      "app/static/demos/**/*"
+    ],
+    "rules": {
+      "import/no-unassigned-import": "off"
+    }
   }
 }

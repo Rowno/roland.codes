@@ -1,54 +1,52 @@
-'use strict';
-const Path = require('path');
+'use strict'
+const path = require('path')
 
-const Babelify = require('babelify');
-const Browserify = require('browserify');
-const Buffered = require('vinyl-buffer');
-const Gulp = require('gulp');
-const Gulpif = require('gulp-if');
-const Livereload = require('gulp-livereload');
-const MoldSourceMap = require('mold-source-map');
-const Source = require('vinyl-source-stream');
-const Uglify = require('gulp-uglify');
-const Watchify = require('watchify');
+const babelify = require('babelify')
+const browserify = require('browserify')
+const buffered = require('vinyl-buffer')
+const gulp = require('gulp')
+const gulpif = require('gulp-if')
+const livereload = require('gulp-livereload')
+const moldSourceMap = require('mold-source-map')
+const source = require('vinyl-source-stream')
+const uglify = require('gulp-uglify')
+const watchify = require('watchify')
 
-const Common = require('./common');
-const Nunjucksify = require('./nunjucksify');
-
+const common = require('./common')
+const nunjucksify = require('./nunjucksify')
 
 function createBundle(bundle) {
-    return bundle.bundle()
-        .on('error', (error) => {
-            console.error(error);
-        })
-        // Improve source map paths
-        .pipe(MoldSourceMap.transformSources((file) => `/source/${Path.relative('./app/assets/', file)}`))
-        // Convert text stream to vinyl file stream
-        .pipe(Source('assets/js/index.js'))
-        // Buffer the streamed file contents
-        .pipe(Buffered())
-        .pipe(Gulpif(Common.prod, Uglify()))
-        .pipe(Gulp.dest(Common.dest, Common.mode))
-        .pipe(Livereload());
+  return bundle.bundle()
+    .on('error', error => {
+      console.error(error)
+    })
+    // Improve source map paths
+    .pipe(moldSourceMap.transformSources(file => `/source/${path.relative('./app/assets/', file)}`))
+    // Convert text stream to vinyl file stream
+    .pipe(source('assets/js/index.js'))
+    // Buffer the streamed file contents
+    .pipe(buffered())
+    .pipe(gulpif(common.prod, uglify()))
+    .pipe(gulp.dest(common.dest, common.mode))
+    .pipe(livereload())
 }
 
+gulp.task('browserify', () => {
+  let b = browserify({
+    entries: ['./app/assets/js/index.js'],
+    transform: [
+      babelify,
+      nunjucksify
+    ],
+    debug: true,
+    cache: {},
+    packageCache: {}
+  })
 
-Gulp.task('browserify', () => {
-    let b = Browserify({
-        entries: ['./app/assets/js/index.js'],
-        transform: [
-            Babelify,
-            Nunjucksify,
-        ],
-        debug: true,
-        cache: {},
-        packageCache: {}
-    });
+  if (common.watch) {
+    b = watchify(b)
+    b.on('update', () => createBundle(b))
+  }
 
-    if (Common.watch) {
-        b = Watchify(b);
-        b.on('update', () => createBundle(b));
-    }
-
-    return createBundle(b);
-});
+  return createBundle(b)
+})

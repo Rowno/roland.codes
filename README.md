@@ -24,7 +24,6 @@ Available build tasks:
  * `gulp build` - build the website.
  * `gulp server` - build the website and start a server.
  * `gulp alex` - run [Alex][] over all the content.
- * `gulp lint` - run [ESLint][] over all the Javascript.
 
 #### Flags ####
 
@@ -47,4 +46,3 @@ Copyright © 2013 Roland Warmerdam.
 [Metalsmith]: http://www.metalsmith.io/
 [Node.js]: http://nodejs.org/
 [Alex]: http://alexjs.com/
-[ESLint]: http://eslint.org/

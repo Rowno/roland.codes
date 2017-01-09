@@ -11,7 +11,7 @@
     HTML5, CSS3, ES2015
     Gulp, Metalsmith, Nunjucks, markdown-it
     HTML5 Boilerplate, Normalize.css, libsass, Autoprefixer, clean-css, include-media
-    jQuery, Babel, Browserify, UglifyJS, ESLint, Picturefill, Moment.js, FastClick, highlight.js
+    jQuery, Babel, Browserify, UglifyJS, XO, Picturefill, Moment.js, FastClick, highlight.js
     Atom
 
     https://github.com/Rowno/roland.codes

@@ -1,48 +1,48 @@
 .footer-short {
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    padding-left: 30px;
-    padding-right: 25px;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  padding-left: 30px;
+  padding-right: 25px;
+
+  @include media('<750px') {
+    justify-content: center; // Defined here to avoid an IE positioning bug
+    padding-left: $page-padding;
+    padding-right: $page-padding;
+  }
+
+  &__name {
+    margin-right: auto;
+    color: #fff;
+    font-size: 40px;
+    font-weight: $thin;
+    letter-spacing: 0.1em;
 
     @include media('<750px') {
-        justify-content: center; // Defined here to avoid an IE positioning bug
-        padding-left: $page-padding;
-        padding-right: $page-padding;
+      display: none;
+    }
+  }
+
+  &__social {
+    display: inline-block;
+    font-size: 0;
+
+    &:hover a {
+      opacity: 0.5;
     }
 
-    &__name {
-        margin-right: auto;
-        color: #fff;
-        font-size: 40px;
-        font-weight: $thin;
-        letter-spacing: 0.1em;
-
-        @include media('<750px') {
-            display: none;
-        }
+    li {
+      display: inline-block;
     }
 
-    &__social {
-        display: inline-block;
-        font-size: 0;
+    a {
+      display: inline-block;
+      padding: 15px;
+      transition-property: opacity;
 
-        &:hover a {
-            opacity: 0.5;
-        }
-
-        li {
-            display: inline-block;
-        }
-
-        a {
-            display: inline-block;
-            padding: 15px;
-            transition-property: opacity;
-
-            &:hover, &:focus {
-                opacity: 1;
-            }
-        }
+      &:hover, &:focus {
+        opacity: 1;
+      }
     }
+  }
 }

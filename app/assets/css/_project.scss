@@ -1,115 +1,115 @@
 .project-detail {
-    padding: 75px $page-padding 135px;
-    background: #fff;
+  padding: 75px $page-padding 135px;
+  background: #fff;
+
+  @include media('<700px') {
+    padding: 20px 0 35px;
+  }
+
+  &__wrapper {
+    max-width: 940px;
+    margin: auto;
+  }
+
+  &__top {
+    display: flex;
 
     @include media('<700px') {
-        padding: 20px 0 35px;
+      flex-direction: column;
+    }
+  }
+
+  &__image {
+    flex: 1;
+    // 1: Fixes Firefox flexible image inside flex item bug
+    max-width: 100%; // 1
+    min-width: 0;    // 1
+    min-height: 1px; // Fixes IE flex-direction:column intrinsic height bug
+    margin-right: 6.3%;
+
+    @include media('<700px') {
+      flex-basis: auto; // Fixes IE flex-direction:column collapsing bug
+      order: 1;
+      margin-right: 0;
+      margin-top: 50px;
     }
 
-    &__wrapper {
-        max-width: 940px;
-        margin: auto;
+    img {
+      max-width: 100%;
+    }
+  }
+
+  &__text {
+    flex: 1;
+    width: 100%; // Fixes IE flex-direction:column text wrapping
+    max-width: 620px;
+
+    @include media('<700px') {
+      flex-basis: auto; // Fixes IE flex-direction:column collapsing bug
+      padding-left: $page-padding;
+      padding-right: $page-padding;
+    }
+  }
+
+  &__heading {
+    font-size: 30px;
+    font-weight: $thin;
+    letter-spacing: 0.01em;
+
+    @include media('<700px') {
+      font-size: 23px;
+      font-weight: $light;
+    }
+  }
+
+  &__logos {
+    margin-top: 12px;
+    font-size: 0; // Remove space between inline elements
+
+    svg {
+      max-width: 22px;
+      max-height: 22px;
+      margin-left: 13px;
+      stroke-width: 3px;
+
+      @include media('<700px') {
+        width: 18px;
+        height: 18px;
+      }
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  &__description {
+    margin-top: 35px;
+  }
+
+  &__links {
+    display: flex;
+    margin-left: -10px;
+
+    li {
+      border-left: 1px solid #f6f6f6;
+
+      &:first-child {
+        border-left: none;
+      }
     }
 
-    &__top {
-        display: flex;
-
-        @include media('<700px') {
-            flex-direction: column;
-        }
+    a {
+      display: inline-block;
+      padding: 0 10px;
     }
+  }
 
-    &__image {
-        flex: 1;
-        // 1: Fixes Firefox flexible image inside flex item bug
-        max-width: 100%; // 1
-        min-width: 0;    // 1
-        min-height: 1px; // Fixes IE flex-direction:column intrinsic height bug
-        margin-right: 6.3%;
+  &__codepen {
+    margin-top: 90px;
 
-        @include media('<700px') {
-            flex-basis: auto; // Fixes IE flex-direction:column collapsing bug
-            order: 1;
-            margin-right: 0;
-            margin-top: 50px;
-        }
-
-        img {
-            max-width: 100%;
-        }
+    @include media('<700px') {
+      margin-top: 60px;
     }
-
-    &__text {
-        flex: 1;
-        width: 100%; // Fixes IE flex-direction:column text wrapping
-        max-width: 620px;
-
-        @include media('<700px') {
-            flex-basis: auto; // Fixes IE flex-direction:column collapsing bug
-            padding-left: $page-padding;
-            padding-right: $page-padding;
-        }
-    }
-
-    &__heading {
-        font-size: 30px;
-        font-weight: $thin;
-        letter-spacing: 0.01em;
-
-        @include media('<700px') {
-            font-size: 23px;
-            font-weight: $light;
-        }
-    }
-
-    &__logos {
-        margin-top: 12px;
-        font-size: 0; // Remove space between inline elements
-
-        svg {
-            max-width: 22px;
-            max-height: 22px;
-            margin-left: 13px;
-            stroke-width: 3px;
-
-            @include media('<700px') {
-                width: 18px;
-                height: 18px;
-            }
-
-            &:first-child {
-                margin-left: 0;
-            }
-        }
-    }
-
-    &__description {
-        margin-top: 35px;
-    }
-
-    &__links {
-        display: flex;
-        margin-left: -10px;
-
-        li {
-            border-left: 1px solid #f6f6f6;
-
-            &:first-child {
-                border-left: none;
-            }
-        }
-
-        a {
-            display: inline-block;
-            padding: 0 10px;
-        }
-    }
-
-    &__codepen {
-        margin-top: 90px;
-
-        @include media('<700px') {
-            margin-top: 60px;
-        }
-    }
+  }
 }

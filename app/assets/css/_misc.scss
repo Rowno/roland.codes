@@ -1,30 +1,30 @@
 .line-hover {
-    display: inline-block;
+  display: inline-block;
 
+  &:before,
+  &:after {
+    content: '';
+    visibility: hidden;
+    display: block;
+    transform: scaleX(0);
+    border-top: 1px solid currentColor;
+    transition: ease-in $transition-speed;
+    transition-property: visibility, transform;
+  }
+
+  &:hover, &:focus {
     &:before,
     &:after {
-        content: '';
-        visibility: hidden;
-        display: block;
-        transform: scaleX(0);
-        border-top: 1px solid currentColor;
-        transition: ease-in $transition-speed;
-        transition-property: visibility, transform;
+      visibility: visible;
+      transform: scaleX(1);
+      transition-timing-function: cubic-bezier(0.58, 0, 0.43, 2);
     }
-
-    &:hover, &:focus {
-        &:before,
-        &:after {
-            visibility: visible;
-            transform: scaleX(1);
-            transition-timing-function: cubic-bezier(0.58, 0, 0.43, 2);
-        }
-    }
+  }
 }
 
 
 .codepen-embed {
-    display: block;
-    width: 100%;
-    margin: 1em 0;
+  display: block;
+  width: 100%;
+  margin: 1em 0;
 }

@@ -1,42 +1,41 @@
-'use strict';
-const Path = require('path');
+'use strict'
+const path = require('path')
 
-const Autoprefixer = require('autoprefixer');
-const Gulp = require('gulp');
-const Gulpif = require('gulp-if');
-const Livereload = require('gulp-livereload');
-const MinifyCss = require('gulp-minify-css');
-const PostCss = require('gulp-postcss');
-const Sass = require('gulp-sass');
-const Sourcemaps = require('gulp-sourcemaps');
+const autoprefixer = require('autoprefixer')
+const gulp = require('gulp')
+const gulpif = require('gulp-if')
+const livereload = require('gulp-livereload')
+const minifyCss = require('gulp-minify-css')
+const postCss = require('gulp-postcss')
+const sass = require('gulp-sass')
+const sourcemaps = require('gulp-sourcemaps')
 
-const Common = require('./common');
+const common = require('./common')
 
-const taskGlob = 'app/assets/**/*.scss';
-let watching = false;
+const taskGlob = 'app/assets/**/*.scss'
+let watching = false
 
+gulp.task('css', () => {
+  if (!watching && common.watch) {
+    gulp.watch(taskGlob, ['css'])
+    watching = true
+  }
 
-Gulp.task('css', () => {
-    if (!watching && Common.watch) {
-        Gulp.watch(taskGlob, ['css']);
-        watching = true;
-    }
-
-    return Gulp.src(taskGlob)
-        .pipe(Sourcemaps.init())
-        .pipe(Sass({ sourceComments: true }))
-        .pipe(PostCss([Autoprefixer()]))
-        .pipe(Sourcemaps.write())
-        .pipe(Gulpif(Common.prod, MinifyCss({
-            keepSpecialComments: 0,
-            // Workaround a bug that causes the vmax fallbacks to be stripped
-            aggressiveMerging: false,
-            compatibility: {
-                units: {
-                    vmax: false
-                }
-            },
-        })))
-        .pipe(Gulp.dest(Path.join(Common.dest, 'assets'), Common.mode))
-        .pipe(Livereload());
-});
+  return gulp.src(taskGlob)
+    .pipe(sourcemaps.init())
+    .pipe(sass({sourceComments: true}))
+    .pipe(postCss([autoprefixer()]))
+    .pipe(sourcemaps.write())
+    .pipe(gulpif(common.prod, minifyCss({
+      keepSpecialComments: 0,
+      // Workaround a bug that causes the vmax fallbacks to be stripped
+      aggressiveMerging: false,
+      compatibility: {
+        units: {
+          vmax: false
+        }
+      }
+    })))
+    .pipe(gulp.dest(path.join(common.dest, 'assets'), common.mode))
+    .pipe(livereload())
+})

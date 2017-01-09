@@ -2,166 +2,166 @@ $push-nav-width: 280px;
 $push-nav-speed: 0.4s;
 
 .body-wrapper {
-    position: relative;
-    z-index: $zindex-body-wrapper;
-    transition: transform $push-nav-speed;
+  position: relative;
+  z-index: $zindex-body-wrapper;
+  transition: transform $push-nav-speed;
 
-    .push-nav-active & {
-        transform: translateX(-$push-nav-width);
-    }
+  .push-nav-active & {
+    transform: translateX(-$push-nav-width);
+  }
 }
 
 .push-nav {
-    $padding: 42px;
-    visibility: hidden;
-    overflow: hidden;
-    position: absolute;
-    z-index: $zindex-push-nav;
-    right: 0;
-    top: 0;
+  $padding: 42px;
+  visibility: hidden;
+  overflow: hidden;
+  position: absolute;
+  z-index: $zindex-push-nav;
+  right: 0;
+  top: 0;
+
+  .push-nav-active & {
+    visibility: visible;
+  }
+
+  &__links {
+    position: relative;
+    right: -$push-nav-width;
+    width: $push-nav-width;
+    padding-top: 116px;
+    color: #fff;
+    font-size: 20px;
+    transition: $push-nav-speed;
+    // transition visibility to delay hiding of the links on close
+    transition-property: visibility, transform;
+
+    @include media('height<600px') {
+      padding-top: 70px;
+    }
 
     .push-nav-active & {
-        visibility: visible;
+      transform: translateX(-$push-nav-width);
     }
 
-    &__links {
-        position: relative;
-        right: -$push-nav-width;
-        width: $push-nav-width;
-        padding-top: 116px;
-        color: #fff;
-        font-size: 20px;
-        transition: $push-nav-speed;
-        // transition visibility to delay hiding of the links on close
-        transition-property: visibility, transform;
+    ul {
+      margin: 52px 0 45px;
+      font-size: 14px;
 
-        @include media('height<600px') {
-            padding-top: 70px;
-        }
-
-        .push-nav-active & {
-            transform: translateX(-$push-nav-width);
-        }
-
-        ul {
-            margin: 52px 0 45px;
-            font-size: 14px;
-
-            .push-nav__link {
-                padding-top: 0.4em;
-                padding-bottom: 0.4em;
-            }
-        }
+      .push-nav__link {
+        padding-top: 0.4em;
+        padding-bottom: 0.4em;
+      }
     }
+  }
 
-    &__link {
-        display: block;
-        position: relative;
-        padding: 0.3em $padding;
-        color: inherit;
-        letter-spacing: 0.1em;
-        transition: padding $transition-speed;
-
-        &:hover, &:focus {
-            padding-left: $padding + 10px;
-        }
-
-        &__line {
-            position: relative;
-            display: inline-block;
-        }
-
-        &--primary#{&}--active &__line:after {
-            content: '';
-            display: block;
-            position: absolute;
-            left: 0;
-            right: -0.4em;
-            bottom: 0;
-            border-bottom: 1px solid #fff;
-        }
-
-        &--secondary#{&}--active:after {
-            content: '';
-            display: block;
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            border: 10px solid transparent;
-            border-left-color: #fff;
-        }
-    }
-}
-
-.push-nav-toggle {
-    $spacing: 11px;
-    $thinkness: 2px;
-    @include hide-text;
-    opacity: 0.7;
-    position: absolute;
-    z-index: $zindex-push-nav-toggle;
-    right: 0;
-    top: 0;
-    padding: 30px;
-    transition: opacity $transition-speed;
+  &__link {
+    display: block;
+    position: relative;
+    padding: 0.3em $padding;
+    color: inherit;
+    letter-spacing: 0.1em;
+    transition: padding $transition-speed;
 
     &:hover, &:focus {
-        outline: none;
-        opacity: 1;
+      padding-left: $padding + 10px;
     }
 
     &__line {
-        width: 40px;
-        height: $thinkness;
-        margin-top: $spacing;
-        border-radius: 5px;
-        background: #fff;
-        transition: $push-nav-speed;
-
-        &:first-child {
-            margin-top: 0;
-        }
-
-        .push-nav-active .themed--hover &.themed--bg {
-            background: #fff;
-        }
-
-        .push-nav-active & {
-            &--2 {
-                opacity: 0;
-                transform: scale(0);
-            }
-
-            &--1 {
-                transform: rotate(45deg) translateY($spacing + $thinkness);
-                transform-origin: 50% #{$spacing + $thinkness};
-            }
-
-            &--3 {
-                transform: rotate(-45deg) translateY(-$spacing - $thinkness);
-                transform-origin: 50% #{-$spacing - $thinkness};
-            }
-        }
+      position: relative;
+      display: inline-block;
     }
+
+    &--primary#{&}--active &__line:after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      right: -0.4em;
+      bottom: 0;
+      border-bottom: 1px solid #fff;
+    }
+
+    &--secondary#{&}--active:after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 10px solid transparent;
+      border-left-color: #fff;
+    }
+  }
+}
+
+.push-nav-toggle {
+  $spacing: 11px;
+  $thinkness: 2px;
+  @include hide-text;
+  opacity: 0.7;
+  position: absolute;
+  z-index: $zindex-push-nav-toggle;
+  right: 0;
+  top: 0;
+  padding: 30px;
+  transition: opacity $transition-speed;
+
+  &:hover, &:focus {
+    outline: none;
+    opacity: 1;
+  }
+
+  &__line {
+    width: 40px;
+    height: $thinkness;
+    margin-top: $spacing;
+    border-radius: 5px;
+    background: #fff;
+    transition: $push-nav-speed;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    .push-nav-active .themed--hover &.themed--bg {
+      background: #fff;
+    }
+
+    .push-nav-active & {
+      &--2 {
+        opacity: 0;
+        transform: scale(0);
+      }
+
+      &--1 {
+        transform: rotate(45deg) translateY($spacing + $thinkness);
+        transform-origin: 50% #{$spacing + $thinkness};
+      }
+
+      &--3 {
+        transform: rotate(-45deg) translateY(-$spacing - $thinkness);
+        transform-origin: 50% #{-$spacing - $thinkness};
+      }
+    }
+  }
 }
 
 .push-nav-overlay {
-    visibility: hidden;
-    opacity: 0;
-    position: absolute;
-    z-index: $zindex-push-nav-overlay;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    min-height: 100vh;
-    background: #fff;
-    transition: $push-nav-speed;
-    transition-property: visibility, opacity;
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  z-index: $zindex-push-nav-overlay;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  min-height: 100vh;
+  background: #fff;
+  transition: $push-nav-speed;
+  transition-property: visibility, opacity;
 
-    .push-nav-active & {
-        visibility: visible;
-        opacity: 0.8;
-    }
+  .push-nav-active & {
+    visibility: visible;
+    opacity: 0.8;
+  }
 }

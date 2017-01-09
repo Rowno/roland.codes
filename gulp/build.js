@@ -1,24 +1,23 @@
-'use strict';
-const Gulp = require('gulp');
-const Livereload = require('gulp-livereload');
-const RunSequence = require('run-sequence');
+'use strict'
+const gulp = require('gulp')
+const livereload = require('gulp-livereload')
+const runSequence = require('run-sequence')
 
-const Common = require('./common');
-require('./static');
-require('./metalsmith');
-require('./css');
-require('./browserify');
+const common = require('./common')
+require('./static')
+require('./metalsmith')
+require('./css')
+require('./browserify')
 
+gulp.task('build', callback => {
+  return runSequence('clean', ['static', 'metalsmith', 'css', 'browserify'], () => {
+    if (common.watch) {
+      livereload.listen({
+        key: common.privateKey,
+        cert: common.certificate
+      })
+    }
 
-Gulp.task('build', (callback) => {
-    return RunSequence('clean', ['static', 'metalsmith', 'css', 'browserify'], () => {
-        if (Common.watch) {
-            Livereload.listen({
-                key: Common.privateKey,
-                cert: Common.certificate
-            });
-        }
-
-        callback();
-    });
-});
+    callback()
+  })
+})

@@ -1,130 +1,130 @@
 .footer {
-    display: flex;
-    max-width: 1400px;
-    padding: 140px 0;
-    margin: auto;
-    color: #fff;
-    font-size: 14px;
-    text-align: center;
+  display: flex;
+  max-width: 1400px;
+  padding: 140px 0;
+  margin: auto;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
 
-    @include media('height<m-height') {
-        padding: 60px 0;
-    }
+  @include media('height<m-height') {
+    padding: 60px 0;
+  }
+
+  @include media('<700px') {
+    flex-direction: column;
+    padding: 60px $page-padding;
+  }
+
+  &__column {
+    position: relative;
+    flex: 1;
+    padding: 0 40px;
 
     @include media('<700px') {
-        flex-direction: column;
-        padding: 60px $page-padding;
+      flex-basis: auto; // Fixes IE flex-direction:column collapsing bug
+      padding: 40px 0;
+
+      &:first-child {
+        padding-top: 0;
+      }
+
+      &:last-child {
+        padding-bottom: 0;
+      }
     }
 
-    &__column {
-        position: relative;
-        flex: 1;
-        padding: 0 40px;
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      display: block;
+      width: 1px;
+      height: 180px;
+      background: #fff;
 
-        @include media('<700px') {
-            flex-basis: auto; // Fixes IE flex-direction:column collapsing bug
-            padding: 40px 0;
-
-            &:first-child {
-                padding-top: 0;
-            }
-
-            &:last-child {
-                padding-bottom: 0;
-            }
-        }
-
-        &:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            display: block;
-            width: 1px;
-            height: 180px;
-            background: #fff;
-
-            @include media('<700px') {
-                top: 0;
-                right: 0;
-                width: 50%;
-                height: 1px;
-                margin: auto;
-                transform: none;
-            }
-        }
-
-        &:first-child:before {
-            display: none;
-        }
-    }
-
-    &__heading {
-        margin-bottom: 30px;
-        font-size: 30px;
-        font-weight: $thin;
-        line-height: 1.5;
-
-        @include media('<500px') {
-            margin-bottom: 22px;
-            font-size: 24px;
-            font-weight: $light;
-        }
-    }
-
-    &__avatar {
-        width: 50px;
-        height: 50px;
-        border-radius: 100%;
-    }
-
-    &__content {
-        max-width: 420px;
+      @include media('<700px') {
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 1px;
         margin: auto;
-        margin-top: 20px;
-        line-height: 2;
+        transform: none;
+      }
     }
 
-    &__social {
-        display: inline-block;
-        margin: auto;
-        font-size: 0;
+    &:first-child:before {
+      display: none;
+    }
+  }
 
-        &:hover a {
-            opacity: 0.5;
-        }
+  &__heading {
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: $thin;
+    line-height: 1.5;
 
-        li {
-            display: inline-block;
-        }
+    @include media('<500px') {
+      margin-bottom: 22px;
+      font-size: 24px;
+      font-weight: $light;
+    }
+  }
 
-        a {
-            display: inline-block;
-            padding: 15px;
-            transition-property: opacity;
+  &__avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+  }
 
-            &:hover, &:focus {
-                opacity: 1;
-            }
-        }
+  &__content {
+    max-width: 420px;
+    margin: auto;
+    margin-top: 20px;
+    line-height: 2;
+  }
+
+  &__social {
+    display: inline-block;
+    margin: auto;
+    font-size: 0;
+
+    &:hover a {
+        opacity: 0.5;
     }
 
-    &__email {
-        display: inline-block;
-        padding: 1em 1.5em;
-        margin-top: 30px;
-        background: #fff;
-        font-size: 18px;
-        font-weight: $light;
-        letter-spacing: 0.08em;
-        line-height: 1;
-        transition: padding ease-in $transition-speed, color $theme-speed;
-
-        &:hover, &:focus {
-            padding-left: 2em;
-            padding-right: 2em;
-            transition-timing-function: cubic-bezier(0.58, 0, 0.43, 2);
-        }
+    li {
+      display: inline-block;
     }
+
+    a {
+      display: inline-block;
+      padding: 15px;
+      transition-property: opacity;
+
+      &:hover, &:focus {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__email {
+    display: inline-block;
+    padding: 1em 1.5em;
+    margin-top: 30px;
+    background: #fff;
+    font-size: 18px;
+    font-weight: $light;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    transition: padding ease-in $transition-speed, color $theme-speed;
+
+    &:hover, &:focus {
+      padding-left: 2em;
+      padding-right: 2em;
+      transition-timing-function: cubic-bezier(0.58, 0, 0.43, 2);
+    }
+  }
 }

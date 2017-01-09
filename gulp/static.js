@@ -1,22 +1,21 @@
-'use strict';
-const Changed = require('gulp-changed');
-const Gulp = require('gulp');
-const Livereload = require('gulp-livereload');
+'use strict'
+const changed = require('gulp-changed')
+const gulp = require('gulp')
+const livereload = require('gulp-livereload')
 
-const Common = require('./common');
+const common = require('./common')
 
-const taskGlob = 'app/static/**/*';
-let watching = false;
+const taskGlob = 'app/static/**/*'
+let watching = false
 
+gulp.task('static', () => {
+  if (!watching && common.watch) {
+    gulp.watch(taskGlob, ['static'])
+    watching = true
+  }
 
-Gulp.task('static', () => {
-    if (!watching && Common.watch) {
-        Gulp.watch(taskGlob, ['static']);
-        watching = true;
-    }
-
-    return Gulp.src(taskGlob)
-        .pipe(Changed(Common.dest))
-        .pipe(Gulp.dest(Common.dest, Common.mode))
-        .pipe(Livereload());
-});
+  return gulp.src(taskGlob)
+    .pipe(changed(common.dest))
+    .pipe(gulp.dest(common.dest, common.mode))
+    .pipe(livereload())
+})
