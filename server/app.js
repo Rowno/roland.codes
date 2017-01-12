@@ -11,13 +11,13 @@ app.use(helmet({
   hsts: false, // Set by Now
   contentSecurityPolicy: {
     directives: {
-      childSrc: [`'self'`, 'https://codepen.io'],
+      baseUri: [`'none'`],
       connectSrc: [`'self'`, 'https://api.github.com', 'https://api.segment.io'],
       defaultSrc: [`'self'`],
       fontSrc: [`'self'`],
       formAction: [`'self'`],
       frameAncestors: [`'self'`],
-      frameSrc: [`'self'`, 'https://codepen.io'], // Replaced by childSrc
+      frameSrc: [`'self'`, 'https://codepen.io'],
       imgSrc: ['*'],
       manifestSrc: [`'self'`],
       mediaSrc: [`'self'`],
@@ -25,6 +25,7 @@ app.use(helmet({
       reportUri: 'https://rowno.report-uri.io/r/default/csp/enforce',
       scriptSrc: [`'self'`, 'https://www.google-analytics.com', 'https://cdn.segment.com'],
       styleSrc: [`'self'`, `'unsafe-inline'`],
+      blockAllMixedContent: true,
       upgradeInsecureRequests: true
     },
     browserSniff: false
