@@ -9,8 +9,7 @@
   "scripts": {
     "start": "node server/boot.js",
     "build": "gulp build --prod",
-    "test": "xo && gulp alex",
-    "deploy": "gulp build --prod && rsync -avzh --delete --no-owner --no-group build/* vps:/var/www/roland.codes/files/"
+    "test": "xo && gulp alex"
   },
   "engines": {
     "node": "6.x.x"
