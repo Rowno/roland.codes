@@ -2,7 +2,7 @@
 const https = require('https')
 const path = require('path')
 
-const csp = require('helmet-csp')
+const helmet = require('helmet')
 const express = require('express')
 const gulp = require('gulp')
 
@@ -15,33 +15,30 @@ const PORT = 8000
 gulp.task('server', ['build'], callback => {
   const app = express()
 
-  app.use(csp({
-    childSrc: [`'self'`, 'https://codepen.io'],
-    connectSrc: [`'self'`, 'https://api.github.com', 'https://api.segment.io', 'wss://localhost:35729'],
-    defaultSrc: [`'self'`],
-    fontSrc: [`'self'`],
-    formAction: [`'self'`],
-    frameAncestors: [`'self'`],
-    frameSrc: [`'self'`, 'https://codepen.io'], // Replaced by childSrc
-    imgSrc: ['*'],
-    manifestSrc: [`'self'`],
-    mediaSrc: [`'self'`],
-    objectSrc: [`'none'`],
-    reportUri: ['https://rowno.report-uri.io/r/default/csp/enforce'],
-    scriptSrc: [`'self'`, 'https://www.google-analytics.com', 'https://cdn.segment.com', 'https://localhost:35729'],
-    styleSrc: [`'self'`, `'unsafe-inline'`],
-    upgradeInsecureRequests: []
+  app.use(helmet({
+    hsts: false, // Set by Now
+    contentSecurityPolicy: {
+      directives: {
+        baseUri: [`'none'`],
+        connectSrc: [`'self'`, 'https://api.github.com', 'https://api.segment.io', 'wss://localhost:35729'],
+        defaultSrc: [`'self'`],
+        fontSrc: [`'self'`],
+        formAction: [`'self'`],
+        frameAncestors: [`'self'`],
+        frameSrc: [`'self'`, 'https://codepen.io'],
+        imgSrc: ['*'],
+        manifestSrc: [`'self'`],
+        mediaSrc: [`'self'`],
+        objectSrc: [`'none'`],
+        reportUri: 'https://rowno.report-uri.io/r/default/csp/enforce',
+        scriptSrc: [`'self'`, 'https://www.google-analytics.com', 'https://cdn.segment.com', 'https://localhost:35729'],
+        styleSrc: [`'self'`, `'unsafe-inline'`],
+        blockAllMixedContent: true,
+        upgradeInsecureRequests: true
+      },
+      browserSniff: false
+    }
   }))
-
-  app.use((req, res, next) => {
-    res.set({
-      'X-UA-Compatible': 'IE=Edge',
-      'X-Content-Type-Options': 'nosniff',
-      'X-XSS-Protection': '1; mode=block',
-      'X-Frame-Options': 'SAMEORIGIN'
-    })
-    next()
-  })
 
   app.use(express.static('build'))
 
