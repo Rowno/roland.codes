@@ -90,9 +90,7 @@
     }
   },
   "now": {
-    "aliases": [
-      "roland.codes"
-    ],
+    "alias": "roland.codes",
     "env": {
       "NODE_ENV": "production"
     }
