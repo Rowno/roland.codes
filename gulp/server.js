@@ -16,10 +16,10 @@ gulp.task('server', ['build'], callback => {
   const app = express()
 
   app.use(helmet({
-    hsts: false, // Set by Now
     contentSecurityPolicy: {
       directives: {
         baseUri: [`'none'`],
+        blockAllMixedContent: true,
         connectSrc: [`'self'`, 'https://api.github.com', 'https://api.segment.io', 'wss://localhost:35729'],
         defaultSrc: [`'self'`],
         fontSrc: [`'self'`],
@@ -30,11 +30,10 @@ gulp.task('server', ['build'], callback => {
         manifestSrc: [`'self'`],
         mediaSrc: [`'self'`],
         objectSrc: [`'none'`],
-        reportUri: 'https://rowno.report-uri.io/r/default/csp/enforce',
         scriptSrc: [`'self'`, 'https://www.google-analytics.com', 'https://cdn.segment.com', 'https://localhost:35729'],
         styleSrc: [`'self'`, `'unsafe-inline'`],
-        blockAllMixedContent: true,
-        upgradeInsecureRequests: true
+        upgradeInsecureRequests: true,
+        workerSrc: [`'self'`]
       },
       browserSniff: false
     }
