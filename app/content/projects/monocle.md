@@ -17,4 +17,4 @@ An interactive 'monocle' (magnifying glass) that can be dragged around to reveal
 Built all the CSS and Javascript functionality of the Monocle. I built it to bring the [designer's][arlen] vision to life.
 
 
-[arlen]: http://billykick.com/
+[arlen]: https://www.arlenmccluskey.com/

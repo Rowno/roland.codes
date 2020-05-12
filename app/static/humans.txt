@@ -4,7 +4,7 @@
 # TEAM
 
     Roland Warmerdam -- Web Developer -- https://roland.codes/
-    Arlen McCluskey  -- Designer      -- http://billykick.com/
+    Arlen McCluskey  -- Designer      -- https://www.arlenmccluskey.com/
 
 # TECHNOLOGY COLOPHON
 

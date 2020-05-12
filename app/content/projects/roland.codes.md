@@ -35,4 +35,4 @@ The site was beautifully designed by [Arlen McCluskey][arlen].
 [background]: http://codepen.io/Rowno/pen/EVEgJb
 [Zeit Now]: https://zeit.co/now
 [suggestions]: https://github.com/Rowno/roland.codes/issues
-[arlen]: http://billykick.com/
+[arlen]: https://www.arlenmccluskey.com/
