@@ -1,6 +1,5 @@
-#!/usr/bin/env node
-'use strict'
-const builder = require('content-security-policy-builder')
+#!/usr/bin/env -S node -r ts-node/register/transpile-only
+import builder from 'content-security-policy-builder'
 
 const csp = builder({
   directives: {
@@ -19,8 +18,8 @@ const csp = builder({
     scriptSrc: [`'self'`, 'https://www.google-analytics.com', 'https://cdn.segment.com'],
     styleSrc: [`'self'`, `'unsafe-inline'`],
     upgradeInsecureRequests: true,
-    workerSrc: [`'self'`]
-  }
+    workerSrc: [`'self'`],
+  },
 })
 
 process.stdout.write(csp)
