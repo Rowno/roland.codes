@@ -23,7 +23,7 @@
     flex: 1;
     // 1: Fixes Firefox flexible image inside flex item bug
     max-width: 100%; // 1
-    min-width: 0;    // 1
+    min-width: 0; // 1
     min-height: 1px; // Fixes IE flex-direction:column intrinsic height bug
     margin-right: 6.3%;
 

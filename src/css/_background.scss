@@ -5,11 +5,11 @@ body {
     display: block;
     position: fixed;
     top: 0;
-    width: 100vw;  // IE/Edge
+    width: 100vw; // IE/Edge
     height: 100vh; // fallback
     width: 100vmax;
     height: 100vmax;
-    background: rgba(0,0,0,0.05);
+    background: rgba(0, 0, 0, 0.05);
     animation: background 90s linear infinite;
   }
 

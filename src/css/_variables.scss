@@ -1,4 +1,6 @@
-$breakpoints: (m-height: 800px);
+$breakpoints: (
+  m-height: 800px,
+);
 
 $media-expressions: (
   'screen': 'screen',
@@ -9,8 +11,8 @@ $media-expressions: (
   'retina': (
     'print',
     '(min-resolution: 1.25dppx)',
-    '(min-resolution: 120dpi)'
-  )
+    '(min-resolution: 120dpi)',
+  ),
 );
 
 $font-family: Roboto, 'Helvetica Neue', Helvetica, Calibri, Arial, sans-serif;

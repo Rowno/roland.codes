@@ -38,7 +38,8 @@ $theme-speed: 3.5s;
     }
 
     .themed--hover {
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         &.themed--bg,
         .themed--bg {
           background: darken($color, 5%);
@@ -59,16 +60,17 @@ $theme-speed: 3.5s;
     a:not(.themed--no-color) {
       color: $color;
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         color: darken($color, 15%);
       }
     }
   }
 }
 
-@include theme('1', #74C390);
-@include theme('2', #5DBDB6);
-@include theme('3', #59D4E1);
-@include theme('4', #51BCE8);
-@include theme('5', #FA5374);
-@include theme('6', #E46653);
+@include theme('1', #74c390);
+@include theme('2', #5dbdb6);
+@include theme('3', #59d4e1);
+@include theme('4', #51bce8);
+@include theme('5', #fa5374);
+@include theme('6', #e46653);

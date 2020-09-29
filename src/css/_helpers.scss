@@ -17,7 +17,8 @@
   width: 1px;
 
   @if $focusable {
-    &:active, &:focus {
+    &:active,
+    &:focus {
       clip: auto;
       height: auto;
       margin: 0;
@@ -32,7 +33,7 @@
 @mixin clearfix {
   &:before,
   &:after {
-    content: " ";
+    content: ' ';
     display: table;
   }
 

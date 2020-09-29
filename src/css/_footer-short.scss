@@ -40,7 +40,8 @@
       padding: 15px;
       transition-property: opacity;
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         opacity: 1;
       }
     }

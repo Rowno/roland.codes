@@ -62,7 +62,8 @@ $push-nav-speed: 0.4s;
     letter-spacing: 0.1em;
     transition: padding $transition-speed;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       padding-left: $padding + 10px;
     }
 
@@ -106,7 +107,8 @@ $push-nav-speed: 0.4s;
   padding: 30px;
   transition: opacity $transition-speed;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     outline: none;
     opacity: 1;
   }

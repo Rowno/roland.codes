@@ -12,7 +12,8 @@
     transition-property: visibility, transform;
   }
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     &:before,
     &:after {
       visibility: visible;
@@ -21,7 +22,6 @@
     }
   }
 }
-
 
 .codepen-embed {
   display: block;
