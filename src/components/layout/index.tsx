@@ -5,6 +5,8 @@ import { Header } from './header'
 import { StructuredData } from '../structured-data'
 import { BASE_URL } from '../../config'
 import { PushNav } from './push-nav'
+import { Footer } from './footer'
+import { FooterShort } from './footer-short'
 
 interface LayoutProps {
   title?: string
@@ -15,6 +17,7 @@ interface LayoutProps {
   headerWhite?: boolean
   headerShortName?: boolean
   pushNavThemed?: boolean
+  useShortFooter?: boolean
 }
 
 export const Layout: React.FC<LayoutProps> = (props) => {
@@ -28,6 +31,7 @@ export const Layout: React.FC<LayoutProps> = (props) => {
     headerWhite,
     headerShortName,
     pushNavThemed,
+    useShortFooter,
   } = props
 
   const router = useRouter()
@@ -68,6 +72,8 @@ export const Layout: React.FC<LayoutProps> = (props) => {
         <Header isWhite={headerWhite} isShortName={headerShortName} />
 
         <main role="main">{children}</main>
+
+        {useShortFooter ? <FooterShort /> : <Footer />}
 
         <div className="push-nav-overlay"></div>
       </div>

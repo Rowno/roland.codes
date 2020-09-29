@@ -1,0 +1,14 @@
+import React from 'react'
+import { SvgProps } from './types'
+
+export const TetrisIcon: React.FC<SvgProps> = (props) => {
+  return (
+    <svg width={67} height={45} viewBox="0 0 67 45" {...props}>
+      <title>Tetris</title>
+      <path
+        fill="none"
+        d="M45.142 44.043h20.394v-21.52H44.66l-.802.716v20.8h-21.68V23.32l.884-.798h19.993l.803-.638V1h-21.68v20.565l-.882.957H.5V1h20.715"
+      />
+    </svg>
+  )
+}
