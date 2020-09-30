@@ -1,25 +1,29 @@
-#!/usr/bin/env -S node -r ts-node/register/transpile-only
 import builder from 'content-security-policy-builder'
 
+const production = {
+  baseUri: [`'none'`],
+  blockAllMixedContent: true,
+  connectSrc: [`'self'`, 'https://api.github.com'],
+  defaultSrc: [`'self'`],
+  formAction: [`'self'`],
+  frameAncestors: [`'self'`],
+  frameSrc: [`'self'`, 'https://codepen.io'],
+  imgSrc: ['*'],
+  objectSrc: [`'none'`],
+  scriptSrc: [`'self'`, 'https://www.google-analytics.com'],
+  styleSrc: [`'self'`, `'unsafe-inline'`],
+  styleSrcElem: [`'self'`],
+  upgradeInsecureRequests: true,
+}
+
+const development = {
+  ...production,
+  scriptSrc: [...production.scriptSrc, `'unsafe-eval'`],
+  styleSrcElem: [...production.styleSrcElem, `'unsafe-inline'`],
+}
+
 const csp = builder({
-  directives: {
-    baseUri: [`'none'`],
-    blockAllMixedContent: true,
-    connectSrc: [`'self'`, 'https://api.github.com', 'https://api.segment.io'],
-    defaultSrc: [`'self'`],
-    fontSrc: [`'self'`],
-    formAction: [`'self'`],
-    frameAncestors: [`'self'`],
-    frameSrc: [`'self'`, 'https://codepen.io'],
-    imgSrc: ['*'],
-    manifestSrc: [`'self'`],
-    mediaSrc: [`'self'`],
-    objectSrc: [`'none'`],
-    scriptSrc: [`'self'`, 'https://www.google-analytics.com', 'https://cdn.segment.com'],
-    styleSrc: [`'self'`, `'unsafe-inline'`],
-    upgradeInsecureRequests: true,
-    workerSrc: [`'self'`],
-  },
+  directives: process.argv[2] === 'development' ? development : production,
 })
 
-process.stdout.write(csp)
+console.log(`\n${csp}\n`)

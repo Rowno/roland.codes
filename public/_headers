@@ -1,6 +1,0 @@
-/*
-  Content-Security-Policy: base-uri 'none'; block-all-mixed-content; connect-src 'self' https://api.github.com https://api.segment.io; default-src 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'self'; frame-src 'self' https://codepen.io; img-src *; manifest-src 'self'; media-src 'self'; object-src 'none'; script-src 'self' https://www.google-analytics.com https://cdn.segment.com; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests; worker-src 'self'
-  Strict-Transport-Security: max-age=31536000
-  X-Content-Type-Options: nosniff
-  X-Frame-Options: SAMEORIGIN
-  X-XSS-Protection: 1; mode=block

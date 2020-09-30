@@ -11,7 +11,10 @@
     "build": "next build && next export -o build",
     "start": "serve build",
     "test": "tsc && yarn lint",
-    "lint": "eslint '**/*.{ts,tsx}'"
+    "lint": "eslint '**/*.{ts,tsx}'",
+    "ts-node": "ts-node --compiler-options '{\"module\":\"commonjs\"}'",
+    "generate-csp-prod": "yarn ts-node tools/generate-csp.ts production",
+    "generate-csp-dev": "yarn ts-node tools/generate-csp.ts development"
   },
   "engines": {
     "node": "^12"
