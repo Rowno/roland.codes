@@ -1,4 +1,5 @@
 import React from 'react'
+import { NextPage } from 'next'
 import { BASE_URL } from '../config'
 import { Layout } from '../components/layout'
 import { StructuredData } from '../components/structured-data'
@@ -11,11 +12,15 @@ interface Project {
   logos: string[]
 }
 
-const HomePage: React.FC = () => {
+const HomePage: NextPage = () => {
   const projects: Project[] = []
 
   return (
-    <Layout>
+    <Layout
+      socialImage="/assets/content/index-social.png"
+      twitterCard="summary_large_image"
+      description={`I’m from New Zealand and I build the internets. When I’m not reading about web technologies or coding, I listen to podcasts, play computer games, watch movies and read books.`}
+    >
       <div className="hero">
         <h1 className="hero__heading">
           Front end engineer.
@@ -107,7 +112,6 @@ const HomePage: React.FC = () => {
 
       <StructuredData>
         {{
-          '@context': 'http://schema.org',
           '@type': 'BreadcrumbList',
           itemListElement: [
             {

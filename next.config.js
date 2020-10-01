@@ -1,7 +1,21 @@
+/* eslint-disable @typescript-eslint/require-await */
+
 module.exports = {
   trailingSlash: true,
+  /**
+   * @param { {[k:string]: any} } defaultPathMap
+   */
+  async exportPathMap(defaultPathMap) {
+    // Export the 404 page as `404.html` instead of `404/index.html`
+    const map = {
+      ...defaultPathMap,
+      '/404.html': { page: '/404' },
+    }
+    delete map['/404']
 
-  // eslint-disable-next-line @typescript-eslint/require-await
+    return map
+  },
+
   async headers() {
     // These headers are only used during development. See netlify.toml for the production headers
     const headers = [

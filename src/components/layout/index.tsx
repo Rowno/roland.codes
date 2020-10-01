@@ -25,7 +25,7 @@ export const Layout: React.FC<LayoutProps> = (props) => {
     children,
     title,
     description,
-    socialImage = '/assets/images/touch-icon.png',
+    socialImage,
     twitterCard = 'summary',
     noindex,
     headerWhite,
@@ -60,7 +60,7 @@ export const Layout: React.FC<LayoutProps> = (props) => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`${BASE_URL}${router.pathname}`} />
         <meta property="og:title" content={title} />
-        <meta property="og:image" content={`${BASE_URL}${socialImage}`} />
+        {socialImage && <meta property="og:image" content={`${BASE_URL}${socialImage}`} />}
         <meta property="twitter:site" content="@rowno1" />
         <meta property="twitter:creator" content="@rowno1" />
         <meta property="twitter:card" content={twitterCard} />
