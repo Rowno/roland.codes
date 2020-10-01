@@ -18,6 +18,7 @@ interface LayoutProps {
   headerShortName?: boolean
   pushNavThemed?: boolean
   useShortFooter?: boolean
+  hideFooter?: boolean
 }
 
 export const Layout: React.FC<LayoutProps> = (props) => {
@@ -32,6 +33,7 @@ export const Layout: React.FC<LayoutProps> = (props) => {
     headerShortName,
     pushNavThemed,
     useShortFooter,
+    hideFooter,
   } = props
 
   const router = useRouter()
@@ -73,7 +75,7 @@ export const Layout: React.FC<LayoutProps> = (props) => {
 
         <main role="main">{children}</main>
 
-        {useShortFooter ? <FooterShort /> : <Footer />}
+        {!hideFooter && (useShortFooter ? <FooterShort /> : <Footer />)}
 
         <div className="push-nav-overlay"></div>
       </div>

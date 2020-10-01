@@ -1,5 +1,6 @@
 import React from 'react'
 import { NextPage } from 'next'
+import Link from 'next/link'
 import { BASE_URL } from '../config'
 import { Layout } from '../components/layout'
 import { StructuredData } from '../components/structured-data'
@@ -51,24 +52,24 @@ const HomePage: NextPage = () => {
         <nav role="navigation">
           <ul className="hero__nav">
             <li>
-              <a className="line-hover themed--no-color" href="/#projects">
-                Projects
-              </a>
+              <Link href="/#projects">
+                <a className="line-hover themed--no-color">Projects</a>
+              </Link>
             </li>
             <li>
-              <a className="line-hover themed--no-color" href="/#about">
-                About
-              </a>
+              <Link href="/#about">
+                <a className="line-hover themed--no-color">About</a>
+              </Link>
             </li>
             <li>
-              <a className="line-hover themed--no-color" href="/blog/">
-                Blog
-              </a>
+              <Link href="/blog/">
+                <a className="line-hover themed--no-color">Blog</a>
+              </Link>
             </li>
             <li>
-              <a className="line-hover themed--no-color" href="/#contact">
-                Contact
-              </a>
+              <Link href="/#contact">
+                <a className="line-hover themed--no-color">Contact</a>
+              </Link>
             </li>
           </ul>
         </nav>
@@ -83,8 +84,8 @@ const HomePage: NextPage = () => {
               <div className="project-list__project__image">
                 <img
                   className="themed--bg"
-                  src="/assets/content/{{ project.path }}/home.png"
-                  srcSet="/assets/content/{{ project.path }}/home@2x.png 2x"
+                  src={`/assets/content/${project.path}}/home.png`}
+                  srcSet={`/assets/content/${project.path}}/home@2x.png 2x`}
                   alt=""
                 />
               </div>
@@ -101,9 +102,11 @@ const HomePage: NextPage = () => {
 
                 <p className="project-list__project__description">{project.description}</p>
 
-                <a className="project-list__project__link themed--no-color themed--bg" href="/{{ project.path }}/">
-                  <span className="project-list__project__link__hover">Check it out</span>
-                </a>
+                <Link href={project.path}>
+                  <a className="project-list__project__link themed--no-color themed--bg">
+                    <span className="project-list__project__link__hover">Check it out</span>
+                  </a>
+                </Link>
               </div>
             </section>
           ))}

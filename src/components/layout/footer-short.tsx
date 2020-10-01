@@ -1,11 +1,14 @@
 import React from 'react'
+import Link from 'next/link'
 
 export const FooterShort: React.FC = () => {
   return (
     <div className="footer-short">
-      <a className="footer-short__name themed--no-color" href="/" rel="home">
-        Roland Warmerdam
-      </a>
+      <Link href="/">
+        <a className="footer-short__name themed--no-color" rel="home">
+          Roland Warmerdam
+        </a>
+      </Link>
 
       <ul className="footer-short__social">
         <li>
