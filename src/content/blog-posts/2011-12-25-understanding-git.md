@@ -1,5 +1,4 @@
 ---
-layout: blog-post.html
 title: Understanding Git
 commentsIssueId: 5
 ---

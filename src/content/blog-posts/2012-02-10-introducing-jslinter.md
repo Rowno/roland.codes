@@ -1,5 +1,4 @@
 ---
-layout: blog-post.html
 title: Introducing JSLinter!
 commentsIssueId: 8
 ---
@@ -14,11 +13,10 @@ Because JSLinter was only a simple addon, I decided to create it using Mozilla'
 
 However, because JSLinter is only a simple addon, it may not be able to detect all the Javascript files on a web page if the website is using a script loader. This is because some script loaders don't leave `<script>` tags in the DOM (internally JSLinter just calls `document.querySelectorAll('script')` on the target page).
 
-JSLinter is available for download at [addons.mozilla.org][JSLinter] and it's source code is available at [Github][] (pull requests are welcome). I hope you find it useful! :)
+JSLinter is available for download at [addons.mozilla.org][jslinter] and it's source code is available at [Github][] (pull requests are welcome). I hope you find it useful! :)
 
-
-[SublimeLinter]: https://github.com/SublimeLinter/SublimeLinter
+[sublimelinter]: https://github.com/SublimeLinter/SublimeLinter
 [grunt-contrib-jshint]: https://github.com/gruntjs/grunt-contrib-jshint
-[JSLinter]: https://addons.mozilla.org/addon/jslinter?src=external-roland.codes
-[Addon SDK]: https://addons.mozilla.org/developers/builder
-[Github]: https://github.com/Rowno/jslinter
+[jslinter]: https://addons.mozilla.org/addon/jslinter?src=external-roland.codes
+[addon sdk]: https://addons.mozilla.org/developers/builder
+[github]: https://github.com/Rowno/jslinter

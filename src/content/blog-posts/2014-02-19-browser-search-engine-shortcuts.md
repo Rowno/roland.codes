@@ -1,5 +1,4 @@
 ---
-layout: blog-post.html
 title: Browser search engine shortcuts
 commentsIssueId: 22
 ---
@@ -15,9 +14,11 @@ The first input is the name of the search engine. This can be anything you want 
 The second input is the keyword that triggers the search engine. Choose something tiny to minimise repetitive typing.
 
 The third input is the URL of the search engine. For this use this URL:
+
 ```
 http://www.google.com/search?btnI&q=site:[domain]%20%s
 ```
+
 Replacing `[domain]` with the domain of the website you want to search over. Press <kbd><kbd>Enter</kbd></kbd> to save the search engine.
 
 Now you'll be able to perform a quick search of your chosen website by entering the keyword followed by a query in the URL bar.

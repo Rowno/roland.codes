@@ -1,17 +1,15 @@
 ---
-layout: project.html
 title: roland.codes
 socialImage: /assets/content/projects/roland.codes/social.png
 twitterCard: summary_large_image
-order: 2
-logos: [ html, css, js, node ]
+logos: [html, css, js, node]
 links:
-    - name: GitHub
-      url: https://github.com/Rowno/roland.codes
-    - name: Website
-      url: https://roland.codes/
+  - name: GitHub
+    url: https://github.com/Rowno/roland.codes
+  - name: Website
+    url: https://roland.codes/
 description: >
-    Personal site & blog. Everything from the global color shifting effect to the beautiful ultra-optimized code under the hood.
+  Personal site & blog. Everything from the global color shifting effect to the beautiful ultra-optimized code under the hood.
 ---
 
 This website is designed and built to push the envelope in a number of ways.
@@ -30,9 +28,8 @@ I’m always improving the site and [suggestions are welcome][suggestions]. ;)
 
 The site was beautifully designed by [Arlen McCluskey][arlen].
 
-
 [theme]: https://github.com/Rowno/roland.codes/blob/master/app/assets/css/components/_theme.scss
 [background]: http://codepen.io/Rowno/pen/EVEgJb
-[Zeit Now]: https://zeit.co/now
+[zeit now]: https://zeit.co/now
 [suggestions]: https://github.com/Rowno/roland.codes/issues
 [arlen]: https://www.arlenmccluskey.com/

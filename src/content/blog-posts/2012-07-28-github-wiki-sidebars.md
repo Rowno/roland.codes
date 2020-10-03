@@ -1,5 +1,4 @@
 ---
-layout: blog-post.html
 title: GitHub Wiki sidebars
 commentsIssueId: 13
 ---
@@ -15,6 +14,5 @@ Once you're done, don't forget to commit and push the changes back to GitHub.
 This feature is actually inherited [Gollum][], GitHub Wiki's underlying wiki engine. GitHub Wiki has couple of other hidden features as well, such as header and footer includes, so be sure to checkout [Gollum][] to find out what GitHub Wikis are truly capable of.
 
 Interestingly though, once you've created a sidebar, GitHub displays a textarea for editing it's content on the edit page of the pages it's displayed on.
-
 
 [gollum]: https://github.com/github/gollum

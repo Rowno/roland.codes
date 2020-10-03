@@ -26,6 +26,7 @@
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
+    "@types/markdown-it": "^10.0.2",
     "@types/node": "^12",
     "@types/react": "^16.9.49",
     "@typescript-eslint/eslint-plugin": "^4.2.0",
@@ -35,6 +36,8 @@
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-react": "^7.21.2",
     "eslint-plugin-react-hooks": "^4.1.2",
+    "front-matter": "^4.0.2",
+    "markdown-it": "^11.0.1",
     "prettier": "^2.1.2",
     "sass": "^1.26.11",
     "schema-dts": "^0.7.1",

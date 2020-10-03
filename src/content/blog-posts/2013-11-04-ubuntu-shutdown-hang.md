@@ -1,5 +1,4 @@
 ---
-layout: blog-post.html
 title: Ubuntu shutdown hang
 commentsIssueId: 19
 ---

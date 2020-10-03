@@ -1,21 +1,25 @@
 import React from 'react'
-import { NextPage } from 'next'
+import { NextPage, GetStaticProps, InferGetStaticPropsType as InferProps } from 'next'
 import Link from 'next/link'
 import { BASE_URL } from '../config'
 import { Layout } from '../components/layout'
 import { StructuredData } from '../components/structured-data'
 import { HtmlIcon, CssIcon, NodeIcon, LinuxIcon, GitIcon, TetrisIcon, icons } from '../components/icons'
+import { loadProjects, Project } from '../content-loader'
 
-interface Project {
-  title: string
-  description: string
-  path: string
-  logos: string[]
+interface HomePageProps {
+  projects: Project[]
 }
 
-const HomePage: NextPage = () => {
-  const projects: Project[] = []
+export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
+  return {
+    props: {
+      projects: await loadProjects(),
+    },
+  }
+}
 
+const HomePage: NextPage<InferProps<typeof getStaticProps>> = ({ projects }) => {
   return (
     <Layout
       socialImage="/assets/content/index-social.png"
@@ -80,12 +84,12 @@ const HomePage: NextPage = () => {
           <h2 className="project-list__heading">Projects</h2>
 
           {projects.map((project) => (
-            <section key={project.path} className="project-list__project">
+            <section key={project.slug} className="project-list__project">
               <div className="project-list__project__image">
                 <img
                   className="themed--bg"
-                  src={`/assets/content/${project.path}}/home.png`}
-                  srcSet={`/assets/content/${project.path}}/home@2x.png 2x`}
+                  src={`/assets/content/projects/${project.slug}/home.png`}
+                  srcSet={`/assets/content/projects/${project.slug}/home@2x.png 2x`}
                   alt=""
                 />
               </div>
@@ -94,7 +98,7 @@ const HomePage: NextPage = () => {
                 <h3 className="project-list__project__heading">{project.title}</h3>
 
                 <div className="project-list__project__logos">
-                  {project.logos.map((logoName) => {
+                  {project.logos?.map((logoName) => {
                     const Icon = icons[logoName]
                     return <Icon key={logoName} className="themed--stroke" />
                   })}
@@ -102,7 +106,7 @@ const HomePage: NextPage = () => {
 
                 <p className="project-list__project__description">{project.description}</p>
 
-                <Link href={project.path}>
+                <Link href={`/projects/${project.slug}/`}>
                   <a className="project-list__project__link themed--no-color themed--bg">
                     <span className="project-list__project__link__hover">Check it out</span>
                   </a>

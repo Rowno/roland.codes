@@ -1,5 +1,4 @@
 ---
-layout: blog-post.html
 title: Auto indent on paste in Sublime Text 2
 commentsIssueId: 16
 ---
@@ -8,10 +7,11 @@ One thing that I find annoying when developing in Sublime Text 2 is that when yo
 
 ```json
 [
-    { "keys": ["ctrl+shift+v"], "command": "paste" },
-    { "keys": ["ctrl+v"], "command": "paste_and_indent" }
+  { "keys": ["ctrl+shift+v"], "command": "paste" },
+  { "keys": ["ctrl+v"], "command": "paste_and_indent" }
 ]
 ```
+
 (You'll of course want to change `ctrl` to `super` on Mac)
 
 Now Sublime automatically corrects the indentation of everything I paste! :)

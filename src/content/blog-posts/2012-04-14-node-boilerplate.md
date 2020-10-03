@@ -1,5 +1,4 @@
 ---
-layout: blog-post.html
 title: Node Boilerplate
 commentsIssueId: 10
 ---

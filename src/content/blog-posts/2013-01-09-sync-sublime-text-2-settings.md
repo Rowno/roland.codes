@@ -1,11 +1,9 @@
 ---
-layout: blog-post.html
 title: Sync Sublime Text 2 settings
 commentsIssueId: 15
 ---
 
-These days I find myself developing from multiple computers / operating systems (Linux at home vs Mac at work) and I found it frustrating having to manually keep my Sublime Text 2 settings and  packages in sync on every computer that I use. However I recently discovered that it's actually quite easy to sync the Sublime Text 2 setting files between computers using Dropbox and some symbolic links. This works because the Sublime Text 2 setting files are the same across all operating systems. Below is how I set this up.
-
+These days I find myself developing from multiple computers / operating systems (Linux at home vs Mac at work) and I found it frustrating having to manually keep my Sublime Text 2 settings and packages in sync on every computer that I use. However I recently discovered that it's actually quite easy to sync the Sublime Text 2 setting files between computers using Dropbox and some symbolic links. This works because the Sublime Text 2 setting files are the same across all operating systems. Below is how I set this up.
 
 On the primary computer, create a symbolic link from the Sublime Text 2 `Packages` directory to a location in the Dropbox directory.
 

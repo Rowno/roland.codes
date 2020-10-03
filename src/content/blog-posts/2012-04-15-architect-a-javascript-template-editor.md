@@ -1,5 +1,4 @@
 ---
-layout: blog-post.html
 title: Architect, a Javascript template editor
 commentsIssueId: 11
 ---
@@ -14,8 +13,8 @@ More information about Architect and it's source code is available at [GitHub][
 
 As always, pull requests are welcome. :)
 
-[Architect]: http://rowno.github.io/architect/
-[Ace]: https://github.com/ajaxorg/ace
-[HTML5 Boilerplate]: http://html5boilerplate.com/
-[Twitter Bootstrap]: http://twitter.github.com/bootstrap/
-[GitHub]: https://github.com/Rowno/architect
+[architect]: http://rowno.github.io/architect/
+[ace]: https://github.com/ajaxorg/ace
+[html5 boilerplate]: http://html5boilerplate.com/
+[twitter bootstrap]: http://twitter.github.com/bootstrap/
+[github]: https://github.com/Rowno/architect

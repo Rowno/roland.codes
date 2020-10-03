@@ -1,5 +1,4 @@
 ---
-layout: blog-post.html
 title: Addon SDK double keyboard events bug
 commentsIssueId: 3
 ---
@@ -8,4 +7,4 @@ Recently, while I was adding keyboard navigation support to an addon, I discover
 
 In the meantime, I found a workaround which is to call `event.preventDefault()` on the keyboard event, which prevents the second event from firing for some reason.
 
-[Bug 707623]: https://bugzilla.mozilla.org/show_bug.cgi?id=707623
+[bug 707623]: https://bugzilla.mozilla.org/show_bug.cgi?id=707623

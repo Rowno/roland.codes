@@ -1,5 +1,4 @@
 ---
-layout: blog-post.html
 title: Host your own website on a GitHub subdomain
 commentsIssueId: 2
 ---
@@ -12,4 +11,4 @@ GitHub Pages is designed to be used for hosting documentation for your projects,
 
 It's also possible to get GitHub to automatically build project sites for a specific repository in a sub directory of your subdomain by creating a special branch in that repository. For more information about this feature and others, visit the [GitHub Pages][] home page.
 
-[GitHub Pages]: http://pages.github.com/
+[github pages]: http://pages.github.com/

@@ -1,5 +1,4 @@
 ---
-layout: blog-post.html
 title: IE flex collapse bug
 commentsIssueId: 20
 ---

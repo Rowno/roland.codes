@@ -1,5 +1,4 @@
 ---
-layout: blog-post.html
 title: VMWare to VirtualBox
 commentsIssueId: 9
 ---
@@ -8,5 +7,5 @@ Recently I had to run a VMWare VM in VirtualBox (because open source rocks ;))
 
 Below are solutions to some problems I had when trying to run the VM:
 
- * If the VM doesn't start, try enabling the `Enable IO APIC` option in the System settings.
- * If the VM's network doesn't work, try selecting the `Intel PRO/1000 T Server` Adapter Type under Advanced in the Network settings.
+- If the VM doesn't start, try enabling the `Enable IO APIC` option in the System settings.
+- If the VM's network doesn't work, try selecting the `Intel PRO/1000 T Server` Adapter Type under Advanced in the Network settings.

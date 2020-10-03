@@ -1,5 +1,4 @@
 ---
-layout: blog-post.html
 title: Disable the Addon Bar context menu on Addon SDK widgets
 commentsIssueId: 4
 ---
@@ -15,9 +14,13 @@ If you've tried adding right click support to a widget when using Mozilla's [Add
 Just add the following code to your widget's content script to prevent a context menu from showing when right clicking on your widget:
 
 ```javascript
-this.addEventListener('contextmenu', function (event) {
-    event.preventDefault();
-}, false);
+this.addEventListener(
+  'contextmenu',
+  function (event) {
+    event.preventDefault()
+  },
+  false
+)
 ```
 
-[Addon SDK]: https://addons.mozilla.org/en-US/developers/builder
+[addon sdk]: https://addons.mozilla.org/en-US/developers/builder
