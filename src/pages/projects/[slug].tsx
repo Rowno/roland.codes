@@ -4,7 +4,7 @@ import { Layout } from '../../components/layout'
 import { StructuredData } from '../../components/structured-data'
 import { BASE_URL } from '../../config'
 import { icons } from '../../components/icons'
-import { loadProjects, Project } from '../../content-loader'
+import { loadProjectSlugs, loadProjectBySlug, Project } from '../../project-loader'
 
 interface Params {
   slug: string
@@ -12,13 +12,13 @@ interface Params {
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const projects = await loadProjects()
+  const slugs = await loadProjectSlugs()
 
   return {
     fallback: false,
-    paths: projects.map((project) => ({
+    paths: slugs.map((slug) => ({
       params: {
-        slug: project.slug,
+        slug,
       },
     })),
   }
@@ -27,8 +27,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 export const getStaticProps: GetStaticProps<Project, Params> = async (context) => {
   const slug = context.params?.slug ?? '404'
 
-  const projects = await loadProjects()
-  const project = projects.find((project) => project.slug === slug)
+  const project = await loadProjectBySlug(slug)
   if (!project) {
     throw new Error(`Project '${slug}' not found`)
   }

@@ -5,37 +5,37 @@ import MarkdownIt from 'markdown-it'
 
 const markdownParser = new MarkdownIt()
 
+export async function listFilePaths(directoryPath: string): Promise<string[]> {
+  const files = await fs.readdir(directoryPath, { withFileTypes: true })
+  const onlyFiles = files.filter((file) => file.isFile())
+  return onlyFiles.map((file) => path.join(directoryPath, file.name))
+}
+
 interface File<M> {
-  fileName: string
+  filePath: string
   metadata: M
   contents: string
 }
 
-async function loadFiles<M>(directoryPath: string): Promise<File<M>[]> {
-  const files = await fs.readdir(directoryPath, { withFileTypes: true })
-  const onlyFiles = files.filter((file) => file.isFile())
+export async function loadFile<M>(filePath: string): Promise<File<M>> {
+  const fileData = await fs.readFile(filePath, { encoding: 'utf8' })
+  const fileFrontMatter = frontMatter(fileData)
 
-  return Promise.all(
-    onlyFiles.map(async (file) => {
-      const fileData = await fs.readFile(path.join(directoryPath, file.name), { encoding: 'utf8' })
-      const fileFrontMatter = frontMatter(fileData)
-
-      return {
-        fileName: file.name,
-        metadata: fileFrontMatter.attributes as M,
-        contents: markdownParser.render(fileFrontMatter.body),
-      }
-    })
-  )
+  return {
+    filePath,
+    metadata: fileFrontMatter.attributes as M,
+    contents: markdownParser.render(fileFrontMatter.body),
+  }
 }
 
-interface ParsedFileName {
+interface ParsedFilePath {
+  filePath: string
   slug: string
   prefix: string
 }
 
-function parseFileName(fileName: string, prefixRegex: RegExp): ParsedFileName | undefined {
-  const { name } = path.parse(fileName)
+export function parseFilePath(filePath: string, prefixRegex: RegExp): ParsedFilePath | undefined {
+  const { name } = path.parse(filePath)
   const result = prefixRegex.exec(name)
   if (!result) {
     return
@@ -47,47 +47,25 @@ function parseFileName(fileName: string, prefixRegex: RegExp): ParsedFileName | 
   }
 
   return {
+    filePath,
     prefix,
     slug: name.replace(result[0], ''),
   }
 }
 
-interface ProjectMetadata {
-  title: string
-  description: string
-  twitterCard: 'summary' | 'summary_large_image'
-  socialImage: string
-  links: Link[]
-  logos?: string[]
-}
-
-export interface Project extends ProjectMetadata {
+export async function findFileBySlug(
+  directoryPath: string,
+  prefixRegex: RegExp,
   slug: string
-  contents: string
-}
+): Promise<string | undefined> {
+  const filePaths = await listFilePaths(directoryPath)
 
-export interface Link {
-  name: string
-  url: string
-}
-
-export async function loadProjects(): Promise<Project[]> {
-  const files = await loadFiles<ProjectMetadata>(path.resolve('src/content/projects'))
-
-  const projects: Project[] = []
-
-  for (const file of files) {
-    const parsedFileName = parseFileName(file.fileName, /^([0-9]+)-/)
-    if (!parsedFileName) {
-      continue
+  return filePaths.find((filePath) => {
+    const parsedFilePath = parseFilePath(filePath, prefixRegex)
+    if (!parsedFilePath) {
+      return false
     }
 
-    projects.push({
-      ...file.metadata,
-      slug: parsedFileName.slug,
-      contents: file.contents,
-    })
-  }
-
-  return projects
+    return parsedFilePath.slug === slug
+  })
 }

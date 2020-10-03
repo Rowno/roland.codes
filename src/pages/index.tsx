@@ -5,16 +5,24 @@ import { BASE_URL } from '../config'
 import { Layout } from '../components/layout'
 import { StructuredData } from '../components/structured-data'
 import { HtmlIcon, CssIcon, NodeIcon, LinuxIcon, GitIcon, TetrisIcon, icons } from '../components/icons'
-import { loadProjects, Project } from '../content-loader'
+import { loadProjects, Project } from '../project-loader'
+
+type MinimalProject = Pick<Project, 'title' | 'description' | 'slug' | 'logos'>
 
 interface HomePageProps {
-  projects: Project[]
+  projects: MinimalProject[]
 }
 
 export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
+  const projects = await loadProjects()
   return {
     props: {
-      projects: await loadProjects(),
+      projects: projects.map((project) => ({
+        title: project.title,
+        description: project.description,
+        slug: project.slug,
+        logos: project.logos ?? null,
+      })),
     },
   }
 }
