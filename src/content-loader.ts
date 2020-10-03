@@ -3,7 +3,7 @@ import path from 'path'
 import frontMatter from 'front-matter'
 import MarkdownIt from 'markdown-it'
 
-const markdownParser = new MarkdownIt()
+const markdownParser = new MarkdownIt({ html: true, linkify: true })
 
 export async function listFilePaths(directoryPath: string): Promise<string[]> {
   const files = await fs.readdir(directoryPath, { withFileTypes: true })

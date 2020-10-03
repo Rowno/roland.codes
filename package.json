@@ -26,11 +26,13 @@
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
+    "@types/cheerio": "^0.22.22",
     "@types/markdown-it": "^10.0.2",
     "@types/node": "^12",
     "@types/react": "^16.9.49",
     "@typescript-eslint/eslint-plugin": "^4.2.0",
     "@typescript-eslint/parser": "^4.2.0",
+    "cheerio": "^1.0.0-rc.3",
     "content-security-policy-builder": "^2.1.0",
     "eslint": "^7.9.0",
     "eslint-config-prettier": "^6.12.0",
