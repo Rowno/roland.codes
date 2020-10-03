@@ -7,7 +7,8 @@ const BLOG_POST_PATH = path.resolve('src/content/blog-posts')
 
 interface BlogPostMetadata {
   title: string
-  commentsIssueId: string
+  description?: string
+  commentsIssueId: number
 }
 
 export interface BlogPost extends BlogPostMetadata {
