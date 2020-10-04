@@ -1,4 +1,5 @@
-'use strict'
+export {}
+
 const DISTANCE = 300
 const EXPLODE_PARTICLES = 20
 const IMAGE_SIZE = 32
@@ -8,7 +9,7 @@ let triggerPosition = 0
 let activated = false
 let mouseX = 0
 let mouseY = 0
-let overlay
+let overlay: HTMLDivElement
 
 const STYLES = `
 .rolee {
@@ -25,59 +26,30 @@ const STYLES = `
 .rolee__wrapper {
   opacity: 1;
   position: absolute;
-  -webkit-transition: opacity 2s cubic-bezier(0.95, 0.05, 0.795, 0.035),
-                      -webkit-transform 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-          transition: opacity 2s cubic-bezier(0.95, 0.05, 0.795, 0.035),
-                      transform 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: opacity 2s cubic-bezier(0.95, 0.05, 0.795, 0.035),
+              transform 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .rolee img {
   max-width: none;
-  -webkit-animation: 1s steps(1) infinite rolee;
-          animation: 1s steps(1) infinite rolee;
-}
-
-@-webkit-keyframes rolee {
-  0% {
-    -webkit-transform: none;
-            transform: none;
-  }
-
-  25% {
-    -webkit-transform: rotate(10deg);
-            transform: rotate(10deg);
-  }
-
-  50% {
-    -webkit-transform: rotate(-10deg);
-            transform: rotate(-10deg);
-  }
-
-  75% {
-    -webkit-transform: rotateY(180deg);
-            transform: rotateY(180deg);
-  }
+  animation: 1s steps(1) infinite rolee;
 }
 
 @keyframes rolee {
   0% {
-    -webkit-transform: none;
-            transform: none;
+    transform: none;
   }
 
   25% {
-    -webkit-transform: rotate(10deg);
-            transform: rotate(10deg);
+    transform: rotate(10deg);
   }
 
   50% {
-    -webkit-transform: rotate(-10deg);
-            transform: rotate(-10deg);
+    transform: rotate(-10deg);
   }
 
   75% {
-    -webkit-transform: rotateY(180deg);
-            transform: rotateY(180deg);
+    transform: rotateY(180deg);
   }
 }
 `
@@ -85,12 +57,12 @@ const STYLES = `
 function randomCoordinate() {
   const min = -DISTANCE
   const max = DISTANCE
-  return (Math.random() * (max - min)) + min
+  return Math.random() * (max - min) + min
 }
 
 function injectImage() {
-  const startX = mouseX - (IMAGE_SIZE / 2)
-  const startY = mouseY - (IMAGE_SIZE / 2)
+  const startX = mouseX - IMAGE_SIZE / 2
+  const startY = mouseY - IMAGE_SIZE / 2
   const destX = randomCoordinate()
   const destY = randomCoordinate()
 
@@ -154,23 +126,33 @@ function activate() {
   document.addEventListener('mousedown', explode, false)
 
   // Capture relative mouse coordinates
-  document.addEventListener('mousemove', e => {
-    mouseX = e.pageX - document.body.scrollLeft
-    mouseY = e.pageY - document.body.scrollTop
-  }, false)
+  document.addEventListener(
+    'mousemove',
+    (e) => {
+      mouseX = e.pageX - document.body.scrollLeft
+      mouseY = e.pageY - document.body.scrollTop
+    },
+    false
+  )
 }
 
-document.addEventListener('keypress', e => {
-  // Match entered characters to trigger phrase
-  if (String.fromCharCode(e.charCode).toLowerCase() === TRIGGER_PHRASE[triggerPosition]) {
-    triggerPosition += 1
-  } else {
-    triggerPosition = 0
-  }
+if (typeof window !== 'undefined') {
+  document.addEventListener(
+    'keypress',
+    (e) => {
+      // Match entered characters to trigger phrase
+      if (e.key === TRIGGER_PHRASE[triggerPosition]) {
+        triggerPosition += 1
+      } else {
+        triggerPosition = 0
+      }
 
-  if (triggerPosition === TRIGGER_PHRASE.length) {
-    triggerPosition = 0
-    activate()
-    explode()
-  }
-}, false)
+      if (triggerPosition === TRIGGER_PHRASE.length) {
+        triggerPosition = 0
+        activate()
+        explode()
+      }
+    },
+    false
+  )
+}
