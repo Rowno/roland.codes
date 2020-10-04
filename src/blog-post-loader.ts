@@ -25,13 +25,35 @@ async function loadBlogPost(filePath: string): Promise<BlogPost | undefined> {
     return
   }
 
-  const $ = cheerio.load(file.contents)
-  const excerpt = $.html('p:first-child').trim() ?? ''
+  let contents = file.contents
+  const $ = cheerio.load(contents)
+  const excerpt = $.html('p:first-child').trim()
+
+  const codepen = $('.codepen')
+  if (codepen.length) {
+    const id = codepen.data('id') as string | undefined
+    const height = codepen.data('height') as number | undefined
+
+    if (id && height) {
+      codepen.replaceWith(`
+        <iframe
+          class="codepen-embed"
+          src="https://codepen.io/anon/embed/${id}?height=${height}&amptheme-id=17006&ampdefault-tab=result"
+          height="${height}"
+          scrolling="no"
+          frameborder="0"
+          allowtransparency="true"
+          allowfullscreen="true"></iframe>
+      `)
+
+      contents = $.html()
+    }
+  }
 
   return {
     ...file.metadata,
     slug: parsedFilePath.slug,
-    contents: file.contents,
+    contents,
     date: new Date(parsedFilePath.prefix).getTime(),
     excerpt,
   }

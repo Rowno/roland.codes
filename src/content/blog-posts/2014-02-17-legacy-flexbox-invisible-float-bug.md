@@ -11,9 +11,6 @@ Luckily I chanced on a hack that fixes the bug. All you have to do is give the f
 
 This bug affects legacy Flexbox in all Webkit browsers. Which includes Chrome 20-, Safari 6-, iOS 6.1- and Android 4.3-.
 
-<p class="codepen" data-id="rhlfd" data-height="350">
-    See the demo:
-    <a href="/demos/legacy-flexbox-invisible-float-bug/">
-        Legacy flexbox invisible float bug fix
-    </a>.
+<p class="codepen" data-id="rhlfd" data-height="380">
+  See the demo: <a href="/demos/legacy-flexbox-invisible-float-bug/">Legacy flexbox invisible float bug fix</a>
 </p>
