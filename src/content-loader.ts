@@ -2,8 +2,19 @@ import { promises as fs } from 'fs'
 import path from 'path'
 import frontMatter from 'front-matter'
 import MarkdownIt from 'markdown-it'
+import highlightjs from 'highlight.js'
 
-const markdownParser = new MarkdownIt({ html: true, linkify: true })
+const markdownParser = new MarkdownIt({
+  html: true,
+  linkify: true,
+  highlight: function (code, language) {
+    if (language && highlightjs.getLanguage(language)) {
+      return highlightjs.highlight(language, code).value
+    } else {
+      return highlightjs.highlightAuto(code).value
+    }
+  },
+})
 
 export async function listFilePaths(directoryPath: string): Promise<string[]> {
   const files = await fs.readdir(directoryPath, { withFileTypes: true })
