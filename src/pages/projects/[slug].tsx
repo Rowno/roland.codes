@@ -59,6 +59,7 @@ const ProjectPage: NextPage<InferProps<typeof getStaticProps>> = (props) => {
                 src={`/assets/content/projects/${slug}/large.png`}
                 srcSet={`/assets/content/projects/${slug}/large@2x.png 2x`}
                 alt=""
+                loading="lazy"
               />
             </div>
 

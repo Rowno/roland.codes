@@ -23,6 +23,7 @@ export const Comment: React.FC<CommentProps> = (props) => {
             src={`${avatarUrl}&amp;s=30&amp;r=g`}
             srcSet={`${avatarUrl}&amp;s=60&amp;r=g 2x`}
             alt=""
+            loading="lazy"
           />
 
           <span className="blog-post__comment__name">{userName}</span>
