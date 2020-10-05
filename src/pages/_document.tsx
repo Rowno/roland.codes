@@ -6,8 +6,20 @@ class CustomDocument extends Document {
     return (
       <Html lang="en" className="theme--1 preload">
         <Head>
-          <link rel="preload" href="/assets/fonts/roboto-thin.woff2" as="font" type="font/woff2" />
-          <link rel="preload" href="/assets/fonts/roboto-light.woff2" as="font" type="font/woff2" />
+          <link
+            rel="preload"
+            href="/assets/fonts/roboto-thin.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/assets/fonts/roboto-light.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
         </Head>
 
         <body className="themed--bg">
