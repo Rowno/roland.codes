@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { Header } from './header'
 import { StructuredData } from '../structured-data'
 import { BASE_URL } from '../../config'
-import { PushNav } from './push-nav'
+import { PushNav, PushNavProject } from './push-nav'
 import { Footer } from './footer'
 import { FooterShort } from './footer-short'
 
@@ -19,6 +19,7 @@ interface LayoutProps {
   pushNavThemed?: boolean
   useShortFooter?: boolean
   hideFooter?: boolean
+  projects?: PushNavProject[]
 }
 
 export const Layout: React.FC<LayoutProps> = (props) => {
@@ -34,6 +35,7 @@ export const Layout: React.FC<LayoutProps> = (props) => {
     pushNavThemed,
     useShortFooter,
     hideFooter,
+    projects,
   } = props
 
   const router = useRouter()
@@ -80,7 +82,7 @@ export const Layout: React.FC<LayoutProps> = (props) => {
         <div className="push-nav-overlay"></div>
       </div>
 
-      <PushNav isThemed={pushNavThemed} />
+      <PushNav isThemed={pushNavThemed} projects={projects} />
 
       <StructuredData>
         {{

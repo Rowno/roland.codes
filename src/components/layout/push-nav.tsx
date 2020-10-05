@@ -11,7 +11,7 @@ interface NavLinkProps {
 const NavLink: React.FC<NavLinkProps> = ({ children, href, isSecondary, activePath }) => {
   const router = useRouter()
   const levelClass = isSecondary ? 'push-nav__link--secondary' : 'push-nav__link--primary'
-  const activeClass = `${router.pathname}/`.startsWith(activePath || href) ? 'push-nav__link--active' : ''
+  const activeClass = router.asPath.startsWith(activePath || href) ? 'push-nav__link--active' : ''
 
   return (
     <Link href={href}>
@@ -22,14 +22,14 @@ const NavLink: React.FC<NavLinkProps> = ({ children, href, isSecondary, activePa
   )
 }
 
-interface Project {
+export interface PushNavProject {
   title: string
   slug: string
 }
 
 interface PushNavProps {
   isThemed?: boolean
-  projects?: Project[]
+  projects?: PushNavProject[]
 }
 
 export const PushNav: React.FC<PushNavProps> = ({ isThemed, projects = [] }) => {

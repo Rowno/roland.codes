@@ -4,7 +4,8 @@ import { Layout } from '../../components/layout'
 import { StructuredData } from '../../components/structured-data'
 import { BASE_URL } from '../../config'
 import { icons } from '../../components/icons'
-import { loadProjectSlugs, loadProjectBySlug, Project } from '../../project-loader'
+import { loadProjectSlugs, loadProjectBySlug, Project, loadProjects } from '../../project-loader'
+import { PushNavProject } from '../../components/layout/push-nav'
 
 interface Params {
   slug: string
@@ -24,31 +25,39 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps<Project, Params> = async (context) => {
+interface ProjectPageProps {
+  project: Project
+  projects?: PushNavProject[]
+}
+
+export const getStaticProps: GetStaticProps<ProjectPageProps, Params> = async (context) => {
   const slug = context.params?.slug ?? '404'
 
-  const project = await loadProjectBySlug(slug)
+  const [project, projects] = await Promise.all([loadProjectBySlug(slug), loadProjects()])
   if (!project) {
     throw new Error(`Project '${slug}' not found`)
   }
 
   return {
-    props: project,
+    props: {
+      project,
+      // Only embed the minimum required data on the page
+      projects: projects.map((p) => ({ title: p.title, slug: p.slug })),
+    },
   }
 }
 
-const ProjectPage: NextPage<InferProps<typeof getStaticProps>> = (props) => {
-  const { title, slug, contents, description, twitterCard, socialImage, logos, links } = props
-
+const ProjectPage: NextPage<InferProps<typeof getStaticProps>> = ({ project, projects }) => {
   return (
     <Layout
-      title={title}
-      description={description}
-      twitterCard={twitterCard}
-      socialImage={socialImage}
+      title={project.title}
+      description={project.description}
+      twitterCard={project.twitterCard}
+      socialImage={project.socialImage}
       headerWhite
       headerShortName
       pushNavThemed
+      projects={projects}
     >
       <div className="project-detail">
         <div className="project-detail__wrapper">
@@ -56,29 +65,29 @@ const ProjectPage: NextPage<InferProps<typeof getStaticProps>> = (props) => {
             <div className="project-detail__image">
               <img
                 className="themed--bg"
-                src={`/assets/content/projects/${slug}/large.png`}
-                srcSet={`/assets/content/projects/${slug}/large@2x.png 2x`}
+                src={`/assets/content/projects/${project.slug}/large.png`}
+                srcSet={`/assets/content/projects/${project.slug}/large@2x.png 2x`}
                 alt=""
                 loading="lazy"
               />
             </div>
 
             <div className="project-detail__text">
-              <h1 className="project-detail__heading">{title}</h1>
+              <h1 className="project-detail__heading">{project.title}</h1>
 
-              {logos && (
+              {project.logos && (
                 <div className="project-detail__logos">
-                  {logos.map((logoName) => {
+                  {project.logos.map((logoName) => {
                     const Icon = icons[logoName]
                     return <Icon key={logoName} className="themed--stroke" />
                   })}
                 </div>
               )}
 
-              <div className="project-detail__description" dangerouslySetInnerHTML={{ __html: contents }}></div>
+              <div className="project-detail__description" dangerouslySetInnerHTML={{ __html: project.contents }}></div>
 
               <ul className="project-detail__links">
-                {links.map((link) => (
+                {project.links.map((link) => (
                   <li key={link.url}>
                     <a href={link.url}>{link.name}</a>
                   </li>
