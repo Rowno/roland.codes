@@ -19,7 +19,7 @@
 
   [headers.values]
     Expect-Ct = "max-age=0"
-    Content-Security-Policy = "base-uri 'none'; block-all-mixed-content; connect-src 'self' https://api.github.com; default-src 'self'; form-action 'self'; frame-ancestors 'self'; frame-src 'self' https://codepen.io; img-src *; object-src 'none'; script-src 'self' https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; style-src-elem 'self'; upgrade-insecure-requests"
+    Content-Security-Policy = "base-uri 'none'; block-all-mixed-content; connect-src 'self' https://api.github.com https://www.google-analytics.com; default-src 'self'; form-action 'self'; frame-ancestors 'self'; frame-src 'self' https://codepen.io; img-src *; object-src 'none'; script-src 'self' https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; style-src-elem 'self'; upgrade-insecure-requests"
     Referrer-Policy = "no-referrer"
     Strict-Transport-Security = "max-age=31536000"
     X-Dns-Prefetch-Control = "off"

@@ -26,7 +26,7 @@ module.exports = {
       {
         key: 'Content-Security-Policy',
         value:
-          "base-uri 'none'; block-all-mixed-content; connect-src 'self' https://api.github.com; default-src 'self'; form-action 'self'; frame-ancestors 'self'; frame-src 'self' https://codepen.io; img-src *; object-src 'none'; script-src 'self' https://www.google-analytics.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; style-src-elem 'self' 'unsafe-inline'; upgrade-insecure-requests",
+          "base-uri 'none'; block-all-mixed-content; connect-src 'self' https://api.github.com https://www.google-analytics.com; default-src 'self'; form-action 'self'; frame-ancestors 'self'; frame-src 'self' https://codepen.io; img-src *; object-src 'none'; script-src 'self' https://www.google-analytics.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; style-src-elem 'self' 'unsafe-inline'; upgrade-insecure-requests",
       },
       {
         key: 'Referrer-Policy',

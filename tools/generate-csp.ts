@@ -3,7 +3,7 @@ import builder from 'content-security-policy-builder'
 const production = {
   baseUri: [`'none'`],
   blockAllMixedContent: true,
-  connectSrc: [`'self'`, 'https://api.github.com'],
+  connectSrc: [`'self'`, 'https://api.github.com', 'https://www.google-analytics.com'],
   defaultSrc: [`'self'`],
   formAction: [`'self'`],
   frameAncestors: [`'self'`],

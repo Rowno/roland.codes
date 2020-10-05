@@ -3,6 +3,7 @@ import { AppProps } from 'next/app'
 import 'highlight.js/styles/github.css'
 import '../css/index.scss'
 import '../rolee'
+import '../analytics'
 
 const THEME_NUM = 6
 const THEME_INTERVAL = 3.5
