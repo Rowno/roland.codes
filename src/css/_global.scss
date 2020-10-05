@@ -109,8 +109,7 @@ blockquote {
 @font-face {
   font-family: 'Hack';
   font-display: swap;
-  src: local('Hack'), url('/assets/fonts/hack.woff2') format('woff2'), url('/assets/fonts/hack.woff') format('woff'),
-    url('/assets/fonts/hack.ttf') format('truetype');
+  src: local('Hack'), url('/assets/fonts/hack.woff2') format('woff2'), url('/assets/fonts/hack.woff') format('woff');
 }
 
 @font-face {
