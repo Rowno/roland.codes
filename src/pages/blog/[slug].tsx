@@ -1,11 +1,11 @@
 import React from 'react'
 import { GetStaticPaths, GetStaticProps, NextPage, InferGetStaticPropsType as InferProps } from 'next'
+import { format, formatISO } from 'date-fns'
 import { Layout } from '../../components/layout'
 import { StructuredData } from '../../components/structured-data'
 import { BASE_URL } from '../../config'
-import { AddIcon } from '../../components/icons'
 import { loadBlogPostSlugs, loadBlogPostBySlug, BlogPost } from '../../blog-post-loader'
-import { format, formatISO } from 'date-fns'
+import { BlogPostComments } from '../../components/blog-post-comments'
 
 interface Params {
   slug: string
@@ -77,24 +77,7 @@ const BlogPostPage: NextPage<InferProps<typeof getStaticProps>> = (props) => {
 
             <div className="blog-post__separator themed--bg"></div>
 
-            <div className="blog-post__comments">
-              <h2 className="blog-post__comments__title" id="comments">
-                GitHub Comments
-              </h2>
-
-              <ol className="blog-post__comments__list" data-comments-issue-id={commentsIssueId}>
-                Loading...
-              </ol>
-
-              <a
-                className="blog-post__comments__add"
-                href={`https://github.com/Rowno/roland.codes/issues/${commentsIssueId}`}
-                itemProp="discussionUrl"
-              >
-                <AddIcon />
-                add comment via GitHub
-              </a>
-            </div>
+            <BlogPostComments commentsIssueId={commentsIssueId} />
           </div>
         </div>
       </div>

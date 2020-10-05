@@ -99,6 +99,13 @@ samp {
   }
 }
 
+blockquote {
+  margin: 16px 0;
+  padding-left: 16px;
+  border-left: 3px solid rgba(0, 0, 0, 0.2);
+  opacity: 0.7;
+}
+
 @font-face {
   font-family: 'Hack';
   font-display: swap;
