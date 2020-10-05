@@ -23,7 +23,7 @@ function changeTheme() {
 const CustomApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   useEffect(() => {
     // Prevents transitions from triggering on page load
-    document.documentElement.classList.remove('preload')
+    setTimeout(() => document.documentElement.classList.remove('preload'), 300)
 
     setTimeout(() => {
       changeTheme()
