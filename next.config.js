@@ -1,6 +1,11 @@
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-unsafe-call, @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/require-await */
+const bundleAnalyzer = require('@next/bundle-analyzer')
 
-module.exports = {
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+})
+
+module.exports = withBundleAnalyzer({
   trailingSlash: true,
   /**
    * @param { {[k:string]: any} } defaultPathMap
@@ -66,4 +71,4 @@ module.exports = {
       },
     ]
   },
-}
+})

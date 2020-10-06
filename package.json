@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export -o build",
+    "analyze": "ANALYZE=true next build",
     "start": "serve build",
     "test": "tsc && yarn lint",
     "lint": "eslint '**/*.{ts,tsx}'",
@@ -27,6 +28,7 @@
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^9.5.3",
     "@types/cheerio": "^0.22.22",
     "@types/google.analytics": "^0.0.40",
     "@types/markdown-it": "^10.0.2",
