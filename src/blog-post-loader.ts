@@ -25,11 +25,23 @@ async function loadBlogPost(filePath: string): Promise<BlogPost | undefined> {
     return
   }
 
-  let contents = file.contents
-  const $ = cheerio.load(contents)
+  const $ = cheerio.load(file.contents)
   const excerpt = $.html('p:first-child').trim()
+  const date = new Date(parsedFilePath.prefix).toISOString()
 
+  return {
+    ...file.metadata,
+    slug: parsedFilePath.slug,
+    contents: file.contents,
+    date,
+    excerpt,
+  }
+}
+
+export function injectCodepenIframe(contents: string): string {
+  const $ = cheerio.load(contents)
   const codepen = $('.codepen')
+
   if (codepen.length) {
     const id = codepen.data('id') as string | undefined
     const height = codepen.data('height') as number | undefined
@@ -46,19 +58,11 @@ async function loadBlogPost(filePath: string): Promise<BlogPost | undefined> {
           allowfullscreen="true"></iframe>
       `)
 
-      contents = $('body').html() ?? ''
+      return $('body').html() ?? ''
     }
   }
 
-  const date = new Date(parsedFilePath.prefix).toISOString()
-
-  return {
-    ...file.metadata,
-    slug: parsedFilePath.slug,
-    contents,
-    date,
-    excerpt,
-  }
+  return contents
 }
 
 export async function loadBlogPostBySlug(slug: string): Promise<BlogPost | undefined> {

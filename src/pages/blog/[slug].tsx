@@ -4,7 +4,7 @@ import { format, utcToZonedTime } from 'date-fns-tz'
 import { Layout } from '../../components/layout'
 import { StructuredData } from '../../components/structured-data'
 import { BASE_URL } from '../../config'
-import { loadBlogPostSlugs, loadBlogPostBySlug, BlogPost } from '../../blog-post-loader'
+import { loadBlogPostSlugs, loadBlogPostBySlug, BlogPost, injectCodepenIframe } from '../../blog-post-loader'
 import { BlogPostComments } from '../../components/blog-post-comments'
 
 interface Params {
@@ -34,7 +34,11 @@ export const getStaticProps: GetStaticProps<BlogPost, Params> = async (context) 
   }
 
   return {
-    props: blogPost,
+    props: {
+      ...blogPost,
+      // Inject the codepen iframe here so that the RSS feed gets the fallback content
+      contents: injectCodepenIframe(blogPost.contents),
+    },
   }
 }
 

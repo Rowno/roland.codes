@@ -10,5 +10,5 @@ Turns out this was a red herring. The actual bug is that IE 10-11 treats `flex-b
 The solution is to explicitly set the `flex-basis` to `auto` (e.g `flex: 1 1 auto`) or use the separate properties (e.g: `flex-grow: 1`). If you need to use a `flex-basis` in this kind of layout, you should be able to use `min-height` or `max-height` to achieve the same result.
 
 <p class="codepen" data-id="Abtqg" data-height="310">
-  See the demo: <a href="/demos/ie-flex-collapse-bug/">IE flex collapse bug fix</a>.
+  See the demo: <a href="/demos/ie-flex-collapse-bug/">IE flex collapse bug fix</a>
 </p>
