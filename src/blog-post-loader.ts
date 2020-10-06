@@ -46,7 +46,7 @@ async function loadBlogPost(filePath: string): Promise<BlogPost | undefined> {
           allowfullscreen="true"></iframe>
       `)
 
-      contents = $.html()
+      contents = $('body').html() ?? ''
     }
   }
 

@@ -6,6 +6,7 @@ import { StructuredData } from '../../components/structured-data'
 import { BASE_URL } from '../../config'
 import { format, formatISO } from 'date-fns'
 import { loadBlogPosts, BlogPost } from '../../blog-post-loader'
+import { generateRssFeed } from '../../generate-rss-feed'
 
 type MinimalBlogPost = Pick<BlogPost, 'title' | 'slug' | 'date' | 'excerpt'>
 
@@ -14,10 +15,14 @@ interface BlogProps {
 }
 
 export const getStaticProps: GetStaticProps<BlogProps> = async () => {
-  const blogPost = await loadBlogPosts()
+  const blogPosts = await loadBlogPosts()
+
+  // Generate the RSS feed XML file here as a simple way to hook into the next.js build flow
+  await generateRssFeed(blogPosts)
+
   return {
     props: {
-      blogPosts: blogPost.map((blogPost) => ({
+      blogPosts: blogPosts.map((blogPost) => ({
         title: blogPost.title,
         slug: blogPost.slug,
         date: blogPost.date,
