@@ -14,7 +14,7 @@ interface BlogPostMetadata {
 export interface BlogPost extends BlogPostMetadata {
   slug: string
   contents: string
-  date: number
+  date: string
   excerpt: string
 }
 
@@ -50,11 +50,13 @@ async function loadBlogPost(filePath: string): Promise<BlogPost | undefined> {
     }
   }
 
+  const date = new Date(parsedFilePath.prefix).toISOString()
+
   return {
     ...file.metadata,
     slug: parsedFilePath.slug,
     contents,
-    date: new Date(parsedFilePath.prefix).getTime(),
+    date,
     excerpt,
   }
 }

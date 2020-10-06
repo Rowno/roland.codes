@@ -1,6 +1,6 @@
 import React from 'react'
 import { GetStaticPaths, GetStaticProps, NextPage, InferGetStaticPropsType as InferProps } from 'next'
-import { format, formatISO } from 'date-fns'
+import { format, utcToZonedTime } from 'date-fns-tz'
 import { Layout } from '../../components/layout'
 import { StructuredData } from '../../components/structured-data'
 import { BASE_URL } from '../../config'
@@ -40,6 +40,8 @@ export const getStaticProps: GetStaticProps<BlogPost, Params> = async (context) 
 
 const BlogPostPage: NextPage<InferProps<typeof getStaticProps>> = (props) => {
   const { title, description, slug, contents, date, commentsIssueId } = props
+  // Use a Date object zoned to UTC time so that the server and client always render the same value
+  const formattedDate = format(utcToZonedTime(date, 'UTC'), 'd MMM, yyyy')
 
   return (
     <Layout title={title} headerShortName useShortFooter>
@@ -56,13 +58,8 @@ const BlogPostPage: NextPage<InferProps<typeof getStaticProps>> = (props) => {
               </div>
             )}
 
-            <time
-              className="blog-post__date"
-              dateTime={formatISO(date)}
-              title={formatISO(date)}
-              itemProp="datePublished"
-            >
-              {format(date, 'd MMM, yyyy')}
+            <time className="blog-post__date" dateTime={date} title={date} itemProp="datePublished">
+              {formattedDate}
             </time>
           </div>
         </header>

@@ -1,5 +1,4 @@
 import path from 'path'
-import { formatISO } from 'date-fns'
 import { BlogPost } from './blog-post-loader'
 import { BASE_URL } from './config'
 import { promises as fs } from 'fs'
@@ -10,7 +9,7 @@ function generateEntry(blogPost: BlogPost): string {
     <entry>
       <id>${BASE_URL}/blog/${blogPost.slug}/</id>
       <title>${blogPost.title}</title>
-      <updated>${formatISO(blogPost.date)}</updated>
+      <updated>${blogPost.date}</updated>
       <link rel="alternate" href="${BASE_URL}/blog/${blogPost.slug}/" />
       <author>
         <name>Roland Warmerdam</name>
