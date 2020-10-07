@@ -16,7 +16,7 @@ The second input is the keyword that triggers the search engine. Choose somethin
 The third input is the URL of the search engine. For this use this URL:
 
 ```
-http://www.google.com/search?btnI&q=site:[domain]%20%s
+https://www.google.com/search?btnI&q=site:[domain]%20%s
 ```
 
 Replacing `[domain]` with the domain of the website you want to search over. Press <kbd><kbd>Enter</kbd></kbd> to save the search engine.
@@ -27,12 +27,12 @@ Here are the shortcuts that I've setup in my browser:
 
 Name: `MDN`
 Keyword: `m`
-URL: `http://www.google.com/search?btnI&q=site:developer.mozilla.org%20%s`
+URL: `https://www.google.com/search?btnI&q=site:developer.mozilla.org%20%s`
 
 Name: `jQuery`
 Keyword: `j`
-URL: `http://www.google.com/search?btnI&q=site:api.jquery.com%20%s`
+URL: `https://www.google.com/search?btnI&q=site:api.jquery.com%20%s`
 
 Name: `Can I use…`
 Keyword: `c`
-URL: `http://www.google.com/search?btnI&q=site:caniuse.com%20%s`
+URL: `https://www.google.com/search?btnI&q=site:caniuse.com%20%s`

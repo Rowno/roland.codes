@@ -26,6 +26,6 @@ The sub-type can also have one of the following optional prefixes to give it spe
 
 For more information, see the MIME type [standard][] and [registration][] documents.
 
-[list]: http://www.iana.org/assignments/media-types/index.html
-[standard]: http://tools.ietf.org/html/rfc2046
-[registration]: http://tools.ietf.org/html/rfc4288
+[list]: https://www.iana.org/assignments/media-types/media-types.xhtml
+[standard]: https://tools.ietf.org/html/rfc2046
+[registration]: https://tools.ietf.org/html/rfc4288

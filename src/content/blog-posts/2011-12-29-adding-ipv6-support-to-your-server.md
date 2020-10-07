@@ -31,10 +31,10 @@ Don't forget to restart Apache if you made any changes.
 
 Finally you'll need add AAAA records containing your IPv6 address to your DNS. These records should correspond to your existing A records.
 
-Now it's time to test your new IPv6 setup! This can be a little difficult at the moment, since it's likely that your ISP doesn't support IPv6 yet, but you can use a service like http://ipv6-test.com/validate.php to validate your setup or you can try visiting your website through an IPv6 proxy. More information about IPv6 networking on [Linode][] is available in the [Linode Library][].
+Now it's time to test your new IPv6 setup! This can be a little difficult at the moment, since it's likely that your ISP doesn't support IPv6 yet, but you can use a service like https://ipv6-test.com/validate.php to validate your setup or you can try visiting your website through an IPv6 proxy. More information about IPv6 networking on [Linode][] is available in the [Linode Library][].
 
 The future of the internet relies on the adoption of IPv6, so take the initiative!
 
 [ipv4depletion]: http://www.ipv4depletion.com/?page_id=326
-[linode]: http://www.linode.com/?r=65f866a7004f627ae37fa3283f8a89b4fa9cecbe
-[linode library]: http://library.linode.com/networking/ipv6
+[linode]: https://www.linode.com/?r=65f866a7004f627ae37fa3283f8a89b4fa9cecbe
+[linode library]: https://library.linode.com/networking/ipv6

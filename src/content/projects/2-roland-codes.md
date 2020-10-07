@@ -29,7 +29,7 @@ I’m always improving the site and [suggestions are welcome][suggestions]. ;)
 The site was beautifully designed by [Arlen McCluskey][arlen].
 
 [theme]: https://github.com/Rowno/roland.codes/blob/master/app/assets/css/components/_theme.scss
-[background]: http://codepen.io/Rowno/pen/EVEgJb
+[background]: https://codepen.io/Rowno/pen/EVEgJb
 [zeit now]: https://zeit.co/now
 [suggestions]: https://github.com/Rowno/roland.codes/issues
 [arlen]: https://www.arlenmccluskey.com/
