@@ -6,8 +6,8 @@ import '../rolee'
 import '../analytics'
 
 const THEME_NUM = 6
-const THEME_INTERVAL = 3.5
 const SECOND = 1000
+const THEME_INTERVAL = 3.5 * SECOND
 let currentTheme = 1
 
 function changeTheme() {
@@ -26,10 +26,7 @@ const CustomApp: React.FC<AppProps> = ({ Component, pageProps }) => {
     // Prevents transitions from triggering on page load
     setTimeout(() => document.documentElement.classList.remove('preload'), 300)
 
-    setTimeout(() => {
-      changeTheme()
-      setInterval(changeTheme, THEME_INTERVAL * SECOND)
-    }, SECOND)
+    setInterval(changeTheme, THEME_INTERVAL)
   }, [])
 
   return <Component {...pageProps} />
