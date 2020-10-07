@@ -107,7 +107,7 @@ const BlogPostPage: NextPage<InferProps<typeof getStaticProps>> = (props) => {
               '@type': 'ListItem',
               position: 3,
               item: {
-                '@id': `"${BASE_URL}/blog/${slug}/`,
+                '@id': `${BASE_URL}/blog/${slug}/`,
                 name: title,
               },
             },

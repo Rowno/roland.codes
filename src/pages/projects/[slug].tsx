@@ -110,6 +110,14 @@ const ProjectPage: NextPage<InferProps<typeof getStaticProps>> = ({ project, pro
                 name: 'Home',
               },
             },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              item: {
+                '@id': `${BASE_URL}/projects/${project.slug}/`,
+                name: project.title,
+              },
+            },
           ],
         }}
       </StructuredData>
