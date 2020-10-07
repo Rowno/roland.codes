@@ -3,15 +3,11 @@
 
 # TEAM
 
-    Roland Warmerdam -- Web Developer -- https://roland.codes/
-    Arlen McCluskey  -- Designer      -- https://www.arlenmccluskey.com/
+    Roland Warmerdam -- Software Engineer -- https://roland.codes/
+    Arlen McCluskey  -- Designer          -- https://www.arlenmccluskey.com/
 
 # TECHNOLOGY COLOPHON
 
-    HTML5, CSS3, ES2015
-    Gulp, Metalsmith, Nunjucks, markdown-it
-    HTML5 Boilerplate, Normalize.css, libsass, Autoprefixer, clean-css, include-media
-    jQuery, Babel, Browserify, UglifyJS, XO, Picturefill, Moment.js, FastClick, highlight.js
-    Atom
+    HTML, SCSS, TypeScript, Next.js, React, Markdown, highlight.js, ESLint, Prettier, Visual Studio Code
 
     https://github.com/Rowno/roland.codes

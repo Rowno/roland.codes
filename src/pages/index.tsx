@@ -36,7 +36,7 @@ const HomePage: NextPage<InferProps<typeof getStaticProps>> = ({ projects }) => 
     >
       <div className="hero">
         <h1 className="hero__heading">
-          Front end engineer.
+          Software engineer.
           <br /> Technology hacker. Gamer.
         </h1>
 
