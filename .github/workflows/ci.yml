@@ -1,0 +1,30 @@
+name: CI
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Use Node.js 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: node12-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Check types and lint files
+        run: yarn test
+
+      - name: Check that build and export works
+        run: yarn build
