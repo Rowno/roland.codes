@@ -1,8 +1,6 @@
 import React from 'react'
 import { NextPage } from 'next'
 import { Layout } from '../components/layout'
-import { StructuredData } from '../components/structured-data'
-import { BASE_URL } from '../config'
 
 const NotFoundPage: NextPage = () => {
   return (
