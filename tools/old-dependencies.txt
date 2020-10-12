@@ -1,7 +1,0 @@
-"fastclick": "^1.0.6",
-"jquery": "^3.0.0-alpha1",
-"moment": "^2.10.6",
-"nunjucks": "^3.0.0",
-"picturefill": "^3.0.1",
-"simple-timeago": "^1.0.0",
-"whatwg-fetch": "^2.0.3"

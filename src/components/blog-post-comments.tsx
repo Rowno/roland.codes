@@ -11,6 +11,7 @@ interface CommentProps {
   createdAt: Date
 }
 
+/** A single blog post comment */
 export const Comment: React.FC<CommentProps> = (props) => {
   const { userName, avatarUrl, commentsIssueId, commentId, bodyHtml, createdAt } = props
 
@@ -20,8 +21,8 @@ export const Comment: React.FC<CommentProps> = (props) => {
         <a rel="nofollow" href={`https://github.com/${userName}`}>
           <img
             className="blog-post__comment__avatar"
-            src={`${avatarUrl}&amp;s=30&amp;r=g`}
-            srcSet={`${avatarUrl}&amp;s=60&amp;r=g 2x`}
+            src={`${avatarUrl}&s=30&r=g`}
+            srcSet={`${avatarUrl}&s=60&r=g 2x`}
             alt=""
             loading="lazy"
           />
@@ -40,6 +41,7 @@ export const Comment: React.FC<CommentProps> = (props) => {
         </a>
       </div>
 
+      {/* GitHub already escapes all the unsafe HTML in the comment, so we'll trust them */}
       <div className="blog-post__comment__content" dangerouslySetInnerHTML={{ __html: bodyHtml }}></div>
     </li>
   )
@@ -79,6 +81,10 @@ interface GitHubUser {
   url: string
 }
 
+/**
+ * Loads all the comments posted on a GitHub issue.
+ * @param commentsIssueId The ID of the GitHub issue to load the comments from
+ */
 async function loadComments(commentsIssueId: number): Promise<GitHubComment[]> {
   const response = await fetch(`https://api.github.com/repos/Rowno/roland.codes/issues/${commentsIssueId}/comments`, {
     headers: {
@@ -97,6 +103,9 @@ interface BlogPostCommentsProps {
   commentsIssueId: number
 }
 
+/**
+ * The comments thread for a blog post. Dynamically loads the comments on the client-side so that they're always up to date.
+ */
 export const BlogPostComments: React.FC<BlogPostCommentsProps> = ({ commentsIssueId }) => {
   const [comments, setComments] = useState<GitHubComment[]>()
   const [hasLoaded, setHasLoaded] = useState(false)
@@ -108,7 +117,7 @@ export const BlogPostComments: React.FC<BlogPostCommentsProps> = ({ commentsIssu
       .then(setComments)
       .catch((error) => {
         setHasErrored(true)
-        throw error
+        console.error(error)
       })
       .finally(() => setHasLoaded(true))
   }, [commentsIssueId])

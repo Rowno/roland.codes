@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
+/** Short/compact version of the site wide footer */
 export const FooterShort: React.FC = () => {
   return (
     <div className="footer-short">

@@ -1,3 +1,6 @@
+/** Unminified version of the Google Analytics snippet */
+
+// Don't execute on the server-side
 if (typeof window !== 'undefined') {
   window.ga =
     window.ga ||

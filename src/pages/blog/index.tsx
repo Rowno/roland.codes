@@ -22,6 +22,8 @@ export const getStaticProps: GetStaticProps<BlogProps> = async () => {
 
   return {
     props: {
+      // Only include the minimum required properties to reduce the amount of data embeded
+      // onto the page for React hydration
       blogPosts: blogPosts.map((blogPost) => ({
         title: blogPost.title,
         slug: blogPost.slug,
@@ -57,6 +59,7 @@ const BlogPage: NextPage<InferProps<typeof getStaticProps>> = ({ blogPosts }) =>
                   </h2>
                 </header>
 
+                {/* `post.excerpt` contains prerendered Markdown */}
                 <div className="blog-list__post__content" dangerouslySetInnerHTML={{ __html: post.excerpt }}></div>
 
                 {index < blogPosts.length - 1 && <div className="blog-list__post__separator themed--bg"></div>}

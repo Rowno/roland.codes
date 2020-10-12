@@ -9,19 +9,31 @@ import { Footer } from './footer'
 import { FooterShort } from './footer-short'
 
 interface LayoutProps {
+  /** Page title */
   title?: string
+  /** Meta description */
   description?: string
+  /** Absolute path to an image to use for social sharing */
   socialImage?: string
+  /** Type of twitter card to use */
   twitterCard?: 'summary' | 'summary_large_image'
+  /** Removes the page from search engines */
   noindex?: boolean
+  /** Whether to display the header with a white background */
   headerWhite?: boolean
+  /** Whether to show the header name in short acronym form */
   headerShortName?: boolean
+  /** Whether the push nav toggle button should be themed */
   pushNavThemed?: boolean
+  /** Whether to use the compact version of the footer */
   useShortFooter?: boolean
+  /** Whether to hide the footer */
   hideFooter?: boolean
+  /** List of projects to show in the push nav */
   projects?: PushNavProject[]
 }
 
+/** The base layout for every page of the site */
 export const Layout: React.FC<LayoutProps> = (props) => {
   const {
     children,
@@ -73,7 +85,7 @@ export const Layout: React.FC<LayoutProps> = (props) => {
       </Head>
 
       <div className="body-wrapper">
-        <Header isWhite={headerWhite} isShortName={headerShortName} />
+        <Header isWhite={headerWhite} hasShortName={headerShortName} />
 
         <main role="main">{children}</main>
 
@@ -82,7 +94,7 @@ export const Layout: React.FC<LayoutProps> = (props) => {
         <div className="push-nav-overlay"></div>
       </div>
 
-      <PushNav isThemed={pushNavThemed} projects={projects} />
+      <PushNav isToggleThemed={pushNavThemed} projects={projects} />
 
       <StructuredData>
         {{

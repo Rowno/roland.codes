@@ -1,5 +1,3 @@
-export {}
-
 const DISTANCE = 300
 const EXPLODE_PARTICLES = 20
 const IMAGE_SIZE = 32
@@ -11,50 +9,9 @@ let mouseX = 0
 let mouseY = 0
 let overlay: HTMLDivElement
 
-const STYLES = `
-.rolee {
-  overflow: hidden;
-  position: fixed;
-  z-index: 999999;
-  right: 0;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  pointer-events: none;
-}
+export {}
 
-.rolee__wrapper {
-  opacity: 1;
-  position: absolute;
-  transition: opacity 2s cubic-bezier(0.95, 0.05, 0.795, 0.035),
-              transform 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.rolee img {
-  max-width: none;
-  animation: 1s steps(1) infinite rolee;
-}
-
-@keyframes rolee {
-  0% {
-    transform: none;
-  }
-
-  25% {
-    transform: rotate(10deg);
-  }
-
-  50% {
-    transform: rotate(-10deg);
-  }
-
-  75% {
-    transform: rotateY(180deg);
-  }
-}
-`
-
-function randomCoordinate() {
+function getRandomCoordinate() {
   const min = -DISTANCE
   const max = DISTANCE
   return Math.random() * (max - min) + min
@@ -63,8 +20,8 @@ function randomCoordinate() {
 function injectImage() {
   const startX = mouseX - IMAGE_SIZE / 2
   const startY = mouseY - IMAGE_SIZE / 2
-  const destX = randomCoordinate()
-  const destY = randomCoordinate()
+  const destX = getRandomCoordinate()
+  const destY = getRandomCoordinate()
 
   // Create wrapper div with starting position
   const wrapper = document.createElement('div')
@@ -86,7 +43,6 @@ function injectImage() {
   setTimeout(() => {
     // Apply destination position and fade out
     wrapper.style.opacity = '0'
-    wrapper.style.webkitTransform = `translate(${destX}px, ${destY}px)`
     wrapper.style.transform = `translate(${destX}px, ${destY}px)`
 
     // Garbage collection
@@ -108,11 +64,6 @@ function activate() {
   }
 
   activated = true
-
-  // Inject styles
-  const style = document.createElement('style')
-  style.textContent = STYLES
-  document.head.appendChild(style)
 
   // Inject overlay
   overlay = document.createElement('div')
@@ -136,6 +87,7 @@ function activate() {
   )
 }
 
+// Don't execute on the server-side
 if (typeof window !== 'undefined') {
   document.addEventListener(
     'keypress',

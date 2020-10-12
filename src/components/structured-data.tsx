@@ -5,6 +5,7 @@ interface StructuredDataProps {
   children: Exclude<WebSite | Person | BreadcrumbList, string>
 }
 
+/** Convenience component for adding a structured data script tag to the page */
 export const StructuredData: React.FC<StructuredDataProps> = ({ children }) => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const data = {

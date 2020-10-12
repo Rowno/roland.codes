@@ -2,7 +2,7 @@ import path from 'path'
 import { BlogPost } from './blog-post-loader'
 import { BASE_URL } from './config'
 import { promises as fs } from 'fs'
-import { htmlEscape } from './html-escape'
+import { escapeHtml } from './escape-html'
 
 function generateEntry(blogPost: BlogPost): string {
   return `
@@ -16,12 +16,13 @@ function generateEntry(blogPost: BlogPost): string {
         <uri>${BASE_URL}/</uri>
       </author>
       <content type="html">
-        ${htmlEscape(blogPost.contents)}
+        ${escapeHtml(blogPost.contents)}
       </content>
     </entry>
   `
 }
 
+/** Generates the blog RSS feed and writes it to the `public` directory for next.js to pick it up */
 export async function generateRssFeed(blogPosts: BlogPost[]): Promise<void> {
   const now = new Date()
   const feed = `<?xml version="1.0" encoding="utf-8"?>

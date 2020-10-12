@@ -15,6 +15,7 @@ function lookupEscape(character: string): string {
   return escapeMap[character]
 }
 
-export function htmlEscape(value: string): string {
+/** HTML escapes a string */
+export function escapeHtml(value: string): string {
   return value.replace(escapeRegex, lookupEscape)
 }

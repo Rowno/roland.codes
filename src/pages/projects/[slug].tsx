@@ -41,7 +41,8 @@ export const getStaticProps: GetStaticProps<ProjectPageProps, Params> = async (c
   return {
     props: {
       project,
-      // Only embed the minimum required data on the page
+      // Only include the minimum required properties to reduce the amount of data embeded
+      // onto the page for React hydration
       projects: projects.map((p) => ({ title: p.title, slug: p.slug })),
     },
   }
@@ -84,6 +85,7 @@ const ProjectPage: NextPage<InferProps<typeof getStaticProps>> = ({ project, pro
                 </div>
               )}
 
+              {/* `project.contents` contains prerendered Markdown */}
               <div className="project-detail__description" dangerouslySetInnerHTML={{ __html: project.contents }}></div>
 
               <ul className="project-detail__links">

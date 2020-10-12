@@ -16,6 +16,7 @@ const markdownParser = new MarkdownIt({
   },
 })
 
+/** Gets the paths of every file in a directory */
 export async function listFilePaths(directoryPath: string): Promise<string[]> {
   const files = await fs.readdir(directoryPath, { withFileTypes: true })
   const onlyFiles = files.filter((file) => file.isFile())
@@ -24,10 +25,13 @@ export async function listFilePaths(directoryPath: string): Promise<string[]> {
 
 interface File<M> {
   filePath: string
+  /** Parsed YAML front matter */
   metadata: M
+  /** Compiled Markdown content */
   contents: string
 }
 
+/** Loads a Markdown file and parses the YAML front matter and compiles the Markdown content */
 export async function loadFile<M>(filePath: string): Promise<File<M>> {
   const fileData = await fs.readFile(filePath, { encoding: 'utf8' })
   const fileFrontMatter = frontMatter(fileData)
@@ -45,6 +49,7 @@ interface ParsedFilePath {
   prefix: string
 }
 
+/** Parses a file path, extracting the prefix and slug from the file name */
 export function parseFilePath(filePath: string, prefixRegex: RegExp): ParsedFilePath | undefined {
   const { name } = path.parse(filePath)
   const result = prefixRegex.exec(name)
@@ -64,6 +69,7 @@ export function parseFilePath(filePath: string, prefixRegex: RegExp): ParsedFile
   }
 }
 
+/** Gets the path of a file in a directory by it's slug */
 export async function findFileBySlug(
   directoryPath: string,
   prefixRegex: RegExp,

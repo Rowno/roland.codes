@@ -1,5 +1,6 @@
 import React from 'react'
 
+/** Full size version of the site wide footer */
 export const Footer: React.FC = () => {
   return (
     <div className="footer">

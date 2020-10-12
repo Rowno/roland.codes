@@ -17,6 +17,8 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
   const projects = await loadProjects()
   return {
     props: {
+      // Only include the minimum required properties to reduce the amount of data embeded
+      // onto the page for React hydration
       projects: projects.map((project) => ({
         title: project.title,
         description: project.description,

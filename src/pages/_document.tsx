@@ -4,8 +4,10 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 class CustomDocument extends Document {
   render(): JSX.Element {
     return (
+      // The `preload` class prevents transitions from triggering on page load
       <Html lang="en" className="theme--1 preload">
         <Head>
+          {/* Preload the two most commonly used fonts to minimise any jank from the fonts changing */}
           <link
             rel="preload"
             href="/assets/fonts/roboto-thin.woff2"

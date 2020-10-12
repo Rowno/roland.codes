@@ -2,15 +2,18 @@ import React from 'react'
 import Link from 'next/link'
 
 interface HeaderProps {
+  /** Renders the header with a white background */
   isWhite?: boolean
-  isShortName?: boolean
+  /** Renders the header with the name in short acronym form */
+  hasShortName?: boolean
 }
 
-export const Header: React.FC<HeaderProps> = ({ isWhite, isShortName }) => {
+/** Site wide header */
+export const Header: React.FC<HeaderProps> = ({ isWhite, hasShortName }) => {
   return (
     <header role="banner" className={`header ${isWhite ? 'header--white' : ''}`}>
-      {isShortName ? (
-        <Link href="/">
+      <Link href="/">
+        {hasShortName ? (
           <a
             className="header__name header__name--short"
             title="Roland Warmerdam"
@@ -20,14 +23,12 @@ export const Header: React.FC<HeaderProps> = ({ isWhite, isShortName }) => {
           >
             RW
           </a>
-        </Link>
-      ) : (
-        <Link href="/">
+        ) : (
           <a className="header__name" rel="home" tabIndex={1}>
             Roland Warmerdam
           </a>
-        </Link>
-      )}
+        )}
+      </Link>
     </header>
   )
 }

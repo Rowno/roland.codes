@@ -1,0 +1,39 @@
+.rolee {
+  overflow: hidden;
+  position: fixed;
+  z-index: 999999;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.rolee__wrapper {
+  opacity: 1;
+  position: absolute;
+  transition: opacity 2s cubic-bezier(0.95, 0.05, 0.795, 0.035), transform 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.rolee img {
+  max-width: none;
+  animation: 1s steps(1) infinite rolee;
+}
+
+@keyframes rolee {
+  0% {
+    transform: none;
+  }
+
+  25% {
+    transform: rotate(10deg);
+  }
+
+  50% {
+    transform: rotate(-10deg);
+  }
+
+  75% {
+    transform: rotateY(180deg);
+  }
+}

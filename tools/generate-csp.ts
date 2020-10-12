@@ -1,3 +1,4 @@
+/** Generates the development and production Content Security Policies */
 import builder from 'content-security-policy-builder'
 
 const production = {

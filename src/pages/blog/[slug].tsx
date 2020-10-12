@@ -70,6 +70,7 @@ const BlogPostPage: NextPage<InferProps<typeof getStaticProps>> = (props) => {
 
         <div className="blog-post__body">
           <div className="blog-post__body__wrapper">
+            {/* `contents` contains prerendered Markdown */}
             <div
               className="blog-post__content"
               itemProp="articleBody"
