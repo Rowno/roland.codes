@@ -23,17 +23,17 @@
   "dependencies": {
     "date-fns": "^2.16.1",
     "date-fns-tz": "^1.0.11",
-    "next": "^9.5.3",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "next": "^10.0.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^9.5.3",
+    "@next/bundle-analyzer": "^10.0.2",
     "@types/cheerio": "^0.22.22",
     "@types/google.analytics": "^0.0.40",
     "@types/markdown-it": "^10.0.2",
     "@types/node": "^12",
-    "@types/react": "^16.9.49",
+    "@types/react": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.2.0",
     "@typescript-eslint/parser": "^4.2.0",
     "cheerio": "^1.0.0-rc.3",
@@ -44,7 +44,7 @@
     "eslint-plugin-react-hooks": "^4.1.2",
     "front-matter": "^4.0.2",
     "highlight.js": "^10.2.1",
-    "markdown-it": "^11.0.1",
+    "markdown-it": "^12.0.2",
     "prettier": "^2.1.2",
     "sass": "^1.26.11",
     "schema-dts": "^0.7.1",
