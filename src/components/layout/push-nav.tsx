@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
+const TRAILING_SLASH_REGEX = /\/$/
+
 interface NavLinkProps {
   href: string
   /** Indicates that the link is a child link */
@@ -17,7 +19,12 @@ interface NavLinkProps {
 const NavLink: React.FC<NavLinkProps> = ({ children, href, isSecondary, activePath }) => {
   const router = useRouter()
   const levelClass = isSecondary ? 'push-nav__link--secondary' : 'push-nav__link--primary'
-  const activeClass = router.asPath.startsWith(activePath || href) ? 'push-nav__link--active' : ''
+
+  // For some reason router.asPath has inconsistent trailing slashes
+  const currentPath = router.asPath.replace(TRAILING_SLASH_REGEX, '')
+  const linkPath = (activePath || href).replace(TRAILING_SLASH_REGEX, '')
+
+  const activeClass = currentPath.startsWith(linkPath) ? 'push-nav__link--active' : ''
 
   return (
     <Link href={href}>
