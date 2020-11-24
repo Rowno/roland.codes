@@ -23,14 +23,20 @@ function changeTheme() {
   document.documentElement.classList.add(`theme--${currentTheme}`)
 }
 
-const CustomApp: React.FC<AppProps> = ({ Component, pageProps }) => {
+const CustomApp: React.FC<AppProps> = ({ Component, pageProps, router }) => {
   useEffect(() => {
     // Prevents transitions from triggering on page load
     setTimeout(() => document.documentElement.classList.remove('preload'), 300)
 
     // Change the theme color on an interval
     setInterval(changeTheme, THEME_INTERVAL)
-  }, [])
+
+    // Track page navigations since google analytics only tracks a page view on page load by default
+    router.events.on('routeChangeComplete', (url) => {
+      ga('set', 'page', url)
+      ga('send', 'pageview')
+    })
+  }, [router.events])
 
   return <Component {...pageProps} />
 }
